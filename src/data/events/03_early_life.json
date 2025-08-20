@@ -1,0 +1,58 @@
+[
+  {
+    "id": "early_first_computer",
+    "text": "你擁有了第一台電腦，一扇新世界的大門打開了。",
+    "isUnique": true,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "age", "operator": ">=", "value": 12 } },
+      { "type": "stat_check", "params": { "stat": "age", "operator": "<", "value": 18 } }
+    ],
+    "choices": [
+      {
+        "text": "用它來學習程式設計。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "feedback": "邏輯與程式碼為你構建了新的思維方式。",
+        "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "money": -50 } } ]
+      },
+      {
+        "text": "沉迷於各種論壇和聊天室。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "feedback": "你在網路的亞文化中如魚得水，學會了用Meme和黑話交流。",
+        "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "fame": 2, "anonymity": 5 } } ]
+      }
+    ]
+  },
+  {
+    "id": "early_memorable_nightmare",
+    "text": "你做了一個無比真實的噩夢，醒來後心有餘悸，夢中的細節久久不能忘懷。",
+    "isUnique": true,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "age", "operator": ">=", "value": 15 } }
+    ],
+    "choices": [
+      {
+        "text": "把它當作創作素材記錄下來。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "feedback": "你將那些怪誕的景象轉化為創作，但它們也讓你的精神有些緊張。",
+        "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "sanity": -5 } } ]
+      },
+      {
+        "text": "上網搜尋夢境的解析，尋找其中的預兆。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "feedback": "你發現夢裡的某些符號指向了一些古老的傳說，這讓你深信不疑。",
+        "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -3 } } ]
+      },
+      {
+        "text": "努力忘記它，告訴自己只是個夢。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "你試圖用理智壓制恐懼，但越想忘記，夢裡的畫面就越清晰。",
+        "outcomes": [ { "type": "change_stat", "params": { "sanity": -2 } } ]
+      }
+    ]
+  }
+]

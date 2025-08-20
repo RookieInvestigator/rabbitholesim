@@ -1,0 +1,73 @@
+[
+  {
+    "id": "talent_rationalist",
+    "name": "理性主義者",
+    "description": "你相信萬物皆有邏輯可循。初始[邏輯]屬性很高，但[怪奇]和[靈知]較低。",
+    "effects": [
+      { "type": "change_stat", "params": { "logic": 20, "weirdness": -5, "gnosis": -5 } }
+    ]
+  },
+  {
+    "id": "talent_born_conspirator",
+    "name": "天生陰謀家",
+    "description": "你總覺得表象之下另有文章。初始[靈知]和[隱匿]較高。",
+    "effects": [
+      { "type": "change_stat", "params": { "gnosis": 15, "anonymity": 110 } }
+    ]
+  },
+  {
+    "id": "talent_fast_learner_logic",
+    "name": "邏輯學家",
+    "description": "你的思維如精密儀器般運轉。所有[邏輯]屬性的獲取速度提升30%。",
+    "effects": [
+      { "type": "add_multiplier", "params": { "stat": "logic", "value": 1.3 } }
+    ]
+  },
+  {
+    "id": "talent_meme_propagator",
+    "name": "迷因傳播體",
+    "description": "你天生就是網路的一部分，能輕易掀起潮流。所有[解構]和[名望]的獲取速度提升25%。",
+    "effects": [
+      { "type": "add_multiplier", "params": { "stat": "irony", "value": 1.25 } },
+      { "type": "add_multiplier", "params": { "stat": "fame", "value": 1.25 } }
+    ]
+  },
+  {
+    "id": "talent_frail_scholar",
+    "name": "體弱的學者",
+    "description": "你的身體天生較弱，但這讓你更專注於精神世界的探索。所有世界觀屬性的獲取速度提升15%，但[健康]初始值較低。",
+    "effects": [
+      { "type": "change_stat", "params": { "health": -25 } },
+      { "type": "add_multiplier", "params": { "stat": "logic", "value": 1.15 } },
+      { "type": "add_multiplier", "params": { "stat": "gnosis", "value": 1.15 } },
+      { "type": "add_multiplier", "params": { "stat": "weirdness", "value": 1.15 } },
+      { "type": "add_multiplier", "params": { "stat": "irony", "value": 1.15 } }
+    ]
+  },
+  {
+    "id": "talent_doomed_prophet",
+    "name": "被詛咒的先知",
+    "description": "你窺見了太多秘密，這讓你更容易獲得[靈知]和[怪奇]，但也讓你更容易失去[理智]。",
+    "effects": [
+      { "type": "add_multiplier", "params": { "stat": "gnosis", "value": 1.4 } },
+      { "type": "add_multiplier", "params": { "stat": "weirdness", "value": 1.4 } },
+      { "type": "add_multiplier", "params": { "stat": "sanity", "value": 0.8 } }
+    ]
+  },
+  {
+    "id": "talent_weird_magnet",
+    "name": "怪奇磁鐵",
+    "description": "異常事件似乎總是圍繞著你發生。初始[怪奇]很高，但[理智]較低。",
+    "effects": [
+      { "type": "change_stat", "params": { "weirdness": 20, "sanity": 85 } }
+    ]
+  },
+  {
+    "id": "talent_mr_average",
+    "name": "普通人",
+    "description": "你的所有一切都平平無奇，這本身就是一種保護色。",
+    "effects": [
+      { "type": "change_stat", "params": { "anonymity": 120, "exposure": -10 } }
+    ]
+  }
+]

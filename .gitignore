@@ -1,0 +1,14 @@
+# Logs
+logs
+*.log
+
+# Dependencies
+node_modules
+
+# Build files
+dist
+dist-ssr
+
+# Editor directories and files
+.vscode
+.idea

@@ -1,0 +1,20 @@
+{
+  "paranoid": {
+    "name": "偏執",
+    "outcomes": [
+      { "type": "change_stat", "params": { "sanity": -0.5, "gnosis": 0.2 } }
+    ]
+  },
+  "inspired": {
+    "name": "靈感迸發",
+    "outcomes": [
+      { "type": "change_stat", "params": { "irony": 0.3, "weirdness": 0.3 } }
+    ]
+  },
+  "in_debt": {
+    "name": "負債",
+    "outcomes": [
+      { "type": "change_stat", "params": { "sanity": -1, "health": -0.5 } }
+    ]
+  }
+}

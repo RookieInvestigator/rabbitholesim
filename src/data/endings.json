@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ending_default_health",
+    "title": "身體機能耗盡",
+    "description": "你的身體再也無法支撐你的探索。在一陣疲憊中，你的意識永遠地沉入了黑暗。",
+    "conditions": [
+      { "type": "death_reason", "reason": "health" }
+    ]
+  },
+  {
+    "id": "ending_default_sanity",
+    "title": "精神完整性受損",
+    "description": "現實與幻覺的邊界徹底模糊，你再也無法分辨哪個是真實的自己。最終，你成為了自己腦海中無盡迴廊的囚徒。",
+    "conditions": [
+      { "type": "death_reason", "reason": "sanity" }
+    ]
+  },
+  {
+    "id": "ending_truth_seeker",
+    "title": "真相的代價",
+    "description": "你觸及了不該被觸及的真相，你的存在本身成為了一個需要被修正的錯誤。在某個平凡的午後，你悄無聲息地從世界上被‘刪除’了。",
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "exposure", "operator": ">=", "value": 100 } }
+    ]
+  }
+]

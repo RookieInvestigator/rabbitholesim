@@ -1,0 +1,324 @@
+[
+  {
+    "id": "money_lottery_ticket",
+    "text": "路過一家彩券行，你心血來潮。",
+    "priority": 1.2,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "age", "operator": ">=", "value": 18 } }
+    ],
+    "choices": [
+      {
+        "text": "買一張試試手氣。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "feedback": "刮開塗層，你驚訝地發現自己中了2000元！",
+        "outcomes": [ { "type": "change_stat", "params": { "money": 1990 } } ]
+      },
+      {
+        "text": "相信科學，拒絕概率遊戲。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "你認為中獎的期望值是負的，不值得投資。",
+        "outcomes": [ { "type": "change_stat", "params": { "logic": 2 } } ]
+      }
+    ]
+  },
+  {
+    "id": "money_bad_investment",
+    "text": "你聽信了一個「內部消息」，進行了一筆投資。",
+    "isUnique": true,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "money", "operator": ">=", "value": 2000 } }
+    ],
+    "choices": [
+      {
+        "text": "投入一筆巨款。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "feedback": "事實證明這是個騙局，你的錢血本無歸。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": -2000, "sanity": -10 } } ]
+      },
+      {
+        "text": "保持謹慎，選擇觀望。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "你最終沒有投資，避開了一個陷阱。",
+        "outcomes": [ { "type": "change_stat", "params": { "sanity": 2, "logic": 2 } } ]
+      }
+    ]
+  },
+  {
+    "id": "money_unexpected_bill",
+    "text": "你收到一張意料之外的帳單（例如：違規停車罰單）。",
+    "choices": [
+      {
+        "text": "真是倒霉，付錢了事。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "一筆突如其來的支出打亂了你的財務計畫。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": -500, "sanity": -5 } } ]
+      },
+      {
+        "text": "認為這是系統對你的警告，試圖解讀罰單上的數字。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "feedback": "你發現罰單編號的數字總和是13，這絕非偶然。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": -500, "sanity": -8, "gnosis": 3 } } ]
+      }
+    ]
+  },
+  {
+    "id": "money_petty_theft",
+    "text": "你在擁擠的市集裡發現錢包被偷了。",
+    "choices": [
+      {
+        "text": "報警處理，並補辦證件。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "你損失了現金並花時間處理後續事宜，心情非常糟糕。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": -300, "sanity": -8 } } ]
+      },
+      {
+        "text": "自認倒霉，認為這是轉運的“必要犧牲”。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "feedback": "你安慰自己，舊的不去，新的不來。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": -300, "sanity": -5, "weirdness": 2 } } ]
+      }
+    ]
+  },
+  {
+    "id": "money_inheritance",
+    "text": "一位你幾乎沒有印象的遠房親戚去世了，給你留下了一筆遺產。",
+    "isUnique": true,
+    "priority": 3,
+    "choices": [
+      {
+        "text": "一筆可觀的現金。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "你收到了一大筆錢，解決了燃眉之急。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": 10000, "sanity": 10 } } ]
+      },
+      {
+        "text": "一棟郊外的神秘老宅。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "feedback": "你收到了一棟老宅的鑰匙，律師說那棟房子有很多“故事”。",
+        "outcomes": [
+          { "type": "add_item", "params": { "itemId": "old_house_key" } },
+          { "type": "unlocksEvent", "params": { "eventId": "inheritance_house_chain_1" } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "money_side_hustle",
+    "text": "你決定利用業餘時間搞點副業增加收入。",
+    "choices": [
+      {
+        "text": "嘗試做自媒體，分享你的見聞。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "feedback": "你開始創作內容，雖然很累，但也吸引了一些粉絲。",
+        "outcomes": [ { "type": "change_stat", "params": { "fame": 5, "money": 50, "health": -3, "irony": 2 } } ]
+      },
+      {
+        "text": "研究股票市場，進行價值投資。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "你花了很多時間研究財報，獲得了少量但穩定的回報。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": 150, "logic": 3 } } ]
+      }
+    ]
+  },
+  {
+    "id": "money_scam_call",
+    "text": "你接到一個電話，對方聲稱你中了大獎，但需要先支付一筆手續費。",
+    "choices": [
+      {
+        "text": "識破騙局並痛罵對方。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "你識破了對方的騙局，並享受了一番智力上的優越感。",
+        "outcomes": [ { "type": "change_stat", "params": { "sanity": 2, "logic": 1 } } ]
+      },
+      {
+        "text": "假裝上當，戲耍騙子，並把過程錄下來發到網上。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "feedback": "你和騙子周旋了半天，把他耍得團團轉，影片為你帶來了大量關注。",
+        "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "sanity": 5, "fame": 5 } } ]
+      }
+    ]
+  },
+  {
+    "id": "money_repair_bill",
+    "text": "家裡的電腦突然壞了，需要一筆不小的維修費。",
+    "choices": [
+      {
+        "text": "花錢修理。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "生活恢復了正常，但你的錢包也遭受了重創。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": -800 } } ]
+      },
+      {
+        "text": "自己嘗試修理，結果越修越壞。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "feedback": "你在網上找了教程，折騰了一天，結果主機板被你弄短路了。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": -1500, "logic": 5, "health": -5 } } ]
+      }
+    ]
+  },
+  {
+    "id": "money_stock_market",
+    "text": "你決定將一部分積蓄投入股市。",
+    "conditions": [ { "type": "stat_check", "params": { "stat": "money", "operator": ">=", "value": 1000 } } ],
+    "choices": [
+      {
+        "text": "購買一支持續虧損但有大量陰謀論者支持的Meme股票。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "feedback": "你加入了這場網絡狂歡，但很不幸，股價在你買入後崩盤了。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": -1000, "sanity": -8, "irony": 5 } } ]
+      },
+      {
+        "text": "選擇穩健的指數型基金。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "你的投資獲得了少量但穩定的回報。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": 100, "logic": 1 } } ]
+      }
+    ]
+  },
+  {
+    "id": "money_donation_request",
+    "text": "一個慈善組織向你請求捐款。",
+    "choices": [
+      {
+        "text": "捐一筆錢。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "你的善舉可能會改變某個人的生活。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": -200, "sanity": 5 } } ]
+      },
+      {
+        "text": "婉言拒絕，因為你懷疑這類組織的資金透明度。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "feedback": "你覺得自己的財務狀況也不樂觀，而且並不完全信任他們。",
+        "outcomes": [ { "type": "change_stat", "params": { "gnosis": 2 } } ]
+      }
+    ]
+  },
+  {
+    "id": "money_found_wallet",
+    "text": "你在路上撿到一個錢包。",
+    "choices": [
+      {
+        "text": "交給警察。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "你做了一件好事，感覺很棒。",
+        "outcomes": [ { "type": "change_stat", "params": { "sanity": 5 } } ]
+      },
+      {
+        "text": "拿走裡面的現金，把錢包仍在原地。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "feedback": "你獲得了200塊錢，但內心有些許不安，並將此事當作一個‘社會實驗’發到網上。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": 200, "sanity": -5, "irony": 1 } } ]
+      }
+    ]
+  },
+  {
+    "id": "money_crypto_boom",
+    "text": "加密貨幣市場迎來了一輪牛市，身邊的人都在討論。",
+    "choices": [
+      {
+        "text": "認為這是泡沫，不參與。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "你堅持價值投資的原則，遠離了高風險的投機市場。",
+        "outcomes": [ { "type": "change_stat", "params": { "logic": 3 } } ]
+      },
+      {
+        "text": "認為這是‘他們’用來收割大眾的工具。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "feedback": "你看穿了這背後的陰謀，並為那些被蒙蔽的人感到惋惜。",
+        "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3 } } ]
+      },
+      {
+        "text": "投入全部身家，幻想一夜暴富。",
+        "worldview": "irony",
+        "magnitude": 3,
+        "feedback": "‘梭哈是一種智慧’，你在心中默念。然而，市場在你入場後急轉直下。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": -5000, "sanity": -20, "irony": 5 } } ]
+      }
+    ]
+  },
+  {
+    "id": "money_old_book",
+    "text": "你在二手書店淘到一本舊書，書頁夾層裡掉出幾張看似古老的鈔票。",
+    "isUnique": true,
+    "choices": [
+      {
+        "text": "拿去銀行鑑定。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "銀行告訴你這些只是仿製的紀念品，一文不值。",
+        "outcomes": [ { "type": "change_stat", "params": { "sanity": -2, "logic": 2 } } ]
+      },
+      {
+        "text": "認為這是來自另一個時間線的貨幣，並嘗試研究上面的符號。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "feedback": "鈔票上的頭像和文字你從未見過，這讓你確信自己發現了不得了的秘密。",
+        "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "gnosis": 3, "sanity": -5 } } ]
+      }
+    ]
+  },
+  {
+    "id": "money_part_time_job",
+    "text": "你找了一份臨時工來補貼家用。",
+    "choices": [
+      {
+        "text": "在便利商店當店員。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "雖然辛苦，但穩定的收入讓你感到安心。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": 300, "health": -5 } } ]
+      },
+      {
+        "text": "為一個神秘的雇主跑腿，傳送一些從不讓你打開的包裹。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "feedback": "報酬很高，但你總感覺包裹裡的東西不對勁，而且似乎有人在跟蹤你。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": 1000, "sanity": -8, "exposure": 8 } } ]
+      }
+    ]
+  },
+  {
+    "id": "money_subscription_trap",
+    "text": "你發現自己被一個很久以前訂閱的服務自動續費了，扣了一筆錢。",
+    "choices": [
+      {
+        "text": "立刻取消訂閱，並設定行事曆提醒自己檢查所有訂閱。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "feedback": "你花時間整理了自己的財務狀況，避免了未來的損失。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": -150, "logic": 3, "sanity": 2 } } ]
+      },
+      {
+        "text": "懶得處理，覺得沒多少錢，算了。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "feedback": "你覺得為這點小事花費精力不值得。",
+        "outcomes": [ { "type": "change_stat", "params": { "money": -150 } } ]
+      }
+    ]
+  }
+]
