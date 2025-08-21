@@ -1,15 +1,17 @@
 import { ref } from 'vue';
-import { usePlayerStore } from '@/stores/playerStore';
+// ✨ 修改：不再直接 import playerStore
+// import { usePlayerStore } from '@/stores/playerStore';
 import { useEventEngine } from './useEventEngine';
 
 export function useGameLoop() {
-  const player = usePlayerStore();
+  // ✨ 修改：player store 現在作為參數傳入
+  let player = null; 
   const { findTriggerableEvent, processEvent } = useEventEngine();
   const isRunning = ref(false);
   let gameInterval = null;
 
   function runTurn() {
-    if (!player.isAlive) {
+    if (!player || !player.isAlive) {
       stop();
       return;
     }
@@ -26,9 +28,11 @@ export function useGameLoop() {
     }
   }
 
-  function start() {
+  // ✨ 修改：start 函數現在接收 player store 作為參數
+  function start(playerStore) {
     if (isRunning.value) return;
-    player.reset();
+    player = playerStore; // 設置 player store
+    // player.reset(); // reset 的操作移到 GameView 中
     isRunning.value = true;
     gameInterval = setInterval(runTurn, 800);
   }

@@ -1,61 +1,71 @@
 <script setup>
-
 import { usePlayerStore } from '@/stores/playerStore';
-
-
 const player = usePlayerStore();
-const format = (num) => Number(num).toFixed(1);
+const format = (num) => Number(num).toFixed(0);
 </script>
 
 <template>
-  <div class="stats-container">
+  <div class="stats-container-bare">
     <div class="stat-group">
-      <h4>核心狀態</h4>
-      <p><span>年齡:</span> <strong>{{ format(player.age) }}</strong></p>
-      <p><span>健康:</span> <strong>{{ format(player.health) }}</strong></p>
-      <p><span>理智:</span> <strong>{{ format(player.sanity) }}</strong></p>
-      <p><span>金錢:</span> <strong>{{ format(player.money) }}</strong></p>
+      <span class="stat-item">探索: <strong>{{ player.turn }}</strong></span>
+      <span class="stat-item">❤️ <strong>{{ format(player.health) }}</strong></span>
+      <span class="stat-item">🧠 <strong>{{ format(player.sanity) }}</strong></span>
+      <span class="stat-item">💰 <strong>{{ format(player.money) }}</strong></span>
     </div>
     <div class="stat-group">
-      <h4>世界觀</h4>
-      <p><span>邏輯:</span> <strong>{{ format(player.logic) }}</strong></p>
-      <p><span>靈知:</span> <strong>{{ format(player.gnosis) }}</strong></p>
-      <p><span>怪奇:</span> <strong>{{ format(player.weirdness) }}</strong></p>
-      <p><span>解構:</span> <strong>{{ format(player.irony) }}</strong></p>
+      <span class="stat-item">邏: <strong>{{ format(player.logic) }}</strong></span>
+      <span class="stat-item">靈: <strong>{{ format(player.gnosis) }}</strong></span>
+      <span class="stat-item">奇: <strong>{{ format(player.weirdness) }}</strong></span>
+      <span class="stat-item">構: <strong>{{ format(player.irony) }}</strong></span>
     </div>
-    <div class="stat-group">
-      <h4>身份</h4>
-      <p><span>名望:</span> <strong>{{ format(player.fame) }}</strong></p>
-      <p><span>隱匿:</span> <strong>{{ format(player.anonymity) }}</strong></p>
-      <p><span>暴露度:</span> <strong>{{ format(player.exposure) }}</strong></p>
+    <div v-if="player.statusEffects.length > 0" class="stat-group status-group">
+        <span v-for="effect in player.statusEffects" :key="effect.id" class="stat-item status-effect">
+            {{ effect.id }}
+        </span>
     </div>
   </div>
 </template>
 
 <style scoped>
-.stats-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  background: #1e1e1e;
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #333;
-}
-.stat-group h4 {
-  margin: 0 0 0.75rem 0;
-  color: #888;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-bottom: 1px solid #333;
-  padding-bottom: 0.5rem;
-}
-p {
-  margin: 0.4rem 0;
-  color: #ccc;
+/* ✨ 全新的無背景樣式 ✨ */
+.stats-container-bare {
   display: flex;
-  justify-content: space-between;
-  font-size: 0.95rem;
+  flex-wrap: nowrap; /* 強制不換行 */
+  gap: 0.5rem 1.5rem;
+  align-items: center;
+  /* 移除了 background, padding, border, border-radius */
 }
-strong { color: white; }
+
+.stat-group {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem 1.5rem;
+  align-items: center;
+}
+
+.stat-item {
+  color: #aaa; /* 顏色變淺以適應頂欄 */
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.stat-item strong {
+  color: #e0e0e0;
+  margin-left: 0.25rem;
+  font-size: 1.1em;
+}
+
+.status-effect {
+  background-color: #c94e4e;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.stat-group:not(:last-child) {
+  padding-right: 1.5rem;
+  border-right: 1px solid #444; /* 分隔線顏色變深 */
+}
 </style>

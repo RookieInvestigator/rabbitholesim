@@ -4,11 +4,7 @@ import GameView from './views/GameView.vue'
 
 <template>
   <div class="app-container">
-    <header>
-      <h1>Project Terminus</h1>
-      <p class="subtitle">一個關於偏執、謎團與人生選擇的模擬器</p>
-    </header>
-    <main>
+    <main class="main-content">
       <GameView />
     </main>
   </div>
@@ -16,15 +12,15 @@ import GameView from './views/GameView.vue'
 
 <style scoped>
 .app-container {
-  max-width: 800px;
+  height: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  overflow: hidden;
 }
-header {
-  text-align: center;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #333;
-  padding-bottom: 1rem;
+
+.main-content {
+  height: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
 }
-.subtitle { color: #888; }
 </style>

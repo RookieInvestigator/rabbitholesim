@@ -1,0 +1,54 @@
+[
+  {
+    "id": "core_roaming_the_internet",
+    "title": "漫遊互聯網",
+    "text": "這又是一個平凡的夜晚，你指尖的微光是螢幕唯一的色彩。在無數個標籤頁之間跳躍，你點進了一個推薦給你的、名為《███████.wmv》的懷舊影片合集。影片的大部分內容都是些模糊的家庭錄像和風景，但其中一個片段讓你停了下來：\n\n那是一段遊樂園的旋轉木馬錄像，拍攝角度很奇怪，而且……影片中的所有孩子，都沒有臉。",
+    "isUnique": true,
+    "priority": 1000,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "turn", "operator": "==", "value": 1 } }
+    ],
+    "choices": [
+      {
+        "text": "大概是早期攝影器材的解析度太低，或是影片壓縮時造成的失真。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你為這個現象找到了最合理的解釋，然後繼續觀看下一個貓咪影片。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "去評論區看看，也許有人知道這段影片的來源或背景故事。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "評論區眾說紛紜，有人說這是某個被詛咒的遊樂園，也有人說這是一個邪教的宣傳片。你對這些說法半信半疑，但它們確實在你心中埋下了一顆種子。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "sanity": -1 } } ]
+        }]
+      },
+      {
+        "text": "這段影片的氛圍很獨特，讓你想起了一些被遺忘的童年回憶。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你將這段影片保存了下來。那種怪異而懷舊的感覺讓你著迷，你開始在網上尋找更多類似風格的“夢核”或“怪核”內容。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 3, "sanity": -1 } } ]
+        }]
+      },
+      {
+        "text": "把這個「無臉孩童」的畫面截圖，做成一個表情包，配文：“週一早上來上班的我本人。”",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的表情包在朋友間引起了共鳴，大家紛紛表示“確實”。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "sanity": 1 } } ]
+        }]
+      }
+    ]
+  }
+]

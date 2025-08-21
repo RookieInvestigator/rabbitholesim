@@ -1,0 +1,190 @@
+[
+  {
+    "id": "mystery_chemtrails",
+    "title": "网格状的天空",
+    "text": "你抬头仰望天空，发现今天的云很奇怪。飞机飞过的尾迹久久不能散去，在空中交织成一片巨大的、不自然的网格。",
+    "choices": [
+      {
+        "text": "这是正常的“凝结尾迹”，在高空湿度和温度适宜的条件下就会形成。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你用气象学知识打消了疑虑，天上的云看起来也没那么怪了。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "这不是云，这是“化学尾迹”。“他们”正在向大气中喷洒着什么。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始警惕地呼吸，并回家关上了门窗。你不知道他们在喷洒什么，但绝不会是什么好东西。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 2, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "天空是一个巨大的屏幕，而这些是屏幕坏掉时出现的“像素网格”。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始怀疑天空的“材质”，它看起来更像某种投影，而不是真实的空间。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 2, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "拍张照，发到网上，配文：“有人在天上玩井字棋，而且快赢了。”",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的帖子引来了一些同样无聊的网友的点赞。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 2, "fame": 1 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "mystery_hollow_earth_map",
+    "title": "二手书里的地图",
+    "text": "你在一家二手书店淘到一本破旧的科幻小说。翻开书，一张折叠起来的、像是手绘的地图掉了出来。地图的中央画着一个巨大的空洞，标注着“通往阿加森的入口”。",
+    "choices": [
+      {
+        "text": "这是上一个读者留下的涂鸦，或者是某个桌游的地图。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你把地图夹回书里，继续阅读小说。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 1 } } ]
+        }]
+      },
+      {
+        "text": "地球空心说……难道是真的？",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你将地图小心翼翼地收好，开始在网上搜索关于“地心世界”的传说。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "sanity": -1 } } ]
+        }]
+      },
+      {
+        "text": "把地图装裱起来，挂在墙上，当作一件有趣的艺术品。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "它确实为你的房间增添了一丝神秘的气息。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 2, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "在地图的背面写上“寻宝图”，然后把它塞进另一本书里，留给下一个有缘人。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你完成了一次匿名的、跨越时间的恶作剧，并为此感到满足。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "mystery_lizard_person_glitch",
+    "title": "屏幕上的异常",
+    "text": "你在观看一场重要的政治演讲直播。在某个镜头切换的瞬间，画面卡顿了一下，就在那一帧，你似乎看到演讲者的瞳孔变成了垂直的、像爬行动物一样的形状，然后立刻恢复了正常。",
+    "choices": [
+      {
+        "text": "典型的数字信号压缩错误，没什么大不了的。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你没有把这个小小的插曲放在心上。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2 } } ]
+        }]
+      },
+      {
+        "text": "被我抓到了！“他们”果然是伪装成人类的蜥蜴人！",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你立刻开始在网上寻找视频回放，试图截下那关键的一帧作为证据。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "也许所有人的眼睛在特定的光线下都会呈现出那种样子，只是我们平时没注意。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始对着镜子，用手电筒从不同角度照射自己的眼睛，进行一番实验。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 2, "health": -1 } } ]
+        }]
+      },
+      {
+        "text": "立刻把这个“发现”做成一个表情包，在所有相关的政治新闻下刷屏。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的表情包很快就被删除了，但你乐在其中。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 2, "fame": 1 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "mystery_birds_are_drones",
+    "title": "机械之羽",
+    "text": "你在路边发现一只死去的鸽子。出于一丝好奇，你用树枝拨开了它的羽毛，在它的皮肤下，你似乎看到了闪烁着金属光泽的、类似电路的东西。",
+    "choices": [
+      {
+        "text": "只是光线的错觉，可能是羽毛上的某种油光。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你摇了摇头，觉得自己有点疑神疑鬼了。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "“鸟类是政府的监视器”……难道这是真的？",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你紧张地看了看四周，匆匆离开了现场。从此，你再也无法用正常的眼光看待天上的飞鸟了。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "鸟类正在经历一场“机械化”的进化，血肉之躯正在被更高效的结构所取代。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你认为这是一种全新的、正在进行中的自然选择。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 2, "gnosis": 1 } } ]
+        }]
+      },
+      {
+        "text": "给它拍张照，发到网上，问道：“我的鸽子好像需要充电，请问哪里有接口？”",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "网友们纷纷给你P上了各种充电接口，让你哭笑不得。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 2, "fame": 1 } } ]
+        }]
+      }
+    ]
+  }
+]

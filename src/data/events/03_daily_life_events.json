@@ -1,0 +1,204 @@
+[
+  {
+    "id": "daily_insomnia",
+    "title": "失眠的夜晚",
+    "text": "夜深了，你躺在床上，卻毫無睡意。大腦異常清醒，各種紛亂的思緒在腦海中盤旋。",
+    "choices": [
+      {
+        "text": "起床喝杯熱牛奶，並做一些舒緩的伸展運動。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "溫暖的牛奶和輕柔的運動讓你的身體放鬆了下來，你很快就感到了睡意。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": 2, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "索性不睡了，開始在網上搜索關於“人類睡眠的真正目的”的資料。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你發現了一些關於“睡眠是為了讓靈魂脫離肉體”的說法，看得入了迷，直到天亮。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 2, "health": -3 } } ]
+        }]
+      },
+      {
+        "text": "閉上眼睛，專注於黑暗，將其視為一次探索潛意識的機會。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "在半夢半醒之間，你似乎看到了一些無法名狀的幾何圖形和色彩。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 2, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "起來打掃衛生，把所有東西都重新歸位，直到精疲力盡。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "房子變得一塵不染，而你也終於感到了疲憊。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 1, "health": -2, "sanity": 3 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "daily_missed_call",
+    "title": "未接来电",
+    "text": "你發現手機上有一個來自未知號碼的未接來電。你不記得自己有等誰的電話。",
+    "choices": [
+      {
+        "text": "大概是打錯了，或者又是什麼推銷電話。不理它。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你將號碼加入了黑名單。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 1 } } ]
+        }]
+      },
+      {
+        "text": "回撥過去看看是誰。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 7,
+            "feedback": "電話那頭傳來的是一段關於理財產品的自動語音。",
+            "outcomes": [ { "type": "change_stat", "params": { "sanity": -2 } } ]
+          },
+          {
+            "weight": 3,
+            "feedback": "電話接通了，但那頭只有一片靜默，幾秒後掛斷了。這讓你感覺很不舒服。",
+            "outcomes": [ { "type": "change_stat", "params": { "sanity": -5, "gnosis": 2 } } ]
+          }
+        ]
+      },
+      {
+        "text": "在網上搜索這個號碼，看看有沒有相關資訊。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "搜索結果顯示，這個號碼曾被多人標記為“騷擾電話”。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "將這個號碼設置為“巨魔熱線”，以後再有推銷電話就轉接到這裡。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你為自己的小聰明感到得意。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "daily_cooking_experiment",
+    "title": "厨房实验",
+    "text": "你準備自己做頓飯，但冰箱裡的食材看起來有些“隨機組合”。",
+    "choices": [
+      {
+        "text": "嚴格按照網上找到的食譜，只用食譜上有的食材。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你做出了一頓味道不錯的、中規中矩的飯菜。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": 3, "sanity": 2, "logic": 1 } } ]
+        }]
+      },
+      {
+        "text": "放棄烹飪，直接叫外賣。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "雖然花了一點錢，但省去了很多麻煩。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": -150, "health": 1, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "把所有能吃的東西都丟進鍋裡，創造一道“黑暗料理”。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 5,
+            "feedback": "味道……一言難盡。但至少能吃。",
+            "outcomes": [ { "type": "change_stat", "params": { "health": -2, "sanity": -3 } } ]
+          },
+          {
+            "weight": 5,
+            "feedback": "出人意料的是，味道竟然還不錯！你發現了一種全新的搭配。",
+            "outcomes": [ { "type": "change_stat", "params": { "health": 4, "sanity": 5, "weirdness": 2 } } ]
+          }
+        ]
+      },
+      {
+        "text": "嘗試用感應和直覺來判斷哪幾種食材的“能量”比較契合。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你憑感覺做出了一頓飯，味道很玄妙，但你覺得它對你的精神很有好處。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": 2, "sanity": 2, "gnosis": 2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "daily_headache",
+    "title": "突如其来的头痛",
+    "text": "一陣突如其來的、劇烈的頭痛襲來，讓你眼前發黑。",
+    "choices": [
+      {
+        "text": "立刻放下手頭的事，找個地方休息一下，並喝點水。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "短暫的休息後，頭痛緩解了。可能是最近太累了。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": -2, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "一定是“他们”又在用HAARP或電磁波武器進行測試了。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你開始在家裡尋找能屏蔽信號的地方。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": -5, "gnosis": 2, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "疼痛的瞬間，你腦海中閃過了一些不屬於你的、破碎的畫面。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "頭痛消失後，你試圖回憶那些畫面，但它們就像夢一樣消散了。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": -5, "weirdness": 2, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "在網上發帖：“頭好痛，感覺像是要覺醒了什麼超能力。”",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "網友們纷纷在下面留言：“醒醒，你只是頸椎不好。”",
+          "outcomes": [ { "type": "change_stat", "params": { "health": -5, "irony": 2, "sanity": 1 } } ]
+        }]
+      }
+    ]
+  }
+]
