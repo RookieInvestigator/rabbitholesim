@@ -1,0 +1,140 @@
+[
+{
+    "id": "novelty_philosophical_cat",
+    "title": "你看我像人吗？",
+    "text": "一只猫拦住了你的去路。你本以为它只是想讨要食物，但它却突然开口，用一种清晰的人类女孩的声音对你说：“你看我像是人吗？”",
+    "isUnique": true,
+    "choices": [
+      {
+        "text": "“我看你像一个非常逼真的、内置了扬声器的恶作剧玩偶。”",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你蹲下身，开始寻找它身上的接缝和电池仓。那只猫厌恶地看了你一眼，走开了。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "“我看你像一个被困在这个形态里的古代神灵。”",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "猫的眼神变得深邃起来，仿佛认可了你的说法。“知道得太多，对你没有好处。”它说完这句话，便消失在了小巷的阴影中。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "“我看你像中性三无电波调查员白发裸足美少女！”",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [
+          {
+            "weight": 7,
+            "feedback": "猫歪了歪头，似乎没听懂你的“行话”。它失望地“喵”了一声，和普通的猫没什么两样。",
+            "outcomes": [ { "type": "change_stat", "params": { "sanity": -5, "irony": 3 } } ]
+          },
+          {
+            "weight": 3,
+            "feedback": "“……被你发现了。”在你惊愕的目光中，那只猫的身体开始拉长、变形，最终真的变成了一个无表情的少女。她看了你一眼，然后融入了空气中。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 25, "sanity": -30 } } ]
+          }
+        ]
+      },
+      {
+        "text": "“我看你……有点像猫！”",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "那只猫似乎对你的回答很满意，它点了点头，用爪子碰了碰你的裤腿以示友好，然后优雅地走开了。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "“我看你像一个绝佳的、突破性的研究对象。”",
+        "worldview": "logic",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "logic", "operator": ">=", "value": 60 } }
+        ],
+        "results": [{
+          "weight": 1,
+          "feedback": "你拿出手机，打开了录音和摄像功能。那只猫似乎察觉到了你的意图，它只是轻蔑地哼了一声，然后从锁住的窗户里凭空消失了。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "weirdness": 10, "sanity": -15 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "cult_ancient_cicada",
+    "title": "玉蝉",
+    "text": "你在整理自家院子里的花圃时，铁锹碰到了一个坚硬的物体。挖出来一看，是一个样式古朴、沁色优美的玉蝉。",
+    "isUnique": true,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "一个有趣的发现。把它清洗干净，当作一件古雅的装饰品摆在书桌上。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "它为你的书桌增添了一丝历史的厚重感。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "sanity": 2 } },
+            { "type": "add_item", "params": { "itemId": "jade_cicada_ornament" } }
+          ]
+        }]
+      },
+      {
+        "text": "这件玉蝉可能价值不菲。拿去给古董商鉴定一下。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 6,
+            "feedback": "鉴定结果显示，这只是一件制作精良的现代仿品，没什么价值。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": -500 } } ]
+          },
+          {
+            "weight": 4,
+            "feedback": "鉴定结果让你大吃一惊，这竟然是一件来自明代的稀有文物！你因此发了一笔小财。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 8000, "sanity": 10, "logic": 3 } } ]
+          }
+        ]
+      },
+      {
+        "text": "蝉的重生……这不仅仅是象征。这件玉器是一个“钥匙”，用来开启某种古代的转化仪式。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始在古籍中寻找关于“蝉崇拜”和“羽化登仙”的秘密记载，相信这件玉器能引导你走向不朽。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "如果蝉神存在人类形象，那会不会是中性三无电波调查员白发裸足美少女呢？",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你产生这个念头的瞬间，手中的玉蝉似乎微微发热，你脑海中闪过一个白色的、赤足的身影。你感到自己与某个遥远的存在，建立了一丝微弱的连接。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 10, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "把它挂在网上，并编造一个“来自古代修仙者洞府”的故事，看看有没有人上当。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的故事写得绘声绘色，虽然没人买，但帖子为你带来了不少点击量。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "fame": 3 } } ]
+        }]
+      }
+    ]
+  }
+]

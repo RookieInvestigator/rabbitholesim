@@ -1,0 +1,187 @@
+[
+  {
+    "id": "health_common_cold",
+    "title": "不合时宜的感冒",
+    "text": "你感觉喉咙发干，脑袋昏沉，身体一阵阵地发冷。看起来，你应该是感冒了。",
+    "choices": [
+      {
+        "text": "多喝热水，吃点成药，然后好好睡一觉。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "在充分的休息后，你的身体慢慢恢复了。科学的休养是战胜疾病的最好方法。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": 10, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "硬扛过去，工作/学习不能停。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 6,
+            "feedback": "你的意志力战胜了病毒，几天后感冒自行痊愈了，但你感觉疲惫不堪。",
+            "outcomes": [ { "type": "change_stat", "params": { "health": -5 } } ]
+          },
+          {
+            "weight": 4,
+            "feedback": "硬扛的结果是病情加重，你不得不去医院挂急诊。",
+            "outcomes": [ { "type": "change_stat", "params": { "health": -15, "money": -1000, "sanity": -5 } } ]
+          }
+        ]
+      },
+      {
+        "text": "这是一种“灵性流感”，是身体在排出负能量。我需要冥想。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你点上熏香，开始冥想。感冒并没有因此好转，但你的精神似乎变得更清澈了。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": -5, "gnosis": 3, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "我的身体正在经历一次“系统重装”，这是好事。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你将每一次咳嗽都视为一次“旧文件”的删除，将每一次流涕都看作一次“缓存”的清理。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": -2, "weirdness": 2, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "在网上发一张自己病恹恹的自拍，配文：“生病了，求安慰。”",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你收获了很多朋友的关心和一些无聊的“多喝热水”的评论。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": -2, "sanity": 3, "fame": 2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "health_food_allergy",
+    "title": "未知的过敏源",
+    "text": "在享用了一顿美餐后，你感觉皮肤开始发痒，并出现了一些红疹。你似乎对刚才吃的某种东西过敏了。",
+    "choices": [
+      {
+        "text": "立刻去医院检查，并记录下今天吃过的所有东西，找出过敏源。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "通过科学的排查，你找到了让你过敏的食物。虽然以后要忌口了，但你避免了更大的危险。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "health": -5, "money": -500 } } ]
+        }]
+      },
+      {
+        "text": "这一定是某种超自然力量的警告，警告我不要再吃那家餐厅。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始怀疑那家餐厅的“风水”或“能量场”有问题。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "health": -8 } } ]
+        }]
+      },
+      {
+        "text": "我的身体在排斥这个世界的“物质”，它渴望更高维度的“食物”。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你将这次过敏视为一次灵性的觉醒。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "health": -8, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "不管它，痒一会就过去了。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [
+            {
+                "weight": 8,
+                "feedback": "你忍了一阵子，红疹和瘙痒感真的慢慢消退了。",
+                "outcomes": [ { "type": "change_stat", "params": { "health": -2 } } ]
+            },
+            {
+                "weight": 2,
+                "feedback": "过敏反应越来越严重，你最终因为呼吸困难而被送进了急诊室。",
+                "outcomes": [ { "type": "change_stat", "params": { "health": -20, "money": -2000, "sanity": -10 } } ]
+            }
+        ]
+      },
+      {
+        "text": "把红疹的照片P成一张星图，发到网上。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的“创意”引来了一些网友的围观。",
+            "outcomes": [ { "type": "change_stat", "params": { "health": -5, "irony": 3, "fame": 1 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "health_gym_membership",
+    "title": "健身房的召唤",
+    "text": "路过一家新开的健身房，一位热情的销售向你递上传单，推荐你办一张健身卡，开启健康生活。",
+    "choices": [
+      {
+        "text": "办一张卡，并为自己制定一个详细的、科学的健身计划。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始规律地锻炼，感觉自己的身体和精神状态都变好了。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": -2000, "health": 15, "sanity": 5, "logic": 3 } } ]
+        }]
+      },
+      {
+        "text": "婉言谢绝。生命在于静止。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你觉得在家休息是更好的放松方式。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "办了卡，但一次也没去。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "这张卡成为了你“计划过但从未开始的生活”的又一个象征。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": -2000, "sanity": -5, "irony": 2 } } ]
+        }]
+      },
+      {
+        "text": "认为现代健身房是一种“身体崇拜”的教堂，是对自然身体的异化。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你更倾向于通过瑜伽、冥想等方式来达到身心合一。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 2, "health": 2 } } ]
+        }]
+      },
+      {
+        "text": "和销售聊了半天，最后成功地把他发展成了你的“下线”，向他推销了你的产品。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你没有办卡，反而赚了一笔。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": 500, "irony": 5 } } ]
+        }]
+      }
+    ]
+  }
+]

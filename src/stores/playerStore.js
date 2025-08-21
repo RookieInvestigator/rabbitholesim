@@ -2,11 +2,10 @@ import { defineStore } from 'pinia'
 
 const getInitialState = () => ({
   isAlive: true,
-  // age: 0, // <-- 移除 age
   health: 100,
   sanity: 100,
   money: 500,
-  turn: 0, // <-- turn 成為核心進度
+  turn: 0, 
   logic: 10,
   gnosis: 0,
   weirdness: 0,

@@ -10,12 +10,12 @@ const format = (num) => Number(num).toFixed(0);
       <div class="worldview-item">
         <span class="icon">🧠</span>
         <span class="value">{{ format(player.logic) }}</span>
-        <span class="label">邏輯</span>
+        <span class="label">逻辑</span>
       </div>
       <div class="worldview-item">
         <span class="icon">👁️</span>
         <span class="value">{{ format(player.gnosis) }}</span>
-        <span class="label">靈知</span>
+        <span class="label">灵知</span>
       </div>
       <div class="worldview-item">
         <span class="icon">🌀</span>
@@ -25,14 +25,14 @@ const format = (num) => Number(num).toFixed(0);
       <div class="worldview-item">
         <span class="icon">🎭</span>
         <span class="value">{{ format(player.irony) }}</span>
-        <span class="label">解構</span>
+        <span class="label">戏讽</span>
       </div>
     </div>
     <div class="core-stats-bar">
       <span>回合: {{ player.turn }}</span>
-      <span>❤️: {{ format(player.health) }}</span>
-      <span>🧠: {{ format(player.sanity) }}</span>
-      <span>💰: {{ format(player.money) }}</span>
+      <span>健康: {{ format(player.health) }}</span>
+      <span>理智: {{ format(player.sanity) }}</span>
+      <span>金钱: {{ format(player.money) }}</span>
     </div>
   </div>
 </template>

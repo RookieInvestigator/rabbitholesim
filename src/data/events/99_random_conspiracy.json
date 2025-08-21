@@ -70,5 +70,73 @@
         }]
       }
     ]
+  },
+    {
+    "id": "classic_i_feel_fantastic",
+    "title": "我感觉好极了",
+    "text": "深夜，视频网站的自动播放算法为你推荐了一个诡异的视频。画面中，一个面无表情的女性机器人，用单调的、毫无起伏的语调反复吟唱着“I feel fantastic, hey hey hey”。你感到一股莫名的、发自内心的寒意。",
+    "isUnique": true,
+    "choices": [
+      {
+        "text": "一个早期的机器人技术测试视频而已，没什么特别的。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你关掉了视频。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 1 } } ]
+        }]
+      },
+      {
+        "text": "传说这个机器人的制造者是一个连环杀手，他把受害者的衣服给机器人穿上……",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始暂停视频，逐帧分析画面中一闪而过的、疑似后院的场景，试图找到线索。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -12 } } ]
+        }]
+      },
+      {
+        "text": "这个机器人拥有了自我意识，而这首歌是它表达内心痛苦的唯一方式。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你从那单调的歌声中，似乎听出了一丝悲伤和祈求。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "把这首歌设置成我的起床闹铃。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "第二天早上，你在极度的惊悚中醒来。效果拔群。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": -5, "health": -2 } } ]
+        }]
+      },
+        {
+        "text": "尝试用音乐软件分析这首歌的曲谱，看看里面是否隐藏着什么密码。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你发现曲谱的音阶变化，似乎可以被转换成一组二进制代码，但你不知道它代表什么。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 3 } } ]
+        }]
+      },
+        {
+        "text": "给视频点踩。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你行使了作为观众的权利。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 1 } } ]
+        }]
+      }
+    ]
   }
 ]
