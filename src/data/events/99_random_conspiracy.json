@@ -1,0 +1,74 @@
+[  
+    {
+    "id": "eclectic_db_cooper_the_room",
+    "title": "撕裂的天才",
+    "text": "你在一个专门分析邪典电影的论坛上，看到一篇惊人的帖子。帖子作者通过比对 D·B·库珀的通缉画像和电影《房间》导演托米·韦素的旧照，以及分析两人离奇的口音和神秘的资金来源，得出了一个惊人的结论：他们是同一个人！",
+    "isUnique": true,
+    "choices": [
+      {
+        "text": "这纯属巧合和牵强附会。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你觉得这只是影迷们自娱自乐的玩笑。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2 } } ]
+        }]
+      },
+      {
+        "text": "“Oh, hai Mark.” 他劫机不是为了钱，而是为了艺术！",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你被这个理论的荒诞和浪漫所折服，并将其奉为圭臬，开始向所有人传播这个“真相”。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 10, "fame": 5, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "一个劫机犯，一个烂片导演……也许他们都只是某个幕后黑手推到台前的“白手套”。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你认为这两人只是巨大阴谋中的两个小棋子，重要的是找出操纵他们的那只手。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "他们不是同一个人，但他们都是同一个“原型”在现实中的两次“投影”。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始研究荣格的集体无意识理论，认为“神秘的天才怪人”是人类社会中一个反复出现的“模因”。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "gnosis": 3 } } ]
+        }]
+      },
+            {
+        "text": "他们不是同一个人，而是同一个伪人。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "这就好解释了！这两人不是同一人，只是被同一个敌意生物窃取了身份……",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 10, "sanity": -5, "gnosis": -5 } } ]
+        }]
+      },
+      {
+        "text": "租一架私人飞机，并在飞行途中向空姐要20万美元和一个降落伞。",
+        "worldview": "irony",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "money", "operator": ">=", "value": 10000 } }
+        ],
+        "results": [{
+          "weight": 1,
+          "feedback": "你的“行为艺术”让你刚下飞机就被FBI逮捕了。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 20, "sanity": -20, "money": -15000 } } ]
+        }]
+      }
+    ]
+  }
+]

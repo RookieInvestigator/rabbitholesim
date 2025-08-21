@@ -1,0 +1,216 @@
+[
+  {
+    "id": "bear_01_discovery",
+    "title": "词汇的空洞",
+    "text": "在一個深夜，你為了研究課題，正在查閱關於古代語言學的資料。你注意到一个极其反常的现象：在几乎所有的原始印欧语系分支中，代表“熊”的那个最古老的词根都神秘地、不约而同地消失了。所有后代语言都像商量好了一样，用各种描述性的绰号来替代它，比如“棕色的家伙”、“食蜜者”或“毛茸茸的那个”。学者们将这种现象，不痛不痒地称之为“称呼禁忌”。",
+    "isUnique": true,
+    "priority": 8,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "logic", "operator": ">=", "value": 20 } }
+    ],
+    "choices": [
+      {
+        "text": "这只是古代猎人出于对猛兽的敬畏。直呼其名被认为会招来厄运，是典型的原始崇拜。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你认为这是一种有趣的文化现象，但其原理和社会学中的“品牌名”替代“品类名”并无本质区别。你并没有深究。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "一个词根在如此庞大的语系中被系统性地抹除，绝非巧合。这不是“敬畏”，这是“恐惧”。他们在害怕什么？",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的好奇心被点燃了。你开始在图书馆和数据库中，寻找那个被遗忘的、被所有语言共同隐藏的原始“真名”。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 8, "sanity": -4 } },
+            { "type": "unlocksEvent", "params": { "eventId": "bear_02_the_naming" } }
+          ]
+        }]
+      },
+      {
+        "text": "也许“熊”这个物种，是某个高等存在的“商标”，未经授权不许使用。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始尝试给身边的所有东西都取一个绰号，以示“尊重”。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 2, "irony": 1 } } ]
+        }]
+      },
+      {
+        "text": "把这个发现当成一个段子，发到网上。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你发帖说：“古人：‘那玩意儿’来了快跑！现代人：‘熊’。怪不得我们活得这么累。”你的帖子得到了几个赞。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "fame": 1 } } ]
+        }]
+      },
+      {
+        "text": "用统计学和计算机模型，分析词根的演化和替代路径。我要写一篇关于此的论文。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "logic", "operator": ">=", "value": 40 } }
+        ],
+        "results": [{
+          "weight": 1,
+          "feedback": "你的论文在语言学界引起了小小的轰动，你提出的“禁忌词根替换模型”为你赢得了一些声誉。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "logic": 12, "fame": 5 } },
+            { "type": "unlocksEvent", "params": { "eventId": "bear_02_the_naming" } }
+          ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "bear_02_the_naming",
+    "title": "真名",
+    "text": "经过一番艰苦的研究，你成功地从几片古老的楔形文字板的注释中，重建了那个原始印欧语中代表“熊”的词根：*h₂ŕ̥tḱos*。它静静地躺在你的笔记上，仿佛一个等待被按下的按钮。你几乎能感觉到这个词本身在微微震动，散发着某种原始的、野性的力量。一股莫名的冲动涌上心头。",
+    "isUnique": true,
+    "requiresUnlock": true,
+    "choices": [
+      {
+        "text": "这太疯狂了，我为什么要和一个单词过不去？停止研究，回归正常生活。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你合上了笔记本，及时地悬崖勒马。有些知识，还是永远尘封比较好。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": 8, "logic": 5 } } ]
+        }]
+      },
+      {
+        "text": "语言本身就是一种力量。在念出它之前，我需要做一些准备，布置一个保护性的仪式。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你没有贸然行事，而是开始研究各种保护性的符号和仪式，试图在“安全”的环境下进行这次实验。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 10, "logic": 3 } } ]
+        }]
+      },
+      {
+        "text": "大声地、清晰地念出这个词。我渴望知道会发生什么。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [
+          {
+            "weight": 6,
+            "feedback": "……什么也没发生。房间里一片寂静，你感觉自己像个傻瓜。",
+            "outcomes": [ { "type": "change_stat", "params": { "sanity": -5, "logic": 2 } } ]
+          },
+          {
+            "weight": 4,
+            "feedback": "在你念出声的瞬间，房间里的灯闪烁了一下，窗外传来了一声模糊的、不属于任何已知动物的咆哮。你感到一阵刺骨的寒意。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "weirdness": 15, "sanity": -15 } },
+              { "type": "unlocksEvent", "params": { "eventId": "bear_03_the_presence" } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "去动物园，找到棕熊区，然后隔着安全距离大声喊出这个名字！",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "那头正在打盹的棕熊猛地抬起头，用一种充满智慧和无尽疲惫的眼神，深深地看了你一眼。你被动物园的保安请了出去。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "irony": 15, "fame": -5, "sanity": -10 } },
+            { "type": "unlocksEvent", "params": { "eventId": "bear_03_the_presence" } }
+          ]
+        }]
+      },
+      {
+        "text": "我相信言语的力量，但我需要一个“中介”来缓冲。我要把这个词写在一张纸上，然后烧掉它。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "gnosis", "operator": ">=", "value": 45 } }
+        ],
+        "results": [{
+          "weight": 1,
+          "feedback": "当写着真名的纸张化为灰烬时，你听到了一声满意的叹息。你似乎完成了一场古老的仪式，安抚了某个存在。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 15, "sanity": 10 } },
+            { "type": "unlocksEvent", "params": { "eventId": "bear_03_the_presence" } }
+          ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "bear_03_the_presence",
+    "title": "一个存在",
+    "text": "自從你和那个“名字”产生关联之后，你的生活开始出现一些无法解释的异常。你总感觉房间里有“东西”在看着你，家里的宠物对着空无一人的角落发出低吼，你开始频繁地在倒影中看到一闪而过的、巨大的棕色轮廓。你没有感到直接的威胁，但这种如影随形的感觉让你无法安宁。",
+    "isUnique": true,
+    "requiresUnlock": true,
+    "choices": [
+      {
+        "text": "这都是心理暗示造成的。我需要去看心理医生，并停止一切相关的研究，回归唯物主义。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "经过一段时间的治疗和休整，那些幻觉慢慢消失了。你似乎回归了正常，但内心深处，你知道有些东西已经被永远地改变了。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": -10, "logic": 10 } } ]
+        }]
+      },
+      {
+        "text": "我召唤来的不是“熊”，而是“熊”这个概念所代表的、更古老的原始存在。我要了解它。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你没有感到恐惧，反而被一种前所未有的好奇心所驱使。你开始在家中设立祭坛，尝试与这个“不可言及”的存在进行沟通。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 20, "weirdness": 15, "sanity": -25 } } ]
+        }]
+      },
+      {
+        "text": "既然它被“熊”的名字召唤而来，那也许可以用其他动物的名字把它“逼走”？",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始在家里大声念叨“兔子”、“小猫”、“仓鼠”等词汇。奇怪的是，那些异常现象真的减轻了一些。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 15, "sanity": 10 } } ]
+        }]
+      },
+      {
+        "text": "它似乎没有恶意，只是……很孤独。我尝试接纳它的存在，把它当成一个看不见的室友。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始习惯这种被注视的感觉，甚至在它不存在时感到失落。你偶尔会放一罐蜂蜜在桌上，第二天蜂蜜就消失了。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 20, "sanity": -5, "money": -20 } } ]
+        }]
+      },
+      {
+        "text": "如果语言能召唤，那么沉默也许能令其退却。我将进行为期一周的禁言修行。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "sanity", "operator": ">=", "value": 70 } }
+        ],
+        "results": [{
+          "weight": 1,
+          "feedback": "在绝对的安静中，你感到那个存在逐渐失去了对你的“锚点”，最终悄然离去。这场修行极大地磨练了你的意志力。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": 20, "logic": 15 } } ]
+        }]
+      }
+    ]
+  }
+]

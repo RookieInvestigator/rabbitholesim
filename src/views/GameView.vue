@@ -13,7 +13,7 @@ import ChoiceDisplay from '@/components/ChoiceDisplay.vue';
 import EditorView from './EditorView.vue';
 
 const player = usePlayerStore();
-const { isLoading, loadEvents, findTriggerableEvent, getManualChoices } = useEventEngine();
+const { isLoading, loadEvents, findTriggerableEvent, getManualChoices, isConditionMet } = useEventEngine();
 const { start: startSimulation, stop: stopSimulation } = useGameLoop();
 
 const gameState = ref('talent');
@@ -33,7 +33,12 @@ function nextTurn() {
       // ✨ 核心修正：在顯示選項前，先記錄事件日誌
       player.addLog({ message: { title: event.title, text: event.text }, type: 'event' });
       
-      let choicesToShow = (event.choices || []).filter(c => !c.conditions || isConditionMet(c.conditions));
+      let choicesToShow = (event.choices || []).filter(c => {
+        if (!c.conditions || c.conditions.length === 0) {
+          return true;
+        }
+        return c.conditions.every(isConditionMet);
+      });
       
       if (choicesToShow.length > 3) {
         choicesToShow.sort(() => 0.5 - Math.random());

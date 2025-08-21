@@ -97,6 +97,19 @@ export const usePlayerStore = defineStore('player', {
               }
             }
             break;
+          case 'add_status_effect':
+            if (outcome.params.statusId) {
+              if (!this.statusEffects.some(e => e.id === outcome.params.statusId)) {
+                this.statusEffects.push({ id: outcome.params.statusId, duration: outcome.params.duration || 9999 });
+              }
+            }
+            break;
+          
+          case 'remove_status_effect':
+            if (outcome.params.statusId) {
+              this.statusEffects = this.statusEffects.filter(e => e.id !== outcome.params.statusId);
+            }
+            break;
         }
       });
     },

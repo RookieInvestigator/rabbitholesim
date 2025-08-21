@@ -1,0 +1,166 @@
+[
+  {
+    "id": "money_gray_gig",
+    "title": "灰色兼职",
+    "text": "你的财务状况有些紧张，你在一个匿名论坛上看到一则招聘启事，上面写着“招募任务执行员，工作内容简单，报酬优厚，无需经验，非法人仕优先”。",
+    "priority": 5,
+    "conditions": [
+        { "type": "stat_check", "params": { "stat": "money", "operator": "<=", "value": 1000 } }
+    ],
+    "choices": [
+      {
+        "text": "这看起来像个骗局或者某种违法活动的前奏。举报这个帖子。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你举报了帖子，它很快就被删除了。你可能阻止了一场犯罪的发生。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "接受一个奇怪的兼职：在指定的地点，把手套扔在地上，仅此而已。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你照做了。钱很快就到账了。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 5000, "gnosis": 8, "sanity": -10 } } ]
+        }]
+      },
+      {
+        "text": "接受另一个兼职：每天午夜，对着指定的下水道口，用摩斯电码敲击三遍“晚安”。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你照做了，钱也到账了。有时，你会听到下水道里传来微弱的回应声。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 3000, "weirdness": 10, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "联系发帖人，但告诉他我是来应聘‘幕后黑手’这个职位的。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "对方回复道：“你通过了面试。”然后给你转了一小笔钱，再也没有了下文。你感觉自己加入了一个什么了不得的组织。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 500, "irony": 5, "sanity": 2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "money_found_usb",
+    "title": "意外之财",
+    "text": "你在公园的长椅下，捡到了一个看起来很昂贵的、没有任何品牌标识的金属U盘。",
+    "choices": [
+      {
+        "text": "把它交到最近的警察局失物招领处。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你做了一件好事。",
+            "outcomes": [ { "type": "change_stat", "params": { "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "带回家，用一台不联网的旧电脑打开看看里面有什么。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [
+            {
+                "weight": 5,
+                "feedback": "里面只有一个加密的压缩包，你无法打开它。",
+                "outcomes": [ { "type": "add_item", "params": { "itemId": "encrypted_usb" } }, { "type": "change_stat", "params": { "gnosis": 5 } } ]
+            },
+            {
+                "weight": 2,
+                "feedback": "里面有一个加密货币钱包的密钥文件！你一夜暴富！",
+                "outcomes": [ { "type": "change_stat", "params": { "money": 20000, "sanity": 10 } } ]
+            },
+            {
+                "weight": 4,
+                "feedback": "在你插入U盘的瞬间，电脑冒出了一股黑烟，彻底报废了。",
+                "outcomes": [ { "type": "change_stat", "params": { "sanity": -8, "money": -300 } } ]
+            }
+        ]
+      },
+      {
+        "text": "把它埋在土里，看看明年会不会长出更多的U盘。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你为这个世界贡献了一颗新的“科技种子”。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 3 } } ]
+        }]
+      },
+      {
+        "text": "把它格式化，然后存满猫咪的照片，再放回长椅下。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你也许会让下一个捡到它的人，在紧张和期待中，收获一个巨大的惊喜。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "sanity": 2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "money_vending_machine_error",
+    "title": "故障贩卖机",
+    "text": "你在路边的自动贩卖机买饮料，但机器出了故障，你投的钱被退了出来，饮料却掉了出来。",
+    "choices": [
+      {
+        "text": "把钱重新投进去。这是诚实的行为。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你坚持了自己的原则。",
+            "outcomes": [ { "type": "change_stat", "params": { "sanity": 3, "logic": 1 } } ]
+        }]
+      },
+      {
+        "text": "这是系统漏洞！再试一次，看看能不能继续白拿。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 6,
+            "feedback": "在你再次投币时，机器恢复了正常。你失去了一次占便宜的机会。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": -50 } } ]
+          },
+          {
+            "weight": 4,
+            "feedback": "你发现了规律！你成功地利用这个漏洞，买光了贩卖机里所有的饮料。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 500, "irony": 3 } } ]
+          }
+        ]
+      },
+      {
+        "text": "这是宇宙对我的馈赠。心怀感激地拿走饮料。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你享受了这个小小的幸运。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 50, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "这不是故障，这是陷阱。这台机器在测试我。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你没有拿饮料，也没有再碰机器，迅速离开了这个“考场”。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 2, "sanity": -2 } } ]
+        }]
+      }
+    ]
+  }
+]

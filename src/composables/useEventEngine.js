@@ -174,5 +174,5 @@ export function useEventEngine() {
     return finalChoices.map(c => ({ ...c, uuid: uuidv4() }));
   }
 
-  return { isLoading, loadEvents, findTriggerableEvent, processEvent, getManualChoices };
+  return { isLoading, loadEvents, findTriggerableEvent, processEvent, getManualChoices, isConditionMet };
 }
