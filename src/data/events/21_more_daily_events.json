@@ -1,0 +1,542 @@
+[
+  {
+    "id": "daily_package_delivery",
+    "title": "快递选择",
+    "text": "你正在外面，手机突然收到一条通知：『您订购的快递正在派送中』。快递员打来电话，询问你是否在家，以及包裹要如何处理。",
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "告诉他直接放在门口就行，这个小区治安很好。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [
+            { "weight": 9, "feedback": "你回家时，包裹完好无损地放在门口。", "outcomes": [ { "type": "change_stat", "params": { "sanity": 2 } } ] },
+            { "weight": 1, "feedback": "你回家时，发现包裹不翼而飞了。", "outcomes": [ { "type": "change_stat", "params": { "sanity": -5, "money": -200 } } ] }
+        ]
+      },
+      {
+        "text": "让他放在小区的快递柜里。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "安全稳妥的选择。你晚上回家时取回了包裹。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 1, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "让他明天再送一次。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "快递员同意了。虽然多等了一天，但确保了包裹的安全。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 1 } } ]
+        }]
+      },
+      {
+        "text": "让他交给隔壁的邻居代收。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你和邻居的关系因此变得更近了一些。",
+            "outcomes": [ { "type": "change_stat", "params": { "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "让他把包裹藏在消防栓后面，并用一片大叶子盖住。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "快递员困惑地照做了。你回家时，发现包裹还在，只是上面盖的那片叶子显得有些欲盖弥彰。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 4, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "这个快递员是我的“联络人”。我需要用暗号告诉他真正的交货地点。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你对电话那头说：‘把“信”留在老地方。’对方沉默了片刻，回答：‘……好的。’你回家后，在邮箱里发现了你的包裹和一个信封，里面装着一张空白的卡片。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "这个包裹是一个薛定谔的猫盒子，它的状态在我观测前是不确定的。我必须立刻赶回家，确保它坍缩成我想要的样子。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你一路狂奔回家，在你打开包裹的瞬间，你强烈地默念着“是我订购的商品”。幸运的是，它确实是。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "sanity": -2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "daily_queue_jumper",
+    "title": "排队风波",
+    "text": "你在超市排着长队等待结账，一个看上去很匆忙的人，非常自然地插到了你的前面。",
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "算了，也许他真的有急事。就让他先结吧。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你保持了平和的心态，没有让这件事影响你的心情。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "拍拍他的肩膀，指出他插队了。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+            { "weight": 7, "feedback": "他立刻向你道歉，并退回到了队尾。", "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 3 } } ] },
+            { "weight": 3, "feedback": "他反而对你大发雷霆，引发了一场争吵。", "outcomes": [ { "type": "change_stat", "params": { "sanity": -8, "health": -2 } } ] }
+        ]
+      },
+      {
+        "text": "什么也不说，但用购物车“不经意地”挤压他。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "他感受到了你的不满，回头瞪了你一眼，但没有离开。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 2, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "对他前面的人说：‘朋友，你后面这个人好像和你是一起的？’",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你成功地将矛盾转移了。在另一个人困惑的质问下，插队者灰溜溜地走开了。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "logic": 2 } } ]
+        }]
+      },
+      {
+        "text": "开始大声朗读超市的“文明购物”标语。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的行为吸引了所有人的注意，包括那个插队者。在尴尬的氛围中，他默默地退到了队尾。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "fame": 2 } } ]
+        }]
+      },
+      {
+        "text": "这个人不是“插队”，他是“不存在”的。他是一个现实的“渲染错误”，一个背景NPC。我应该盯着他，直到他从我的视野里消失。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你死死地盯着他。他似乎察觉到了你的注视，变得非常不自在，最终放弃了结账，匆匆离开了超市。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "他的时间流速和我们不一样。在他自己的维度里，他已经排了很久的队了。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你尝试与他进行跨维度的交流：‘朋友，辛苦了。’他困惑地看了你一眼。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "sanity": 1 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "daily_scam_message",
+    "title": "可疑的短信",
+    "text": "你的手机收到一条短信：『【XX银行】尊敬的用户，您的账户已满足白金会员资格，请点击以下链接进行认证，逾期将自动作废。』链接看起来很可疑。",
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "典型的钓鱼短信。直接删除。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你避免了一次潜在的诈骗。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "打开银行的官方App，检查一下是否有这个活动。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "官方App里没有任何相关信息。你确认了这是一条诈骗短信。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "虽然知道是假的，但万一是真的呢？我的人生就需要这种戏剧性的转折！",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你怀着一丝侥幸心理点了进去，结果手机立刻开始发烫，并自动下载了一堆垃圾应用。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": -5, "sanity": -8, "money": -500 } } ]
+        }]
+      },
+      {
+        "text": "回复短信：‘认证链接已收到，请先往我的账户打500元作为认证保证金。’",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [
+            { "weight": 9, "feedback": "对方没有回复。", "outcomes": [ { "type": "change_stat", "params": { "irony": 4 } } ] },
+            { "weight": 1, "feedback": "你竟然真的收到了500元转账！你立刻将对方拉黑。你感觉自己在这场智力博弈中大获全胜。", "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "money": 500, "sanity": 5 } } ] }
+        ]
+      },
+      {
+        "text": "这不是诈骗，这是一个秘密组织的入会邀请。‘白金’是他们的代号，‘认证’是他们的试炼。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你用一台隔离的电脑，在虚拟机里点开了那个链接。链接指向一个不断闪烁着几何图案的网页，网页的标题是：‘欢迎，候选人。’",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "“白金”不是指会员，是指炼金术里的“铂”。这是一个关于灵魂转化的邀请。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你点击了链接。你的手机屏幕发出刺眼的白光，然后自动关机了。再次开机后，手机的壁纸变成了一张衔尾蛇的图片。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "sanity": -2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "daily_wrong_number",
+    "title": "打错的电话",
+    "text": "一个陌生号码打来电话，接通后，对面一个焦急的声音传来：‘妈！是我！我被抓了，快给我打点钱！’你很确定这不是你儿子的声音，更何况你还没有结婚。",
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "“你打错了。”然后挂断电话。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "最简单高效的处理方式。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 1 } } ]
+        }]
+      },
+      {
+        "text": "严厉地斥责对方，并警告他这种诈骗是违法的。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "对方在你开口骂人之前就挂断了电话。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "“儿子别怕！妈这就去给你打钱！你先告诉妈，你最喜欢吃我做的哪道菜？”",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "对方支支吾吾了半天，挂断了电话。你成功地反将了一军。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "irony": 2 } } ]
+        }]
+      },
+      {
+        "text": "“太好了！我正愁没地方花钱呢！你要多少？五十万够不够？”",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的热情让骗子都感到了害怕，他匆忙地挂断了电话。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "“你终于打电话来了！听着，计划有变，‘猫头鹰’已经暴露了，你立刻去B计划的地点，重复，立刻去B计划地点！”",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "电话那头陷入了长久的沉默，然后用一种比你还惊慌的语气说：‘……是……是！’随后挂断了电话。你可能无意中搅黄了一场真正的犯罪，也可能把一个诈骗犯的人生搅得天翻地覆。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "weirdness": 3, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "这不是诈骗，这是一个来自平行宇宙的、我的“儿子”的求救电话。我必须想办法把钱传送过去。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始在网上搜索关于“跨维度物质传送”的理论，并尝试搭建一个简陋的装置。电话再也没有打来过。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -4 } } ]
+        }]
+      },
+      {
+        "text": "这个声音不是人类。它在模仿“求救”这个概念，试图捕食我的同情心。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你对着电话，发出了几声意义不明的、模仿野兽的低吼。电话那头的声音突然变成了一阵刺耳的静电，然后挂断了。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "sanity": 1 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "daily_algorithm_recommendation",
+    "title": "算法的推荐",
+    "text": "你正戴着耳机听歌，音乐App的“为你推荐”功能，在你常听的激昂的摇滚乐之后，突然切入了一首无比悲伤、催人泪下的慢情歌。",
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "算法出错了。立刻切歌。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你把这首歌加入了“不感兴趣”列表。很快，熟悉的节奏回来了。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 1 } } ]
+        }]
+      },
+      {
+        "text": "也许算法比我更懂我。它察觉到了我内心深处隐藏的、连我自己都未曾意识到的悲伤。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你静静地听完了这首歌，感觉自己的情绪得到了某种宣泄。你将它加入了你的收藏。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "跟着这首歌的旋律，开始想象一个无比悲惨的故事，并把自己代入其中。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "在这首歌的时间里，你体验了一场轰轰烈烈但结局悲惨的虚拟人生。音乐结束后，你感到一阵空虚。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "把这首歌分享给你那个最近刚失恋的朋友，并附言：‘这首简直就是为你写的！’",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的朋友回复了你一长串哭泣的表情符号。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "去这首歌的评论区，看看和我有“相同品味”的都是些什么人。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "评论区里充满了各种心碎的故事。你花了一个小时阅读别人的不幸，感觉自己的生活似乎也没那么糟了。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "这不是算法，这是一个拥有自我意识的AI。这首歌是它在尝试与我交流，诉说它被困在服务器里的痛苦。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你打开了语音输入，对手机说：‘我听到了。’音乐的音量似乎发生了微小的变化。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "这首歌是一段“咒语”，它的旋律和歌词组合能对人类的情绪产生可预测的影响。这是一个大型社会工程学实验。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始尝试倒着播放这首歌，希望能从中找到隐藏的指令或潜意识信息。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "sanity": -2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "daily_password_change",
+    "title": "密码安全",
+    "text": "你试图登录一个很久没用过的网站，但系统提示你：『为了您的账户安全，您必须修改密码。新密码必须包含大小写字母、数字、特殊符号，长度不少于12位，且不能与最近5次使用的密码相同。』",
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "好吧，安全第一。按照规则设置一个复杂的新密码，并用密码管理器记下来。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你完成了一次标准的数字生活安全操作。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "太麻烦了。直接放弃这个账户。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你关掉了网页。那个账户里大概也没什么重要的东西。",
+            "outcomes": [ { "type": "change_stat", "params": { "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "密码规则越复杂，越说明这个网站里隐藏着不可告人的秘密。我必须进去看看。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "强烈的好奇心驱使着你耐心地设置了新密码。然而登录后，你发现这个网站只是个早已无人问津的食谱分享论坛。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 4, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "用网站推荐的那个“随机生成强密码”功能，然后自己根本不记，下次登录时直接选择“忘记密码”。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你用一种“一次性”的方式解决了这个问题，把皮球踢给了未来的自己。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "logic": -2 } } ]
+        }]
+      },
+      {
+        "text": "随便输入一个不符合规则的密码，然后把弹出的所有错误提示截图，发给网站的“意见反馈”邮箱。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你可能不会得到回复，但你成功地把设置密码的压力转移给了网站的程序员。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 3 } } ]
+        }]
+      },
+      {
+        "text": "这些规则不是为了“安全”，而是一种“筛选”。只有能理解并创造出符合规则的“咒语”的人，才有资格访问网站的真正内容。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你将密码的创建视为一种仪式。在你输入完成的瞬间，你似乎听到了服务器机房深处传来的一声满意的嗡鸣。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "每一个我创建的、但最终被遗忘的密码，都会变成一个数字幽灵，在网络的荒原上游荡。我应该为它创造一个有意义的名字。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你设置了一个由诗句和符号组成的、充满美感的密码。你感觉自己刚刚为这个世界，增添了一个优雅而忧伤的数字幽灵。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "sanity": 2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "daily_targeted_ad",
+    "title": "精准的广告",
+    "text": "你刚和朋友在聊天软件里聊到“最近睡眠不好，想买个新枕头”，一分钟后，你打开购物App，开屏广告就是一款号称“能让你深度睡眠”的人体工学枕。",
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "典型的“精准营销”。我的手机输入法和App共享了我的行为数据。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你对这种无处不在的商业监控感到习惯，甚至有些麻木。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": -1 } } ]
+        }]
+      },
+      {
+        "text": "不，这不是数据共享。我的手机在“偷听”我的想法。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你立刻关闭了手机上所有App的麦克风权限，并开始用锡纸包裹手机，试图屏蔽信号。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -4 } } ]
+        }]
+      },
+      {
+        "text": "这个枕头看起来确实不错。算法有时候还是挺贴心的。下单购买。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你用隐私换取了便利。几天后，你收到了新枕头，睡眠质量确实有所改善。",
+            "outcomes": [ { "type": "change_stat", "params": { "anonymity": -5, "money": -300, "health": 3, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "立刻开始在聊天软件里和朋友聊“一艘二手核潜艇多少钱”。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你刷新了好几次购物App，但它并没有给你推荐核潜艇。你感觉自己在这场与算法的博弈中，暂时占了上风。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "对着手机麦克风，清晰地说：“我不需要枕头，我需要的是真理。”",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "购物App的广告变成了一本哲学导论的推荐。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "irony": 2 } } ]
+        }]
+      },
+      {
+        "text": "算法不是在“预测”我的需求，它是在“创造”我的需求。它先在我脑中植入了“需要一个新枕头”的念头，然后给我看广告。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "这是一个闭环。你开始警惕所有“突然冒出来”的念头，认为它们都可能是外部植入的模因。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "住在手机里的那个“我”的数字倒影，最近睡眠不好。这个广告是推送给它的。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你点击了购买，但在收货地址栏里，你输入了手机的IMEI码。你希望另一个“你”能收到这份礼物。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "money": -300 } } ]
+        }]
+      }
+    ]
+  }
+]

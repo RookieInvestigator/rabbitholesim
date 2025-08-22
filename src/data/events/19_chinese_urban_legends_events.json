@@ -1,0 +1,293 @@
+[
+  {
+    "id": "recurring_ghost_wall",
+    "title": "走不出的巷子",
+    "text": "你下楼去巷口的便利商店买了瓶饮料，抄近路回家。这条路你走了上百遍，但今天，你总觉得走了太久。你抬起头，发现眼前的景象和你五分钟前看到的完全一样：同一盏闪烁的路灯，同一只打盹的野猫，同一个涂鸦。",
+    "isUnique": false,
+    "priority": 2,
+    "choices": [
+      {
+        "text": "我太累了，产生了方向错乱。停下来，打开手机地图重新定位。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "地图显示你的位置一切正常。在你专注于屏幕的几分钟里，周围的环境似乎悄然“修正”了。再次抬头时，你已经走到了巷子口。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "这就是传说中的“鬼打墙”。不能顺着走，也不能回头，我应该尝试走向一个全新的方向。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你转身九十度，试图翻过身边的一堵矮墙。在你翻过去的瞬间，你发现自己已经站在了家门口，但衣服上沾满了根本不存在的苔藓。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "既然出不去，不如就在这里住下吧。这里的风景还不错。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你找了个台阶坐下，开始欣赏这段永恒的风景。不知过了多久，一个路过的邻居拍了拍你的肩膀，问你为什么坐在家门口发呆。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "原地坐下，开始大声唱起歌来，看看能不能把“鬼”吵出来。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "在你唱到副歌部分时，那只打盹的野猫被你吵醒了。它不耐烦地看了你一眼，跳下围墙，消失在拐角处。你跟着它走，发现自己回到了正常的街道上。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "掏出手机，打电话给住在附近的朋友，让他来接我，并全程开着语音描述周围的环境。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的朋友很快就找到了你。根据他所说，你当时正在原地打转，嘴里还念念有词。你看了一眼通话记录，发现根本没有拨出任何电话。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": -8 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "recurring_point_at_moon",
+    "title": "月之刃",
+    "text": "今晚的月色很美，你靠在阳台上，欣赏着皎洁的满月。一时间兴起，你伸出食指，指向天边的明月，对自己说：‘看，多圆。’就在你手指落下的瞬间，你感到右耳廓传来一阵冰冷的、被利刃划过的刺痛。",
+    "isUnique": false,
+    "choices": [
+      {
+        "text": "可能是耳鸣或神经的幻痛，或者是被蚊虫叮咬了。赶紧回屋检查一下耳朵。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你在镜子里仔细检查了耳朵，没有发现任何伤口。那股痛觉也很快消失了。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "这是对月亮的不敬所招致的惩罚。我需要立刻双手合十，向月亮诚心道歉。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "在你低头默念歉意之后，耳朵的刺痛感立刻消失了。你感觉到一丝冰冷的、来自夜空的注视也随之移开了。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "再指一次，但这次换成中指。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的左耳也传来了同样的刺痛。你感觉自己好像成功地激怒了什么东西。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "health": -2, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "立刻拿一面镜子，不是照耳朵，而是对着月亮，看看月亮上是不是也出现了一道疤痕。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "在镜面倒映出的月影上，你似乎真的看到了一道细微的、一闪而过的黑色裂痕。你手中的镜子突然变得冰冷。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "耳朵被‘割下’，是为了让我能更好地‘聆听’月亮的声音。我应该专心感受这份痛楚。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你闭上眼睛，专注于那股刺痛。渐渐地，你从痛觉中分辨出了一种奇特的、类似静电噪音的旋律。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "gnosis": 3, "sanity": -4 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "recurring_marble_sound",
+    "title": "楼上的弹珠",
+    "text": "夜深人静，你正准备入睡。就在此时，楼上的天花板传来了一阵熟悉的声音：噠、噠、噠……像是有一颗玻璃弹珠掉在地上，弹跳了几下，然后滚入角落。问题是，你住在顶楼。",
+    "isUnique": false,
+    "choices": [
+      {
+        "text": "是钢筋因热胀冷缩发出的声音，或者是水管里的气泡声。典型的物理现象。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你用科学安抚了自己，翻了个身，很快就睡着了。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "那不是弹珠，是‘祂们’在楼上玩游戏。我最好保持安静，假装没听见。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你屏住呼吸，直到声音消失。你觉得自己的谨慎让你躲过了一些不必要的注意。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 4, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "拿出一个弹珠，也丢在地上，跟楼上的声音玩起了‘回合制’游戏。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你丢一次，楼上就回应一次。在你来我往几个回合后，楼上突然一次性丢下了一大捧弹珠，吵闹的声音让你不得不认输。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "weirdness": 3, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "声音是从‘楼上’传来的，但如果我倒立过来，那声音不就是从‘楼下’传来的吗？",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你靠着墙壁，尝试倒立。在你头朝下的瞬间，你听到弹珠声变成了从四面八方传来。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "health": -1, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "立刻冲到天台上去看个究竟。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "天台上空无一人，只有晚风吹过。但在当你回到家中时，在你刚刚站立的地板正下方的位置，你发现了一颗冰冷的玻璃弹珠。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "weirdness": 2, "sanity": -4 } } ]
+        }]
+      }
+    ]
+  },
+    {
+    "id": "recurring_cursed_image",
+    "title": "无法加载的恐惧",
+    "text": "出于怀旧，你点开了一个早已荒废的BBS论坛。在一堆乱码的旧帖子中，你看到一个标题是『大家见过最恐怖的图片是什么』。你好奇地点了进去，帖子的内容已经遗失，只剩下一张无法显示的、破碎的图片文件，和下面一行小字评论：『……当你看见它的时候，它也看见了你。』",
+    "isUnique": false,
+    "choices": [
+      {
+        "text": "图片服务器早就过期了，这只是一個普通的图片加载错误。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你关掉了这个充满了死链接的帖子。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "这张图片本身就是一个封印。加载失败，是因为封印依然有效。我必须尝试用技术手段把它恢复出来。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你尝试用各种数据恢复工具去处理这个破碎的文件。最终，你在无数的乱码中，拼凑出了一张无法名状的、由眼睛和几何图形构成的图像。你看见了它，它也看见了你。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 12, "sanity": -15 } } ]
+        }]
+      },
+      {
+        "text": "我看不见图片，但图片看得见我。我应该对着这个破碎的文件，做个自我介绍。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "在你轻声说出自己名字的瞬间，你的电脑屏幕闪烁了一下，破碎的图片文件图标变成了一个像素化的眼睛，然后又恢复了原状。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "立刻右键『复制图片地址』，然后把它贴到论坛的『电脑维修求助区』，标题是：『求助，我的图片显示不出来怎么办？』",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "很快就有热心的网友回复你，给了你一堆关于清除缓存和更换DNS的建议。你感觉自己成功地用技术的阳光驱散了神秘的阴霾。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "logic": 2, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "在下面回复：“图呢？没图说个XX？”",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "在你点击“发送”的瞬间，你的帖子成功发出，但同时你也收到了“您已被该BBS永久禁言”的系统通知。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 4, "fame": -2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "recurring_chain_letter",
+    "title": "不祥的邮件",
+    "text": "你正在清理你的电子邮件收件箱，一封标题为『请帮我转发』的邮件引起了你的注意。发件人未知。邮件内容是一个格式混乱、用血红色字体写的恐怖故事，结尾处写着：『……请在24小时内将此邮件转发给5个人，否则下一个就是你。』",
+    "isUnique": false,
+    "choices": [
+      {
+        "text": "上个世纪的网络垃圾。标记为垃圾邮件并删除。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的收件箱又恢复了清净。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "言语和意念本身就具有力量。虽然可能是假的，但‘诅咒’这个概念已经被我接收到了。我需要进行一次精神上的净化仪式。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你点燃了鼠尾草，在家中进行了一次彻底的熏燎。你感觉空气中的负能量被一扫而空。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 4, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "我就是‘下一个’？太棒了！我等不及想看看会发生什么了。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "24小时过去了，什么也没发生。你感到一丝失望。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "将邮件转发给发件人自己，并附言：‘不用谢，帮你搞定了。’",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你收到了一封系统退信通知，提示该发件人地址不存在。你感觉自己好像和一个幽灵进行了互动。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "weirdness": 2 } } ]
+        }]
+      },
+      {
+        "text": "精心修改了邮件内容，把诅咒对象换成了‘你暗恋的人会向你表白’，然后转发给了5个朋友。",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你成功地将一封诅咒信，变成了一封充满希望的祝福（或恶作剧）。你的朋友们对此反应不一。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": 3 } } ]
+        }]
+      }
+    ]
+  }
+]

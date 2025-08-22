@@ -1,0 +1,361 @@
+[
+  {
+    "id": "recurring_numbers_station",
+    "title": "错误频率",
+    "text": "你开车行驶在隧道中，收音机的信号突然被一阵静电干扰。当信号恢复时，电台不再播放流行音乐，而是一个单调的、带着浓厚口音的女声，正在用外语缓慢地念诵一长串数字：“……sieben, drei, neun, null, acht……”",
+    "priority": 2,
+    "choices": [
+      {
+        "text": "典型的信号干扰，可能是哪位业余无线电爱好者的广播盖了过来。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "驶出隧道后，信号立刻恢复了正常，开始播放你熟悉的广告。你没有把这个小插曲放在心上。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2 } } ]
+        }]
+      },
+      {
+        "text": "这是“数字电台”，是间谍用来接收指令的暗号。我可能无意中截获了重要的情报。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你立刻拿出手机录音，试图记录下这段数字。你感觉自己像是谍战电影的主角，瞥见了世界水面下的暗流。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "这些数字不是念给人听的，它们是念给“世界”听的。这是一种维持现实稳定的“校准码”。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始跟着那个声音一起低声念诵。你感觉车内的物理常数似乎发生了微小的、难以察觉的变化。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "跟着她的节奏，用喇叭把这些数字按出来。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的行为引来了隧道里其他司机愤怒的喇叭回应，大家一起在隧道里演奏了一场混乱的交响乐。那个念诵的声音消失了。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "fame": -2 } } ]
+        }]
+      },
+      {
+        "text": "记下这些数字，然后把它们当成彩票号码去买一注。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [
+            { "weight": 9, "feedback": "很遗憾，你没有中奖。", "outcomes": [ { "type": "change_stat", "params": { "money": -50 } } ] },
+            { "weight": 1, "feedback": "你竟然真的中了末奖！这笔意外之财让你开始怀疑这串数字的真正来源。", "outcomes": [ { "type": "change_stat", "params": { "money": 200, "gnosis": 2 } } ] }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recurring_phantom_time",
+    "title": "不存在的一天",
+    "text": "你打开手机日历，想确认一下下周的日程。在快速滑动月份时，你的手指不小心滑得太快，日历闪烁了一下，你似乎看到在“8月”和“9月”之间，闪过了一个名为“奥古斯都二月”的、只有一天的月份，然后立刻消失了。",
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "典型的UI渲染错误，程序没处理好快速滑动时的边界情况。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你尝试复现这个bug，但无论如何滑动，都没能再次看到那个奇怪的月份。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2 } } ]
+        }]
+      },
+      {
+        "text": "所以“幽灵时间假说”是正确的！",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始疯狂查阅关于查理曼大帝和中世纪早期的历史资料，试图从中找出时间被篡改过的证据。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "logic": 2, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "时间是一个可以被折叠的维度。我看到的不是“错误”，而是时间褶皱中的“夹层”。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你将手机日历视为一个时间观察仪。你开始尝试用不同的手势、在不同的地点滑动它，希望能再次打开那道缝隙。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "立刻给手机厂商的客服打电话，声称他们的日历应用偷走了我生命中的一天，要求精神赔偿。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "在被转接了三个部门后，一位忍着笑的客服代表同意补偿给你一张价值50块的应用商店礼品卡。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "money": 50 } } ]
+        }]
+      },
+      {
+        "text": "既然多出了一天，我就把那天当成我的秘密生日，并为“自己”订一个蛋糕。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你独自享用了一块美味的蛋糕，庆祝了那个只为你一人存在的日子。这让你感到一种奇特的满足。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "sanity": 3, "money": -200 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "recurring_backrooms_glitch",
+    "title": "熟悉的陌生",
+    "text": "你在一个常去的商场里，准备去洗手间。在拐过一个熟悉的转角时，却发现眼前的景象变得有些不对劲：墙壁的颜色变成了单调的、令人不安的黄色，空气中弥漫着潮湿地毯的味道，头顶的日光灯发出持续的、令人烦躁的嗡嗡声。",
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "可能是这层楼正在重新装修，我没注意到通知。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你退回到刚才的转角，再走回来，发现一切又恢复了正常。你猜刚才可能是自己眼花了。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "我从现实中“切出”了。这里就是传说中的“后室”。我必须小心行事。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你没有继续深入，而是立刻沿着墙壁，小心翼翼地退了回去。你感到背后似乎有什么东西在注视着你，直到你回到正常的走廊。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "继续往前走。我倒要看看这个层级的尽头是什么。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [
+            { "weight": 8, "feedback": "你走了几分钟，发现走廊的尽头还是同样的黄色墙壁。你感到一阵莫名的恐惧，转身跑了回去，幸运地找到了出口。", "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "sanity": -8 } } ] },
+            { "weight": 2, "feedback": "在走廊的尽头，你发现了一扇门。打开门，你发现自己回到了建筑的大堂，但时间已经过去了好几个小时。", "outcomes": [ { "type": "change_stat", "params": { "weirdness": 12, "sanity": -10 } } ] }
+        ]
+      },
+      {
+        "text": "就地躺下，试试在这里睡一觉会怎么样。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你在嗡嗡的灯光下睡得并不安稳，醒来时发现自己躺在正常的走廊里，身上盖着一件清洁工的外套。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": 3, "health": -2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "recurring_deja_vu_glitch",
+    "title": "重复的瞬间",
+    "text": "你正在街角的咖啡店排队，前面的客人点了一杯“大杯燕麦拿铁，加一份浓缩”。就在此时，你脑中闪过一个极其强烈的念头：这一幕，从客人的衣着到咖啡师的动作，你都一模一样地经历过。你甚至知道下一秒，咖啡师会打翻奶泡壶。",
+    "isUnique": false,
+    "priority": 2,
+    "choices": [
+      {
+        "text": "典型的大脑“既视感”错误，神经信号的短暂延迟而已。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "果然，咖啡师稳稳地放好了奶泡壶，什么也没发生。你为自己的胡思乱想感到好笑。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "这不是“既视感”，这是时间线在重复。我是唯一察觉到“重启”的人。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你紧紧地盯着咖啡师，内心充满了期待和恐惧。但最终什么也没发生。你开始怀疑，是不是“更高层”的存在发现了你的窥探，临时修改了“剧本”。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -4 } } ]
+        }]
+      },
+      {
+        "text": "立刻大喊：“小心！奶泡要洒了！”",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 8,
+            "feedback": "咖啡师被你吓了一跳，手一抖，奶泡壶真的被打翻了。周围的人都用奇怪的眼神看着你，仿佛是你“诅咒”了这一切。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "fame": -5, "sanity": -5 } } ]
+          },
+          {
+            "weight": 2,
+            "feedback": "咖啡师被你吓了一跳，但稳住了手中的奶泡壶。他感谢了你的提醒，并免费为你升了杯。你感觉自己像个成功干预了命运的先知。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": 5, "money": 50 } } ]
+          }
+        ]
+      },
+      {
+        "text": "走到那个客人身边，拍拍他的肩膀说：“嘿，下次试试不加浓缩，能省钱。”",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "那位客人困惑地看了你一眼，说：“但我这是第一次点浓缩咖啡。”你猛然回头，发现咖啡师打翻了奶泡壶。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "gnosis": 3, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "闭上眼睛，专注于回忆这个“既定”的场景，尝试去“读取”下一个，甚至更遥远的未来会发生什么。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的大脑中涌入了无数混乱的、关于未来几分钟的画面碎片：有人打翻咖啡，有人接到电话，有人在哭泣……信息过载让你头痛欲裂。这是第几次循环？",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -8 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "recurring_mandela_object",
+    "title": "错误的记忆",
+    "text": "你在整理旧物时，翻出了一個你童年时最喜欢的卡通角色的玩偶。你清楚地记得它的大肚肚。但现在，你手中的玩偶却是个瘦子。",
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "显然是玩偶缩水了。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "这是很常见的现象，尤其是老玩偶。你决定把它放在架子上，作为童年记忆的纪念。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "不是我的记忆错了，是“现实”被修改了。在某个时间点，历史被悄悄地篡改，而我的记忆是旧时间线的残留物。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你将这个玩偶视为来自“旧世界”的圣遗物，一个证明现实不够“真实”的铁证。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "既然没有，那我就亲手为它恢复酷酷的大肚肚。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你把玩偶的肚子破开，填入了足量的棉花，成功让它恢复了原来的样子。在你缝合好最后一道线时，你似乎听到了房间里的空气发出了一声轻微的叹息。“我是奶……",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "把玩偶带到父母面前，质问他们是不是在我小时候偷偷用“缩水”的盗版货替换掉了我的正版。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的父母对此感到莫名其妙，并引发了一场关于“你小时候到底有多少玩具”的家庭辩论。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "用放大镜仔细检查玩偶，试图寻找疤痕被“抹除”的物理痕迹。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "在长时间的观察下，你发现在特定的光线角度，玩偶的腹部确实有一处极其轻微的、几乎无法察觉的塑料熔融痕迹。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 5, "sanity": -5 } } ]
+        }]
+      }
+    ]
+  },
+    {
+    "id": "recurring_doppelganger",
+    "title": "二重身",
+    "text": "你正穿过一条熟悉的街道，无意中一瞥，你看到街对面有一个和你穿着一模一样、发型也完全相同的人，正以和你完全同步的步伐往前走。你看向他时，他也恰好回过头，你们的目光在空中交汇。",
+    "isUnique": false,
+    "priority": 2,
+    "choices": [
+      {
+        "text": "世界上总有穿着品味相似的人，纯属巧合。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你愣神的几秒钟里，那个人拐进了另一条街，消失了。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "那是我的“分身”。一个活生生的、代表着我另一种可能性的存在。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你没有感到恐惧，反而有一种奇特的亲切感。你决定不去打扰他，只是目送着“另一个自己”远去。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -3 } } ]
+        }]
+      },
+        {
+        "text": "他会替换我！",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你感到一阵强烈的恐慌，立刻开始四处寻找可以躲避的地方。你决定不让他/她接近你，直到你弄清楚这到底是怎么回事。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "立刻改变我的走路姿势，看看他是否还会模仿我。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始像螃蟹一样横着走。街对面的那个人愣了一下，然后也开始用同样滑稽的姿势横着走。这个场景诡异到让你头皮发麻。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "立刻冲过马路，和那人来一场“蜘蛛人互指”的经典场面。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你和“你”在街中央相遇，互相指着对方，场面一度非常尴尬。周围的路人纷纷拿出手机拍照。最终，对方叹了口气说：‘好吧，这次算你赢了。’然后转身离开。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "fame": 5, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "跟踪他，看看“我”不住在这里时，会去向何方。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你小心翼翼地跟在后面，穿过几条你从未走过的小巷。最终，那个人走进一栋普通的居民楼，消失了。而那栋楼的地址，你感觉自己似乎在哪里见过。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "anonymity": 5, "sanity": -5 } } ]
+        }]
+      }
+    ]
+  }
+
+]

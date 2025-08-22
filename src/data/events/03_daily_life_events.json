@@ -202,42 +202,81 @@
     ]
   },
   {
-    "id": "society_the_invitation",
+    "id": "society_public_discourse",
     "title": "公然语及",
-    "text": "你在公园散步的时候，听见有人在谈论一些你听不懂的，奇怪的概念。",
+    "text": "你在公园散步时，经过一条僻静的长椅。两个衣着考究的人正在低声交谈，但他们的用词却让你不禁驻足。他们提到了‘漫宿’、‘白日飞升’以及‘林地’的低语……这些词汇仿佛蕴含着某种不应被公然提及的力量。",
     "isUnique": true,
     "priority": 10,
     "choices": [
       {
-        "text": "和我有什么关系？",
+        "text": "只是些跑团爱好者或邪典小说读者在交流罢了。不关我的事。",
         "worldview": "logic",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "你并不认识这些人。",
+          "feedback": "你耸了耸肩，继续散步，将那些奇怪的词汇抛之脑后。",
           "outcomes": [ { "type": "change_stat", "params": { "sanity": 3 } } ]
         }]
       },
       {
-        "text": "我想知道更多。",
-        "worldview": "logic",
+        "text": "悄悄靠近，假装看手机，试图偷听更多关于“飞升”的秘密。",
+        "worldview": "gnosis",
         "magnitude": 2,
+        "results": [
+          {
+            "weight": 8,
+            "feedback": "你听到了一些片段，但都无法拼凑出完整的意义。然而，那些知识的碎片在你脑中嗡嗡作响，让你对世界的看法产生了一丝动摇。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -5 } } ]
+          },
+          {
+            "weight": 2,
+            "feedback": "其中一人突然停下，转头看向你，眼神锐利得像一把刀。他们立刻停止了交谈，起身离开了。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 10, "anonymity": -10, "sanity": -8 } } ]
+          }
+        ]
+      },
+      {
+        "text": "他们谈论的是无形之术！我必须警告当局！快去请道格拉斯先生！",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "isSpecial": true,
         "results": [{
             "weight": 1,
-            "feedback": "你开始对这些概念产生浓厚的兴趣，决定深入研究。",
-            "outcomes": [
-              { "type": "change_stat", "params": { "logic": 8, "gnosis": 10, "sanity": -5 } }
-            ]
+            "feedback": "你冲到最近的警察局报案，但接待你的警官只是疲惫地看了你一眼，让你不要浪费警力资源。你感觉自己像个被无视的先知。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "irony": 5, "sanity": -2 } } ]
         }]
       },
       {
-        "text": "快去请道格拉斯先生！",
+        "text": "走上前去，并告诉他们：“你们的显卡驱动该更新了，不然渲染不出漫宿的。”",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "那两人用一种看疯子的眼神看着你，然后迅速起身，像躲避瘟疫一样走开了。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "“你们用的是热情还是理性？”",
         "worldview": "irony",
         "magnitude": 2,
         "results": [{
+          "weight": 1,
+          "feedback": "你的问题让他们陷入了长久的沉默。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "这是一种典型的、用于加强小团体身份认同的社会方言。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "conditions": [
+            { "type": "stat_check", "params": { "stat": "logic", "operator": ">=", "value": 30 } }
+        ],
+        "results": [{
             "weight": 1,
-            "feedback": "他们在讨论的毫无疑问是无形之术！然而警察并没有调查他们，而是把你批评了一顿。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": -3, "irony": 5 } } ]
+            "feedback": "你从社会语言学的角度，冷静地剖析了他们的对话模式。虽然理解了其“形式”，但你感觉自己似乎错过了其“本质”。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "gnosis": -5 } } ]
         }]
       }
     ]
