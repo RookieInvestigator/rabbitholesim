@@ -2,45 +2,45 @@
   {
     "id": "daily_insomnia",
     "title": "失眠的夜晚",
-    "text": "夜深了，你躺在床上，卻毫無睡意。大腦異常清醒，各種紛亂的思緒在腦海中盤旋。",
+    "text": "夜深了，你躺在床上，却毫无睡意。大脑异常清醒，各种纷乱的思绪在脑海中盘旋。",
     "choices": [
       {
-        "text": "起床喝杯熱牛奶，並做一些舒緩的伸展運動。",
+        "text": "起床喝杯热牛奶，并做一些舒缓的伸展运动。",
         "worldview": "logic",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "溫暖的牛奶和輕柔的運動讓你的身體放鬆了下來，你很快就感到了睡意。",
+          "feedback": "温暖的牛奶和轻柔的运动让你的身体放松了下来，你很快就感到了睡意。",
           "outcomes": [ { "type": "change_stat", "params": { "health": 2, "sanity": 2 } } ]
         }]
       },
       {
-        "text": "索性不睡了，開始在網上搜索關於“人類睡眠的真正目的”的資料。",
+        "text": "索性不睡了，开始在网上搜索关于“人类睡眠的真正目的”的资料。",
         "worldview": "gnosis",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "你發現了一些關於“睡眠是為了讓靈魂脫離肉體”的說法，看得入了迷，直到天亮。",
+          "feedback": "你发现了一些关于“睡眠是为了让灵魂脱离肉体”的说法，看得入了迷，直到天亮。",
           "outcomes": [ { "type": "change_stat", "params": { "gnosis": 2, "health": -3 } } ]
         }]
       },
       {
-        "text": "閉上眼睛，專注於黑暗，將其視為一次探索潛意識的機會。",
+        "text": "闭上眼睛，专注于黑暗，将其视为一次探索潜意识的机会。",
         "worldview": "weirdness",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "在半夢半醒之間，你似乎看到了一些無法名狀的幾何圖形和色彩。",
+          "feedback": "在半梦半醒之间，你似乎看到了一些无法名状的几何图形和色彩。",
           "outcomes": [ { "type": "change_stat", "params": { "weirdness": 2, "sanity": -2 } } ]
         }]
       },
       {
-        "text": "起來打掃衛生，把所有東西都重新歸位，直到精疲力盡。",
+        "text": "起来打扫卫生，把所有东西都重新归位，直到精疲力尽。",
         "worldview": "logic",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "房子變得一塵不染，而你也終於感到了疲憊。",
+          "feedback": "房子变得一尘不染，而你也终于感到了疲惫。",
           "outcomes": [ { "type": "change_stat", "params": { "logic": 1, "health": -2, "sanity": 3 } } ]
         }]
       }
@@ -49,52 +49,52 @@
   {
     "id": "daily_missed_call",
     "title": "未接来电",
-    "text": "你發現手機上有一個來自未知號碼的未接來電。你不記得自己有等誰的電話。",
+    "text": "你发现手机上有一个来自未知号码的未接来电。你不记得自己有等谁的电话。",
     "choices": [
       {
-        "text": "大概是打錯了，或者又是什麼推銷電話。不理它。",
+        "text": "大概是打错了，或者又是什么推销电话。不理它。",
         "worldview": "logic",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "你將號碼加入了黑名單。",
+          "feedback": "你将号码加入了黑名单。",
           "outcomes": [ { "type": "change_stat", "params": { "logic": 1 } } ]
         }]
       },
       {
-        "text": "回撥過去看看是誰。",
+        "text": "回拨过去看看是谁。",
         "worldview": "gnosis",
         "magnitude": 1,
         "results": [
           {
             "weight": 7,
-            "feedback": "電話那頭傳來的是一段關於理財產品的自動語音。",
+            "feedback": "电话那头传来的是一段关于理财产品的自动语音。",
             "outcomes": [ { "type": "change_stat", "params": { "sanity": -2 } } ]
           },
           {
             "weight": 3,
-            "feedback": "電話接通了，但那頭只有一片靜默，幾秒後掛斷了。這讓你感覺很不舒服。",
+            "feedback": "电话接通了，但那头只有一片静默，几秒后挂断了。这让你感觉很不舒服。",
             "outcomes": [ { "type": "change_stat", "params": { "sanity": -5, "gnosis": 2 } } ]
           }
         ]
       },
       {
-        "text": "在網上搜索這個號碼，看看有沒有相關資訊。",
+        "text": "在网上搜索这个号码，看看有没有相关资讯。",
         "worldview": "logic",
         "magnitude": 2,
         "results": [{
           "weight": 1,
-          "feedback": "搜索結果顯示，這個號碼曾被多人標記為“騷擾電話”。",
+          "feedback": "搜索结果显示，这个号码曾被多人标记为“骚扰电话”。",
           "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 1 } } ]
         }]
       },
       {
-        "text": "將這個號碼設置為“巨魔熱線”，以後再有推銷電話就轉接到這裡。",
+        "text": "将这个号码设置为“巨魔热线”，以后再有推销电话就转接到这里。",
         "worldview": "irony",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "你為自己的小聰明感到得意。",
+          "feedback": "你为自己的小聪明感到得意。",
           "outcomes": [ { "type": "change_stat", "params": { "irony": 2 } } ]
         }]
       }
@@ -103,52 +103,52 @@
   {
     "id": "daily_cooking_experiment",
     "title": "厨房实验",
-    "text": "你準備自己做頓飯，但冰箱裡的食材看起來有些“隨機組合”。",
+    "text": "你准备自己做顿饭，但冰箱里的食材看起来有些“随机组合”。",
     "choices": [
       {
-        "text": "嚴格按照網上找到的食譜，只用食譜上有的食材。",
+        "text": "严格按照网上找到的食谱，只用食谱上有的食材。",
         "worldview": "logic",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "你做出了一頓味道不錯的、中規中矩的飯菜。",
+          "feedback": "你做出了一顿味道不错的、中规中矩的饭菜。",
           "outcomes": [ { "type": "change_stat", "params": { "health": 3, "sanity": 2, "logic": 1 } } ]
         }]
       },
       {
-        "text": "放棄烹飪，直接叫外賣。",
+        "text": "放弃烹饪，直接叫外卖。",
         "worldview": "irony",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "雖然花了一點錢，但省去了很多麻煩。",
+          "feedback": "虽然花了一点钱，但省去了很多麻烦。",
           "outcomes": [ { "type": "change_stat", "params": { "money": -150, "health": 1, "sanity": 3 } } ]
         }]
       },
       {
-        "text": "把所有能吃的東西都丟進鍋裡，創造一道“黑暗料理”。",
+        "text": "把所有能吃的东西都丢进锅里，创造一道“黑暗料理”。",
         "worldview": "weirdness",
         "magnitude": 1,
         "results": [
           {
             "weight": 5,
-            "feedback": "味道……一言難盡。但至少能吃。",
+            "feedback": "味道……一言难尽。但至少能吃。",
             "outcomes": [ { "type": "change_stat", "params": { "health": -2, "sanity": -3 } } ]
           },
           {
             "weight": 5,
-            "feedback": "出人意料的是，味道竟然還不錯！你發現了一種全新的搭配。",
+            "feedback": "出人意料的是，味道竟然还不错！你发现了一种全新的搭配。",
             "outcomes": [ { "type": "change_stat", "params": { "health": 4, "sanity": 5, "weirdness": 2 } } ]
           }
         ]
       },
       {
-        "text": "嘗試用感應和直覺來判斷哪幾種食材的“能量”比較契合。",
+        "text": "尝试用感应和直觉来判断哪几种食材的“能量”比较契合。",
         "worldview": "gnosis",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "你憑感覺做出了一頓飯，味道很玄妙，但你覺得它對你的精神很有好處。",
+          "feedback": "你凭感觉做出了一顿饭，味道很玄妙，但你觉得它对你的精神很有好处。",
           "outcomes": [ { "type": "change_stat", "params": { "health": 2, "sanity": 2, "gnosis": 2 } } ]
         }]
       }
@@ -157,46 +157,87 @@
   {
     "id": "daily_headache",
     "title": "突如其来的头痛",
-    "text": "一陣突如其來的、劇烈的頭痛襲來，讓你眼前發黑。",
+    "text": "一阵突如其来的、剧烈的头痛袭来，让你眼前发黑。",
     "choices": [
       {
-        "text": "立刻放下手頭的事，找個地方休息一下，並喝點水。",
+        "text": "立刻放下手头的事，找个地方休息一下，并喝点水。",
         "worldview": "logic",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "短暫的休息後，頭痛緩解了。可能是最近太累了。",
+          "feedback": "短暂的休息后，头痛缓解了。可能是最近太累了。",
           "outcomes": [ { "type": "change_stat", "params": { "health": -2, "sanity": 2 } } ]
         }]
       },
       {
-        "text": "一定是“他们”又在用HAARP或電磁波武器進行測試了。",
+        "text": "一定是他们又在用HAARP或电磁波武器进行测试了。",
         "worldview": "gnosis",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "你開始在家裡尋找能屏蔽信號的地方。",
+          "feedback": "你开始在家里寻找能屏蔽信号的地方。",
           "outcomes": [ { "type": "change_stat", "params": { "health": -5, "gnosis": 2, "sanity": -3 } } ]
         }]
       },
       {
-        "text": "疼痛的瞬間，你腦海中閃過了一些不屬於你的、破碎的畫面。",
+        "text": "疼痛的瞬间，你脑海中闪过了一些不属于你的、破碎的画面。",
         "worldview": "weirdness",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "頭痛消失後，你試圖回憶那些畫面，但它們就像夢一樣消散了。",
+          "feedback": "头痛消失后，你试图回忆那些画面，但它们就像梦一样消散了。",
           "outcomes": [ { "type": "change_stat", "params": { "health": -5, "weirdness": 2, "sanity": -3 } } ]
         }]
       },
       {
-        "text": "在網上發帖：“頭好痛，感覺像是要覺醒了什麼超能力。”",
+        "text": "在网上发帖：“所有超能力者觉醒之前：*若干痛苦抱头的图片*”",
         "worldview": "irony",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "網友們纷纷在下面留言：“醒醒，你只是頸椎不好。”",
+          "feedback": "“醒醒，你只是颈椎不好。”",
           "outcomes": [ { "type": "change_stat", "params": { "health": -5, "irony": 2, "sanity": 1 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "society_the_invitation",
+    "title": "公然语及",
+    "text": "你在公园散步的时候，听见有人在谈论一些你听不懂的，奇怪的概念。",
+    "isUnique": true,
+    "priority": 10,
+    "choices": [
+      {
+        "text": "和我有什么关系？",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你并不认识这些人。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "我想知道更多。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始对这些概念产生浓厚的兴趣，决定深入研究。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 8, "gnosis": 10, "sanity": -5 } }
+            ]
+        }]
+      },
+      {
+        "text": "快去请道格拉斯先生！",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "他们在讨论的毫无疑问是无形之术！然而警察并没有调查他们，而是把你批评了一顿。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": -3, "irony": 5 } } ]
         }]
       }
     ]

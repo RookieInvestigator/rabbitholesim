@@ -37,6 +37,14 @@ export function useEventEngine() {
         if (params.has) return player.statusEffects.some(e => e.id === params.has);
         if (params.has_not) return !player.statusEffects.some(e => e.id === params.has_not);
         return false;
+      case 'event_check':
+        if (params.has_triggered) {
+          return player.triggeredEventIds.has(params.has_triggered);
+        }
+        if (params.has_not_triggered) {
+          return !player.triggeredEventIds.has(params.has_not_triggered);
+        }
+        return false;
       default: return true;
     }
   }

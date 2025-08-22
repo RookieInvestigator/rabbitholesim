@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import allStatusEffects from '@/data/status_effects.json'
 
 const getInitialState = () => ({
   isAlive: true,
@@ -13,6 +14,9 @@ const getInitialState = () => ({
   fame: 0,
   anonymity: 100,
   
+  // ✨ 步驟一：新增一個狀態，用來記錄死亡原因的關鍵字
+  deathReason: null, 
+
   statMultipliers: {}, 
   statusEffects: [],
   inventory: [],
@@ -55,14 +59,13 @@ export const usePlayerStore = defineStore('player', {
 
     addLog({ message, type = 'event' }) {
       this.log.push({ id: Date.now() + Math.random(), message, type });
-      
       if (this.log.length > 500) this.log.shift();
     },
 
     applyOutcomes(outcomes) {
+      // ... (此函數內容保持不變)
       if (!outcomes) return;
       outcomes.forEach(outcome => {
-        // ... applyOutcomes 的內部邏輯保持不變 ...
         switch (outcome.type) {
           case 'change_stat':
             for (const stat in outcome.params) {
@@ -113,11 +116,10 @@ export const usePlayerStore = defineStore('player', {
       });
     },
 
-    async nextTurn() {
+    nextTurn() {
       if (!this.isAlive) return;
       this.turn++; 
 
-      // --- 負債邏輯 (不變) ---
       const isInDebt = this.statusEffects.some(e => e.id === 'in_debt');
       if (this.money < 0 && !isInDebt) {
         this.statusEffects.push({ id: 'in_debt', duration: 9999 });
@@ -128,9 +130,7 @@ export const usePlayerStore = defineStore('player', {
         this.addLog({ message: '你還清了所有欠款，終於鬆了一口氣。', type: 'feedback' });
       }
 
-      // --- 狀態效果結算 (不變) ---
       if (this.statusEffects.length > 0) {
-        const allStatusEffects = (await import('@/data/status_effects.json')).default;
         this.statusEffects.forEach(effect => {
           const effectData = allStatusEffects[effect.id];
           if (effectData && effectData.outcomes) {
@@ -141,16 +141,16 @@ export const usePlayerStore = defineStore('player', {
         this.statusEffects = this.statusEffects.filter(effect => effect.duration > 0);
       }
       
-      // --- 檢查死亡條件 (移除年齡相關) ---
-      if (this.health <= 0) this.endGame('你的身體機能已耗盡。');
-      if (this.sanity <= 0) this.endGame('你的精神完整性已徹底崩潰。');
-      if (this.money < -2000) this.endGame('你被巨額的債務徹底壓垮，在絕望中結束了這一切。');
+      if (this.health <= 0) this.endGame('health', '你的心脏已不足以支撑身体。');
+      if (this.sanity <= 0) this.endGame('sanity', '你的精神完整性已彻底崩溃。');
+      if (this.money < -2000) this.endGame('debt', '你被巨额的债务彻底压垮，在绝望中结束了这一切。');
     },
 
-    endGame(reason) {
+    endGame(reasonKey, logMessage) {
       if (!this.isAlive) return;
       this.isAlive = false;
-      this.addLog({ message: `【探索結束】${reason}`, type: 'ending' });
+      this.deathReason = reasonKey; 
+      this.addLog({ message: `【探索结束】${logMessage}`, type: 'ending' });
     }
   },
 })

@@ -1,7 +1,18 @@
 <script setup>
+
+import { computed } from 'vue';
 import { usePlayerStore } from '@/stores/playerStore';
+import allStatusEffects from '@/data/status_effects.json';
 const player = usePlayerStore();
 const format = (num) => Number(num).toFixed(0);
+const displayedEffects = computed(() => {
+  return player.statusEffects.map(effect => {
+    return {
+      id: effect.id,
+      name: allStatusEffects[effect.id]?.name || effect.id // 如果找不到對應的名稱，則退回顯示ID
+    };
+  });
+});
 </script>
 
 <template>
@@ -33,6 +44,11 @@ const format = (num) => Number(num).toFixed(0);
       <span>健康: {{ format(player.health) }}</span>
       <span>理智: {{ format(player.sanity) }}</span>
       <span>金钱: {{ format(player.money) }}</span>
+    </div>
+    <div v-if="player.statusEffects.length > 0" class="status-effects-bar">
+      <span v-for="effect in displayedEffects" :key="effect.id" class="status-effect-tag">
+        {{ effect.name }}
+      </span>
     </div>
   </div>
 </template>
@@ -73,5 +89,23 @@ const format = (num) => Number(num).toFixed(0);
   border-top: 1px solid #333;
   padding-top: 0.4rem;
   margin-top: 0.2rem;
+}
+.status-effects-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  border-top: 1px solid #333;
+  padding-top: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.status-effect-tag {
+  background-color: #c94e4e;
+  color: white;
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: bold;
 }
 </style>

@@ -14,7 +14,19 @@
   "in_debt": {
     "name": "负债",
     "outcomes": [
-      { "type": "change_stat", "params": { "sanity": -1, "health": -0.5 } }
+      { "type": "change_stat", "params": { "sanity": -1, "health": -0.5, "money": -50 } }
+    ]
+  },
+  "regeneration": {
+    "name": "再生",
+    "outcomes": [
+      { "type": "change_stat", "params": { "health": 1 } }
+    ]
+  },
+  "derealization": {
+    "name": "现实解离",
+    "outcomes": [
+      { "type": "change_stat", "params": { "sanity": -1 } }
     ]
   }
 }

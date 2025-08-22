@@ -138,5 +138,85 @@
         }]
       }
     ]
+  },
+  {
+    "id": "mystery_mothman_sighting",
+    "title": "红瞳的凝视",
+    "text": "你正在深夜开车回家，行驶在一段寂静的乡间小路上。就在你快要驶上一座大桥时，车灯扫过前方，照亮了一个让你心跳停止的身影——一个巨大的人形生物，长着像飞蛾般的翅膀，还有一双在黑暗中发出不祥红光的眼睛。它就站在桥的中央，静静地看着你。",
+    "isUnique": true,
+    "priority": 8,
+    "choices": [
+      {
+        "text": "大型猫头鹰、光影错觉、加上深夜的疲劳……一定有合理的解释。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你猛踩刹车，闭上眼睛用力地摇了摇头。再次睁开眼时，桥上空空如也。你将其归因于过度疲劳，小心翼翼地驶过了桥。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "传说天蛾人是灾难的预兆。它不是来伤害我，它是在警告我不要过桥！",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 7,
+            "feedback": "你立刻掉转车头，选择了另一条路绕行。虽然多花了很多时间，但你感觉自己可能因此躲过了一劫。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -2 } } ]
+          },
+          {
+            "weight": 3,
+            "feedback": "你立刻掉转车头，选择了另一条路。就在你驶离的瞬间，你听到身后传来桥梁断裂的巨响和车辆坠落的轰鸣。你吓出了一身冷汗。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 20, "sanity": -15 } } ]
+          }
+        ]
+      },
+      {
+        "text": "打开远光灯，猛按喇叭，朝它冲过去！没什么东西能挡我的路！",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你冲过去的瞬间，那个生物展开巨大的翅膀，无声地飞入了夜空。你成功通过了桥，但你的行车记录仪拍下了惊人的一幕，这段影片为你在网上带来了巨大的名气和无尽的麻烦。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 10, "fame": 15, "anonymity": -20, "sanity": -10 } } ]
+        }]
+      },
+      {
+        "text": "这不是警告，这是一种邀请。它在引导我走向一个全新的现实维度。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你熄灭车灯，下车，缓缓地向它走去。在你靠近时，它的红光变得柔和。你感到周围的空间开始扭曲，你似乎听到它在你的脑海中低语。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 15, "sanity": -12 } } ]
+        }]
+      },
+      {
+        "text": "拿出手机，尝试为它拍一张清晰的照片，这可能是本世纪最伟大的发现！",
+        "worldview": "logic",
+        "magnitude": 2,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "sanity", "operator": ">=", "value": 60 } }
+        ],
+        "results": [{
+          "weight": 1,
+          "feedback": "你努力稳定住颤抖的手，拍下了几张照片。但当你检查照片时，发现上面只有一片模糊的噪点和两个诡异的红点。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "fame": 5, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "向它挥手示意，并大喊：“嘿！需要搭便车吗？”",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "那个生物似乎歪了歪头，好像在思考你的提议。几秒后，它无声地飞走了。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": 5 } } ]
+        }]
+      }
+    ]
   }
+
 ]

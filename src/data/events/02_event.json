@@ -181,7 +181,7 @@
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "网友们纷纷给你P上了各种充电接口，让你哭笑不得。",
+          "feedback": "网友们纷纷给你P上了各种充电接口。",
           "outcomes": [ { "type": "change_stat", "params": { "irony": 2, "fame": 1 } } ]
         }]
       }
