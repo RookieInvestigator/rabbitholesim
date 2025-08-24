@@ -45,27 +45,56 @@ export function useEventEngine() {
           return !player.triggeredEventIds.has(params.has_not_triggered);
         }
         return false;
+      // --- 新增条件检查 ---
+      case 'made_choice_check': // 方案二
+        return player.madeChoices.has(params.choiceId);
       default: return true;
     }
   }
   
-  // ... findTriggerableEvent, makeChoice, processEvent 函數保持不變 ...
   function findTriggerableEvent() {
     const available = allEvents.filter(event => {
       if (event.isUnique && player.triggeredEventIds.has(event.id)) return false;
       if (event.requiresUnlock && !player.unlockedEventIds.has(event.id)) return false;
       return !event.conditions || event.conditions.every(isConditionMet);
     });
+
     if (available.length === 0) return null;
-    const weights = available.map(event => Math.max(0.1, event.priority || 1));
+
+    const weights = available.map(event => {
+      let finalWeight = Math.max(0.1, event.priority || 1);
+
+      // 方案一: 应用标签权重
+      if (event.tags && Array.isArray(event.tags)) {
+        event.tags.forEach(tag => {
+          if (player.tagProbabilityModifiers[tag]) {
+            finalWeight *= player.tagProbabilityModifiers[tag];
+          }
+        });
+      }
+
+      // 方案三: 应用所有匹配的事件权重调整（包括永久和临时）
+      player.eventModifiers.forEach(modifier => {
+        if (modifier.eventId === event.id) {
+          finalWeight *= modifier.multiplier;
+        }
+      });
+      
+      return Math.max(0, finalWeight); // 确保权重不会是负数
+    });
+
     const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+    if (totalWeight <= 0) return null; // 如果所有事件权重都为0，则不触发事件
+
     let randomTarget = Math.random() * totalWeight;
     for (let i = 0; i < available.length; i++) {
       randomTarget -= weights[i];
       if (randomTarget <= 0) return available[i];
     }
+    
     return available[available.length - 1];
   }
+
   function makeChoice(choices) {
     const validChoices = (choices || []).filter(c => !c.conditions || c.conditions.every(isConditionMet));
     if (validChoices.length === 0) return null;
@@ -82,11 +111,15 @@ export function useEventEngine() {
     }
     return validChoices[validChoices.length - 1];
   }
+
   function processEvent(event) {
     player.addLog({ message: { title: event.title, text: event.text }, type: 'event' });
     player.triggeredEventIds.add(event.id);
     const choice = makeChoice(event.choices);
     if (choice) {
+      if (choice.id) { // 方案二: 记录选择
+          player.madeChoices.add(choice.id);
+      }
       player.addLog({ message: `> ${choice.text}`, type: 'choice' });
       let finalResult = null;
       if (choice.results && choice.results.length > 0) {
@@ -106,15 +139,13 @@ export function useEventEngine() {
         if (finalResult.feedback) player.addLog({ message: finalResult.feedback, type: 'feedback' });
       }
     } else {
-      player.addLog({ message: '> 你感到一陣迷茫，不知何去何從。', type: 'system' });
+      player.addLog({ message: '> 你感到一阵迷茫，不知何去何从。', type: 'system' });
     }
   }
 
-  // ✨ 核心修改：全新的“智能選項”生成函數 ✨
   function getManualChoices(count = 3) {
     const finalChoices = [];
     
-    // 1. 找出所有可觸發的事件
     const availableEvents = allEvents.filter(event => {
       if (event.isUnique && player.triggeredEventIds.has(event.id)) return false;
       if (event.requiresUnlock && !player.unlockedEventIds.has(event.id)) return false;
@@ -123,7 +154,6 @@ export function useEventEngine() {
 
     if (availableEvents.length === 0) return [];
 
-    // 2. 遍歷所有事件，分離出“特殊選項”和“常規選項”
     const specialChoices = [];
     const normalChoices = [];
 
@@ -134,7 +164,6 @@ export function useEventEngine() {
           parentEvent: { id: event.id, title: event.title, text: event.text },
         };
         
-        // 檢查選項自身是否有觸發條件
         const choiceConditionsMet = !choice.conditions || choice.conditions.every(isConditionMet);
         
         if (choice.isSpecial && choiceConditionsMet) {
@@ -145,40 +174,35 @@ export function useEventEngine() {
       });
     });
 
-    // 3. 處理特殊選項：如果存在，則有極大概率(80%)選取一個
     if (specialChoices.length > 0 && Math.random() < 0.8) {
       const selectedSpecial = specialChoices[Math.floor(Math.random() * specialChoices.length)];
       finalChoices.push(selectedSpecial);
     }
 
-    // 4. 用“傾向加權隨機”填充剩餘的選項
     if (normalChoices.length > 0) {
       while (finalChoices.length < count) {
-        // 計算所有常規選項的權重
         const weights = normalChoices.map(choice => {
-          // 基礎權重 + 玩家傾向加成
           const baseWeight = 10;
           const tendencyBonus = player[choice.worldview] || 0;
           return Math.max(1, baseWeight + tendencyBonus * (choice.magnitude || 1));
         });
         const totalWeight = weights.reduce((sum, w) => sum + w, 0);
 
-        if (totalWeight === 0) break; // 避免死循環
+        if (totalWeight === 0 || normalChoices.length === 0) break;
 
         let randomTarget = Math.random() * totalWeight;
 
         for (let i = 0; i < normalChoices.length; i++) {
           randomTarget -= weights[i];
           if (randomTarget <= 0) {
-            finalChoices.push(normalChoices[i]);
-            normalChoices.splice(i, 1); // 從池中移除，避免重複選取
+            const [selectedChoice] = normalChoices.splice(i, 1);
+            finalChoices.push(selectedChoice);
             break;
           }
         }
       }
     }
     
-    // 5. 為最終選項添加唯一 ID
     return finalChoices.map(c => ({ ...c, uuid: uuidv4() }));
   }
 

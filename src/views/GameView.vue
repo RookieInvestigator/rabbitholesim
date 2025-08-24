@@ -26,11 +26,10 @@ function nextTurn() {
   if (!player.isAlive) return;
   player.nextTurn();
   if (gameMode.value === 'interactive') {
-    currentManualChoices.value = []; // 清空選項，等待新事件
+    currentManualChoices.value = []; // 清空选项，等待新事件
     const event = findTriggerableEvent();
     
     if (event) {
-      // ✨ 核心修正：在顯示選項前，先記錄事件日誌
       player.addLog({ message: { title: event.title, text: event.text }, type: 'event' });
       
       let choicesToShow = (event.choices || []).filter(c => {
@@ -48,10 +47,10 @@ function nextTurn() {
       currentManualChoices.value = choicesToShow.map(c => ({ 
         ...c, 
         uuid: uuidv4(),
-        parentEventId: event.id // 附加父事件ID
+        parentEventId: event.id
       }));
     } else {
-      player.addLog({ message: '你靜靜地思索著，沒有什麼特別的事情發生。', type: 'system' });
+      player.addLog({ message: '你静静地思索着，没有什么特别的事情发生。', type: 'system' });
       setTimeout(nextTurn, 1000);
     }
   }
@@ -60,14 +59,18 @@ function nextTurn() {
 function handleChoiceSelected(choice) {
   if (!player.isAlive) return;
   
-  // ✨ 核心修正：在做出選擇後，才標記事件已觸發
   if (choice.parentEventId) {
     player.triggeredEventIds.add(choice.parentEventId);
+  }
+
+  // --- 新增: 方案二 ---
+  // 如果选项本身有ID，则记录下来
+  if (choice.id) {
+    player.madeChoices.add(choice.id);
   }
   
   player.addLog({ message: `> ${choice.text}`, type: 'choice' });
 
-  // 處理隨機結果 (此處邏輯不變)
   let finalResult = null;
   if (choice.results && choice.results.length > 0) {
     const weights = choice.results.map(r => r.weight || 1);
@@ -90,7 +93,6 @@ function handleChoiceSelected(choice) {
   setTimeout(nextTurn, 1200);
 }
 
-// ... startGame, restartGame, watch 等函數保持不變 ...
 function startGame(pickedTalents, mode) {
   gameMode.value = mode;
   player.initializeWithTalents(pickedTalents);
@@ -120,7 +122,7 @@ watch(() => player.isAlive, (isAlive) => {
 </script>
 
 <template>
-  <div v-if="isLoading">正在載入事件庫...</div>
+  <div v-if="isLoading">正在加载事件库...</div>
 
   <TalentSelector v-else-if="gameState === 'talent'" @start="startGame" @open-editor="showEditor" />
   
@@ -142,28 +144,25 @@ watch(() => player.isAlive, (isAlive) => {
 </template>
 
 <style scoped>
-/* ✨ 核心修正：使用更穩健的 Grid 佈局來替代 Flexbox ✨ */
 .game-grid-container {
   display: grid;
-  /* 三行：頂部(傾向)高度自動，中間(日誌)佔滿剩餘，底部(選項)高度自動 */
   grid-template-rows: auto 1fr auto;
   height: 100%;
   gap: 1rem;
 }
 
 .stat-area, .log-area, .choice-area {
-  min-width: 0; /* Grid/Flexbox 修復 */
+  min-width: 0;
 }
 
 .log-area {
-  min-height: 0; /* Grid/Flexbox 修復 */
+  min-height: 0;
 }
 
 .log-area > :first-child {
   height: 100%;
 }
 
-/* 電腦版雙欄佈局 (保持不變) */
 @media (min-width: 992px) {
   .game-grid-container {
     display: grid;

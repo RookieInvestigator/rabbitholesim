@@ -3,7 +3,7 @@
     "id": "money_gray_gig",
     "title": "灰色兼职",
     "text": "你的财务状况有些紧张，你在一个匿名论坛上看到一则招聘启事，上面写着“招募任务执行员，工作内容简单，报酬优厚，无需经验，非法人仕优先”。",
-    "priority": 5,
+    "priority": 10,
     "conditions": [
         { "type": "stat_check", "params": { "stat": "money", "operator": "<=", "value": 1000 } }
     ],

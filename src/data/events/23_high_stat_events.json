@@ -1,0 +1,188 @@
+[
+  {
+    "id": "high_health_perfect_specimen",
+    "title": "完美的标本",
+    "text": "你感觉自己的身体前所未有地健康，精力充沛到仿佛能徒手打穿墙壁。然而，这种完美的状态似乎吸引了一些不必要的注意。你开始在街角的阴影里，或是在人群的缝隙中，瞥见一些穿着白大褂、拿着文件夹和测量仪器的人，正用一种评估牲畜般的眼神遥遥地观察你。",
+    "isUnique": true,
+    "priority": 50,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "health", "operator": ">=", "value": 150 } }
+    ],
+    "choices": [
+      {
+        "text": "立刻开始暴饮暴食、熬夜，用不健康的生活方式，让自己的身体“回归正常”。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "经过一番努力，你的身体终于出现了一点“瑕疵”。那些窥探的目光似乎也随之消失了。你感到一阵莫名的轻松。",
+          "outcomes": [ { "type": "set_stat", "params": { "health": 100 } }, { "type": "change_stat", "params": { "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "他们不是在观察我的“健康”，而是在评估我这具“皮囊”的“宿主资格”。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始警惕，认为自己的身体成了某种高等存在覬覦的容器。你开始研究各种反附身和精神防御的法门。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 10, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "径直走向其中一个“观察者”，并向他/她展示你完美的二头肌。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "那个穿着白大褂的人被你的举动吓了一跳，他/她匆忙地在文件夹上写下“目标具有高度攻击性和不可预测性”，然后迅速消失在了人群中。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "fame": 5 } } ]
+        }]
+      },
+      {
+        "text": "我的身体正在“超进化”。这些观察者，是旧人类派来监视新物种的探子。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你将这种被窥探的感觉，视为一种“优等生”的勋章。你开始更加努力地锻炼，渴望将自己的身体推向更高的境界。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "health": 10 } } ]
+        }]
+      },
+      {
+        "text": "反过来跟踪他们，看看他们到底是谁，来自哪个组织。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你成功地跟踪其中一人到了一个毫不起眼的办公楼。但就在你准备进一步探查时，你的手机收到一条匿名短信：『好奇心是种病。我们有治这种病的特效药。』",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "anonymity": -10, "sanity": -10 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "high_sanity_painful_clarity",
+    "title": "痛苦的清醒",
+    "text": "你的思维从未如此清晰，你的精神坚如磐石。但这种极致的清醒也带来了副作用：你开始“看”得太清楚了。你能看到朋友微笑时嘴角不协调的抽搐，能看到新闻主播播报时眼神深处的一丝恐惧，能看到广告牌上那些标语背后隐藏的、令人作呕的潜台词。世界在你眼中，变成了一个充满劣质谎言和虚假表演的舞台。",
+    "isUnique": true,
+    "priority": 50,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "sanity", "operator": ">=", "value": 150 } }
+    ],
+    "choices": [
+      {
+        "text": "这种状态是不可持续的。我需要看一些无聊的肥皂剧，用一些“精神垃圾”来让我的大脑放松下来。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "在经历了几个小时的“精神按摩”后，你终于不再对世界的每一个细节都进行过度分析了。你感到了一丝智力上的迟钝，但也感到了一丝幸福。",
+          "outcomes": [ { "type": "set_stat", "params": { "sanity": 100 } }, { "type": "change_stat", "params": { "logic": -5 } } ]
+        }]
+      },
+      {
+        "text": "我看到的不是“真相”，而是“裂痕”。我的高理智让我能察觉到世界矩阵的渲染错误。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你将这种能力视为一种天赋，开始主动寻找世界中的逻辑漏洞和穿帮之处，试图拼凑出这个“舞台”背后的真正样貌。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 12, "sanity": -10 } } ]
+        }]
+      },
+      {
+        "text": "既然大家都在演，那我也要加入。而且我要演得比所有人都投入，都夸张。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始用一种极其戏剧化的方式生活，对朋友的每个笑话都报以雷鸣般的掌声，对每条悲伤的新闻都流下夸张的眼泪。周围的人开始觉得你有点不正常。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 10, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "这不是我的问题，是世界本身的问题。世界病了，而我只是唯一的正常人。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始尝试“治愈”这个世界，比如告诉朋友他们笑得很假，或者在广告牌上涂鸦，写上你认为的“真相”。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "fame": -10 } } ]
+        }]
+      },
+      {
+        "text": "将我看到的所有“异常”都记录下来，形成一个庞大的数据库，尝试从中分析出规律。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的笔记越来越厚。你发现这些“裂痕”出现的频率和某些天文现象有着微弱的相关性。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "gnosis": 5, "sanity": -5 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "high_money_burden_of_wealth",
+    "title": "财富的负担",
+    "text": "你富可敌国，金钱对你来说已经只是一个数字。但巨大的财富也像灯塔一样，吸引来了各种各样的人。最近，一个自称“真理代价”的组织开始频繁地联系你，他们不要求你捐款，反而不断地寄给你各种昂贵的、无法用金钱衡量的古物和手稿，并附言：『这些“知识”现在属于你了，请妥善保管。』",
+    "isUnique": true,
+    "priority": 50,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "money", "operator": ">=", "value": 50000 } }
+    ],
+    "choices": [
+      {
+        "text": "这是一个高明的骗局，他们想先用这些东西“投资”我，之后再索取更大的回报。我应该把所有东西都退回去。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你将所有东西都寄回了他们提供的地址。几天后，你收到了一张卡片，上面写着：『拒绝知识，也是一种代价。』他们再也没有联系过你。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5 } } ]
+        }]
+      },
+      {
+        "text": "财富只是敲门砖。他们认为我有资格接触这些“禁忌知识”。我应该开始研究这些古物。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你将自己沉浸在那些神秘的古物和手稿中，你的世界观被彻底颠覆了。你感觉自己的金钱正在以一种形而上的方式，转化为另一种更宝贵的资源。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 20, "sanity": -15 } } ]
+        }]
+      },
+      {
+        "text": "把这些价值连城的古物全部卖掉，看看他们会有什么反应。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你因此又赚了一大笔钱。那个组织寄来了新的东西，数量是上次的两倍，并附言：『看来你还需要更多的“学费”。』",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 10, "money": 20000 } } ]
+        }]
+      },
+      {
+        "text": "用这些古物，为我的豪宅建一个“克苏鲁主题”的密室。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的密室成了所有朋友羡慕的焦点。但你总感觉，在夜深人静时，那些古物会自己窃窃私语。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "fame": 5, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "雇佣一个专业的团队，调查这个“真理代价”组织的底细。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "调查报告显示，这个组织的历史可以追溯到几个世纪前，而且它的成员遍布全球各个权力阶层。在你收到报告的当晚，你的调查团队负责人就神秘失踪了。",
+            "outcodes": [ { "type": "change_stat", "params": { "logic": 8, "money": -10000, "sanity": -12 } } ]
+        }]
+      }
+    ]
+  }
+]

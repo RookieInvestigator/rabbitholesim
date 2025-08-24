@@ -503,7 +503,7 @@
         "magnitude": 2,
         "results": [{
             "weight": 1,
-            "feedback": "你刷新了好几次购物App，但它并没有给你推荐核潜艇。你感觉自己在这场与算法的博弈中，暂时占了上风。",
+            "feedback": "你刷新了好几次购物App，但它并没有给你推荐核潜艇。你感觉自己在这场与算法的博弈中暂时占了上风。",
             "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "sanity": 2 } } ]
         }]
       },

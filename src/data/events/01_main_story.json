@@ -30,12 +30,13 @@
         }]
       },
       {
+        "id": "01",
         "text": "这段影片的氛围很独特，让你想起了一些被遗忘的童年回忆。",
         "worldview": "weirdness",
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "你将这段影片保存了下来。那种怪异而怀旧的感觉让你着迷，你开始在网上寻找更多类似风格的“梦核”或“怪核”内容。",
+          "feedback": "你将这段影片保存了下来。那种怪异而怀旧的感觉让你着迷，你开始在网上寻找更多类似风格的内容。",
           "outcomes": [ { "type": "change_stat", "params": { "weirdness": 3, "sanity": -1 } } ]
         }]
       },

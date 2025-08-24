@@ -3,7 +3,7 @@
     "id": "recurring_numbers_station",
     "title": "错误频率",
     "text": "你开车行驶在隧道中，收音机的信号突然被一阵静电干扰。当信号恢复时，电台不再播放流行音乐，而是一个单调的、带着浓厚口音的女声，正在用外语缓慢地念诵一长串数字：“……sieben, drei, neun, null, acht……”",
-    "priority": 2,
+    "priority": 1,
     "choices": [
       {
         "text": "典型的信号干扰，可能是哪位业余无线电爱好者的广播盖了过来。",
