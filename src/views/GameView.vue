@@ -13,7 +13,7 @@ import ChoiceDisplay from '@/components/ChoiceDisplay.vue';
 import EditorView from './EditorView.vue';
 
 const player = usePlayerStore();
-const { isLoading, loadEvents, findTriggerableEvent, getManualChoices, isConditionMet } = useEventEngine();
+const { isLoading, loadEvents, findTriggerableEvent, findEventById, isConditionMet } = useEventEngine();
 const { start: startSimulation, stop: stopSimulation } = useGameLoop();
 
 const gameState = ref('talent');
@@ -25,13 +25,15 @@ onMounted(loadEvents);
 function nextTurn() {
   if (!player.isAlive) return;
   player.nextTurn();
-  if (gameMode.value === 'interactive') {
-    currentManualChoices.value = []; // 清空选项，等待新事件
+  
+  if (gameMode.value === 'interactive' && player.isAlive) {
+    currentManualChoices.value = []; // 清空选项
     const event = findTriggerableEvent();
     
     if (event) {
       player.addLog({ message: { title: event.title, text: event.text }, type: 'event' });
       
+      // ✨ 修复 #1: 过滤不满足出现条件的选项
       let choicesToShow = (event.choices || []).filter(c => {
         if (!c.conditions || c.conditions.length === 0) {
           return true;
@@ -39,6 +41,7 @@ function nextTurn() {
         return c.conditions.every(isConditionMet);
       });
       
+      // ✨ 修复 #2: 如果满足条件的选项多于3个，则随机抽取3个
       if (choicesToShow.length > 3) {
         choicesToShow.sort(() => 0.5 - Math.random());
         choicesToShow = choicesToShow.slice(0, 3);
@@ -51,20 +54,31 @@ function nextTurn() {
       }));
     } else {
       player.addLog({ message: '你静静地思索着，没有什么特别的事情发生。', type: 'system' });
-      setTimeout(nextTurn, 1000);
+      if (player.isAlive) {
+        setTimeout(nextTurn, 1000);
+      }
     }
   }
 }
 
 function handleChoiceSelected(choice) {
+  // 处理 meta 事件的特殊逻辑
+  if (choice.id === 'choice_show_game_over') {
+    showGameOverScreen();
+    const feedback = choice.results?.[0]?.feedback;
+    if (feedback) {
+        player.addLog({ message: `> ${choice.text}`, type: 'choice' });
+        player.addLog({ message: feedback, type: 'feedback' });
+    }
+    return;
+  }
+  
   if (!player.isAlive) return;
   
   if (choice.parentEventId) {
     player.triggeredEventIds.add(choice.parentEventId);
   }
 
-  // --- 新增: 方案二 ---
-  // 如果选项本身有ID，则记录下来
   if (choice.id) {
     player.madeChoices.add(choice.id);
   }
@@ -90,7 +104,9 @@ function handleChoiceSelected(choice) {
     if (finalResult.feedback) player.addLog({ message: finalResult.feedback, type: 'feedback' });
   }
 
-  setTimeout(nextTurn, 1200);
+  if (player.isAlive) {
+    setTimeout(nextTurn, 1200);
+  }
 }
 
 function startGame(pickedTalents, mode) {
@@ -103,20 +119,36 @@ function startGame(pickedTalents, mode) {
   }
   gameState.value = 'playing';
 }
+
 function restartGame() {
   stopSimulation();
   gameState.value = 'talent';
 }
+
+function showGameOverScreen() {
+    gameState.value = 'game_over';
+}
+
 function showEditor() {
   gameState.value = 'editor';
 }
 function hideEditor() {
   gameState.value = 'talent';
 }
+
 watch(() => player.isAlive, (isAlive) => {
   if (!isAlive && gameState.value === 'playing') {
     stopSimulation();
-    gameState.value = 'game_over';
+    const endEvent = findEventById('meta_end_of_exploration');
+    if (endEvent) {
+      player.addLog({ message: { title: endEvent.title, text: endEvent.text }, type: 'event' });
+      currentManualChoices.value = endEvent.choices.map(c => ({
+        ...c,
+        uuid: uuidv4()
+      }));
+    } else {
+        gameState.value = 'game_over';
+    }
   }
 });
 </script>

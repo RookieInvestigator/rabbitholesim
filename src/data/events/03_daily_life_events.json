@@ -389,7 +389,7 @@
   },
   {
     "id": "item_cursed_game",
-    "title": "二手的游戏",
+    "title": "二手游戏",
     "text": "你在跳蚤市场的一个角落里，发现了一盒来历不明的旧游戏卡带。上面没有标签，只有一个用马克笔手绘的、不成比例的笑脸。摊主说他也不知道这是什么，如果你想要，可以低价卖给你。",
     "tags": ["item", "internet", "mystery", "cursed", "unique"],
     "isUnique": true,
@@ -411,7 +411,7 @@
         "magnitude": 2,
         "results": [{
           "weight": 1,
-          "feedback": "你买下了这盒神秘的卡带。握着它，你能感觉到里面似乎有什么东西在低声嗡鸣。你获得了一件新物品。",
+          "feedback": "你买下了这盒神秘的卡带。握着它，你能感觉到里面似乎有什么东西在低声嗡鸣。",
           "outcomes": [
             { "type": "change_stat", "params": { "money": -50, "gnosis": 4, "sanity": -2 } },
             { "type": "add_item", "params": { "itemId": "cursed_game_cartridge" } }
@@ -439,7 +439,7 @@
         }]
       },
       {
-        "text": "（需要 天赋：电子幽灵）也许我能绕过游戏本身，直接读取里面的数据。",
+        "text": "也许我能绕过游戏本身，直接读取里面的数据。",
         "worldview": "logic",
         "magnitude": 3,
         "isSpecial": true,
@@ -453,7 +453,7 @@
         }]
       },
       {
-        "text": "（需要 物品：损坏的鸟型无人机）这东西的材质，和那只鸟的内部零件很像。",
+        "text": "这东西的材质，和那只鸟的内部零件很像。",
         "worldview": "gnosis",
         "magnitude": 3,
         "isSpecial": true,

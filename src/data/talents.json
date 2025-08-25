@@ -34,7 +34,7 @@
     "id": "talent_meme_propagator",
     "name": "互联网弄潮儿",
     "tier": 2,
-    "description": "你是衔着网络密钥诞生的一代。与网络相关的事件更容易发生。",
+    "description": "你是衔着网络密钥诞生的一代。",
     "effects": [
       { "type": "add_multiplier", "params": { "stat": "irony", "value": 1.25 } },
       { "type": "add_multiplier", "params": { "stat": "fame", "value": 1.25 } },
@@ -69,8 +69,7 @@
     "tier": 1,
     "description": "你的所有一切都平平无奇。",
     "effects": [
-      { "type": "change_stat", "params": { "anonymity": 20 } },
-      { "type": "change_tag_probability", "params": { "tag": "daily", "multiplier": 1.2 } }
+      { "type": "change_stat", "params": { "anonymity": 20 } }
     ]
   },
   {
@@ -112,7 +111,7 @@
   {
     "id": "talent_digital_ghost",
     "name": "电子幽灵",
-    "tier": 2,
+    "tier": 3,
     "description": "在网络世界里，你来去自如，不留痕迹。",
     "effects": [
       { "type": "change_stat", "params": { "anonymity": 15, "irony": 5, "logic": 5 } }
@@ -225,6 +224,26 @@
     ]
   },
   {
+    "id": "talent_dataist",
+    "name": "数据主义者",
+    "tier": 2,
+    "description": "万物皆可量化。你习惯于将一切都转化为冰冷的数据进行分析。",
+    "effects": [
+      { "type": "add_multiplier", "params": { "stat": "logic", "value": 1.25 } },
+      { "type": "add_multiplier", "params": { "stat": "irony", "value": 0.8 } }
+    ]
+  },
+  {
+    "id": "talent_mirror_dweller",
+    "name": "镜中人",
+    "tier": 3,
+    "description": "你总觉得镜子里的那个人不是你，而是一个正在模仿你的“东西”。",
+    "effects": [
+      { "type": "change_stat", "params": { "weirdness": 15, "anonymity": 20 } },
+      { "type": "add_status_effect", "params": { "statusId": "derealization", "duration": 9999 } }
+    ]
+  },
+  {
     "id": "talent_folklorist",
     "name": "民俗学者",
     "tier": 2,
@@ -233,6 +252,16 @@
       { "type": "change_stat", "params": { "gnosis": 10, "logic": 5 } },
       { "type": "change_tag_probability", "params": { "tag": "chinese_folklore", "multiplier": 1.5 } },
       { "type": "change_tag_probability", "params": { "tag": "ritual", "multiplier": 1.2 } }
+    ]
+  },
+  {
+    "id": "talent_luddite",
+    "name": "原始主义者",
+    "tier": 2,
+    "description": "机器的哀嚎和自然的哭泣在你耳边回荡。",
+    "effects": [
+      { "type": "change_stat", "params": { "gnosis": 10, "logic": -5, "primitivism": 10 } },
+      { "type": "change_tag_probability", "params": { "tag": "anti-tech", "multiplier": 10.8 } }
     ]
   }
 ]

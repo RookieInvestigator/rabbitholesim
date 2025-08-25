@@ -299,8 +299,7 @@
           "weight": 1,
           "feedback": "在你吃下冰淇淋后，你感到自己的身体开始发生奇妙的变化，你的基因似乎正在与某种古老的生命形态进行对话。你获得了一个新的状态。",
           "outcomes": [
-            { "type": "change_stat", "params": { "gnosis": 15, "health": -20, "sanity": -15 } },
-            { "type": "add_status_effect", "params": { "statusId": "ancient_symbiosis", "duration": 9999 } }
+            { "type": "change_stat", "params": { "gnosis": 15, "health": -20, "sanity": -15 } }
           ]
         }]
       }

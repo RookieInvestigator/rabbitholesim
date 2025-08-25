@@ -15,7 +15,7 @@
       { "type": "death_reason", "reason": "sanity" }
     ]
   },
-    {
+  {
     "id": "ending_default_debt",
     "title": "负债缠身",
     "description": "你被巨额的债务彻底压垮，在绝望中结束了这一切。",
@@ -24,10 +24,21 @@
     ]
   },
   {
-    "id": "ending_anarcho_primitivism",
+    "id": "anarcho_primitivism",
     "title": "回归野性",
-    "description": "人类文明是错误的。你将最后一件人造衣物扔进火里，赤身裸体地走进了森林的黑暗深处。你放弃了语言、放弃了工具、放弃了“自我”这个概念。风是你唯一的语言，饥饿是你唯一的动机。你回归了，不再作为“人类”，而是作为自然本身的一部分。",
+    "description": "你对前人的遗产毫无兴趣，只是将小木屋打扫干净，作为自己融入自然的第一个庇护所。你放弃了语言、放弃了工具、放弃了“自我”这个概念。风是你唯一的语言，饥饿是你唯一的动机。你回归了，不再作为“人类”，而是作为自然本身的一部分。",
     "priority": 100,
-    "conditions": []
+    "conditions": [
+      { "type": "ending_id", "endingId": "anarcho_primitivism" }
+    ]
+  },
+  {
+    "id": "unabomber_successor",
+    "title": "炸弹客回来了",
+    "description": "你消失了。在官方记录里，你成了一个失踪人口。但在地下的网络和反叛者的传说中，你成为了一个新的幽灵。你住在荒野的小木屋里，用双手制作工具，用思想磨砺武器。你不再是单纯地回归自然，你选择成为自然向工业文明复仇的意志。你的包裹，正在被寄往下一个时代。",
+    "priority": 100,
+    "conditions": [
+        { "type": "ending_id", "endingId": "unabomber_successor" }
+    ]
   }
 ]

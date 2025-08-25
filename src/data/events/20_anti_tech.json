@@ -24,7 +24,10 @@
         "results": [{
           "weight": 1,
           "feedback": "你开始审视身边所有的工业产品，它们在你眼中不再是工具，而是一个个精美的、设计好何时死亡的囚笼。这个想法让你不寒而栗。",
-          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -8 } } ]
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 8, "sanity": -8 } },
+            { "type": "change_stat", "params": { "primitivism": 4 } }
+          ]
         }]
       },
       {
@@ -35,7 +38,10 @@
           {
             "weight": 1,
             "feedback": "经过一番艰苦的努力，你竟然真的修好了它！你成功地对抗了消费主义的浪潮，获得了一种巨大的成就感。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "sanity": 10, "money": -100 } } ]
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 10, "sanity": 10, "money": -100 } },
+              { "type": "change_stat", "params": { "primitivism": 3 } }
+            ]
           },
           {
             "weight": 1,
@@ -45,13 +51,16 @@
         ]
       },
       {
-        "text": "把坏掉的打印机改造成一个花盆，",
+        "text": "把坏掉的打印机改造成一个花盆。",
         "worldview": "weirdness",
         "magnitude": 2,
         "results": [{
           "weight": 1,
           "feedback": "你用一种充满艺术感的方式，赋予了这堆工业垃圾全新的生命。你的植物似乎很喜欢它的新家。",
-          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "irony": 3, "sanity": 5 } } ]
+          "outcomes": [
+            { "type": "change_stat", "params": { "weirdness": 5, "irony": 3, "sanity": 5 } },
+            { "type": "change_stat", "params": { "primitivism": 4 } }
+          ]
         }]
       },
       {
@@ -69,6 +78,19 @@
           "outcomes": [ { "type": "change_stat", "params": { "irony": 6, "fame": 6, "money": 4000 } } ]
         }
     ]
+      },
+      {
+        "text": "这台打印机不是坏了，是它的‘机器之灵’死去了。我需要为它举行一场赛博葬礼。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你为它创建了一个纪念网页，并用代码写了一首悼亡诗。你感觉自己用一种充满敬意的方式，告慰了一个逝去的工业产品。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "weirdness": 8, "irony": 3, "sanity": -3 } },
+            { "type": "change_stat", "params": { "primitivism": 3 } }
+          ]
+        }]
       }
     ]
   },
@@ -87,7 +109,10 @@
         "results": [{
           "weight": 1,
           "feedback": "你报名参加了一个野外生存训练营。虽然过程很辛苦，但你感觉自己变得更强大、更独立了。",
-          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "health": 10, "sanity": 5 } } ]
+          "outcomes": [
+            { "type": "change_stat", "params": { "logic": 5, "health": 10, "sanity": 5 } },
+            { "type": "change_stat", "params": { "primitivism": 5 } }
+          ]
         }]
       },
       {
@@ -97,7 +122,10 @@
         "results": [{
           "weight": 1,
           "feedback": "你将这次停电视为一次预演，并开始为未来更大规模的“切断”做准备。你开始囤积罐头、电池和净水片。",
-          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "money": -500, "sanity": -2 } } ]
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 8, "money": -500, "sanity": -2 } },
+            { "type": "change_stat", "params": { "primitivism": 4 } }
+          ]
         }]
       },
       {
@@ -107,7 +135,10 @@
         "results": [{
           "weight": 1,
           "feedback": "在烛光摇曳中，你享受了一个宁静而复古的夜晚。你甚至觉得，没有手机和网络的生活，也别有一番风味。",
-          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "sanity": 8 } } ]
+          "outcomes": [
+            { "type": "change_stat", "params": { "weirdness": 4, "sanity": 8 } },
+            { "type": "change_stat", "params": { "primitivism": 2 } }
+          ]
         }]
       },
       {
@@ -117,7 +148,376 @@
         "results": [{
           "weight": 1,
           "feedback": "你的活动大受欢迎，邻里间的关系因此变得更加融洽。虽然最后没人能成功生火，但大家都玩得很开心。",
-          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "fame": 5, "sanity": 5 } } ]
+          "outcomes": [
+            { "type": "change_stat", "params": { "irony": 8, "fame": 5, "sanity": 5 } },
+            { "type": "change_stat", "params": { "primitivism": 3 } }
+          ]
+        }]
+      },
+      {
+        "text": "文明的脆弱显而易见。我应该开始在家里储存种子和土壤，为即将到来的崩溃建立一个室内农场。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你将所有能利用的空间都变成了种植区。这不仅是一份保险，更是一种宣言：即使城市崩溃，你也能自给自足。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "logic": 8, "health": 5, "money": -800 } },
+                { "type": "change_stat", "params": { "primitivism": 6 } }
+            ]
+        }]
+      },
+      {
+        "text": "在黑暗中，我反而看得更清楚了。我走上街头，开始用粉笔在墙上画出发光的、原始的符号，为迷失的城市居民指引方向。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的涂鸦在第二天引起了小小的骚动。没人知道这些符号的意义，但它们确实为灰色的城市增添了一抹神秘的色彩。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "weirdness": 8, "fame": 3, "sanity": -4 } },
+                { "type": "change_stat", "params": { "primitivism": 4 } }
+            ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "anti_tech_sensory_overload",
+    "title": "工业噪音",
+    "text": "你正想静下心来思考，但这根本不可能。窗外的建筑工地在钻探，头顶的飞机发出轰鸣，永不休止的车流形成了无止的背景音。这噪音不仅仅是声音，它像是一种物理上的压力，不断提醒你，这座名为“文明”的巨型机器永不眠息。",
+    "tags": ["daily", "anti-tech", "philosophy", "health", "industrial_complex"],
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "我需要一副好的降噪耳机。用科技对抗科技。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你下单了一副昂贵的耳机。在它到货之前，你只能继续忍受。这是一种投资，也是一种妥协。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": -1000, "logic": 2, "sanity": -2 } },
+            { "type": "change_stat", "params": { "primitivism": -5 } } ]
+        }]
+      },
+      {
+        "text": "这种持续的低频噪音是故意的，它被设计用来扰乱我们的思维，让我们变得顺从和焦虑。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始研究声波武器和次声波对人类心理的影响。越是研究，越觉得这片噪音之海的背后隐藏着险恶的用心。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 8, "sanity": -8 } },
+            { "type": "change_stat", "params": { "primitivism": 3 } }
+          ]
+        }]
+      },
+      {
+        "text": "工业用它的噪音来压制自然。那么，我就要用我自己的声音，模仿野兽的咆哮和森林的低语，来重新宣告这片土地的归属。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你在噪音的洪流中，发出了不成调的、原始的嚎叫。路过的行人对你侧目，但你感觉自己的声音仿佛穿透了混凝土的屏障，触碰到了这片土地被遗忘的、古老的脉搏。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "weirdness": 10, "gnosis": 2, "sanity": -8, "fame": -5 } },
+            { "type": "change_stat", "params": { "primitivism": 5 } }
+          ]
+        }]
+      },
+      {
+        "text": "录下这段声音，把它设置成我的起床闹铃，标题是《我挚爱的城市之声》。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "第二天早上，你在极度的烦躁中醒来。你成功地用一种讽刺的方式，将这份痛苦延续到了新的一天。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "health": -3, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "我受够了。我要立刻离开城市，去最近的森林或山区待上一天。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你坐上了最早的一班车离开了城市。当你的双脚踏上泥土，耳边只剩下风声和鸟鸣时，你感到自己的灵魂都被洗涤了。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "health": 10, "sanity": 15, "money": -300 } },
+            { "type": "change_stat", "params": { "primitivism": 5 } }
+          ]
+        }]
+      },
+      {
+        "text": "这不是噪音，这是‘文明’的哀嚎。我应该脱掉鞋子，用赤脚感受大地的震动，以此来‘接地’。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你走到楼下的草坪，脱下鞋袜。透过脚底传来的、被混凝土和沥青过滤后的微弱震动，你似乎听懂了这颗星球的痛苦。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "weirdness": 8, "gnosis": 3, "sanity": 2 } },
+            { "type": "change_stat", "params": { "primitivism": 3 } }
+          ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "anti_tech_light_prison",
+    "title": "光之穹顶",
+    "text": "天气预报说今晚会有流星雨。你满怀期待地来到一处开阔地，但看到的只有一片被城市灯光染成病态橘黄色的、空无一物的天空。星辰、银河、甚至是最亮的几颗行星，全都被这层由人类自己制造的、永不熄灭的光幕彻底抹去。你意识到，你被囚禁在一个由光构成的穹顶之下。",
+    "tags": ["daily", "anti-tech", "philosophy", "sky", "industrial_complex"],
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "查询光污染地图，并计划下个周末去最近的暗夜公园。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你制定了一个周密的计划。虽然今晚的星空已经错过，但你决心用行动去夺回本该属于每个人的视野。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 4, "sanity": 2, "money": -50 } } ]
+        }]
+      },
+      {
+        "text": "这不是“污染”，这是“遮蔽”。“他们”不希望我们看到星星，因为星空会提醒我们宇宙的浩瀚和自身的渺小。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始相信，这层光幕是一个巨大的精神牢笼，用来维持一种虚假的、以人类为中心的宇宙观。你感觉自己窥见了世界的又一个秘密。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 8, "sanity": -8 } },
+            { "type": "change_stat", "params": { "primitivism": 4 } }
+          ]
+        }]
+      },
+      {
+        "text": "闭上眼睛，在脑海中观想一片最璀璨的星空。我要用内在的黑暗，来对抗外部这虚假的光明。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你的精神世界里，银河奔涌，星云绽放。你感到一种与宇宙重新连接的深刻平静。当你睁开眼时，城市的灯光似乎变得黯淡了一些。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "weirdness": 5, "sanity": 5 } },
+            { "type": "change_stat", "params": { "primitivism": 2 } }
+          ]
+        }]
+      },
+      {
+        "text": "打开手机的点评App，给今晚的“城市夜空灯光秀”打一颗星，并附上差评：“光效太单一，缺乏互动性。”",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的评论很快就被淹没在数据的海洋里，但你完成了一次小小的、充满讽刺意味的抵抗。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "拿出我能找到的最亮的手电筒，对着天空照射，尝试在光幕上“画”出自己的星座。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的光柱在巨大的城市光晕面前，渺小得可以忽略不计。这个徒劳的举动让你感到了巨大的无力感，但也有一种荒诞的诗意。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "这不是人类的错，是“光”本身正在吞噬“暗”。这是一种宇宙尺度的熵增现象。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你将眼前的景象理解为一场形而上的、关于存在本质的斗争。你开始思考，“黑暗”和“光明”哪个才是宇宙的常态，而哪个才是短暂的、混乱的异常。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "gnosis": 3, "sanity": -4 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "anti_tech_food_alienation",
+    "title": "食物的异化",
+    "text": "你在超市的生鲜区，看着那些被保鲜膜紧紧包裹、大小形状完美得如同工业制品的蔬菜。它们干净、标准、毫无瑕疵，但也闻不到一丝泥土的气息。这让你突然意识到，你已经很久不知道自己吃的食物，在生长时是什么样子了。",
+    "tags": ["daily", "anti-tech", "philosophy", "food", "industrial_complex"],
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "这就是现代农业的便利之处。我应该心怀感激。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你挑选了几样看起来最新鲜的蔬菜放进购物车。虽然它们缺乏“灵魂”，但至少能填饱肚子。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "health": 2 } },
+            { "type": "change_stat", "params": { "primitivism": -5 } } ]
+        }]
+      },
+      {
+        "text": "放弃购买。我要去城市的边缘，找一个本地的小农市集。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你花了一整个下午，终于找到了一个朴素的农夫市集。这里的蔬菜虽然卖相不佳，但充满了生命力。你感到自己与食物的来源重新建立了连接。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 5, "health": 5, "sanity": 5, "money": -200 } },
+            { "type": "change_stat", "params": { "primitivism": 5 } }
+          ]
+        }]
+      },
+      {
+        "text": "我要在自家阳台上开辟一个菜园。这是我个人的“农业革命”。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你购买了种子、土壤和花盆。虽然过程很辛苦，但当你看到第一颗种子发出嫩芽时，一种巨大的成就感油然而生。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "logic": 5, "health": 3, "sanity": 8, "money": -500 } },
+            { "type": "change_stat", "params": { "primitivism": 4 } }
+          ]
+        }]
+      },
+      {
+        "text": "这些蔬菜不是食物，它们是“燃料”。是为了维持工业体系运转而生产的、标准化的生物质。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "这个想法让你不寒而栗。在你眼中，整个超市变成了一个巨大的、为城市机器添加燃料的补给站。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 8, "sanity": -8 } },
+            { "type": "change_stat", "params": { "primitivism": 3 } }
+          ]
+        }]
+      },
+      {
+        "text": "拿起一颗最完美的西红柿，对着它轻声说：“我知道你不是真的。告诉我，你的母体在哪里？”",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "超市的保安注意到了你的奇怪举动，并过来礼貌地请你不要和商品说话。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "fame": -5, "sanity": -4 } } ]
+        }]
+      },
+      {
+        "text": "用手机拍下这些蔬菜，并使用最夸张的滤镜，让它们看起来像是来自外星的植物，然后发到网上。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的“艺术创作”得到了一些朋友的点赞，他们评论道：“这蔬菜看起来太假了，就像超市里卖的一样。”",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "fame": 2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "anti_tech_pilgrimage_awakening",
+    "title": "圣地",
+    "text": "那股来自荒野的呼唤日益强烈，你无法再抗拒。你变卖了所有家当，告别了熟悉的一切，只带着最基本的装备，踏上了前往那个神秘坐标的旅途。脱离文明的第一天就让你吃尽了苦头：冰冷的雨水、挥之不去的饥饿感，以及失去了手机后那种深入骨髓的无聊。在经历了数日的艰苦跋涉后，你终于在森林深处，找到了那座几乎已被自然吞噬的腐朽小木屋。",
+    "tags": ["anti-tech", "philosophy", "unique", "ending_path", "conspiracy"],
+    "isUnique": true,
+    "priority": 500,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "primitivism", "operator": ">=", "value": 40 } }
+    ],
+    "choices": [
+      {
+        "text": "推开屋门。在腐朽的书桌上，我找到了前人的手稿、日记和一些未完成的“作品”蓝图。我将继承这一切。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你贪婪地阅读着那些冰冷而愤怒的文字，一种前所未有的使命感充满了你的内心。你不再是你自己，你成了一个理念，一个幽灵，一个向工业社会宣战的符号。你的探索将迎来终局……",
+          "outcomes": [
+            { "type": "trigger_ending", "params": { "endingId": "unabomber_successor" } }
+          ]
+        }]
+      },
+      {
+        "text": "我不关心屋里有什么。我需要的只是这片荒野。我将住在这里，成为一个真正的隐士。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你对前人的遗产毫无兴趣，只是将小木屋打扫干净，作为自己融入自然的第一个庇护所。你没有成为一个符号，你只是成为了一个真正自由的、无名的人。你的探索将迎来终局……",
+          "outcomes": [
+            { "type": "trigger_ending", "params": { "endingId": "anarcho_primitivism" } }
+          ]
+        }]
+      },
+      {
+        "text": "这太疯狂了！没有暖气，没有外卖，甚至没有厕纸！我受够了，我现在就要回到文明世界！",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你连滚带爬地逃离了森林。当你重新看到柏油马路和便利店的灯光时，你几乎要哭出来。你狼狈地回到了城市，但你早已一无所有，只能从零开始。",
+          "outcomes": [
+            { "type": "set_stat", "params": { "money": 0, "health": 40, "sanity": 30, "primitivism": 0 } }
+          ]
+        }]
+      },
+      {
+        "text": "这些东西太危险了，不能留存于世。我将一把火烧掉这间木屋和里面的一切。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "火焰吞噬了木屋，也吞噬了一段危险的历史。你感觉自己做出了一个沉重但正确的决定。你回到了文明社会，心中带着一个无人知晓的秘密。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "sanity": 20, "logic": 10 } },
+            { "type": "set_stat", "params": { "primitivism": 0 } }
+          ]
+        }]
+      },
+      {
+        "text": "将手稿和日记带走，匿名发布到网上，让全世界来审判这份遗产。",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的举动在全球网络上掀起了一场剧烈的思想风暴，引发了无尽的混乱和辩论。你成为了这个时代的“模因之王”，但也可能是最危险的麻烦制造者。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "irony": 25, "fame": 50, "anonymity": -100, "sanity": -15 } },
+            { "type": "set_stat", "params": { "primitivism": 0 } }
+          ]
+        }]
+      },
+      {
+        "text": "将这些珍贵的一手资料带回去。我要写一本关于他的书，从心理学和社会学的角度，彻底解构这个幽灵。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的著作引起了巨大的轰动，让你名利双收。你成为了世界上最了解这个危险思想的专家，但也因此吸引了无数模仿者和敌对组织的注意。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "logic": 20, "money": 30000, "fame": 30, "anonymity": -40 } },
+                { "type": "set_stat", "params": { "primitivism": 0 } }
+            ]
+        }]
+      },
+      {
+        "text": "这些东西……可都是真迹！它们在收藏家市场上绝对价值连城。",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你小心翼翼地将所有物品打包带走，并成功地与一位神秘的富豪达成了交易。你用一份足以颠覆世界的思想，换来了一生都花不完的财富。",
+            "outcomes": [
+                { "type": "set_stat", "params": { "money": 100000, "primitivism": 0 } },
+                { "type": "change_stat", "params": { "irony": 20, "logic": -10, "sanity": 5 } }
+            ]
         }]
       }
     ]

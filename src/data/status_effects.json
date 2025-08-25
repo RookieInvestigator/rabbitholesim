@@ -28,5 +28,17 @@
     "outcomes": [
       { "type": "change_stat", "params": { "sanity": -1 } }
     ]
+  },
+  "indentured_servitude": {
+    "name": "契约奴役",
+    "outcomes": [
+      { "type": "change_stat", "params": { "money": -50, "sanity": -1, "health": -1 } }
+    ]
+  },
+  "marked_target": {
+    "name": "被标记的目标",
+    "outcomes": [
+      { "type": "change_stat", "params": { "anonymity": -2, "sanity": -1 } }
+    ]
   }
 }

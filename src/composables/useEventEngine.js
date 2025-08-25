@@ -17,6 +17,11 @@ export function useEventEngine() {
     isLoading.value = false;
   }
 
+  // ✨ 新增: 按ID查找特定事件的函數
+  function findEventById(eventId) {
+    return allEvents.find(event => event.id === eventId) || null;
+  }
+
   function isConditionMet(condition) {
     const { type, params } = condition;
     switch(type) {
@@ -54,6 +59,8 @@ export function useEventEngine() {
   
   function findTriggerableEvent() {
     const available = allEvents.filter(event => {
+      // ✨ 修改: 過濾掉 meta 事件，防止它在常規流程中被抽到
+      if (event.tags && event.tags.includes('meta')) return false;
       if (event.isUnique && player.triggeredEventIds.has(event.id)) return false;
       if (event.requiresUnlock && !player.unlockedEventIds.has(event.id)) return false;
       return !event.conditions || event.conditions.every(isConditionMet);
@@ -206,5 +213,5 @@ export function useEventEngine() {
     return finalChoices.map(c => ({ ...c, uuid: uuidv4() }));
   }
 
-  return { isLoading, loadEvents, findTriggerableEvent, processEvent, getManualChoices, isConditionMet };
+  return { isLoading, loadEvents, findEventById, findTriggerableEvent, processEvent, getManualChoices, isConditionMet };
 }

@@ -285,10 +285,9 @@
         "magnitude": 2,
         "results": [{
           "weight": 1,
-          "feedback": "硬币在空中翻滚，落下后，既不是正面也不是反面，而是稳稳地立在了地上。你感觉周围的空气都凝固了。你获得了状态“命运不定”。",
+          "feedback": "硬币在空中翻滚，落下后，既不是正面也不是反面，而是稳稳地立在了地上。你感觉周围的空气都凝固了。",
           "outcomes": [
-            { "type": "change_stat", "params": { "weirdness": 8, "sanity": -5 } },
-            { "type": "add_status_effect", "params": { "statusId": "precarious_fate", "duration": 15 } }
+            { "type": "change_stat", "params": { "weirdness": 8, "sanity": -5 } }
           ]
         }]
       },

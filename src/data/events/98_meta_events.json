@@ -1,0 +1,21 @@
+[
+  {
+    "id": "meta_end_of_exploration",
+    "title": "探索结束",
+    "text": "你的探索之路似乎已经走到了尽头。无论前方是荣耀还是虚无，是时候拉下帷幕，查看最终的报告了。",
+    "tags": ["meta"],
+    "choices": [
+      {
+        "id": "choice_show_game_over",
+        "text": "【 查看最终报告 】",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你合上了笔记，归档了这次探索的数据。",
+          "outcomes": []
+        }]
+      }
+    ]
+  }
+]

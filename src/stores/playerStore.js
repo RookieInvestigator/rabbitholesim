@@ -13,8 +13,10 @@ const getInitialState = () => ({
   irony: 5,
   fame: 0,
   anonymity: 100,
+  primitivism: 0,
   
   deathReason: null,
+  endingTriggered: false, // <-- 用於標記結局是否觸發，以顯示meta事件按鈕
 
   statMultipliers: {},
   statusEffects: [],
@@ -90,7 +92,15 @@ export const usePlayerStore = defineStore('player', {
             }
             break;
           case 'add_item':
-            this.inventory.push(outcome.params.itemId);
+            if (!this.inventory.includes(outcome.params.itemId)) {
+                this.inventory.push(outcome.params.itemId);
+            }
+            break;
+          case 'remove_item':
+             const index = this.inventory.indexOf(outcome.params.itemId);
+             if (index > -1) {
+                this.inventory.splice(index, 1);
+             }
             break;
           case 'unlocksEvent':
             this.unlockedEventIds.add(outcome.params.eventId);
@@ -116,7 +126,6 @@ export const usePlayerStore = defineStore('player', {
             }
             break;
           
-
           case 'change_tag_probability': 
             const { tag, multiplier: tagMultiplier } = outcome.params;
             if (!this.tagProbabilityModifiers[tag]) {
@@ -190,6 +199,7 @@ export const usePlayerStore = defineStore('player', {
       if (!this.isAlive) return;
       this.isAlive = false;
       this.deathReason = reasonKey;
+      this.endingTriggered = true;
       this.addLog({ message: `【探索结束】${logMessage}`, type: 'ending' });
     }
   },

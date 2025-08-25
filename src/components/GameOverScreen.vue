@@ -8,11 +8,22 @@ const emit = defineEmits(['restart']);
 const finalEnding = ref({ title: '探索结束', description: '你的数据已被归档。' });
 
 onMounted(() => {
-  // ✨ 核心修改：使用 player.deathReason 來匹配結局
   if (player.deathReason) {
+    // ✨ 核心修复：修改匹配逻辑，使其能够同时处理两种结局类型
     const matchedEnding = allEndings.find(ending => 
-      ending.conditions.some(cond => cond.type === 'death_reason' && cond.reason === player.deathReason)
+      ending.conditions.some(cond => {
+        // 检查是否是标准死亡结局
+        if (cond.type === 'death_reason' && cond.reason === player.deathReason) {
+          return true;
+        }
+        // 检查是否是特殊事件触发的结局
+        if (cond.type === 'ending_id' && cond.endingId === player.deathReason) {
+          return true;
+        }
+        return false;
+      })
     );
+    
     if (matchedEnding) {
       finalEnding.value = matchedEnding;
     }
@@ -67,7 +78,6 @@ button {
   margin-top: 2rem;
 }
 
-/* ✨ 新增樣式 ✨ */
 .final-stats-container {
   border-top: 1px solid #333;
   border-bottom: 1px solid #333;
@@ -101,14 +111,5 @@ button {
 .stat-item span {
   color: #fff;
   font-weight: bold;
-}
-.dominant-worldview {
-  margin-top: 1.5rem;
-  font-size: 1.1rem;
-  color: #ccc;
-}
-.dominant-worldview strong {
-  color: #8cb4ff;
-  text-transform: capitalize;
 }
 </style>
