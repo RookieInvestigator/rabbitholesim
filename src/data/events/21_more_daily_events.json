@@ -552,5 +552,162 @@
         }]
       }
     ]
+  },
+  {
+    "id": "daily_sock_gnome",
+    "title": "不成对谜题",
+    "text": "你正在折叠刚洗好的衣服，然后，那件熟悉又恼人的事情发生了：你发现一双袜子只剩下了一只。你翻遍了洗衣机和烘干机，检查了所有角落，但它的另一半就像是从这个世界上凭空蒸发了一样。",
+    "tags": ["daily", "mystery", "weird", "urban_legend"],
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "一定是掉在洗衣机后面，或者被床单卷起来了。仔细再找一遍。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 3,
+            "feedback": "果然，你在洗衣机和墙壁的缝隙里找到了那只失踪的袜子。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 2 } } ]
+          },
+          {
+            "weight": 7,
+            "feedback": "你把整个洗衣房翻了个底朝天，但还是一无所获。它彻底消失了。",
+            "outcomes": [ { "type": "change_stat", "params": { "sanity": -3 } } ]
+          }
+        ]
+      },
+      {
+        "text": "这不是意外。‘地板小精灵’是真的，它们需要单一的袜子来建造它们的地下王国。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "这个想法让你释然了。这不是丢失，这是一种跨物种的税收。你在心中默默祝愿那个小精灵能用你的袜子盖一间温暖的房子。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 4, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "我应该留下祭品来换回我的袜子。一小块饼干和一粒纽扣应该够了。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你将祭品放在洗衣机旁。第二天早上，祭品不见了，而那只失踪的袜子，干净、温暖地叠放在了原地。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "gnosis": 3, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "把剩下的那只袜子也扔进洗衣机的深处。我这是在‘放生’，让它可以去找它的伴侣。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你完成了一次充满善意（或许）的道别。虽然你现在一双袜子都没有了，但你感觉自己的境界得到了提升。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "从根本上解决问题：以后只买所有颜色款式都完全一样的袜子。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你下单了一大包一模一样的黑色袜子。从此，你的世界里再也没有“不成对”这个概念了。你用一种极端的秩序战胜了混乱。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "money": -300 } } ]
+        }]
+      },
+      {
+        "text": "袜子制造商和洗衣机制造商是串通好的。他们在机器里内置了‘袜子吞噬’装置，以此来促进消费。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始在网上搜索相关的“证据”，并找到了一个专门讨论此事的论坛。你发现自己不是一个人在战斗。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 5, "sanity": -3 } },
+            { "type": "change_stat", "params": { "primitivism": 1 } }
+          ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "daily_elevator_ritual",
+    "title": "电梯向异世界",
+    "text": "深夜，你独自一人走进电梯。在金属门缓缓关闭的瞬间，你突然想起了一个在网络上流传甚广的都市传说：通过特定的按键顺序，这部电梯可以通往一个“不存在的世界”。",
+    "tags": ["daily", "mystery", "ritual", "supernatural", "urban_legend"],
+    "isUnique": false,
+    "priority": 2,
+    "choices": [
+      {
+        "text": "荒唐的网络传说罢了，只会浪费我的时间。按下自己要去的楼层。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "电梯平稳地运行，将你送到了目的地。一切正常。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "我相信这是事实，但我也知道其中的危险。在没有做好充分准备之前，我不会轻易尝试。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你怀着敬畏之心，什么也没按，等待着有其他人进来。你感觉自己成功地避开了一次未知的风险。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 4, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "好奇心是无法抑制的。我必须亲眼看看门的另一边是什么。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [
+          {
+            "weight": 5,
+            "feedback": "你按下了最后的按钮，但什么也没发生。电梯依然停在原地，门也没有打开。你感觉自己像个傻瓜。",
+            "outcomes": [ { "type": "change_stat", "params": { "sanity": -8 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "在你按下第五层后，电梯剧烈震动，灯光熄灭。当门再次打开时，外面是一片只有红色天空和黑色建筑的死寂世界。你惊恐地按下了关门键，电梯在你身后的世界彻底消失前关上了门。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 20, "sanity": -25 } } ]
+          }
+        ]
+      },
+      {
+        "text": "谁说电梯按钮只能用来选楼层？我要用它来弹一首《春日影》。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你叮叮咚咚地弹完最后一个音符后，电梯的灯光闪烁了一下，喇叭里传出了一个合成语音：“演出很精彩。评分：8/10。”",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "weirdness": 3, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "检查一下这台电梯的型号和维护记录。这种老式电梯更容易出现都市传说。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你在电梯角落的铭牌上看到了它的型号，并在网上查到了相关信息。根据一些论坛的讨论，这个型号的电梯确实因为其独特的电路设计而经常出现“故障”。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "既然有‘开启’的仪式，就一定有‘封闭’的仪式。我要用相反的顺序按一遍，来加固这道‘门’。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你按下最后一个按钮后，你感觉电梯轿厢内的空气似乎变得“凝实”了一些。你不知道这是否有效，但这让你感到更加安全。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "weirdness": 2, "sanity": 3 } } ]
+        }]
+      }
+    ]
   }
 ]
