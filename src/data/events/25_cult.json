@@ -1,0 +1,248 @@
+[
+  {
+    "id": "cult_family_01_invitation",
+    "title": "美好家庭",
+    "text": "你的一位邻居，一对总是面带微笑、彬彬有礼的夫妇，热情地邀请你参加他们周末举办的“家庭和谐与幸福”分享晚宴。他们说，这是一个促进邻里关系、分享积极生活方式的好机会。他们的孩子也很有礼貌，用清澈的眼睛看着你，让你感觉很难拒绝。",
+    "tags": ["cult", "social", "community", "unique", "chain_start"],
+    "isUnique": true,
+    "priority": 20,
+    "choices": [
+      {
+        "text": "听起来是个不错的社交机会。欣然接受邀请。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你度过了一个愉快的夜晚。晚宴上的每个人都非常友善，气氛溫馨和谐。你感觉自己融入了一个温暖的大家庭。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "sanity": 8 } },
+            { "type": "unlocksEvent", "params": { "eventId": "cult_family_02_seminar" } }
+          ]
+        }]
+      },
+      {
+        "text": "这种过分的热情和完美，反而让我感到一丝不自在。婉言谢绝。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你拒绝了邀请。那对夫妇虽然有些失望，但依然保持着礼貌的微笑。你总觉得他们的微笑背后，隐藏着什么你看不懂的东西。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 4, "anonymity": 5 } } ]
+        }]
+      },
+      {
+        "text": "免费的晚餐？为什么不呢！",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "食物非常美味，人们也非常友善。你吃得很满足，并在离开时打包了一些点心。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "irony": 4, "sanity": 5, "health": 2 } },
+            { "type": "unlocksEvent", "params": { "eventId": "cult_family_02_seminar" } }
+          ]
+        }]
+      },
+      {
+        "text": "他们不是在邀请我，是在“筛选”我。这个家庭的“气场”很奇怪，像是一个被精心排练的舞台剧。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你盯着那个孩子的眼睛，试图从中看出破绽。孩子被你看得有些害怕，躲到了他母亲的身后。你感觉自己似乎“看穿”了什么。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": -4 } } ]
+        }]
+      },
+      {
+        "text": "先答应下来，然后在网上搜索一下这个社区或这对夫妇的名字，看看有没有什么背景信息。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 3,
+            "feedback": "你在网上查了查，发现他们在一个名为“全球幸福者之家”的慈善组织下做义工。该组织致力于“重建家庭价值”，网上评价褒贬不一。你决定还是去看看。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 5, "gnosis": 2, "sanity": 2 } },
+              { "type": "unlocksEvent", "params": { "eventId": "cult_family_02_seminar" } }
+            ]
+          },
+          {
+            "weight": 1,
+            "feedback": "你在一个专门揭露邪教的论坛里，看到了对“全球幸福者之家”的血泪控诉。你立刻找借口取消了晚宴。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 5, "sanity": 5 } } ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cult_family_02_seminar",
+    "title": "爱的研讨会",
+    "text": "因为上次愉快的晚宴经历，你又被那对夫妇邀请参加一个为期两天的“高阶研讨会”。会场里坐满了和你一样的新人，每个人脸上都洋溢着幸福的笑容。一位极具魅力的导师告诉你，现代社会的种种问题，都源于“原生家庭”的堕落与不纯洁，而他们的“幸福者之家”和“真父母”，将带领所有人回归真正的和谐与统一。",
+    "tags": ["cult", "social", "community", "philosophy", "unique", "consequence"],
+    "isUnique": true,
+    "requiresUnlock": true,
+    "priority": 20,
+    "choices": [
+      {
+        "text": "虽然“真父母”的说法有点奇怪，但他们关于改善家庭关系的核心理念是好的。这是一个劝人向善的社群。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你在充满掌声和泪水的分享会中，感到了强烈的归属感。你决定更深入地参与他们的活动，并获得了一种被“爱”包围的温暖状态。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "sanity": 10, "gnosis": -5 } },
+            { "type": "add_status_effect", "params": { "statusId": "love_bombed", "duration": 20 } },
+            { "type": "unlocksEvent", "params": { "eventId": "cult_family_03_the_donation" } }
+          ]
+        }]
+      },
+      {
+        "text": "“真父母”？这是典型的个人崇拜和精神控制。我必须立刻离开这里。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你在几位“家人”的目送中离开了会场。他们依然带着微笑。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 15, "sanity": -10, "anonymity": 10 } } ]
+        }]
+      },
+      {
+        "text": "原来后面还有收费课程。找个借口溜走，顺便拿走两瓶免费的矿泉水。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你成功地在没人注意的时候溜走了。你感觉自己白嫖了一次精神传销体验。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "money": 50 } } ]
+        }]
+      },
+      {
+        "text": "跟着他们一起哭，一起笑，一起鼓掌。我要看看这场大型角色扮演游戏的终点是什么。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你完美地融入了进去，你的投入甚至让一些老成员都对你刮目相看。你感觉自己正在探索一种全新的社会行为艺术。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "weirdness": 10, "irony": 5, "sanity": -5 } },
+            { "type": "unlocksEvent", "params": { "eventId": "cult_family_03_the_donation" } }
+          ]
+        }]
+      },
+      {
+        "text": "在问答环节，用社会学和心理学的理论，公开质疑他们“原生家庭”理论的普适性和科学依据。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的问题让导师愣了一下，但他很快就用一套无法证伪的“灵性”话语绕了过去，并暗示你的“过度理性”正是需要被“净化”的障碍。一些成员开始对你投来同情的目光。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "fame": -5, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "默默记下他们的核心教义、组织结构和关键人物。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "status_check", "params": { "has": "talent_eidetic_memory" } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你像一块海绵，吸收着这里的一切信息。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "gnosis": 10, "logic": 5 } },
+                { "type": "add_item", "params": { "itemId": "cult_indoctrination_files" } },
+                { "type": "unlocksEvent", "params": { "eventId": "cult_family_03_the_donation" } }
+            ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "cult_family_03_the_donation",
+    "title": "奉献试炼",
+    "text": "在研讨会之后，你的邻居夫妇私下找到了你。他们告诉你，为了维持社区的运作、帮助更多需要“净化”的家庭，以及支持“真父母”的崇高事业，“大家庭”需要每一位成员的无私奉献。他们递给你一份“自愿奉献”表格，建议的金额是你月收入的30%。他们微笑着说：“爱，是需要通过行动来证明的。”",
+    "tags": ["cult", "social", "community", "money", "consequence", "unique"],
+    "isUnique": true,
+    "requiresUnlock": true,
+    "priority": 20,
+    "choices": [
+      {
+        "text": "这是一个非营利社群，收取一些运营费用是合理的。我愿意捐出一小部分。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你捐了一笔自己可以接受的金额。那对夫妇虽然似乎期待更多，但还是赞扬了你的“爱心”。你感觉自己与这个社群的联系更紧密了。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "money": -1000, "sanity": 5 } },
+            { "type": "unlocksEvent", "params": { "eventId": "cult_family_04_the_matching" } }
+          ]
+        }]
+      },
+      {
+        "text": "终于图穷匕见了。用“爱”来包装金钱索取，这是典型的骗局。我一分钱都不会给。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你明确拒绝。他们只是表示遗憾。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 10, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "“没问题！但我最近手头紧，能不能先用‘爱’来支付？比如给你们一个拥抱？”",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的玩笑并没有让气氛缓和下来。那对夫妇用一种怜悯的眼神看着你，仿佛在看一个无可救药的堕落者。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": -4 } } ]
+        }]
+      },
+      {
+        "text": "我不仅要捐钱，我还要把我的盆栽、旧沙发和我的宠物猫都“奉献”给“大家庭”。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的过度热情让那对夫妇感到有些困惑，他们最终只接受了你的捐款。你感觉自己的行为艺术可能有些用力过猛。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "weirdness": 10, "money": -1000, "sanity": -5 } },
+            { "type": "unlocksEvent", "params": { "eventId": "cult_family_04_the_matching" } }
+          ]
+        }]
+      },
+      {
+        "text": "调查这个组织的资金流向。我想知道我的钱会被用在什么地方。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你通过一些灰色渠道，查到了这个组织的财务报告。你发现大部分的捐款，最终都流入了“真父母”名下的数个空壳公司。这证实了你的猜想。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 15, "gnosis": 10, "sanity": 5, "anonymity": -10 } } ]
+        }]
+      },
+      {
+        "text": "“根据教义第7章第3条，初阶成员的奉献应该是自愿且不设门槛的。”",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "inventory_check", "params": { "has": "cult_indoctrination_files" } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你对自己记下的教义的熟练运用，让那对夫妇大吃一惊。他们连忙道歉，说自己理解有误，并对你的“虔诚”表示了高度赞赏。你成功地利用规则保护了自己。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "gnosis": 10, "logic": 5, "sanity": 5 } },
+                { "type": "unlocksEvent", "params": { "eventId": "cult_family_04_the_matching" } }
+            ]
+        }]
+      }
+    ]
+  }
+]

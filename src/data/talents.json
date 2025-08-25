@@ -5,16 +5,20 @@
     "tier": 1,
     "description": "你相信万物皆有逻辑可循。",
     "effects": [
-      { "type": "change_stat", "params": { "logic": 20, "weirdness": -5, "gnosis": -5 } }
+      { "type": "change_stat", "params": { "logic": 20, "weirdness": -5, "gnosis": -5 } },
+      { "type": "change_tag_probability", "params": { "tag": "supernatural", "multiplier": 0.8 } },
+      { "type": "change_tag_probability", "params": { "tag": "mystery", "multiplier": 0.85 } }
     ]
   },
   {
     "id": "talent_born_conspirator",
     "name": "天生的阴谋论者",
     "tier": 2,
-    "description": "可能是疫苗的问题……",
+    "description": "可能是疫苗的问题……你更容易注意到世界背后的阴谋。",
     "effects": [
-      { "type": "change_stat", "params": { "gnosis": 15, "anonymity": 10 } }
+      { "type": "change_stat", "params": { "gnosis": 15, "anonymity": 10 } },
+      { "type": "change_tag_probability", "params": { "tag": "conspiracy", "multiplier": 1.3 } },
+      { "type": "change_tag_probability", "params": { "tag": "crime", "multiplier": 1.2 } }
     ]
   },
   {
@@ -30,10 +34,11 @@
     "id": "talent_meme_propagator",
     "name": "互联网弄潮儿",
     "tier": 2,
-    "description": "你是衔着网络密钥诞生的一代。",
+    "description": "你是衔着网络密钥诞生的一代。与网络相关的事件更容易发生。",
     "effects": [
       { "type": "add_multiplier", "params": { "stat": "irony", "value": 1.25 } },
-      { "type": "add_multiplier", "params": { "stat": "fame", "value": 1.25 } }
+      { "type": "add_multiplier", "params": { "stat": "fame", "value": 1.25 } },
+      { "type": "change_tag_probability", "params": { "tag": "internet", "multiplier": 1.25 } }
     ]
   },
   {
@@ -51,9 +56,11 @@
     "id": "talent_weird_magnet",
     "name": "都市传说触发器",
     "tier": 2,
-    "description": "异常事件似乎总是围绕着你发生。",
+    "description": "异常事件似乎总是围绕着你发生。更容易遭遇都市传说与怪奇事件。",
     "effects": [
-      { "type": "change_stat", "params": { "weirdness": 10, "sanity": -15 } }
+      { "type": "change_stat", "params": { "weirdness": 10, "sanity": -15 } },
+      { "type": "change_tag_probability", "params": { "tag": "urban_legend", "multiplier": 1.4 } },
+      { "type": "change_tag_probability", "params": { "tag": "weird", "multiplier": 1.2 } }
     ]
   },
   {
@@ -62,7 +69,8 @@
     "tier": 1,
     "description": "你的所有一切都平平无奇。",
     "effects": [
-      { "type": "change_stat", "params": { "anonymity": 20 } }
+      { "type": "change_stat", "params": { "anonymity": 20 } },
+      { "type": "change_tag_probability", "params": { "tag": "daily", "multiplier": 1.2 } }
     ]
   },
   {
@@ -107,7 +115,7 @@
     "tier": 2,
     "description": "在网络世界里，你来去自如，不留痕迹。",
     "effects": [
-      { "type": "change_stat", "params": { "anonymity": 15, "irony": 5 } }
+      { "type": "change_stat", "params": { "anonymity": 15, "irony": 5, "logic": 5 } }
     ]
   },
   {
@@ -142,10 +150,11 @@
     "id": "talent_lucky_one",
     "name": "幸运儿",
     "tier": 2,
-    "description": "冥冥之中，似乎总有好运伴随着你。",
+    "description": "冥冥之中，似乎总有好运伴随着你。更容易遇到幸运事件。",
     "effects": [
       { "type": "add_multiplier", "params": { "stat": "money", "value": 1.1 } },
-      { "type": "change_stat", "params": { "sanity": 5 } }
+      { "type": "change_stat", "params": { "sanity": 5 } },
+      { "type": "change_tag_probability", "params": { "tag": "luck", "multiplier": 1.5 } }
     ]
   },
   {
@@ -161,9 +170,10 @@
     "id": "talent_taboo_breaker",
     "name": "百无禁忌",
     "tier": 2,
-    "description": "越是危险的知识，越让你感到兴奋。",
+    "description": "越是危险的知识，越让你感到兴奋。你将更容易接触到被诅咒的事物。",
     "effects": [
-      { "type": "change_stat", "params": { "gnosis": 10, "weirdness": 10, "sanity": -10 } }
+      { "type": "change_stat", "params": { "gnosis": 10, "weirdness": 10, "sanity": -10 } },
+      { "type": "change_tag_probability", "params": { "tag": "cursed", "multiplier": 1.4 } }
     ]
   },
   {
@@ -189,7 +199,7 @@
     "id": "talent_fated",
     "name": "天命之人",
     "tier": 3,
-    "description": "你似乎生来就與眾不同，被某种不可言喻的力量所眷顾。",
+    "description": "你似乎生来就与众不同，被某种不可言喻的力量所眷顾。",
     "effects": [
       { "type": "change_stat", "params": { "health": 20, "sanity": 20, "money": 500 } },
       { "type": "add_status_effect", "params": { "statusId": "inspired", "duration": 9999 } }
@@ -215,23 +225,14 @@
     ]
   },
   {
-    "id": "talent_dataist",
-    "name": "数据主义者",
+    "id": "talent_folklorist",
+    "name": "民俗学者",
     "tier": 2,
-    "description": "万物皆可量化。你习惯于将一切都转化为冰冷的数据进行分析。",
+    "description": "你对各地的民俗传说有深入研究，更容易接触到相关的事件。",
     "effects": [
-      { "type": "add_multiplier", "params": { "stat": "logic", "value": 1.25 } },
-      { "type": "add_multiplier", "params": { "stat": "irony", "value": 0.8 } }
-    ]
-  },
-  {
-    "id": "talent_mirror_dweller",
-    "name": "镜中人",
-    "tier": 3,
-    "description": "你总觉得镜子里的那个人不是你，而是一个正在模仿你的“东西”。",
-    "effects": [
-      { "type": "change_stat", "params": { "weirdness": 15, "anonymity": 20 } },
-      { "type": "add_status_effect", "params": { "statusId": "derealization", "duration": 9999 } }
+      { "type": "change_stat", "params": { "gnosis": 10, "logic": 5 } },
+      { "type": "change_tag_probability", "params": { "tag": "chinese_folklore", "multiplier": 1.5 } },
+      { "type": "change_tag_probability", "params": { "tag": "ritual", "multiplier": 1.2 } }
     ]
   }
 ]

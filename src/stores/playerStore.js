@@ -116,8 +116,8 @@ export const usePlayerStore = defineStore('player', {
             }
             break;
           
-          // --- 新增/修改效果处理 ---
-          case 'change_tag_probability': // 方案一
+
+          case 'change_tag_probability': 
             const { tag, multiplier: tagMultiplier } = outcome.params;
             if (!this.tagProbabilityModifiers[tag]) {
                 this.tagProbabilityModifiers[tag] = 1;
@@ -125,13 +125,23 @@ export const usePlayerStore = defineStore('player', {
             this.tagProbabilityModifiers[tag] *= tagMultiplier;
             break;
 
-          case 'add_event_modifier': // 方案三 (统一)
+          case 'add_event_modifier': 
             const { eventId, multiplier, duration } = outcome.params;
             this.eventModifiers.push({ 
               eventId, 
               multiplier, 
               duration 
             });
+            break;
+
+          case 'trigger_ending':
+            this.endGame(outcome.params.endingId, '你的探索迎来了终局...');
+            break;
+            
+          case 'reset_event':
+            if (outcome.params.eventId) {
+              this.triggeredEventIds.delete(outcome.params.eventId);
+            }
             break;
         }
       });

@@ -3,6 +3,7 @@
     "id": "daily_package_delivery",
     "title": "快递选择",
     "text": "你正在外面，手机突然收到一条通知：『您订购的快递正在派送中』。快递员打来电话，询问你是否在家，以及包裹要如何处理。",
+    "tags": ["daily", "personal", "money", "logistics"],
     "isUnique": false,
     "priority": 1,
     "choices": [
@@ -39,11 +40,18 @@
         "text": "让他交给隔壁的邻居代收。",
         "worldview": "gnosis",
         "magnitude": 1,
-        "results": [{
+        "results": [
+          {
             "weight": 1,
             "feedback": "你和邻居的关系因此变得更近了一些。",
             "outcomes": [ { "type": "change_stat", "params": { "sanity": 2 } } ]
-        }]
+          },
+          {
+            "weight": 1,
+            "feedback": "邻居热情地收下了，但等你晚上去取时，他却说快递员根本没来过。包裹不翼而飞。",
+             "outcomes": [ { "type": "change_stat", "params": { "sanity": -8, "money": -200 } } ]
+          }
+        ]
       },
       {
         "text": "让他把包裹藏在消防栓后面，并用一片大叶子盖住。",
@@ -81,6 +89,7 @@
     "id": "daily_queue_jumper",
     "title": "排队风波",
     "text": "你在超市排着长队等待结账，一个看上去很匆忙的人，非常自然地插到了你的前面。",
+    "tags": ["daily", "social", "conflict"],
     "isUnique": false,
     "priority": 1,
     "choices": [
@@ -159,6 +168,7 @@
     "id": "daily_scam_message",
     "title": "可疑的短信",
     "text": "你的手机收到一条短信：『【XX银行】尊敬的用户，您的账户已满足白金会员资格，请点击以下链接进行认证，逾期将自动作废。』链接看起来很可疑。",
+    "tags": ["daily", "internet", "scam", "money"],
     "isUnique": false,
     "priority": 1,
     "choices": [
@@ -189,7 +199,7 @@
         "results": [{
             "weight": 1,
             "feedback": "你怀着一丝侥幸心理点了进去，结果手机立刻开始发烫，并自动下载了一堆垃圾应用。",
-            "outcomes": [ { "type": "change_stat", "params": { "gnosis": -5, "sanity": -8, "money": -500 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": -5, "sanity": -3, "money": -500 } } ]
         }]
       },
       {
@@ -227,6 +237,7 @@
     "id": "daily_wrong_number",
     "title": "打错的电话",
     "text": "一个陌生号码打来电话，接通后，对面一个焦急的声音传来：‘妈！是我！我被抓了，快给我打点钱！’你很确定这不是你儿子的声音，更何况你还没有结婚。",
+    "tags": ["daily", "internet", "scam", "social"],
     "isUnique": false,
     "priority": 1,
     "choices": [
@@ -304,8 +315,9 @@
   },
   {
     "id": "daily_algorithm_recommendation",
-    "title": "算法的推荐",
+    "title": "个性化算法",
     "text": "你正戴着耳机听歌，音乐App的“为你推荐”功能，在你常听的激昂的摇滚乐之后，突然切入了一首无比悲伤、催人泪下的慢情歌。",
+    "tags": ["daily", "internet", "tech", "personal"],
     "isUnique": false,
     "priority": 1,
     "choices": [
@@ -384,7 +396,8 @@
   {
     "id": "daily_password_change",
     "title": "密码安全",
-    "text": "你试图登录一个很久没用过的网站，但系统提示你：『为了您的账户安全，您必须修改密码。新密码必须包含大小写字母、数字、特殊符号，长度不少于12位，且不能与最近5次使用的密码相同。』",
+    "text": "你试图登录一个很久没用过的网站，但系统提示你：『为了您的账户安全，您必须修改密码。新密码必须同时包含大小写字母、数字、三种以上的不同特殊符号，长度不少于12位，且不能与最近5次使用的密码相同。』",
+    "tags": ["daily", "internet", "tech"],
     "isUnique": false,
     "priority": 1,
     "choices": [
@@ -462,8 +475,9 @@
   },
   {
     "id": "daily_targeted_ad",
-    "title": "精准的广告",
+    "title": "精准推荐",
     "text": "你刚和朋友在聊天软件里聊到“最近睡眠不好，想买个新枕头”，一分钟后，你打开购物App，开屏广告就是一款号称“能让你深度睡眠”的人体工学枕。",
+    "tags": ["daily", "internet", "tech", "privacy"],
     "isUnique": false,
     "priority": 1,
     "choices": [
@@ -484,7 +498,7 @@
         "results": [{
             "weight": 1,
             "feedback": "你立刻关闭了手机上所有App的麦克风权限，并开始用锡纸包裹手机，试图屏蔽信号。",
-            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -4 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -4, "anonymity": 5 } } ]
         }]
       },
       {

@@ -3,6 +3,7 @@
     "id": "mystery_chemtrails",
     "title": "网格状的天空",
     "text": "你抬头仰望天空，发现今天的云很奇怪。飞机飞过的尾迹久久不能散去，在空中交织成一片巨大的、不自然的网格。",
+    "tags": ["conspiracy", "sky", "mystery", "daily"],
     "choices": [
       {
         "text": "这是正常的“凝结尾迹”，在高空湿度和温度适宜的条件下就会形成。",
@@ -43,6 +44,26 @@
           "feedback": "你的帖子引来了一些同样无聊的网友的点赞。",
           "outcomes": [ { "type": "change_stat", "params": { "irony": 2, "fame": 1 } } ]
         }]
+      },
+      {
+        "text": "打开航空App，查询一下经过本地上空的航班信息，看看能不能找出规律。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你发现这些尾迹确实是由几架在固定航线上飞行的民航客机造成的。虽然这无法解释尾迹为何久久不散，但至少来源是明确的。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 4, "gnosis": -2 } } ]
+        }]
+      },
+      {
+        "text": "这些东西会影响我的健康。我需要喝一些草药茶来“排毒”。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你为自己泡了一杯据说能净化身体的特制花草茶。虽然不知道是否真的有效，但这让你感觉安心了不少。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "health": 1, "sanity": 2 } } ]
+        }]
       }
     ]
   },
@@ -50,6 +71,7 @@
     "id": "mystery_hollow_earth_map",
     "title": "二手书里的地图",
     "text": "你在一家二手书店淘到一本破旧的科幻小说。翻开书，一张折叠起来的、像是手绘的地图掉了出来。地图的中央画着一个巨大的空洞，标注着“通往阿加森的入口”。",
+    "tags": ["conspiracy", "discovery", "mystery", "book"],
     "choices": [
       {
         "text": "这是上一个读者留下的涂鸦，或者是某个桌游的地图。",
@@ -90,6 +112,26 @@
           "feedback": "你完成了一次匿名的、跨越时间的恶作剧，并为此感到满足。",
           "outcomes": [ { "type": "change_stat", "params": { "irony": 2 } } ]
         }]
+      },
+      {
+        "text": "将地图上的地形和已知的地理位置进行比对，看看这个所谓的“入口”究竟在哪。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "经过一番比对，你发现地图上的山脉和河流走向与南极洲的某个区域高度吻合。这让你陷入了沉思。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 3 } } ]
+        }]
+      },
+      {
+        "text": "这不是地图，这是一个“符印”。它描绘的不是物理空间，而是精神世界的路径。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你尝试在冥想时，将自己的意识代入地图的线条中。你感到一阵眩晕，仿佛自己的精神真的被拉入了一个深邃的、地下的空洞。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": -4 } } ]
+        }]
       }
     ]
   },
@@ -97,6 +139,7 @@
     "id": "mystery_lizard_person_glitch",
     "title": "屏幕上的异常",
     "text": "你在观看一场重要的政治演讲直播。在某个镜头切换的瞬间，画面卡顿了一下，就在那一帧，你似乎看到演讲者的瞳孔变成了垂直的、像爬行动物一样的形状，然后立刻恢复了正常。",
+    "tags": ["conspiracy", "media", "politics", "mystery"],
     "choices": [
       {
         "text": "典型的数字信号压缩错误，没什么大不了的。",
@@ -137,6 +180,26 @@
           "feedback": "你的表情包很快就被删除了，但你乐在其中。",
           "outcomes": [ { "type": "change_stat", "params": { "irony": 2, "fame": 1 } } ]
         }]
+      },
+      {
+        "text": "把截图发给一个专门做“事实核查”的机构，看看他们怎么说。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "几天后，你收到了官方回复，解释说这是一种被称为“卷帘快门”效应导致的常见图像扭曲。这个解释很科学，但你总觉得过于完美了。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 4, "gnosis": 2, "anonymity": -5 } } ]
+        }]
+      },
+      {
+        "text": "立即关掉所有电子设备。如果“他们”能通过屏幕影响现实，那我就要切断这个媒介。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你在沉默和黑暗中度过了一天。虽然有些不便，但这让你感到前所未有的安全。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 4, "sanity": 3, "anonymity": 5 } } ]
+        }]
       }
     ]
   },
@@ -144,6 +207,7 @@
     "id": "mystery_birds_are_drones",
     "title": "机械之羽",
     "text": "你在路边发现一只死去的鸽子。出于一丝好奇，你用树枝拨开了它的羽毛，在它的皮肤下，你似乎看到了闪烁着金属光泽的、类似电路的东西。",
+    "tags": ["conspiracy", "animals", "mystery", "daily"],
     "choices": [
       {
         "text": "只是光线的错觉，可能是羽毛上的某种油光。",
@@ -183,6 +247,36 @@
           "weight": 1,
           "feedback": "网友们纷纷给你P上了各种充电接口。",
           "outcomes": [ { "type": "change_stat", "params": { "irony": 2, "fame": 1 } } ]
+        }]
+      },
+      {
+        "text": "用多功能工具刀小心翼翼地切开它的皮肤，进行一次“现场解剖”。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [
+          {
+            "weight": 7,
+            "feedback": "你发现那闪光的物体只是一块嵌入皮肤的玻璃碎片。你的心放了下来，但对自己的行为感到有些不安。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": -4 } } ]
+          },
+          {
+            "weight": 3,
+            "feedback": "那真的是电路板！你甚至看到了上面印着的微型序列号。在你试图看得更清楚时，电路板发出了一股青烟，自毁了。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "gnosis": 8, "sanity": -12 } } ]
+          }
+        ]
+      },
+      {
+        "text": "把这只“原型机”带回家，看看能不能把它修复或者“骇入”它的系统。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你把它带回了家，并开始尝试用各种电子工具连接它。你不知道自己究竟在做什么，但这种探索未知的过程让你无比兴奋。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 8, "logic": 4, "sanity": -8 } },
+            { "type": "add_item", "params": { "itemId": "broken_bird_drone" } }
+          ]
         }]
       }
     ]

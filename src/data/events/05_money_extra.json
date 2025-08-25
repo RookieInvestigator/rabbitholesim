@@ -2,7 +2,8 @@
   {
     "id": "money_gray_gig",
     "title": "灰色兼职",
-    "text": "你的财务状况有些紧张，你在一个匿名论坛上看到一则招聘启事，上面写着“招募任务执行员，工作内容简单，报酬优厚，无需经验，非法人仕优先”。",
+    "text": "你的财务状况有些紧张，你在一个匿名论坛上看到一则招聘启事，上面写着“招募任务执行员，工作内容简单，报酬优厚，无需经验”。",
+    "tags": ["money", "internet", "crime", "mystery"],
     "priority": 10,
     "conditions": [
         { "type": "stat_check", "params": { "stat": "money", "operator": "<=", "value": 1000 } }
@@ -19,17 +20,17 @@
         }]
       },
       {
-        "text": "接受一个奇怪的兼职：在指定的地点，把手套扔在地上，仅此而已。",
+        "text": "接受兼职：在指定的地点，把手套扔在地上，仅此而已。",
         "worldview": "gnosis",
         "magnitude": 2,
         "results": [{
             "weight": 1,
-            "feedback": "你照做了。钱很快就到账了。",
-            "outcomes": [ { "type": "change_stat", "params": { "money": 5000, "gnosis": 8, "sanity": -10 } } ]
+            "feedback": "你照做了。钱很快就到账了。你不知道这背后代表着什么，但这让你对世界的运作方式产生了新的看法。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 5000, "gnosis": 8, "sanity": -10, "anonymity": -5 } } ]
         }]
       },
       {
-        "text": "接受另一个兼职：每天午夜，对着指定的下水道口，用摩斯电码敲击三遍“晚安”。",
+        "text": "接受兼职：每天午夜，对着指定的下水道口，用摩斯电码敲击三遍“晚安”。",
         "worldview": "weirdness",
         "magnitude": 2,
         "results": [{
@@ -47,6 +48,33 @@
             "feedback": "对方回复道：“你通过了面试。”然后给你转了一小笔钱，再也没有了下文。你感觉自己加入了一个什么了不得的组织。",
             "outcomes": [ { "type": "change_stat", "params": { "money": 500, "irony": 5, "sanity": 2 } } ]
         }]
+      },
+      {
+        "text": "假装应聘，套取对方的更多信息，然后将所有证据交给警方。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你成功地获取了对方的一些信息并交给了警方。你因此获得了一笔奖金，但也可能引起了某些组织的注意。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "money": 2000, "anonymity": -15 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "对方似乎察觉了你的意图，在给你发了一个嘲讽的表情后就消失了。你的电脑随后遭到了密集的网络攻击。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": -10, "money": -500 } } ]
+          }
+        ]
+      },
+      {
+        "text": "接受兼职：去指定的咖啡馆，趁没人注意时，将两张桌子上的盐瓶和糖瓶交换位置。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你成功制造了一场小小的混乱，并获得了一点报酬。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": 500, "weirdness": 5, "irony": 3 } } ]
+        }]
       }
     ]
   },
@@ -54,6 +82,7 @@
     "id": "money_found_usb",
     "title": "意外之财",
     "text": "你在公园的长椅下，捡到了一个看起来很昂贵的、没有任何品牌标识的金属U盘。",
+    "tags": ["money", "item", "tech", "mystery", "daily"],
     "choices": [
       {
         "text": "把它交到最近的警察局失物招领处。",
@@ -106,6 +135,27 @@
             "feedback": "你也许会让下一个捡到它的人，在紧张和期待中，收获一个巨大的惊喜。",
             "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "sanity": 2 } } ]
         }]
+      },
+      {
+        "text": "在U盘丢失的地方贴一张“失物招领”，看看谁会来联系你。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "一个西装革履、戴着墨镜的男人联系了你，他给了你一笔丰厚的“感谢费”并拿走了U盘，同时警告你忘掉这件事。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "money": 3000, "anonymity": -10 } } ]
+        }]
+      },
+      {
+        "text": "这不是U盘，这是一个“概念”的容器。它储存的不是数据，而是“财富”本身。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你将U盘放在钱包里。从那天起，你发现自己经常能捡到小额的现金。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "money": 500 } },
+                { "type": "change_tag_probability", "params": { "tag": "money", "multiplier": 1.2 } } ]
+        }]
       }
     ]
   },
@@ -113,6 +163,7 @@
     "id": "money_vending_machine_error",
     "title": "故障贩卖机",
     "text": "你在路边的自动贩卖机买饮料，但机器出了故障，你投的钱被退了出来，饮料却掉了出来。",
+    "tags": ["money", "luck", "daily", "tech"],
     "choices": [
       {
         "text": "把钱重新投进去。这是诚实的行为。",
@@ -159,6 +210,116 @@
             "weight": 1,
             "feedback": "你没有拿饮料，也没有再碰机器，迅速离开了这个“考场”。",
             "outcomes": [ { "type": "change_stat", "params": { "gnosis": 2, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "打电话给机器上的客服，报告这个故障。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "客服感谢了你的反馈，并为了奖励你的诚实，通过电子支付给了你一笔小小的奖金。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "money": 200 } } ]
+        }]
+      },
+      {
+        "text": "用力地踢机器，看看会不会掉出更多的东西。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你的暴力行为触发了机器的警报，你只好在路人奇怪的目光中仓皇逃跑。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": -5, "fame": -5 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "在你的不懈努力下，机器哗啦啦地掉出了一大堆零钱！",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "money": 300 } } ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "item_antique_coin",
+    "title": "一枚古钱币",
+    "text": "你在一条旧商业街的石板缝里，发现了一枚锈迹斑斑、看不出年代的古钱币。它比现代的硬币要重得多，上面刻着螺旋状的奇特花纹。",
+    "tags": ["item", "luck", "mystery", "unique"],
+    "isUnique": true,
+    "priority": 5,
+    "choices": [
+      {
+        "text": "把它拿去给专家鉴定一下，看看值不值钱。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "专家告诉你这只是一枚伪造粗劣的仿古工艺品，不值一文。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "money": -200 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "专家也从未见过这种钱币，但他愿意出高价收购它用于研究。你获得了一大笔钱。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "money": 10000 } } ]
+          }
+        ]
+      },
+      {
+        "text": "这枚钱币是一个“信物”，是某个秘密社团的入场券。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你将钱币收好，开始留意身边是否有人也在寻找或佩戴着同样的徽记。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 5, "sanity": -2 } },
+            { "type": "add_item", "params": { "itemId": "spiral_coin" } }
+          ]
+        }]
+      },
+      {
+        "text": "抛起这枚硬币，看看它会带来怎样的命运。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "硬币在空中翻滚，落下后，既不是正面也不是反面，而是稳稳地立在了地上。你感觉周围的空气都凝固了。你获得了状态“命运不定”。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "weirdness": 8, "sanity": -5 } },
+            { "type": "add_status_effect", "params": { "statusId": "precarious_fate", "duration": 15 } }
+          ]
+        }]
+      },
+      {
+        "text": "把它当作幸运币，以后遇到选择困难时就用它来决定。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你现在有了一个可以甩锅的对象了。这让你在做决定时感到轻松了不少。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "irony": 3, "sanity": 2 } },
+            { "type": "add_item", "params": { "itemId": "lucky_coin" } }
+          ]
+        }]
+      },
+      {
+        "text": "这东西也许不值钱，但可以作为投资。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+            { "type": "status_check", "params": { "has": "talent_frugal" } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你敏锐的商业直觉告诉你，虽然现在没人认识它，但只要编造一个好故事，这枚钱币的“文化价值”就能被无限放大。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "logic": 5, "irony": 5 } },
+                { "type": "change_tag_probability", "params": { "tag": "money", "multiplier": 1.2 } }
+            ]
         }]
       }
     ]

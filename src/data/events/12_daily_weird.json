@@ -3,6 +3,7 @@
     "id": "recurring_numbers_station",
     "title": "错误频率",
     "text": "你开车行驶在隧道中，收音机的信号突然被一阵静电干扰。当信号恢复时，电台不再播放流行音乐，而是一个单调的、带着浓厚口音的女声，正在用外语缓慢地念诵一长串数字：“……sieben, drei, neun, null, acht……”",
+    "tags": ["urban_legend", "mystery", "communication", "weird"],
     "priority": 1,
     "choices": [
       {
@@ -53,6 +54,16 @@
             { "weight": 9, "feedback": "很遗憾，你没有中奖。", "outcomes": [ { "type": "change_stat", "params": { "money": -50 } } ] },
             { "weight": 1, "feedback": "你竟然真的中了末奖！这笔意外之财让你开始怀疑这串数字的真正来源。", "outcomes": [ { "type": "change_stat", "params": { "money": 200, "gnosis": 2 } } ] }
         ]
+      },
+      {
+        "text": "尝试切换到其他频道，看看是否所有频道都被覆盖了。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你切换了几个频道，发现只有这个特定的频率出现了异常。驶出隧道后，一切恢复了正常。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 1 } } ]
+        }]
       }
     ]
   },
@@ -60,6 +71,7 @@
     "id": "recurring_phantom_time",
     "title": "不存在的一天",
     "text": "你打开手机日历，想确认一下下周的日程。在快速滑动月份时，你的手指不小心滑得太快，日历闪烁了一下，你似乎看到在“8月”和“9月”之间，闪过了一个名为“奥古斯都二月”的、只有一天的月份，然后立刻消失了。",
+    "tags": ["urban_legend", "history", "reality_glitch", "tech"],
     "isUnique": false,
     "priority": 1,
     "choices": [
@@ -112,6 +124,16 @@
             "feedback": "你独自享用了一块美味的蛋糕，庆祝了那个只为你一人存在的日子。这让你感到一种奇特的满足。",
             "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "sanity": 3, "money": -200 } } ]
         }]
+      },
+      {
+        "text": "立即截图！无论这是什么，都值得记录下来。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的手速很快，成功地截下了一张模糊的图片。图片上确实显示着那个不存在的月份。你把它存进了一个专门的文件夹里。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "gnosis": 2 } }, { "type": "add_item", "params": { "itemId": "phantom_month_screenshot" } } ]
+        }]
       }
     ]
   },
@@ -119,6 +141,7 @@
     "id": "recurring_backrooms_glitch",
     "title": "熟悉的陌生",
     "text": "你在一个常去的商场里，准备去洗手间。在拐过一个熟悉的转角时，却发现眼前的景象变得有些不对劲：墙壁的颜色变成了单调的、令人不安的黄色，空气中弥漫着潮湿地毯的味道，头顶的日光灯发出持续的、令人烦躁的嗡嗡声。",
+    "tags": ["urban_legend", "reality_glitch", "weird", "backrooms"],
     "isUnique": false,
     "priority": 1,
     "choices": [
@@ -160,6 +183,26 @@
             "feedback": "你在嗡嗡的灯光下睡得并不安稳，醒来时发现自己躺在正常的走廊里，身上盖着一件清洁工的外套。",
             "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": 3, "health": -2 } } ]
         }]
+      },
+      {
+        "text": "在墙上做个记号，然后退出去再进来，看看记号是否还在。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你用钥匙在墙上划了个叉，然后退回到正常的走廊。当你再次踏入时，黄色的墙壁还在，但你做的记号消失了。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 4, "gnosis": 4, "sanity": -6 } } ]
+        }]
+      },
+      {
+        "text": "拿出手机，看看这里有没有信号，或者能不能拍下照片。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "手机显示无信号，但拍照功能还能用。你拍了几张照片，但查看相册时，发现照片都变成了一片纯黑。你退回到正常的走廊，感觉自己像是刚从一场梦中醒来。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "weirdness": 4, "sanity": -4 } } ]
+        }]
       }
     ]
   },
@@ -167,6 +210,7 @@
     "id": "recurring_deja_vu_glitch",
     "title": "重复的瞬间",
     "text": "你正在街角的咖啡店排队，前面的客人点了一杯“大杯燕麦拿铁，加一份浓缩”。就在此时，你脑中闪过一个极其强烈的念头：这一幕，从客人的衣着到咖啡师的动作，你都一模一样地经历过。你甚至知道下一秒，咖啡师会打翻奶泡壶。",
+    "tags": ["urban_legend", "reality_glitch", "weird", "precognition"],
     "isUnique": false,
     "priority": 2,
     "choices": [
@@ -226,13 +270,31 @@
             "feedback": "你的大脑中涌入了无数混乱的、关于未来几分钟的画面碎片：有人打翻咖啡，有人接到电话，有人在哭泣……信息过载让你头痛欲裂。这是第几次循环？",
             "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -8 } } ]
         }]
+      },
+      {
+        "text": "什么也不做，就静静地看着，验证自己的“预言”是否会成真。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "奶泡壶被打翻了，和你“预见”的一模一样。你没有感到惊讶，只有一种冰冷的、一切尽在掌握的平静。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 3, "sanity": -2 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "什么都没发生。看来你的“预言”失败了。或许这真的只是一次错觉。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 2 } } ]
+          }
+        ]
       }
     ]
   },
   {
     "id": "recurring_mandela_object",
     "title": "错误的记忆",
-    "text": "你在整理旧物时，翻出了一個你童年时最喜欢的卡通角色的玩偶。你清楚地记得它的大肚肚。但现在，你手中的玩偶却是个瘦子。",
+    "text": "你在整理旧物时，翻出了一个你童年时最喜欢的卡通角色的玩偶。你清楚地记得它的大肚肚。但现在，你手中的玩偶却是个瘦子。",
+    "tags": ["urban_legend", "history", "reality_glitch", "personal"],
     "isUnique": false,
     "priority": 1,
     "choices": [
@@ -285,6 +347,16 @@
             "feedback": "在长时间的观察下，你发现在特定的光线角度，玩偶的腹部确实有一处极其轻微的、几乎无法察觉的塑料熔融痕迹。",
             "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 5, "sanity": -5 } } ]
         }]
+      },
+      {
+        "text": "去网上搜索这个玩偶的旧图片和广告，进行“历史考证”。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你找到了大量关于这个玩偶的资料，所有的图片都显示它就是个瘦子。看来，真的是你的记忆出了问题。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 4, "sanity": -2 } } ]
+        }]
       }
     ]
   },
@@ -292,6 +364,7 @@
     "id": "recurring_doppelganger",
     "title": "二重身",
     "text": "你正穿过一条熟悉的街道，无意中一瞥，你看到街对面有一个和你穿着一模一样、发型也完全相同的人，正以和你完全同步的步伐往前走。你看向他时，他也恰好回过头，你们的目光在空中交汇。",
+    "tags": ["urban_legend", "supernatural", "mystery", "doppelganger"],
     "isUnique": false,
     "priority": 2,
     "choices": [
@@ -315,14 +388,14 @@
             "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -3 } } ]
         }]
       },
-        {
+      {
         "text": "他会替换我！",
         "worldview": "gnosis",
         "magnitude": 3,
         "results": [{
             "weight": 1,
             "feedback": "你感到一阵强烈的恐慌，立刻开始四处寻找可以躲避的地方。你决定不让他/她接近你，直到你弄清楚这到底是怎么回事。",
-            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -8 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -8, "anonymity": 5 } } ]
         }]
       },
       {
@@ -356,6 +429,101 @@
         }]
       }
     ]
+  },
+  {
+    "id": "special_reality_calibration",
+    "title": "校准之时",
+    "text": "自从经历了种种“现实错误”之后，你开始对世界产生了一种全新的认知。在一个雨夜，你的手机突然收到一条无法删除的、发件人为空的推送通知，上面只有一行字：【检测到现实不稳定。是否尝试手动校准？】",
+    "tags": ["reality_glitch", "unique", "meta", "consequence"],
+    "isUnique": true,
+    "priority": 50,
+    "conditions": [
+      { "type": "event_check", "params": { "has_triggered": "recurring_deja_vu_glitch" } },
+      { "type": "event_check", "params": { "has_triggered": "recurring_backrooms_glitch" } },
+      { "type": "stat_check", "params": { "stat": "weirdness", "operator": ">=", "value": 30 } }
+    ],
+    "choices": [
+      {
+        "text": "这是病毒！立刻关机重启，并进行一次彻底的病毒查杀。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "重启后，那条通知消失了。你觉得你可能躲过了一次严重的黑客攻击。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "点击【是】。我受够了这些错误，我要亲手把它修正。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你点击的瞬间，整个世界似乎都静止了。你感到自己的意识被抽离，融入了一个由代码和数据组成的洪流中。你修复了一些“错误”，但也永久地改变了什么。从此以后，“现实错误”类事件的出现概率将大幅降低。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 20, "sanity": -15, "logic": 10 } },
+            { "type": "change_tag_probability", "params": { "tag": "reality_glitch", "multiplier": 0.1 } }
+          ]
+        }]
+      },
+      {
+        "text": "回复消息：“加大剂量。”",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "手机屏幕上浮现出一个笑脸符号。从那天起，你发现生活中的“错误”和“巧合”变得越来越多，越来越离奇。你将永久性地更容易遭遇“怪奇”事件。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "weirdness": 20, "sanity": -15, "logic": -5 } },
+            { "type": "change_tag_probability", "params": { "tag": "weird", "multiplier": 1.5 } }
+          ]
+        }]
+      },
+      {
+        "text": "把手机扔进水里。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你用最物理的方式解决了问题。虽然你因此损失了一部手机，但你感觉自己赢得了一场重要的战役。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "money": -1000, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "这是导演给我的提示，让我即兴表演。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+            { "type": "status_check", "params": { "has": "talent_fourth_wall_breaker" } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你对着手机屏幕，开始了一段关于“世界为何如此脆弱”的独白。手机屏幕上缓缓打出：“精彩的表演。作为奖励，我们决定给你一些‘灵感’。”",
+            "outcomes": [
+                { "type": "change_stat", "params": { "weirdness": 10, "irony": 10, "sanity": 5 } },
+                { "type": "add_status_effect", "params": { "statusId": "inspired", "duration": 10 } }
+            ]
+        }]
+      },
+      {
+        "text": "这会不会是U盘的主人发来的？",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "inventory_check", "params": { "has": "encrypted_usb" } }
+        ],
+        "results": [{
+          "weight": 1,
+          "feedback": "你将U盘连接到手机上。那条通知立刻变成了：“【认证通过】。欢迎回来，校准员。您的工具已解锁。”U盘里的加密文件自动解压了。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 15, "logic": 10, "sanity": -5 } },
+            { "type": "remove_item", "params": { "itemId": "encrypted_usb" } },
+            { "type": "add_item", "params": { "itemId": "reality_calibrator" } }
+          ]
+        }]
+      }
+    ]
   }
-
 ]

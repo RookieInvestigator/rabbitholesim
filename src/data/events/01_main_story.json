@@ -3,6 +3,7 @@
     "id": "core_roaming_the_internet",
     "title": "漫游互联网",
     "text": "这又是一个平凡的夜晚，你指尖的微光是屏幕唯一的色彩。在无数个标签页之间跳跃，你点进了一个推荐给你的、名为《███████.wmv》的怀旧影片合集。影片的大部分内容都是些模糊的家庭录像和风景，但其中一个片段让你停了下来：\n\n那是一段游乐园的旋转木马录像，拍摄角度很奇怪，而且……影片中的所有孩子，都没有脸。",
+    "tags": ["internet", "mystery", "analog_horror", "main_story"],
     "isUnique": true,
     "priority": 1000,
     "conditions": [
@@ -48,6 +49,33 @@
           "weight": 1,
           "feedback": "你的表情包在朋友间引起了共鸣，大家纷纷表示“确实”。",
           "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "下载影片，尝试用影片编辑软体逐帧分析，看看能不能找到什么线索。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 8,
+            "feedback": "经过几个小时的努力，你一无所获。画面模糊依旧，你只能确认这确实是一段很古老的家庭录影带。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "health": -2 } } ]
+          },
+          {
+            "weight": 2,
+            "feedback": "在影片的最后一帧，当画面即将切掉的瞬间，你发现背景的树丛里，站着一个同样没有脸的、穿着西装的高大人影。这让你不寒而栗。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "gnosis": 5, "sanity": -8 } } ]
+          }
+        ]
+      },
+      {
+        "text": "这不是“没有脸”，而是他们的脸被“拿走”了。这个影片本身就是一种诅咒或警告。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你立刻关掉了影片，并开始在房间里所有的镜子和反光物上盖上布。你感觉有什么东西正在透过屏幕注视着你。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -5 } } ]
         }]
       }
     ]

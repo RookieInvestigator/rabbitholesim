@@ -3,6 +3,7 @@
     "id": "daily_insomnia",
     "title": "失眠的夜晚",
     "text": "夜深了，你躺在床上，却毫无睡意。大脑异常清醒，各种纷乱的思绪在脑海中盘旋。",
+    "tags": ["daily", "personal", "health"],
     "choices": [
       {
         "text": "起床喝杯热牛奶，并做一些舒缓的伸展运动。",
@@ -43,6 +44,33 @@
           "feedback": "房子变得一尘不染，而你也终于感到了疲惫。",
           "outcomes": [ { "type": "change_stat", "params": { "logic": 1, "health": -2, "sanity": 3 } } ]
         }]
+      },
+      {
+        "text": "吃一片安眠药。明天还有重要的事情，必须保证睡眠。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+            {
+                "weight": 8,
+                "feedback": "药物很快就起效了，你陷入了沉沉的、没有梦的睡眠。",
+                "outcomes": [ { "type": "change_stat", "params": { "health": 1, "sanity": -2 } } ]
+            },
+            {
+                "weight": 2,
+                "feedback": "你服下的似乎是强效药。你做了一整晚光怪陆离的噩梦，醒来后比睡前更累了。",
+                "outcomes": [ { "type": "change_stat", "params": { "health": -4, "sanity": -8, "weirdness": 3 } } ]
+            }
+        ]
+      },
+      {
+        "text": "既然大脑如此清醒，不如趁机进行创作。写小说、画画或者编曲。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "在深夜的宁静中，你的灵感如泉涌。虽然牺牲了睡眠，但你创造出了一件让自己满意的作品。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "fame": 2, "health": -3, "sanity": 5 } } ]
+        }]
       }
     ]
   },
@@ -50,6 +78,7 @@
     "id": "daily_missed_call",
     "title": "未接来电",
     "text": "你发现手机上有一个来自未知号码的未接来电。你不记得自己有等谁的电话。",
+    "tags": ["daily", "mystery", "internet"],
     "choices": [
       {
         "text": "大概是打错了，或者又是什么推销电话。不理它。",
@@ -97,6 +126,33 @@
           "feedback": "你为自己的小聪明感到得意。",
           "outcomes": [ { "type": "change_stat", "params": { "irony": 2 } } ]
         }]
+      },
+      {
+        "text": "用通讯软体加这个号码为好友，看看对方的头像是什麽。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "对方的头像是空白的，昵称也只是一串乱码。这没有提供任何有效信息。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 1, "sanity": -1 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "对方的头像是一张你家窗户的照片，拍摄角度似乎是从对面楼顶。你吓出了一身冷汗。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "gnosis": 8, "sanity": -12, "anonymity": -10 } } ]
+          }
+        ]
+      },
+      {
+        "text": "这个电话来自另一个时间线上的我，试图警告我什么。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始仔细回忆今天发生的所有事，试图找出那个可能导致“另一个你”打电话过来的“错误”。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "sanity": -3 } } ]
+        }]
       }
     ]
   },
@@ -104,6 +160,7 @@
     "id": "daily_cooking_experiment",
     "title": "厨房实验",
     "text": "你准备自己做顿饭，但冰箱里的食材看起来有些“随机组合”。",
+    "tags": ["daily", "personal", "health"],
     "choices": [
       {
         "text": "严格按照网上找到的食谱，只用食谱上有的食材。",
@@ -151,6 +208,33 @@
           "feedback": "你凭感觉做出了一顿饭，味道很玄妙，但你觉得它对你的精神很有好处。",
           "outcomes": [ { "type": "change_stat", "params": { "health": 2, "sanity": 2, "gnosis": 2 } } ]
         }]
+      },
+      {
+        "text": "将食材拍照上传，让社交网络上的朋友们投票决定做什么。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的朋友们给出了各种不靠谱的建议，你综合了一下，做出了一顿味道古怪但充满“网络智慧”的饭菜。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 4, "fame": 2, "health": 1 } } ]
+        }]
+      },
+      {
+        "text": "只吃生的。回归最原始的饮食方式。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你感觉自己像一头野兽，充满了原始的生命力。",
+            "outcomes": [ { "type": "change_stat", "params": { "health": 5, "weirdness": 3, "logic": -2 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "你因此闹了肚子，上吐下泻。",
+            "outcomes": [ { "type": "change_stat", "params": { "health": -10, "sanity": -5 } } ]
+          }
+        ]
       }
     ]
   },
@@ -158,6 +242,7 @@
     "id": "daily_headache",
     "title": "突如其来的头痛",
     "text": "一阵突如其来的、剧烈的头痛袭来，让你眼前发黑。",
+    "tags": ["daily", "personal", "health", "mystery"],
     "choices": [
       {
         "text": "立刻放下手头的事，找个地方休息一下，并喝点水。",
@@ -198,13 +283,34 @@
           "feedback": "“醒醒，你只是颈椎不好。”",
           "outcomes": [ { "type": "change_stat", "params": { "health": -5, "irony": 2, "sanity": 1 } } ]
         }]
+      },
+      {
+        "text": "去医院做个全面的身体检查。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "检查结果显示你一切正常，医生建议你多休息，不要过度焦虑。虽然花了不少钱，但求了个心安。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": -5, "money": -1500, "sanity": 5, "logic": 3 } } ]
+        }]
+      },
+      {
+        "text": "疼痛是一种信号，是我的身体在试图告诉我一些事情。我需要解读它。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你闭上眼睛，不去抵抗疼痛，而是感受它在你颅内的位置、形状和质感。渐渐地，你从疼痛中解读出了一组不断重复的数字。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": -5, "gnosis": 4, "sanity": -4 } } ]
+        }]
       }
     ]
   },
   {
     "id": "society_public_discourse",
-    "title": "公然语及",
+    "title": "隐秘的交谈",
     "text": "你在公园散步时，经过一条僻静的长椅。两个衣着考究的人正在低声交谈，但他们的用词却让你不禁驻足。他们提到了‘漫宿’、‘白日飞升’以及‘林地’的低语……这些词汇仿佛蕴含着某种不应被公然提及的力量。",
+    "tags": ["cult", "mystery", "secret_society", "unique"],
     "isUnique": true,
     "priority": 10,
     "choices": [
@@ -236,7 +342,7 @@
         ]
       },
       {
-        "text": "他们谈论的是无形之术！我必须警告当局！快去请道格拉斯先生！",
+        "text": "他们谈论的是无形之术！我必须警告当局！",
         "worldview": "gnosis",
         "magnitude": 2,
         "isSpecial": true,
@@ -277,6 +383,92 @@
             "weight": 1,
             "feedback": "你从社会语言学的角度，冷静地剖析了他们的对话模式。虽然理解了其“形式”，但你感觉自己似乎错过了其“本质”。",
             "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "gnosis": -5 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "item_cursed_game",
+    "title": "二手的游戏",
+    "text": "你在跳蚤市场的一个角落里，发现了一盒来历不明的旧游戏卡带。上面没有标签，只有一个用马克笔手绘的、不成比例的笑脸。摊主说他也不知道这是什么，如果你想要，可以低价卖给你。",
+    "tags": ["item", "internet", "mystery", "cursed", "unique"],
+    "isUnique": true,
+    "priority": 5,
+    "choices": [
+      {
+        "text": "这种来路不明的东西很可能无法使用，或者带有病毒。谢绝了摊主的好意。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你省下了一笔小钱，也避免了潜在的麻烦。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "买下它。这里面一定隐藏着某个都市传说或秘密。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你买下了这盒神秘的卡带。握着它，你能感觉到里面似乎有什么东西在低声嗡鸣。你获得了一件新物品。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "money": -50, "gnosis": 4, "sanity": -2 } },
+            { "type": "add_item", "params": { "itemId": "cursed_game_cartridge" } }
+          ]
+        }]
+      },
+      {
+        "text": "买下它，然后回家直播玩这个“被诅咒的游戏”，看看会发生什么。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的直播吸引了不少猎奇的观众。游戏的内容只是一个制作粗糙的平台跳跃游戏，但在你玩到一半时，直播信号突然中断了。这次直播为你带来了一些名气。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": -50, "irony": 5, "fame": 8, "sanity": -4 } } ]
+        }]
+      },
+      {
+        "text": "这个笑脸……它好像在看着我。它不是被画上去的，它是从卡带里面“长”出来的。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你越看那个笑脸，越觉得它在随着你的呼吸而微微起伏。你决定将它买下，作为一件有生命的艺术品来研究。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": -50, "weirdness": 8, "sanity": -6 } } ]
+        }]
+      },
+      {
+        "text": "（需要 天赋：电子幽灵）也许我能绕过游戏本身，直接读取里面的数据。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "status_check", "params": { "has": "talent_digital_ghost" } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你利用自己的技术，成功破解了卡带的存储芯片。在无数乱码的深处，你找到了一段加密的文本，似乎是一个坐标。这让你对接下来的探索有了新的方向。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 12, "gnosis": 5 } }, {"type": "add_item", "params": { "itemId": "encrypted_coordinates" } }]
+        }]
+      },
+      {
+        "text": "（需要 物品：损坏的鸟型无人机）这东西的材质，和那只鸟的内部零件很像。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+            { "type": "inventory_check", "params": { "has": "broken_bird_drone" } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你惊人地发现，卡带的外壳似乎可以和无人机的某个部件完美契合。你将它们组合在了一起，卡带上的笑脸闪烁了一下，无人机的眼睛也亮了起来。你似乎无意中解锁了什么。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "gnosis": 10, "logic": 5, "weirdness": 8, "sanity": -10 } },
+                { "type": "remove_item", "params": { "itemId": "broken_bird_drone" } },
+                { "type": "add_item", "params": { "itemId": "activated_drone" } },
+                { "type": "add_event_modifier", "params": { "eventId": "mystery_birds_are_drones", "multiplier": 0, "duration": 9999 } }
+            ]
         }]
       }
     ]

@@ -3,6 +3,7 @@
     "id": "bear_01_discovery",
     "title": "词汇的空洞",
     "text": "在一个深夜，你为了研究课题，正在查阅关于古代语言学的资料。你注意到一个极其反常的现象：在几乎所有的原始印欧语系分支中，代表“熊”的那个最古老的词根都神秘地、不约而同地消失了。所有后代语言都像商量好了一样，用各种描述性的绰号来替代它，比如“棕色的家伙”、“食蜜者”或“毛茸茸的那个”。学者们将这种现象，不痛不痒地称之为“称呼禁忌”。",
+    "tags": ["linguistics", "history", "mystery", "bear_taboo", "unique"],
     "isUnique": true,
     "priority": 8,
     "conditions": [
@@ -68,6 +69,16 @@
             { "type": "unlocksEvent", "params": { "eventId": "bear_02_the_naming" } }
           ]
         }]
+      },
+      {
+        "text": "闭上眼睛，尝试在脑中“感受”那个词汇消失后留下的“空洞”。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你的精神世界里，你似乎真的触碰到了一片无法被描述、无法被定义的“空白区域”。这种感觉让你头晕目眩。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": -4 } } ]
+        }]
       }
     ]
   },
@@ -75,6 +86,7 @@
     "id": "bear_02_the_naming",
     "title": "真名",
     "text": "经过一番艰苦的研究，你成功地从几片古老的楔形文字板的注释中，重建了那个原始印欧语中代表“熊”的词根：*h₂ŕ̥tḱos*。它静静地躺在你的笔记上，仿佛一个等待被按下的按钮。你几乎能感觉到这个词本身在微微震动，散发着某种原始的、野性的力量。一股莫名的冲动涌上心头。",
+    "tags": ["linguistics", "ritual", "mystery", "bear_taboo", "unique"],
     "isUnique": true,
     "requiresUnlock": true,
     "choices": [
@@ -147,13 +159,24 @@
             { "type": "unlocksEvent", "params": { "eventId": "bear_03_the_presence" } }
           ]
         }]
+      },
+      {
+        "text": "用这个词根作为我所有重要网站的新密码。没人能猜到。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的账户确实变得无比安全。但每次登录时，你都感觉自己正在向某个未知的存在进行一次“验证”。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "logic": 5, "sanity": -2 } } ]
+        }]
       }
     ]
   },
   {
     "id": "bear_03_the_presence",
     "title": "一个存在",
-    "text": "自從你和那个“名字”产生关联之后，你的生活开始出现一些无法解释的异常。你总感觉房间里有“东西”在看着你，家里的宠物对着空无一人的角落发出低吼，你开始频繁地在倒影中看到一闪而过的、巨大的棕色轮廓。你没有感到直接的威胁，但这种如影随形的感觉让你无法安宁。",
+    "text": "自从你和那个“名字”产生关联之后，你的生活开始出现一些无法解释的异常。你总感觉房间里有“东西”在看着你，家里的宠物对着空无一人的角落发出低吼，你开始频繁地在倒影中看到一闪而过的、巨大的棕色轮廓。你没有感到直接的威胁，但这种如影随形的感觉让你无法安宁。",
+    "tags": ["supernatural", "mystery", "bear_taboo", "unique"],
     "isUnique": true,
     "requiresUnlock": true,
     "choices": [
@@ -209,6 +232,105 @@
           "weight": 1,
           "feedback": "在绝对的安静中，你感到那个存在逐渐失去了对你的“锚点”，最终悄然离去。这场修行极大地磨练了你的意志力。",
           "outcomes": [ { "type": "change_stat", "params": { "sanity": 20, "logic": 15 } } ]
+        }]
+      },
+      {
+        "text": "给这个看不见的室友起个昵称，比如“巴纳比”。",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你叫出这个名字后，房间里的气压似乎发生了微妙的变化，那种被监视的感觉变得柔和了许多，甚至带上了一丝“亲切”。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 10, "weirdness": 5, "sanity": 5 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "bear_04_offering",
+    "title": "蜂蜜的供品",
+    "text": "自从你开始与那个无形的存在“共存”后，奇怪的事情仍在发生。今天，你在家门口发现了一个古朴的陶罐，里面装满了金黄色的、散发着奇异香气的蜂蜜。没有任何字条，但你很清楚这是谁送来的。",
+    "tags": ["supernatural", "mystery", "bear_taboo", "unique", "item"],
+    "isUnique": true,
+    "priority": 20,
+    "conditions": [
+      { "type": "event_check", "params": { "has_triggered": "bear_03_the_presence" } }
+    ],
+    "choices": [
+      {
+        "text": "这很可疑，可能是恶作剧，也可能蜂蜜有毒。直接把它扔掉。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你谨慎地处理掉了陶罐。房间里那种若有若无的存在感似乎也随之消失了。你不知道自己是躲过了一劫，还是错失了什么。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "logic": 3, "sanity": 2 } },
+            { "type": "add_event_modifier", "params": { "eventId": "bear_03_the_presence", "multiplier": 0, "duration": 9999 } }
+          ]
+        }]
+      },
+      {
+        "text": "这是“它”的赠礼，是建立沟通的桥梁。我应该心怀敬意地吃下它。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "蜂蜜的味道超乎想象，它仿佛蕴含着森林、大地和星辰的气息。在你吃下后，你感到自己的感官变得无比敏锐，并获得了一种奇特的“野性直觉”状态。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 15, "health": 10, "sanity": -8 } },
+            { "type": "add_status_effect", "params": { "statusId": "wild_instinct", "duration": 20 } }
+          ]
+        }]
+      },
+      {
+        "text": "将蜂蜜涂抹在门窗上，看看能不能画出保护性的符文。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "蜂蜜在接触到门框时，发出微弱的光芒，然后渗了进去。你感觉自己的居所变得更加“坚固”了，仿佛被某种古老的力量所庇护。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 10, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "在门口留下一张感谢卡和一盘三文鱼作为回礼。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "第二天，三文鱼不见了，原地留下了一枚光滑的、刻有熊爪印记的石子。你似乎和某个存在建立了一种奇妙的友谊。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "irony": 8, "sanity": 5 } },
+            { "type": "add_item", "params": { "itemId": "bear_claw_stone" } }
+          ]
+        }]
+      },
+      {
+        "text": "分析蜂蜜的成分，这可能是一种未知的生物分泌物。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+            { "type": "status_check", "params": { "has": "talent_rationalist" } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你将样本送去化验。报告显示，蜂蜜中含有大量未知的花粉和一种能促进细胞活性的酶。这项发现足以在生物学界引起地震。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 20, "fame": 10, "money": -500 } } ]
+        }]
+      },
+      {
+        "text": "我与“熊之灵”的联系加深了。我将正式接纳这份力量。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你举行了一场小小的仪式，宣告自己接受这份联系。你发现自己似乎更容易理解动物了。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 10, "sanity": -5 } },
+            { "type": "change_tag_probability", "params": { "tag": "animals", "multiplier": 1.5 } }
+          ]
         }]
       }
     ]

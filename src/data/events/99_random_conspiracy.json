@@ -1,8 +1,9 @@
-[  
-    {
+[
+  {
     "id": "eclectic_db_cooper_the_room",
     "title": "撕裂的天才",
     "text": "你在一个专门分析邪典电影的论坛上，看到一篇惊人的帖子。帖子作者通过比对 D·B·库珀的通缉画像和电影《房间》导演托米·韦素的旧照，以及分析两人离奇的口音和神秘的资金来源，得出了一个惊人的结论：他们是同一个人！",
+    "tags": ["conspiracy", "internet", "film", "unique", "mystery"],
     "isUnique": true,
     "choices": [
       {
@@ -45,7 +46,7 @@
           "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "gnosis": 3 } } ]
         }]
       },
-            {
+      {
         "text": "他们不是同一个人，而是同一个伪人。",
         "worldview": "weirdness",
         "magnitude": 2,
@@ -71,10 +72,11 @@
       }
     ]
   },
-    {
+  {
     "id": "classic_i_feel_fantastic",
     "title": "我感觉好极了",
     "text": "深夜，视频网站的自动播放算法为你推荐了一个诡异的视频。画面中，一个面无表情的女性机器人，用单调的、毫无起伏的语调反复吟唱着“I feel fantastic, hey hey hey”。你感到一股莫名的、发自内心的寒意。",
+    "tags": ["internet", "analog_horror", "mystery", "unique", "cursed"],
     "isUnique": true,
     "choices": [
       {
@@ -117,7 +119,7 @@
           "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": -5, "health": -2 } } ]
         }]
       },
-        {
+      {
         "text": "尝试用音乐软件分析这首歌的曲谱，看看里面是否隐藏着什么密码。",
         "worldview": "logic",
         "magnitude": 2,
@@ -127,7 +129,7 @@
           "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 3 } } ]
         }]
       },
-        {
+      {
         "text": "给视频点踩。",
         "worldview": "irony",
         "magnitude": 1,
@@ -143,6 +145,7 @@
     "id": "mystery_mothman_sighting",
     "title": "红瞳的凝视",
     "text": "你正在深夜开车回家，行驶在一段寂静的乡间小路上。就在你快要驶上一座大桥时，车灯扫过前方，照亮了一个让你心跳停止的身影——一个巨大的人形生物，长着像飞蛾般的翅膀，还有一双在黑暗中发出不祥红光的眼睛。它就站在桥的中央，静静地看着你。",
+    "tags": ["cryptid", "supernatural", "omen", "unique", "mystery"],
     "isUnique": true,
     "priority": 1,
     "choices": [
@@ -222,6 +225,7 @@
     "id": "conspiracy_ancient_virus",
     "title": "融化的味道",
     "text": "你买了一份昂贵的网红冰淇淋，它最大的卖点是使用了“来自极地冰川核心的万年纯净之冰”。当你打开盖子，一股奇特的、类似臭氧和湿润苔藓的气味扑面而来。冰淇淋的口感也有些……异常的活跃。",
+    "tags": ["conspiracy", "sci-fi", "food", "unique", "biohazard"],
     "isUnique": true,
     "priority": 1,
     "choices": [
@@ -286,6 +290,19 @@
             "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "money": -2000, "anonymity": -15, "sanity": 5 } } ]
         }
         ]
+      },
+      {
+        "text": "吃掉它。我渴望与远古融为一体。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你吃下冰淇淋后，你感到自己的身体开始发生奇妙的变化，你的基因似乎正在与某种古老的生命形态进行对话。你获得了一个新的状态。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 15, "health": -20, "sanity": -15 } },
+            { "type": "add_status_effect", "params": { "statusId": "ancient_symbiosis", "duration": 9999 } }
+          ]
+        }]
       }
     ]
   },
@@ -293,6 +310,7 @@
     "id": "history_ergot_sabbath",
     "title": "女巫的面包",
     "text": "你正在尝试一种复古的烘焙食谱，使用了一种号称“未经现代化改良”的黑麦面粉。烤出的面包颜色很深，切开后，里面布满了诡异的紫色斑点，整个房间都弥漫着一股潮湿泥土般的气味。",
+    "tags": ["history", "food", "supernatural", "unique", "ritual"],
     "isUnique": true,
     "choices": [
       {
@@ -343,6 +361,16 @@
             "feedback": "几天后，你收到了商家寄来的道歉信和一张优惠券。他们解释说那批货可能受到了“储存环境的影响”。",
             "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "money": 50 } } ]
         }]
+      },
+      {
+        "text": "将一小块面包溶解在水中，用显微镜观察。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "在显微镜下，你清楚地看到了麦角菌的典型结构。你为自己的谨慎感到庆幸。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": 2 } } ]
+        }]
       }
     ]
   },
@@ -350,6 +378,7 @@
     "id": "history_iron_mask",
     "title": "面具之下",
     "text": "你参加了一场时下流行的沉浸式戏剧，背景设定在17世纪的法国宫廷。在与演员互动时，你注意到角落里有一个人始终没有参与表演。他穿着过时但做工精良的服饰，脸上戴着一顶沉重的、完全封闭的铁面具。他不像演员，更像一个……真实的幽灵。",
+    "tags": ["history", "supernatural", "mystery", "unique"],
     "isUnique": true,
     "choices": [
       {
@@ -402,6 +431,22 @@
             "feedback": "你悄悄在他身边坐下，低声说：‘别担心，我不会声张。告诉我你需要什么，反物质电池还是时间坐标的校准？’面具转向你，沉默地凝视了很久。",
             "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "gnosis": 5, "sanity": -5 } } ]
         }]
+      },
+      {
+        "text": "偷偷跟在他后面，看他会去哪里。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "status_check", "params": { "has": "talent_mirror_dweller" } }
+        ],
+        "results": [{
+          "weight": 1,
+          "feedback": "你跟着他穿过后台，他最终走进了一间储藏室，然后……消失了。储藏室里只有一面巨大的、古旧的穿衣镜。",
+          "outcomes": [ 
+            { "type": "change_stat", "params": { "gnosis": 8, "sanity": -6 } }
+          ]
+        }]
       }
     ]
   },
@@ -409,6 +454,7 @@
     "id": "cryptid_fresno_nightcrawler",
     "title": "午夜的行者",
     "text": "你新安装的智能门铃在午夜给你推送了一条“检测到人形移动”的警报。你点开录像，画面质量很差，充满了噪点，但你还是看到了一个极其诡异的景象：一个不成比例的、像是由两条腿和一双眼睛组成的白色生物，正迈着僵硬的步伐，从你家门前的街道上“走”过。",
+    "tags": ["cryptid", "supernatural", "mystery", "unique", "weird"],
     "isUnique": true,
     "choices": [
       {
@@ -472,7 +518,92 @@
         }]
       }
     ]
+  },
+  {
+    "id": "special_cryptid_analysis",
+    "title": "神秘生物学",
+    "text": "在目击了天蛾人与夜行者之后，你开始对这些“神秘生物”产生了浓厚的兴趣。你意识到，这些现象或许并非孤立事件，而是某种未知生态系统在我们世界中的冰山一角。你决定系统性地研究它们。",
+    "tags": ["cryptid", "research", "consequence", "unique"],
+    "isUnique": true,
+    "priority": 30,
+    "conditions": [
+        { "type": "event_check", "params": { "has_triggered": "mystery_mothman_sighting" } },
+        { "type": "event_check", "params": { "has_triggered": "cryptid_fresno_nightcrawler" } }
+    ],
+    "choices": [
+      {
+        "text": "将所有经历都记录下来，作为小说或剧本的素材。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的作品因为其“逼真的细节”而大受欢迎。没人知道，你写的其实是纪实文学。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 10, "fame": 15, "money": 5000 } } ]
+        }]
+      },
+      {
+        "text": "创建一个匿名的博客，专门收集和发布关于这些生物的目击报告和理论。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的博客很快吸引了一批同好。你们互相交换信息，试图拼凑出真相。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "logic": 8, "gnosis": 5, "fame": 5, "anonymity": -5 } },
+                { "type": "change_tag_probability", "params": { "tag": "cryptid", "multiplier": 1.5 } }
+            ]
+        }]
+      },
+      {
+        "text": "这些生物是“世界”的抗体，在清除某种我们看不见的“病毒”。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始尝试寻找这些生物出没的共同点，相信它们的行为模式能揭示出世界更深层的危机。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 12, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "我应该尝试召唤它们，或者创造一个能吸引它们的环境。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始在家中布置各种奇怪的“祭坛”，比如用灯泡模仿天蛾人的红眼，或者用床单制作夜行者的模型。你的理智值受到了挑战，但也让你与这些存在的联系更加紧密。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 20, "sanity": -15 } } ]
+        }]
+      },
+      {
+        "text": "我需要更直接的证据。我要去它们出没的地方，设置陷阱。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "status_check", "params": { "has": "talent_taboo_breaker" } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你的大胆为你带来了回报。陷阱没有捕捉到任何实体，但你收集到了一些无法被归类的毛发和组织样本。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "gnosis": 15, "logic": 5, "sanity": -10 } },
+                { "type": "add_item", "params": { "itemId": "unknown_bio_sample" } }
+            ]
+        }]
+      },
+      {
+        "text": "这一切都太危险了。我应该远离这些事，回归正常的生活。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你删除了所有相关的照片和记录，并强制自己忘掉这一切。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "sanity": 10, "gnosis": -5 } },
+                { "type": "change_tag_probability", "params": { "tag": "cryptid", "multiplier": 0.5 } }
+            ]
+        }]
+      }
+    ]
   }
-
-
 ]

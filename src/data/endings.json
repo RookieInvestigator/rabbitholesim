@@ -22,5 +22,12 @@
     "conditions": [
       { "type": "death_reason", "reason": "debt" }
     ]
+  },
+  {
+    "id": "ending_anarcho_primitivism",
+    "title": "回归野性",
+    "description": "人类文明是错误的。你将最后一件人造衣物扔进火里，赤身裸体地走进了森林的黑暗深处。你放弃了语言、放弃了工具、放弃了“自我”这个概念。风是你唯一的语言，饥饿是你唯一的动机。你回归了，不再作为“人类”，而是作为自然本身的一部分。",
+    "priority": 100,
+    "conditions": []
   }
 ]

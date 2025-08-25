@@ -1,0 +1,125 @@
+[
+  {
+    "id": "conspiracy_planned_obsolescence",
+    "title": "消费的永世轮回",
+    "text": "你那台花了大价钱购买的打印机，在你最需要它的时候，突然停止了工作。屏幕上显示着一个晦涩难懂的错误代码。你把机器送到维修店，师傅看了一眼就摇了摇头，告诉你维修主板的费用比买一台新的还贵。他补充道：“现在的东西都这样，被设计好了到时间就坏。”",
+    "tags": ["conspiracy", "anti-tech", "industrial_complex", "money", "daily"],
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "自认倒霉，去买一台新的打印机。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你陷入了“损坏-购买-再损坏”的消费主义陷阱。你的钱包又瘪了一些。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": -800, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "他说的是对的。这不是故障，这是“有计划的淘汰”。是整个工业体系在逼迫我消费。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始审视身边所有的工业产品，它们在你眼中不再是工具，而是一个个精美的、设计好何时死亡的囚笼。这个想法让你不寒而栗。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "我不信邪。去网上找维修手册和零件，我自己动手修好它！",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "经过一番艰苦的努力，你竟然真的修好了它！你成功地对抗了消费主义的浪潮，获得了一种巨大的成就感。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "sanity": 10, "money": -100 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "你在拆解过程中，不小心弄断了一根关键的排线。现在它彻底变成了一堆废铁。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": -8, "money": -800 } } ]
+          }
+        ]
+      },
+      {
+        "text": "把坏掉的打印机改造成一个花盆，",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你用一种充满艺术感的方式，赋予了这堆工业垃圾全新的生命。你的植物似乎很喜欢它的新家。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "irony": 3, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "将打印机砸烂，把过程拍成视频，配上激昂的音乐上传到网上，标题是：《无计划报废：一个消费主义奴隶的反抗！》",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 2,
+          "feedback": "你的行为艺术视频在网上火了，为你带来了不少名气和一些广告收入，足够你买好几台新打印机了。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "fame": 10, "money": 2000 } } ]
+        },
+        {
+          "weight": 2,
+          "feedback": "你的行为艺术视频在网上火了。制造公司给你打来了电话，他们愿意为你免费更换，只要你删除视频，还会给你一笔丰厚的赔偿。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 6, "fame": 6, "money": 4000 } } ]
+        }
+    ]
+      }
+    ]
+  },
+  {
+    "id": "conspiracy_skill_loss",
+    "title": "大切断",
+    "text": "城市大停电，持续了整整一天。没有网络，没有导航，甚至没有电子支付。你看到周围的人们陷入了巨大的混乱和焦虑之中：有人因为不会看纸质地图而迷路，有人因为习惯了外卖而不知道如何生火做饭。你意识到，在科技的怀抱中，人类正在慢慢忘记如何独立生存。",
+    "tags": ["social", "philosophy", "daily", "anti-tech"],
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "这是一个警钟。我应该去学习一些基本的生存技能，比如辨认方向、急救和野外生火。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你报名参加了一个野外生存训练营。虽然过程很辛苦，但你感觉自己变得更强大、更独立了。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "health": 10, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "停电不是意外，这是一次“压力测试”。“他们”在测试当切断所有科技后，社会的崩溃速度有多快。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你将这次停电视为一次预演，并开始为未来更大规模的“切断”做准备。你开始囤积罐头、电池和净水片。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "money": -500, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "正好，这是一个体验“前工业时代”生活的机会。我点上蜡烛，开始读一本旧小说。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "在烛光摇曳中，你享受了一个宁静而复古的夜晚。你甚至觉得，没有手机和网络的生活，也别有一番风味。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "sanity": 8 } } ]
+        }]
+      },
+      {
+        "text": "在社区里组织一场“谁是真正的原始人”比赛，项目包括钻木取火和用石头砸开椰子。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的活动大受欢迎，邻里间的关系因此变得更加融洽。虽然最后没人能成功生火，但大家都玩得很开心。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "fame": 5, "sanity": 5 } } ]
+        }]
+      }
+    ]
+  }
+]

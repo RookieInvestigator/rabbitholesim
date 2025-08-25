@@ -3,6 +3,7 @@
     "id": "health_common_cold",
     "title": "不合时宜的感冒",
     "text": "你感觉喉咙发干，脑袋昏沉，身体一阵阵地发冷。看起来，你应该是感冒了。",
+    "tags": ["health", "daily", "personal"],
     "choices": [
       {
         "text": "多喝热水，吃点成药，然后好好睡一觉。",
@@ -15,7 +16,7 @@
         }]
       },
       {
-        "text": "硬扛过去，工作/学习不能停。",
+        "text": "硬扛过去，工作学习不能停。",
         "worldview": "logic",
         "magnitude": 2,
         "results": [
@@ -60,6 +61,23 @@
           "feedback": "你收获了很多朋友的关心和一些无聊的“多喝热水”的评论。",
           "outcomes": [ { "type": "change_stat", "params": { "health": -2, "sanity": 3, "fame": 2 } } ]
         }]
+      },
+      {
+        "text": "尝试一种在网上看到的“偏方”，比如吃一大勺辣椒酱或者用洋葱敷脚底。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [
+            {
+                "weight": 2,
+                "feedback": "奇迹发生了！在你经历了一番痛苦的折磨后，第二天感冒竟然真的好了！",
+                "outcomes": [ { "type": "change_stat", "params": { "health": 15, "gnosis": 5, "sanity": -5 } } ]
+            },
+            {
+                "weight": 5,
+                "feedback": "这个偏方非但没用，反而让你的病情雪上加霜。",
+                "outcomes": [ { "type": "change_stat", "params": { "health": -10, "sanity": -5 } } ]
+            }
+        ]
       }
     ]
   },
@@ -67,6 +85,7 @@
     "id": "health_food_allergy",
     "title": "未知的过敏源",
     "text": "在享用了一顿美餐后，你感觉皮肤开始发痒，并出现了一些红疹。你似乎对刚才吃的某种东西过敏了。",
+    "tags": ["health", "daily", "personal", "food"],
     "choices": [
       {
         "text": "立刻去医院检查，并记录下今天吃过的所有东西，找出过敏源。",
@@ -124,6 +143,16 @@
             "feedback": "你的“创意”引来了一些网友的围观。",
             "outcomes": [ { "type": "change_stat", "params": { "health": -5, "irony": 3, "fame": 1 } } ]
         }]
+      },
+      {
+        "text": "给餐厅打差评，声称他们的食物有毒，并要求精神损失费。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "餐厅经理为了息事宁人，给你退了餐费，并额外给了一张代金券。你的皮肤还在痒，但你的钱包感觉好多了。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": -5, "irony": 4, "money": 300 } } ]
+        }]
       }
     ]
   },
@@ -131,6 +160,7 @@
     "id": "health_gym_membership",
     "title": "健身房的召唤",
     "text": "路过一家新开的健身房，一位热情的销售向你递上传单，推荐你办一张健身卡，开启健康生活。",
+    "tags": ["health", "daily", "personal", "money"],
     "choices": [
       {
         "text": "办一张卡，并为自己制定一个详细的、科学的健身计划。",
@@ -180,6 +210,116 @@
           "weight": 1,
           "feedback": "你没有办卡，反而赚了一笔。",
           "outcomes": [ { "type": "change_stat", "params": { "money": 500, "irony": 5 } } ]
+        }]
+      },
+      {
+        "text": "办一张卡，但只是为了去里面的桑拿房和休息区。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你把健身房当成了一个廉价的私人会所，并因此感到非常满足。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": -2000, "health": 5, "sanity": 5, "weirdness": 3 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "health_strange_supplement",
+    "title": "神秘的补剂",
+    "text": "你感觉最近身体有些虚弱。一位神秘的网友给你推荐了一款“内部流通”的营养补剂，声称效果拔群，但包装上没有任何成分说明。",
+    "tags": ["health", "item", "mystery", "unique", "sci-fi"],
+    "isUnique": true,
+    "priority": 5,
+    "conditions": [
+        { "type": "stat_check", "params": { "stat": "health", "operator": "<=", "value": 80 } }
+    ],
+    "choices": [
+      {
+        "text": "绝对不吃。这种三无产品风险太高了。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你明智地拒绝了这份可疑的“好意”。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "富贵险中求！立刻服下，看看效果如何。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [
+            {
+                "weight": 1,
+                "feedback": "你感到一股暖流传遍全身，精力瞬间恢复，甚至比以前更好了！你获得了一个强大的增益效果。",
+                "outcomes": [
+                    { "type": "set_stat", "params": { "health": 120 } },
+                    { "type": "add_status_effect", "params": { "statusId": "regeneration", "duration": 10 } }
+                ]
+            },
+            {
+                "weight": 1,
+                "feedback": "服下后你感到剧烈的腹痛，并开始呕吐出发光的粘液。你被送进了医院，医生也查不出是什么原因。",
+                "outcomes": [
+                    { "type": "set_stat", "params": { "health": 20 } },
+                    { "type": "change_stat", "params": { "money": -3000, "sanity": -20 } }
+                ]
+            }
+        ]
+      },
+      {
+        "text": "把它喂给家里的盆栽，看看会不会长得更快。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "第二天，你的盆栽长成了一株巨大的、不断低语的奇异植物。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 10, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "把它挂到二手网站上，并吹嘘是“宇航员特供”，看看有没有人买。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的夸张宣传竟然真的吸引来一位神秘买家，他用高价买走了这瓶补剂。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "money": 5000 } } ]
+        }]
+      },
+      {
+        "text": "我的身体能应付。只吃一半试试看。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+            { "type": "status_check", "params": { "has": "talent_robust_health" } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你的强健体质似乎中和了补剂的副作用，只留下了有益的部分。你感到身体素质得到了永久性的提升。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "health": 25, "sanity": 5 } }
+            ]
+        }]
+      },
+      {
+        "text": "也许……这两样东西可以中和一下？",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+            { "type": "inventory_check", "params": { "has": "sealed_ice_cream" } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你将补剂粉末撒在了那份来自远古的冰淇淋上。两者接触的瞬间，冒出了彩色的烟雾。烟雾散去后，留下了一颗温润的、仿佛有生命在搏动的珍珠。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "weirdness": 15, "gnosis": 10, "sanity": -10 } },
+                { "type": "remove_item", "params": { "itemId": "sealed_ice_cream" } },
+                { "type": "add_item", "params": { "itemId": "living_pearl" } }
+            ]
         }]
       }
     ]

@@ -3,6 +3,7 @@
     "id": "recurring_ghost_wall",
     "title": "走不出的巷子",
     "text": "你下楼去巷口的便利商店买了瓶饮料，抄近路回家。这条路你走了上百遍，但今天，你总觉得走了太久。你抬起头，发现眼前的景象和你五分钟前看到的完全一样：同一盏闪烁的路灯，同一只打盹的野猫，同一个涂鸦。",
+    "tags": ["urban_legend", "supernatural", "reality_glitch", "chinese_folklore"],
     "isUnique": false,
     "priority": 2,
     "choices": [
@@ -55,6 +56,16 @@
             "feedback": "你的朋友很快就找到了你。根据他所说，你当时正在原地打转，嘴里还念念有词。你看了一眼通话记录，发现根本没有拨出任何电话。",
             "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": -8 } } ]
         }]
+      },
+      {
+        "text": "闭上眼睛，默数一百秒再睁开。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "当你再次睁开眼睛时，你发现自己站在巷子口，仿佛刚刚从一个漫长的梦中醒来。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 2, "sanity": 1 } } ]
+        }]
       }
     ]
   },
@@ -62,6 +73,7 @@
     "id": "recurring_point_at_moon",
     "title": "月之刃",
     "text": "今晚的月色很美，你靠在阳台上，欣赏着皎洁的满月。一时间兴起，你伸出食指，指向天边的明月，对自己说：‘看，多圆。’就在你手指落下的瞬间，你感到右耳廓传来一阵冰冷的、被利刃划过的刺痛。",
+    "tags": ["urban_legend", "supernatural", "sky", "chinese_folklore"],
     "isUnique": false,
     "choices": [
       {
@@ -113,6 +125,16 @@
             "feedback": "你闭上眼睛，专注于那股刺痛。渐渐地，你从痛觉中分辨出了一种奇特的、类似静电噪音的旋律。",
             "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "gnosis": 3, "sanity": -4 } } ]
         }]
+      },
+      {
+        "text": "向月亮献上一块饼干作为祭品。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你将祭品放在窗台上。过了一会儿，耳朵的刺痛感消失了。你感觉月光似乎变得柔和了一些。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "sanity": 2 } } ]
+        }]
       }
     ]
   },
@@ -120,6 +142,7 @@
     "id": "recurring_marble_sound",
     "title": "楼上的弹珠",
     "text": "夜深人静，你正准备入睡。就在此时，楼上的天花板传来了一阵熟悉的声音：噠、噠、噠……像是有一颗玻璃弹珠掉在地上，弹跳了几下，然后滚入角落。问题是，你住在顶楼。",
+    "tags": ["urban_legend", "supernatural", "sound", "chinese_folklore"],
     "isUnique": false,
     "choices": [
       {
@@ -171,6 +194,16 @@
             "feedback": "天台上空无一人，只有晚风吹过。但在当你回到家中时，在你刚刚站立的地板正下方的位置，你发现了一颗冰冷的玻璃弹珠。",
             "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "weirdness": 2, "sanity": -4 } } ]
         }]
+      },
+      {
+        "text": "用扫帚柄用力地敲天花板，并大喊：“楼上的！安静点！",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你敲完之后，弹珠声真的停了。你不知道是你的警告起了作用，还是它本来就要停了。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 1 } } ]
+        }]
       }
     ]
   },
@@ -178,6 +211,7 @@
     "id": "recurring_cursed_image",
     "title": "无法加载的恐惧",
     "text": "出于怀旧，你点开了一个早已荒废的BBS论坛。在一堆乱码的旧帖子中，你看到一个标题是『大家见过最恐怖的图片是什么』。你好奇地点了进去，帖子的内容已经遗失，只剩下一张无法显示的、破碎的图片文件，和下面一行小字评论：『……当你看见它的时候，它也看见了你。』",
+    "tags": ["urban_legend", "internet", "cursed", "analog_horror"],
     "isUnique": false,
     "choices": [
       {
@@ -229,6 +263,16 @@
             "feedback": "在你点击“发送”的瞬间，你的帖子成功发出，但同时你也收到了“您已被该BBS永久禁言”的系统通知。",
             "outcomes": [ { "type": "change_stat", "params": { "irony": 4, "fame": -2 } } ]
         }]
+      },
+      {
+        "text": "检查网页的源代码，看看能不能找到图片的原始路径或者一些隐藏的注释。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "什么都没有。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 4, "gnosis": 4, "sanity": -6 } } ]
+        }]
       }
     ]
   },
@@ -236,6 +280,7 @@
     "id": "recurring_chain_letter",
     "title": "不祥的邮件",
     "text": "你正在清理你的电子邮件收件箱，一封标题为『请帮我转发』的邮件引起了你的注意。发件人未知。邮件内容是一个格式混乱、用血红色字体写的恐怖故事，结尾处写着：『……请在24小时内将此邮件转发给5个人，否则下一个就是你。』",
+    "tags": ["urban_legend", "internet", "cursed", "meme"],
     "isUnique": false,
     "choices": [
       {
@@ -286,6 +331,100 @@
             "weight": 1,
             "feedback": "你成功地将一封诅咒信，变成了一封充满希望的祝福（或恶作剧）。你的朋友们对此反应不一。",
             "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "宁可信其有，不可信其无。转发给5个不认识的邮箱地址。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你从网上随便找了5个邮箱地址，转发了邮件。虽然有点缺德，但你成功将“诅咒”转移了出去。这让你松了一口气，但也带来了一丝负罪感。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": -3, "gnosis": 2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "special_talisman_discovery",
+    "title": "一张符咒",
+    "text": "你在大扫除时，从一个旧书柜的缝隙里掉出了一张黄色的、用朱砂画着复杂符号的纸符。它看起来年代久远，散发着一股淡淡的墨香和灰尘的味道。",
+    "tags": ["item", "supernatural", "chinese_folklore", "unique", "ritual"],
+    "isUnique": true,
+    "priority": 15,
+    "choices": [
+      {
+        "text": "大概是以前哪个亲戚留下的旅游纪念品。扔掉它。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你将它与其他的垃圾一起丢掉了。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 1 } } ]
+        }]
+      },
+      {
+        "text": "这可能是一张真正的道教符咒。我应该将它妥善保管起来，以免意外。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你小心翼翼地将符咒收好。你感觉房间里似乎多了一份安宁。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 5, "sanity": 3 } },
+            { "type": "add_item", "params": { "itemId": "paper_talisman" } }
+          ]
+        }]
+      },
+      {
+        "text": "把它贴在门口，看看能不能辟邪。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "自从你贴上符咒后，你发现上门推销的人变少了。或许它真的有用。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 4, "sanity": 2, "anonymity": 5 } } ]
+        }]
+      },
+      {
+        "text": "吃掉它!",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "纸符入口即化，你感到一股暖流涌遍全身。你的身体似乎变得更强健了。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 10, "health": 15, "sanity": -10 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "味道像烧焦的纸和灰尘。你闹了一晚上肚子。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "health": -10, "sanity": -5 } } ]
+          }
+        ]
+      },
+      {
+        "text": "把它用作书签。希望它能保佑我考试顺利。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "它确实是一枚非常别致的书签。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "烧掉它，进行一次净化仪式，看看能否减少最近遇到的怪事。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "isSpecial": true,
+        "results": [{
+            "weight": 1,
+            "feedback": "当符咒化为灰烬时，你感觉空气似乎都变得清新了。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "gnosis": 8, "sanity": 5 } },
+                { "type": "change_tag_probability", "params": { "tag": "cursed", "multiplier": 0.5 } }
+            ]
         }]
       }
     ]
