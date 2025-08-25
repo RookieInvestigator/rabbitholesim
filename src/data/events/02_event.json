@@ -280,5 +280,78 @@
         }]
       }
     ]
+  },
+  {
+    "id": "daily_cursed_doll",
+    "title": "不祥的玩偶",
+    "text": "在一个周末的跳蚤市场，你被一个摊位角落里的东西吸引了。那是一个维多利亚风格的瓷质玩偶，穿着褪色的蕾丝裙，脸上带着一种僵硬而诡异的微笑。最让你不安的是它的玻璃眼珠——无论你从哪个角度看过去，都感觉它在静静地凝视着你。",
+    "tags": ["daily", "item", "mystery", "cursed", "supernatural", "urban_legend"],
+    "isUnique": false,
+    "priority": 2,
+    "choices": [
+      {
+        "text": "一个设计巧妙的老式玩具而已，大概是利用了重力或透镜原理。不感兴趣。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你用科学思维解构了这份诡异感，然后走向了下一个卖旧书的摊位。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "这东西散发着不祥的气息。它不是一个玩偶，它是一个‘容器’。我应该离它越远越好。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你凭着直觉，感到了其中蕴含的危险。你加快脚步离开了市场，但那种被凝视的感觉，似乎一整天都跟随着你。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -4 } } ]
+        }]
+      },
+      {
+        "text": "它看起来好孤单。我应该把它买下来，带回家，给它起个名字，好好对它。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你买下了玩偶，并给它取名“莉莉”。从那天起，你家里开始发生一些无法解释的小事：东西会自己改变位置，半夜会听到轻微的笑声……但你并不害怕，反而觉得生活变得有趣了。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "weirdness": 10, "sanity": -8, "money": -200 } },
+            { "type": "add_item", "params": { "itemId": "cursed_doll" } }
+          ]
+        }]
+      },
+      {
+        "text": "绝佳的直播素材！买下它，然后回家给它办一场“招魂仪式”，全程直播。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的直播大获成功。在你装模作样地念咒时，玩偶的头突然自己转了180度。这个惊悚的片段为你带来了巨大的流量和名气。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "fame": 15, "sanity": -10, "money": -200 } } ]
+        }]
+      },
+      {
+        "text": "买下来。我要把它彻底拆解，看看它的眼睛到底是用什么机械结构驱动的。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你把它带回家，用工具小心翼翼地拆开了它的头部。让你脊背发凉的是，里面空空如也，没有任何机械装置。在你困惑时，那对被你取下的眼珠，在桌上自己滚动了一下，转向了你的方向。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "gnosis": 10, "sanity": -18, "money": -200 } } ]
+        }]
+      },
+      {
+        "text": "对着玩偶，轻声哼唱一首安眠曲。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你哼唱时，你似乎看到玩偶脸上的微笑变得柔和了一些。摊主用看疯子的眼神看着你。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": 3 } } ]
+        }]
+      }
+    ]
   }
 ]

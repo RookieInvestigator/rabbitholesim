@@ -709,5 +709,161 @@
         }]
       }
     ]
+  },
+  {
+    "id": "daily_phantom_station",
+    "title": "不存在的车站",
+    "text": "你因为加班错过了末班地铁。就在你准备放弃，打算叫计程车回家时，一辆时刻表上不存在的、样式异常陈旧的列车在一阵刺耳的摩擦声中，缓缓驶入空无一人的月台。车厢内灯光昏暗，仅有的几名乘客都低着头，脸上没有任何表情。",
+    "tags": ["daily", "mystery", "ritual", "supernatural", "urban_legend"],
+    "isUnique": false,
+    "priority": 2,
+    "choices": [
+      {
+        "text": "这太可疑了。我宁愿花钱打车，也不想拿自己的安全开玩笑。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你转身离开了月台。在你走到出口时，你回头看了一眼，那辆奇怪的列车已经消失了，仿佛从未出现过。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": -300, "logic": 3, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "‘如月车站’……这绝对是通往另一个世界的幽灵列车。我必须立刻离开这里！",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你没有丝毫犹豫，转身就往出口跑。你不敢回头，但能感觉到背后传来某种冰冷的、非人的注视。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "管他呢，能回家就行！毫不犹豫地上了车。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "列车在一个陌生的、标示着乱码的车站停住了，你不得不下车。你花了一整晚才找到回家的路。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 15, "sanity": -20, "health": -10 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "列车正常地在你的家门口那一站停了下来。你下车后，列车便消失在了隧道中。你毫发无伤，只是经历了一场奇妙的冒险。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 10, "sanity": 10 } } ]
+          }
+        ]
+      },
+      {
+        "text": "上了车，然后立刻拿出手机开始直播，标题是：《深夜加班车体验，希望不是我人生的最后一场直播》。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的直播吸引了不少夜猫子观众。在你绘声绘色地描述车厢内的诡异景象时，直播信号突然中断了。第二天，你发现自己涨了不少粉。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "fame": 10, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "打开交通App，看看官方的实时列车调度系统里，有没有这辆车的记录。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "App显示，当前线路应该没有任何运营中的车辆。这个客观的数据让你背后一凉，你决定还是离它远点。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 3, "sanity": -4 } } ]
+        }]
+      },
+      {
+        "text": "上了车，然后对着车厢大声抱怨：“怎么回事？加班车连个WIFI都没有吗？服务太差了！我要投诉！”",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你抱怨之后，车厢内广播突然响起一个古老的声音：“对于给您带来的不便……我们深表歉意。”然后就再也没有了声音。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "weirdness": 5, "sanity": 2 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "daily_devil_signature",
+    "title": "魔鬼在细节中",
+    "text": "你常用的某个软件弹出了强制更新通知。在更新前，你必须同意一份长达数百页、充满了晦涩法律术语和技术语言的全新《用户服务协议》。你很清楚，不点那个“同意”按钮，你就无法继续使用它。",
+    "tags": ["daily", "mystery", "ritual", "supernatural", "internet", "cursed"],
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "没人会真的读完这个。直接同意，我还有正事要干。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你毫不犹豫地点了“同意”。软件更新成功，一切似乎和往常没什么不同。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "logic": 2, "sanity": -3 } }
+          ]
+        }]
+      },
+      {
+        "text": "在这些法律术语的迷宫里，一定隐藏着出卖我灵魂的条款。我拒绝更新，并卸载这个软件。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你果断地拒绝了这份可疑的“契约”，并从电脑中删除了这个软件。你保护了自己的灵魂，但也失去了一些便利。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "这不是一份协议，这是一份契约。我应该点燃一根蜡烛，在午夜零点整，再按下“同意”按钮。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你充满仪式感地按下按钮后，你的电脑屏幕闪烁了一下，右下角弹出了一个转瞬即逝的通知：【契约已受理】。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "把整个用户协议复制下来，用“查找替换”功能，把我的名字全部换成我死对头的名字，然后点击同意。",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你完成了一次完美的责任转嫁。几天后，你听说你的那位死对头最近好像总是平地摔跤，霉运连连。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 10, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "用Ctrl+F搜索关键词，比如‘灵魂’、‘永恒’、‘代价’、‘第一胎’……",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 8,
+            "feedback": "你搜索了所有能想到的关键词，但协议里只是一些关于数据隐私和知识产权的、平平无奇的条款。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 4, "sanity": 2 } } ]
+          },
+          {
+            "weight": 2,
+            "feedback": "在协议的第271条第8款的超链接脚注里，你找到了一行用Wingdings字体写的、几乎无法阅读的小字：【本协议最终解释权归地狱第七圈法务部所有】。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "gnosis": 10, "sanity": -15 } } ]
+          }
+        ]
+      },
+      {
+        "text": "打印这三百页的用户协议，用我自己的血签名，然后扫描成PDF寄回给他们的法务部。",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你不知道对方是否收到了。但你用一种极其荒诞的方式，回敬了这份同样荒诞的协议。你的手指有点疼。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 12, "health": -3, "sanity": -5 } } ]
+        }]
+      }
+    ]
   }
 ]
