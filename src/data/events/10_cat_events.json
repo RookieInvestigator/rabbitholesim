@@ -3,6 +3,7 @@
     "id": "novelty_philosophical_cat",
     "title": "你看我像人吗？",
     "text": "一只猫拦住了你的去路。你本以为它只是想讨要食物，但它却突然开口，用一种清晰的人类女孩的声音对你说：“你看我像是人吗？”",
+    "priority": 100,
     "isUnique": true,
     "choices": [
       {
@@ -50,6 +51,9 @@
       {
         "text": "“我看你……有点像猫！”",
         "worldview": "irony",
+        "conditions":[
+          { "type": "made_choice_check", "params": { "choiceId": "01a" } }
+        ],
         "magnitude": 2,
         "results": [{
           "weight": 1,

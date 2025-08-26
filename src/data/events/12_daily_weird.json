@@ -212,7 +212,7 @@
     "text": "你正在街角的咖啡店排队，前面的客人点了一杯“大杯燕麦拿铁，加一份浓缩”。就在此时，你脑中闪过一个极其强烈的念头：这一幕，从客人的衣着到咖啡师的动作，你都一模一样地经历过。你甚至知道下一秒，咖啡师会打翻奶泡壶。",
     "tags": ["urban_legend", "reality_glitch", "weird", "precognition"],
     "isUnique": false,
-    "priority": 2,
+    "priority": 1.2,
     "choices": [
       {
         "text": "典型的大脑“既视感”错误，神经信号的短暂延迟而已。",
@@ -495,7 +495,7 @@
         "magnitude": 3,
         "isSpecial": true,
         "conditions": [
-            { "type": "status_check", "params": { "has": "talent_fourth_wall_breaker" } }
+            { "type": "talent_check", "params": { "has": "talent_fourth_wall_breaker" } }
         ],
         "results": [{
             "weight": 1,

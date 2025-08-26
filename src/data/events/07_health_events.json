@@ -294,7 +294,7 @@
         "magnitude": 3,
         "isSpecial": true,
         "conditions": [
-            { "type": "status_check", "params": { "has": "talent_robust_health" } }
+            { "type": "talent_check", "params": { "has": "talent_robust_health" } }
         ],
         "results": [{
             "weight": 1,

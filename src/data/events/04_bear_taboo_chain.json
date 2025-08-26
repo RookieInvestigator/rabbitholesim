@@ -312,7 +312,7 @@
         "magnitude": 3,
         "isSpecial": true,
         "conditions": [
-            { "type": "status_check", "params": { "has": "talent_rationalist" } }
+            { "type": "talent_check", "params": { "has": "talent_rationalist" } }
         ],
         "results": [{
             "weight": 1,

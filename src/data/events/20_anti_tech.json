@@ -422,6 +422,72 @@
     ]
   },
   {
+    "id": "conspiracy_mutant_livestock",
+    "title": "工业化“奇迹”",
+    "text": "一位网友神秘兮兮地发给你一个加密文件。他声称这是从某家食品科技巨头的报废服务器里“抢救”出来的。解压后，你看到了一些……不应该存在的东西。文件夹里是几段模糊的监控录像和生产日志。画面中，一些像是鸡，但却长着六只翅膀的生物在拥挤的笼中蠕动；另一些则是一堆无法名状的、长着多个乳房的肉块，被管道连接着，日志上称其为“高效率蛋白质增殖体”。",
+    "tags": ["anti-tech", "conspiracy", "food", "industrial_complex", "biohazard"],
+    "isUnique": true,
+    "priority": 20,
+    "choices": [
+      {
+        "text": "这是竞争对手用来抹黑的假材料。图像和视频都可以伪造。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你将文件彻底删除。在这个时代，眼见不一定为实。你选择相信成熟的现代食品工业。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "logic": 3, "sanity": 2 } },
+            { "type": "change_stat", "params": { "primitivism": -5 } }
+          ]
+        }]
+      },
+      {
+        "text": "所以那些传闻是真的……它们已经不再‘饲养’动物，而是在‘生产’肉块。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "一种深深的恶寒抓住了你。你看着自己冰箱里的肉制品，感觉它们都在微微蠕动。从此以后，你再也无法直视任何快餐了。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 8, "sanity": -12 } },
+              { "type": "change_stat", "params": { "primitivism": 8 } }
+            ]
+        }]
+      },
+      {
+        "text": "六只翅膀？太棒了！这意味着每只鸡能多出四只鸡翅！这是解决了人类饥饿问题的伟大技术！",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你立刻冲到最近的快餐店，试图点一份“六翅桶”，但只收获了店员困惑的眼神。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "logic": -5, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "将文件匿名发送给几家独立的调查媒体。真相必须被公之于众。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "几天后，新闻爆炸了。这起丑闻引发了全球性的食品安全恐慌和对涉事公司的抵制浪潮。你成为了这场风暴的匿名引爆者。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "fame": 25, "anonymity": -30, "sanity": -10 } } ]
+        }]
+      },
+      {
+        "text": "这些生物不应该被视为食物，而是一种全新的生命形态。我将成为它们的代言人。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你创建了一个名为“蛋白质增殖体解放阵线”的社交媒体账号，开始为你心目中的新物种争取权利。你收获了一些同样奇怪的追随者。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 15, "fame": 5, "sanity": -8 } } ]
+        }]
+      }
+    ]
+  },
+  {
     "id": "anti_tech_pilgrimage_awakening",
     "title": "圣地",
     "text": "那股来自荒野的呼唤日益强烈，你无法再抗拒。你变卖了所有家当，告别了熟悉的一切，只带着最基本的装备，踏上了前往那个神秘坐标的旅途。脱离文明的第一天就让你吃尽了苦头：冰冷的雨水、挥之不去的饥饿感，以及失去了手机后那种深入骨髓的无聊。在经历了数日的艰苦跋涉后，你终于在森林深处，找到了那座几乎已被自然吞噬的腐朽小木屋。",
@@ -429,7 +495,7 @@
     "isUnique": true,
     "priority": 500,
     "conditions": [
-      { "type": "stat_check", "params": { "stat": "primitivism", "operator": ">=", "value": 40 } }
+      { "type": "stat_check", "params": { "stat": "primitivism", "operator": ">=", "value": 50 } }
     ],
     "choices": [
       {
@@ -469,19 +535,6 @@
         }]
       },
       {
-        "text": "这些东西太危险了，不能留存于世。我将一把火烧掉这间木屋和里面的一切。",
-        "worldview": "logic",
-        "magnitude": 3,
-        "results": [{
-          "weight": 1,
-          "feedback": "火焰吞噬了木屋，也吞噬了一段危险的历史。你感觉自己做出了一个沉重但正确的决定。你回到了文明社会，心中带着一个无人知晓的秘密。",
-          "outcomes": [
-            { "type": "change_stat", "params": { "sanity": 20, "logic": 10 } },
-            { "type": "set_stat", "params": { "primitivism": 0 } }
-          ]
-        }]
-      },
-      {
         "text": "将手稿和日记带走，匿名发布到网上，让全世界来审判这份遗产。",
         "worldview": "irony",
         "magnitude": 3,
@@ -492,19 +545,6 @@
             { "type": "change_stat", "params": { "irony": 25, "fame": 50, "anonymity": -100, "sanity": -15 } },
             { "type": "set_stat", "params": { "primitivism": 0 } }
           ]
-        }]
-      },
-      {
-        "text": "将这些珍贵的一手资料带回去。我要写一本关于他的书，从心理学和社会学的角度，彻底解构这个幽灵。",
-        "worldview": "logic",
-        "magnitude": 3,
-        "results": [{
-            "weight": 1,
-            "feedback": "你的著作引起了巨大的轰动，让你名利双收。你成为了世界上最了解这个危险思想的专家，但也因此吸引了无数模仿者和敌对组织的注意。",
-            "outcomes": [
-                { "type": "change_stat", "params": { "logic": 20, "money": 30000, "fame": 30, "anonymity": -40 } },
-                { "type": "set_stat", "params": { "primitivism": 0 } }
-            ]
         }]
       },
       {

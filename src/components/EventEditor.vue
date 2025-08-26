@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue';
 import allStatusEffects from '@/data/status_effects.json';
+import allTalents from '@/data/talents.json';
 
 // --- 数据结构定义 ---
 const getNewEvent = () => ({ id: '', title: '新事件', text: '', tags: [], isUnique: false, requiresUnlock: false, priority: 1, conditions: [], choices: [] });
@@ -190,6 +191,7 @@ const worldviews = ['logic', 'gnosis', 'weirdness', 'irony'];
 const outcomeTypes = ['change_stat', 'set_stat', 'add_multiplier', 'unlocksEvent', 'add_item', 'add_status_effect', 'remove_status_effect', 'change_tag_probability', 'add_event_modifier'];
 const conditionTypes = ['stat_check', 'status_check', 'worldview_check', 'made_choice_check'];
 const statusEffectIds = Object.keys(allStatusEffects);
+const talentIds = allTalents.map(t => t.id);
 
 // --- 动态添加/删除元素的函数 ---
 const addEventCondition = () => activeEvent.value.conditions.push(getNewCondition());
@@ -328,6 +330,10 @@ const removeOutcome = (result, index) => result.outcomes.splice(index, 1);
                     </div>
                     <div v-if="condition.type === 'made_choice_check'" class="param-group">
                         <input type="text" v-model="condition.params.choiceId" placeholder="需要的选项ID">
+                    </div>
+                    <div v-if="condition.type === 'talent_check'" class="param-group">
+                        <select v-model="condition.params.operator"><option value="has">拥有</option><option value="has_not">没有</option></select>
+                        <select v-model="condition.params.talentId"><option v-for="id in talentIds" :key="id" :value="id">{{ id }}</option></select>
                     </div>
                     <button @click="removeChoiceCondition(choice, condIndex)" class="btn-remove">X</button>
                 </div>

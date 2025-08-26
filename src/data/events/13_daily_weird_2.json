@@ -1,0 +1,488 @@
+[
+    {
+    "id": "item_cornucopia_soda",
+    "title": "喝不完的饮料",
+    "text": "你在快餐店点了一杯大杯可乐。奇怪的是，无论你怎么喝，杯子里的液面似乎都没有下降。你试着把剩下的可乐倒进水槽，但杯子里的可乐就像是无穷无尽一样，源源不绝地涌出。",
+    "tags": ["item", "mystery", "food", "unique", "weird"],
+    "isUnique": true,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "这一定是杯子的结构有问题，利用了某种视觉欺骗或压力原理。我要把它拆开研究一下。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你用暴力拆解杯子后，它变成了一堆普通的塑料碎片，里面的可乐也流光了。你失去了一个奇迹，也失去了一杯可乐。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "这不是可乐，这是神话中的‘丰饶之角’。我必须妥善保管这个圣物。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你把这杯可乐带回了家，并为它设立了一个小小的祭坛。你不知道它除了能提供无限的可乐外还有什么用，但这让你感觉自己掌握了一个世界的秘密。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "gnosis": 8, "sanity": -4 } },
+            { "type": "add_item", "params": { "itemId": "cornucopia_soda" } }
+          ]
+        }]
+      },
+      {
+        "text": "既然是无限的，那我就用它来洗个澡吧。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的身上变得黏糊糊的，但你的精神感到了一种前所未有的满足。你感觉自己完成了一次神圣的洗礼。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 10, "health": -5, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "联系快餐店经理，投诉他们的杯子出了问题。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "经理以为你在开玩笑，但为了息事宁人，他还是给你退了款，并让你保留那杯“有问题”的可乐。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "money": 50 } } ]
+        }]
+      },
+      {
+        "text": "将这杯可乐浇灌在我家门口那棵快要枯死的盆栽上。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "第二天，你的盆栽不仅恢复了生机，还长成了一株巨大的、结满了听装可乐果实的奇异植物。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 15, "gnosis": 5, "sanity": -10 } } ]
+        }]
+      }
+    ]
+  }
+  ,{
+    "id": "urban_legend_vanishing_hitchhiker_v2",
+    "title": "消失的搭车客",
+    "text": "在一个暴雨的深夜，你开车行驶在一条荒凉的国道上。路边一个浑身湿透、穿着单薄白裙的女孩正在焦急地招手。你心生怜悯，停下车让她上了车。她道了谢，说自己家就在前面不远的XX路口。你们简单交谈了几句，但当你再次从后视镜看她时，后座上空空如也，只有一片人形的水渍证明她曾存在过。",
+    "tags": ["urban_legend", "supernatural", "mystery", "chinese_folklore", "road_trip"],
+    "isUnique": true,
+    "priority": 5,
+    "choices": [
+      {
+        "text": "我太疲劳了，刚才的一切都是幻觉。后座的水渍只是漏雨而已。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你用力摇了摇头，试图让自己清醒一点。你将车内的暖气开到最大，决定尽快赶到下一个服务区休息。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "这是典型的‘鬼搭车’。她没有恶意，只是想回家。我应该继续开到她说的那个路口。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你将车开到了那个荒凉的路口。在你停车的瞬间，你似乎听到一声微弱的“谢谢”，车里的寒意也随之消散。你完成了一件善举。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "立刻锁死车门，用最快的速度离开这条路！不管那是什么东西，我都不能让它再回来！",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你猛踩油门，在雨中一路狂飙。你不敢回头，但总感觉车窗外有一个白色的影子在与你并行。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -10 } } ]
+        }]
+      },
+      {
+        "text": "有趣。现在，我是不是应该去她说的那个地址，看看能不能找到她的‘家人’？",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你根据她提到的路口，真的找到了附近唯一的一户人家。开门的老夫妇告诉你，他们的女儿多年前就在这条路上出车祸去世了。他们对你的讲述表示感谢，并给了你一些水果作为谢礼。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 15, "gnosis": 10, "sanity": -10 } } ]
+        }]
+      },
+      {
+        "text": "检查一下行车记录仪，看看有没有拍下什么。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "logic", "operator": ">=", "value": 40 } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你立刻回放了录像。录像显示，你确实在路边停了车，并打开了后座的车门，对着空气说了几句话。但从头到尾，都没有任何人上车。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "sanity": -18 } } ]
+        }]
+      },      
+      {
+        "text": "打开打车软件，给她刚刚那段路程打一个‘幽灵乘客’的标签，并给一个一星差评，理由是：‘中途下车’。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "在你提交评价后，你收到了平台的一条自动回复：‘非常抱歉为您带来不愉快的体验，我们已将该乘客列入低优先级匹配名单。’你感觉自己用现代科技的官僚主义，成功地回击了一次超自然现象。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 10, "logic": -2, "sanity": 5 } } ]
+        }]
+      },      
+      {
+        "text": "这是我见过最高效的搭车方式。我也应该学学。",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你在下一个路口下了车，开始练习如何让自己‘看起来像个幽灵’并‘瞬间移动’。虽然最终只是把自己淋成了落汤鸡，但你感觉自己的境界得到了升华。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 12, "health": -5, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "“不付钱就想走？没门！”然后掉转车头，回到刚才让她上车的地方。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你回到了那个地方，但那里空无一人。你感觉自己因为一点小钱，可能惹上了大麻烦。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": -10 } } ]
+        }]
+      }
+    ]
+  }
+  ,{
+    "id": "daily_water_crystals",
+    "title": "水知道答案",
+    "text": "你在网上看到一篇流传甚广的文章。文章的作者声称，水是有‘感情’的，能够根据接收到的外界信息，形成不同形状的结晶。文章附上了许多对比照片：接触过‘爱与感谢’等积极词汇的水，结晶呈现出精美绝伦的几何图案；而接触过‘混蛋’等负面词汇的水，结晶则显得破碎、丑陋和混乱。",
+    "tags": ["daily", "philosophy", "weird", "art", "internet"],
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "典型的伪科学。这些实验缺乏严格的科学对照，结论完全不可信。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你很快就找到了许多揭穿这个理论的文章。你为自己的理性判断感到满意。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "意念可以塑造现实。这是一个伟大的发现，证明了意识的力量。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "这个理论为你打开了一扇新的大门。你开始相信，世界并非纯粹的物质构成，而是意识与能量的共鸣体。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "我要亲手做这个实验。用两碗米饭，每天对一碗说好话，对另一碗说坏话。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "三天后，被你赞美且放入冰箱的米饭依然洁白，而被你辱骂的米饭则长满了黑色的霉菌。这个结果让你不寒而栗。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 5, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "太有趣了。我应该每天对着我的咖啡说：‘你是一杯全世界最棒的猫屎咖啡！’",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的咖啡味道并没有改变，但这个小小的仪式确实让你每天早上的心情都变好了一点。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "如果这是真的，那我应该对我自己说一些好话。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你倒了一杯水，在喝下它之前，真诚地对自己说了一句：“你很棒。”。一股暖流传遍全身，你感觉自己的精神状态真的变好了。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 2, "sanity": 8 } } ]
+        }]
+      },
+      {
+        "text": "在我的水杯上贴满各种数学公式和哲学悖论，看看它会结晶出什么。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你不知道结晶会是什么样子，但你感觉自己正在进行一场伟大的、关于信息与物质边界的实验。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "logic": 3, "sanity": -4 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "circus_mind_reading_fleas",
+    "title": "跳蚤马戏团",
+    "text": "在一个公园的角落，一个衣着考究、举止优雅的老绅士，正在用一个手提箱大小的舞台，表演一场迷人的跳蚤马戏团。在他的指挥下，看不见的“演员”们表演着拉车、跳水和走钢丝。在表演的最高潮，团长面向观众，自豪地宣布：“我的‘艺术家’们，能拼出任何一位观众心中所想的单词。有谁愿意来试试吗？”",
+    "tags": ["daily", "weird", "art", "mystery", "unique"],
+    "isUnique": true,
+    "priority": 15,
+    "choices": [
+      {
+        "text": "在心里默想一个极其复杂的科学术语，比如‘量子纠缠’。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你看到手提箱舞台上，那些微小的金属道具开始移动，最终……拼出了‘光’这个词。团长抱歉地笑了笑：‘看来您的思想太深奥了，它们只能理解到这个程度。’",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "这些跳蚤被某种精神力量或微型科技控制着。我要在脑中构建一个‘精神屏障’来对抗它。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你集中精神，在脑中默想“拒绝”。那个老绅士看了你一眼，眉头微蹙。他跳过了你，邀请了下一位观众。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "在心里默想：‘救救我们’。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "舞台上的跳蚤们突然陷入了疯狂的混乱，将道具撞得七零八落。那个老绅士的脸色第一次变了，他匆匆地合上手提箱，对你露出了一个充满警告意味的眼神，然后迅速消失在了人群中。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 15, "gnosis": 5, "sanity": -12 } } ]
+        }]
+      },
+      {
+        "text": "在心里默想：‘快给我变一百万出来！’",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "跳蚤们用道具拼出了一个单词：‘梦’。周围的观众发出善意的笑声。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "这不是跳蚤，这是伪装成跳蚤的微型机器人。它们在读取我的微表情和生物信号。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始在心里默想‘苹果’，但脸上却做出极度恐惧的表情。舞台上的机器人们显然混乱了，它们拼出了一半的‘苹’字，然后停止了运作。团长不动声色地看了你一眼，宣布今日表演结束。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "gnosis": 5, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "在脑中向跳蚤们传递一个图像——一只巨大的、正在捕食它们的蜘蛛。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "在你构建图像的瞬间，舞台上爆发了一场无声的骚乱，所有道具都被撞飞了。团长惊慌地合上箱子，你似乎听到箱子里传来无数细微的、金属摩擦的尖叫声。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 12, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "在心里默想一个只有我自己知道的、早已被遗忘的童年昵称。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "舞台上的道具缓缓移动，精准地拼出了那个对你意义非凡的词。你感到一阵脊背发凉的震撼，仿佛自己最深处的记忆被公然读取了。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 10, "sanity": -15 } } ]
+        }]
+      },
+      {
+        "text": "这不是读心术，这是高明的冷读术和骗术。我要当众揭穿他。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "irony", "operator": ">=", "value": 40 } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你大声说出你的质疑，并头头是道地分析了他的所有“魔术”手法。那个老绅士并没有生气，只是微笑着为你鼓掌，说：‘这位先生的表演，比我的更精彩。’然后将观众的打赏分了你一半。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "irony": 10, "money": 500 } } ]
+        }]
+      }
+    ]
+  },{
+    "id": "daily_dowsing_for_toilets",
+    "title": "紧急寻水",
+    "text": "在一个陌生的商业区，你突然感到一阵内急。你环顾四周，却看不到任何公共厕所的标志。就在你焦急万分时，你看到街角有个地摊，一个神秘的老人正在售卖一种Y形的、据称可以“寻找水源”的探测杖。",
+    "tags": ["daily", "weird", "mystery", "health"],
+    "isUnique": false,
+    "priority": 2,
+    "choices": [
+      {
+        "text": "相信科学。打开手机地图，搜索最近的公共厕所。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "地图显示，最近的厕所在五百米外的一个商场里。你忍着不适，快步走了过去。现代科技拯救了你。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 5, "health": -2 } } ]
+        }]
+      },
+      {
+        "text": "既然是找‘水’，那应该也适用于厕所。买下探测杖，试一试！",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你买下了探测杖。在你握住它的瞬间，它真的开始轻微震动，并指向了一条小巷的深处。在那里，你找到了一个不对外开放的、但救了你一命的员工厕所。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 8, "sanity": 5, "money": -300 } },
+              { "type": "add_item", "params": { "itemId": "dowsing_rod" } }
+            ]
+        }]
+      },
+      {
+        "text": "用更原始的方式。闭上眼睛，聆听‘水’的呼唤。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你集中精神，似乎真的听到了远处传来微弱的、水流冲刷的声音。你循着声音找去，发现那是一家正在进行管道维修的餐厅。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": -5, "health": -5 } } ]
+        }]
+      },
+      {
+        "text": "直接向那人求助：“请问厕所在哪？”",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "他像个普通人一样为你指了指街角那家不起眼的便利店。你解决了问题，并对自己的务实感到满意。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "情况紧急，找个没人的角落就地解决。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [
+            {
+              "weight": 1,
+              "feedback": "你冒险解决了问题，但感到了巨大的羞耻和不安。",
+              "outcomes": [ { "type": "change_stat", "params": { "sanity": -15, "anonymity": -5 } } ]
+            },
+            {
+              "weight": 3,
+              "feedback": "你被巡逻的保安抓个正着，被处以罚款并进行了严肃的口头教育。",
+              "outcomes": [ { "type": "change_stat", "params": { "sanity": -20, "money": -500, "fame": -5 } } ]
+            }
+        ]
+      },
+      {
+        "text": "只要我假装自己是一株植物，我就不需要厕所了。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始在原地进行光合作用。虽然生理上的问题没有解决，但你的精神似乎真的进入了一个超然的状态。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "health": -3, "sanity": -8 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "daily_mysterious_suitcase_v2",
+    "title": "不属于此处的行李箱",
+    "text": "你一早打开门，发现门口的走廊上，静静地放着一个旧皮质行李箱。它看起来很沉，上面挂着一把早已锈蚀的黄铜锁。你问遍了所有邻居，但没有一个人知道它是谁的，又是怎么出现在这里的。",
+    "tags": ["daily", "mystery", "item", "crime"],
+    "isUnique": false,
+    "priority": 2,
+    "choices": [
+      {
+        "text": "这可能是一个炸弹或者危险品。立刻报警，疏散邻居。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "警方迅速封锁了现场。在防爆机器人小心翼翼地打开箱子后，发现里面只装满了旧报纸。虚惊一场。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "fame": -2, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "向大楼的物业或房东报告这件事，让他们来处理。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "物业很快派人把它收走了。你不知道里面是什么，但你选择了一个最安全、最稳妥的选项。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "把它拖回自己家，然后用工具撬开锁。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [
+            { "weight": 2, "feedback": "箱子里装满了旧衣服和发霉的书，没有任何值钱的东西。", "outcomes": [ { "type": "change_stat", "params": { "gnosis": 2, "sanity": -5 } } ] },
+            { "weight": 1, "feedback": "箱子一打开，一股刺鼻的福尔马林气味扑面而来。里面是一具制作精良、但表情惊恐的人体模型。", "outcomes": [ { "type": "change_stat", "params": { "gnosis": 10, "sanity": -20 } } ] },
+            { "weight": 1, "feedback": "箱子里是一叠叠捆扎整齐的旧钞票！你发了一笔横财，但也可能因此卷入了某个危险的事件。", "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "money": 20000, "sanity": -10, "anonymity": -15 } } ] }
+        ]
+      },
+      {
+        "text": "把耳朵贴在箱子上，听听里面有没有声音。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你屏住呼吸，仔细倾听。在箱子的最深处，你似乎听到了……一阵遥远的、像是海浪拍打沙滩的声音。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "sanity": -4 } } ]
+        }]
+      },
+      {
+        "text": "在行李箱上贴一张‘内有恶犬’的纸条，然后看看路过的人会有什么反应。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "路过的邻居们都绕着它走，并对你投来奇怪的目光。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "fame": -3 } } ]
+        }]
+      },
+      {
+        "text": "给它画上一张脸，再配上用纸板做的四肢，把它变成一个‘行李箱人’。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的艺术创作让走廊的氛围变得非常超现实。第二天早上，你发现‘行李箱人’不见了，原地只留下了一串用粉笔画的、歪歪扭扭的脚印，通向了楼梯间。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "weirdness": 5, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "这件行李箱……有点眼熟。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "status_check", "params": { "has": "derealization" } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "一个荒诞的念头在你脑中升起：这不是别人的行李箱，这是另一个时间线上的‘我’留给我的。你伸出手，那把锈蚀的锁在你触碰的瞬间，应声打开了。里面是一面镜子。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "weirdness": 15, "gnosis": 5, "sanity": -15 } }
+            ]
+        }]
+      }
+    ]
+  }
+]

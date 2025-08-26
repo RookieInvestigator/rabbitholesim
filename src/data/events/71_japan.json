@@ -1,0 +1,85 @@
+[
+    {
+    "id": "urban_legend_hasshaku_sama",
+    "title": "高个子女人",
+    "text": "你正走在一条乡间小路上，两旁是比人还高的树篱。一阵奇怪的、仿佛来自喉咙深处的声音打破了宁静：“啵…啵…啵……”。你好奇地抬头，看到一个女人的头顶——只是一顶白色的宽檐帽——正平稳地越过树篱移动。她似乎……异常地高。当她走到树篱的缺口处时，你看到了她的全身：一个穿着白色连衣裙、身高至少八尺的女人，正弯下腰，用一种毫无感情的眼神凝视着你。",
+    "tags": ["urban_legend", "supernatural", "mystery", "japanese_folklore", "unique"],
+    "isUnique": true,
+    "choices": [
+      {
+        "text": "冷静分析。可能是踩着高跷的街头艺人，或者是某种视觉错觉。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你试图用理智去解构眼前的景象，但那非人的身高和诡异的“啵啵”声，让你的逻辑链条摇摇欲坠。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": -15 } } ]
+        }]
+      },
+      {
+        "text": "八尺大人！传说被她看上的人都活不过几天。必须立刻逃跑，不能回头！",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你没有丝毫犹豫，转身就跑。那“啵啵”声仿佛就在你的耳边，追着你跑了好几公里才渐渐消失。你感到自己被某种不祥之物盯上了。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 10, "sanity": -20 } },
+              { "type": "add_status_effect", "params": { "statusId": "marked_target", "duration": 10 } }
+            ]
+        }]
+      },
+      {
+        "text": "学着她的样子，也发出“啵…啵…啵”的声音。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "听到你的声音，那个高大的女人停下了脚步，歪了歪头，似乎在好奇地分析你这个奇怪的生物。趁着这个机会，你从她身边溜走了。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 15, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "“这位女士，请务必踩我！”",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "她似乎没听懂你的话，但你的这种狂热态度显然让她感到了困惑和一丝……厌恶。她皱了皱眉，转身从另一个方向离开了，仿佛在躲避什么无法理解的东西。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 20, "fame": 5, "sanity": -10 } } ]
+        }]
+      },
+      {
+        "text": "拿出那张符咒。虽然不知道是什么，但也许能起点作用。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "inventory_check", "params": { "has": "paper_talisman" } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "在你拿出符咒的瞬间，它无火自燃，化为灰烬。对面的女人发出一声刺耳的尖啸，身形变得模糊，然后消失了。你感到一阵脱力，但你知道，你得救了。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "gnosis": 15, "sanity": 10 } },
+                { "type": "remove_item", "params": { "itemId": "paper_talisman" } }
+            ]
+        }]
+      },
+      {
+        "text": "一个‘高’概念的实体化。我应该从一个更抽象的维度去理解她。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "weirdness", "operator": ">=", "value": 50 } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你闭上眼睛，不再用视觉，而是用精神去感受她。你感觉到她不是一个‘生物’，而是一个纯粹的、关于‘高度’和‘不协调’的几何概念。当你再次睁开眼时，她已经消失了，但你对空间的感知发生了永久性的、奇妙的改变。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 20, "gnosis": 5, "sanity": -5 } } ]
+        }]
+      }
+    ]
+  }
+]

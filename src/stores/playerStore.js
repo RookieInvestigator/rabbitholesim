@@ -21,6 +21,7 @@ const getInitialState = () => ({
   statMultipliers: {},
   statusEffects: [],
   inventory: [],
+  talents: [],
   triggeredEventIds: new Set(),
   unlockedEventIds: new Set(),
   log: [],
@@ -54,6 +55,7 @@ export const usePlayerStore = defineStore('player', {
     
     initializeWithTalents(talents) {
       this.reset();
+      this.talents = talents;
       this.addLog({ message: `你带着天赋 [${talents.map(t => t.name).join(', ')}] 进入了兔子洞。`, type: 'system' });
       
       talents.forEach(talent => {

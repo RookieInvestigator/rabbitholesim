@@ -50,9 +50,19 @@ export function useEventEngine() {
           return !player.triggeredEventIds.has(params.has_not_triggered);
         }
         return false;
-      // --- 新增条件检查 ---
-      case 'made_choice_check': // 方案二
+
+      case 'inventory_check':
+        if (params.has) return player.inventory.includes(params.has);
+        if (params.has_not) return !player.inventory.includes(params.has_not);
+        return false;
+
+      case 'made_choice_check': 
         return player.madeChoices.has(params.choiceId);
+        
+      case 'talent_check':
+        if (params.has) return player.talents.some(t => t.id === params.has);
+        if (params.has_not) return !player.talents.some(t => t.id === params.has_not);
+        return false;
       default: return true;
     }
   }

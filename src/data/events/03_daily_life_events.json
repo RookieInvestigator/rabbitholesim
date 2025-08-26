@@ -1,5 +1,55 @@
 [
   {
+    "id": "daily_asmr_video",
+    "title": "耳边低语",
+    "text": "在经历了充满信息轰炸的一天后，你感到精神疲惫。算法似乎察觉到了你的状态，为你推荐了一个制作精良的ASMR视频：有人正在用一种非常轻柔的声音，缓慢地整理一堆古旧的书籍，书页翻动的声音和指尖划过封面的摩擦声清晰可闻。",
+    "tags": ["daily", "internet", "health", "personal"],
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "戴上耳机，静静地听完。这正是我的大脑现在所需要的。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "那些轻柔、规律的声音像是一场精神按摩，抚平了你紧绷的神经。你感到前所未有的放松。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": 10, "health": 2 } } ]
+        }]
+      },
+      {
+        "text": "这些声音是一种‘模因疫苗’，能增强我对有害信息的抵抗力。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你将这次体验视为一次精神上的“系统维护”。",
+            "outcomes": [ { "type": "change_stat", "params": { "sanity": 8, "gnosis": 2 } } ]
+        }]
+      },
+      {
+        "text": "将播放速度调到四倍，看看会发生什么。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "原本舒缓的声音变成了一场混乱的噪音交响乐，让你本已疲惫的大脑雪上加霜。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 2, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "我不是在听，我是在‘进入’那个空间。我的灵魂正与视频制作者一同整理那些书籍。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你闭上眼睛，甚至能闻到旧书页的尘埃气味。这是一种奇妙的灵魂出窍体验。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 3, "sanity": 5 } } ]
+        }]
+      }
+    ]
+  },
+  {
     "id": "daily_insomnia",
     "title": "失眠的夜晚",
     "text": "夜深了，你躺在床上，却毫无睡意。大脑异常清醒，各种纷乱的思绪在脑海中盘旋。",
@@ -444,7 +494,7 @@
         "magnitude": 3,
         "isSpecial": true,
         "conditions": [
-          { "type": "status_check", "params": { "has": "talent_digital_ghost" } }
+          { "type": "talent_check", "params": { "has": "talent_digital_ghost" } }
         ],
         "results": [{
             "weight": 1,

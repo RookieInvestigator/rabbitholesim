@@ -36,9 +36,9 @@
     ]
   },
   "marked_target": {
-    "name": "被标记的目标",
+    "name": "心有余悸",
     "outcomes": [
-      { "type": "change_stat", "params": { "anonymity": -2, "sanity": -1 } }
+      { "type": "change_stat", "params": { "sanity": -0.3 } }
     ]
   }
 }

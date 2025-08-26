@@ -866,4 +866,74 @@
       }
     ]
   }
+  ,{
+    "id": "daily_new_coke_conspiracy",
+    "title": "味道不对",
+    "text": "你打开一罐你最常喝的牌子的可乐，但喝下第一口，就感觉味道有些不对劲。不是坏了，就是……不一样了。甜味变得更直接，但缺少了某种熟悉的、复杂的层次感。你看了看罐身，上面用小字印着一行“新配方，新体验！”的标语。",
+    "tags": ["daily", "food", "conspiracy", "industrial_complex"],
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "只是商家例行的配方微调而已，为了适应市场变化或者降低成本。没什么大不了的。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "虽然有些不习惯，但你还是喝完了。人类的味觉很快就会适应的。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 1 } } ]
+        }]
+      },
+      {
+        "text": "这是一个阴谋。他们故意推出一个难喝的新版本，等民众怨声载道时再换回‘经典’配方，以此来巩固品牌忠诚度。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你看穿了这场宏大的营销骗局。你决定囤积一些旧版的可乐，等待它升值。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -5, "money": -500 } } ]
+        }]
+      },
+      {
+        "text": "他们用更便宜的甜味剂取代了原来的成分，还骗我们说是‘新体验’！",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你对这种公然欺骗消费者的行为感到愤怒。你开始在网上撰写长文，分析新旧配方的成分差异，试图揭露真相。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "fame": 5, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "旧的味道并没有消失，它只是‘升维’了。我需要用一种全新的方式去品尝它。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你尝试将可乐倒在盘子里，用鼻子闻，用手指沾着尝，甚至在冥想中感受它的‘味道’。渐渐地，你似乎真的从中品尝出了一丝熟悉的、隐藏在分子结构深处的旧日幻影。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "立刻去超市，把货架上所有剩下的旧版可乐都买下来。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你成功地抢在所有人之前，买下了一大堆旧版可乐。你的储藏室现在看起来像个末日避难所。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "money": -1000, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "在社交媒体上发起一个#还我旧配方#的抗议活动。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的话题标签意外地火了，引发了一场关于“童年味道”的集体怀旧。虽然厂家并未因此改变配方，但你成功地引领了一次网络潮流。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "fame": 10 } } ]
+        }]
+      }
+    ]
+  }
 ]

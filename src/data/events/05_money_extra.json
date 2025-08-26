@@ -310,7 +310,7 @@
         "magnitude": 3,
         "isSpecial": true,
         "conditions": [
-            { "type": "status_check", "params": { "has": "talent_frugal" } }
+            { "type": "talent_check", "params": { "has": "talent_frugal" } }
         ],
         "results": [{
             "weight": 1,

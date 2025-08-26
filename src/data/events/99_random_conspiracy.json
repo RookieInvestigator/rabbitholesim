@@ -437,7 +437,7 @@
         "magnitude": 2,
         "isSpecial": true,
         "conditions": [
-          { "type": "status_check", "params": { "has": "talent_mirror_dweller" } }
+          { "type": "talent_check", "params": { "has": "talent_mirror_dweller" } }
         ],
         "results": [{
           "weight": 1,
@@ -579,7 +579,7 @@
         "magnitude": 3,
         "isSpecial": true,
         "conditions": [
-          { "type": "status_check", "params": { "has": "talent_taboo_breaker" } }
+          { "type": "talent_check", "params": { "has": "talent_taboo_breaker" } }
         ],
         "results": [{
             "weight": 1,
@@ -601,6 +601,485 @@
                 { "type": "change_stat", "params": { "sanity": 10, "gnosis": -5 } },
                 { "type": "change_tag_probability", "params": { "tag": "cryptid", "multiplier": 0.5 } }
             ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "internet_legend_sad_satan",
+    "title": "地狱的回响",
+    "text": "在一个专门分享独立恐怖游戏的古早论坛里，你发现了一个奇怪的帖子。发帖人声称，他手上有《Sad Satan》的“原始版本”，是在那个著名的油管频道对其进行“戏剧化加工”（加入大量血腥暴力内容）之前的最初版本。",
+    "tags": ["internet", "mystery", "cursed", "unique", "analog_horror", "tech"],
+    "isUnique": true,
+    "priority": 25,
+    "choices": [
+      {
+        "text": "一个很好的故事，但大概率只是个噱头，里面可能是病毒或恶作剧。先用杀毒软件彻底扫描。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "扫描结果显示档案安全无毒。但在扫描日志的末尾，你发现了一行无法解释的记录：‘检测到1个无法归类的认知危害……已忽略。’",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "在虚拟机里运行它。我需要亲眼看看所谓的‘纯粹恐惧’是什么样的。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "游戏启动了。没有血腥，没有尖叫。只有无尽的、由黑白像素构成的走廊，和一些断续无法辨认的低语。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 12, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "管他呢，直接玩！真正的恐怖游戏就是要全身心沉浸！",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [{
+          "weight": 1,
+          "feedback": "你直接在自己的电脑上运行了游戏。游戏结束后，你发现你的桌面背景被替换成了一张游戏中的走廊截图。你无论如何也无法将它更换回来。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "weirdness": 15, "sanity": -20 } }
+          ]
+        }]
+      },
+      {
+        "text": "绝佳的直播素材！不管里面是什么，都能吸引一大波流量。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你在直播中玩了这个游戏。观众都在抱怨游戏“什么都没发生，很无聊”。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "fame": 1, "anonymity": -10, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "这种东西最好不要碰。彻底删除档案，就当没见过。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你做出了最谨慎的选择。虽然好奇心还在隐隐作痛，但你感觉自己成功避开了一个巨大的麻烦。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "直接反编译，看看它的源代码里到底藏着什么。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "talent_check", "params": { "has": "talent_digital_ghost" } }
+        ],
+        "results": [{
+          "weight": 1,
+          "feedback": "凭借你对数位世界的直觉，你成功地解开了程式码。让你惊讶的是，里面没有任何恶意代码。除了迷宫游戏外，程序还有一个功能：根据玩家电脑的时钟和CPU温度，生成一段独特的、永不重复的随机环境音。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "logic": 20, "gnosis": 10, "sanity": -5 } }
+          ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "conspiracy_nazi_bell_auction",
+    "title": "遗产拍卖",
+    "text": "在一个只有受邀者才能进入的线上拍卖行，一件奇特的拍品引起了你的注意。卖家将其描述为‘未完成的党卫军宣传电影道具’，一个巨大的、覆盖着未知象形文字的金属钟。它的造型充满了不祥的工业美学，起拍价却低得可疑。拍卖规则更显怪异：卖家特别注明，‘只接受等值的黄金或无法追踪的加密货币支付’。",
+    "tags": ["conspiracy", "history", "mystery", "anti-tech", "money", "unique"],
+    "isUnique": true,
+    "priority": 3,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "money", "operator": ">=", "value": 20000 } }
+    ],
+    "choices": [
+      {
+        "text": "这很可能是一个精心设计的骗局。在出价前，我需要先调查一下这个拍卖行和卖家的背景。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的调查显示，这个拍卖行没有任何公开记录，像一个凭空出现的幽灵网站。谨慎让你避免了一次潜在的巨大损失。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "这不是电影道具，这就是‘Die Glocke’。无论代价如何，我必须得到它。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [
+            {
+              "weight": 1,
+              "feedback": "你的出价是决定性的。几天后，一个巨大的、用铅板密封的板条箱被送到了你家门口。",
+              "outcomes": [
+                { "type": "change_stat", "params": { "money": -20000, "gnosis": 20, "sanity": -25 } },
+                { "type": "add_item", "params": { "itemId": "die_glocke_prototype" } }
+              ]
+            },
+            {
+              "weight": 1,
+              "feedback": "在你拍下物品并完成支付后，你的钱和那个网站都消失了，仿佛从未存在过。你被骗了。",
+              "outcomes": [ { "type": "change_stat", "params": { "money": -20000, "sanity": -15 } } ]
+            }
+        ]
+      },
+      {
+        "text": "出价，但我会用混入了追踪代码的加密货币支付。我要看看钱最终会流向哪里。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "talent_check", "params": { "has": "talent_digital_ghost" } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你赢得了拍卖。虽然物品从未送达，但你的追踪代码成功地找到了资金的最终流向——一个早已被废弃、位于波兰某处山区的矿井。你似乎找到了‘巨人计划’的所在地。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "money": -20000, "logic": 15, "gnosis": 10, "sanity": -10 } },
+                { "type": "add_item", "params": { "itemId": "riese_project_location" } }
+            ]
+        }]
+      },
+      {
+        "text": "如果我把它买下来，摆在客厅当咖啡桌，一定很酷。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你真的这样做了。它确实是你所有家具中最引人注目的一个，虽然你的朋友们抱怨说靠近它会感到莫名的焦虑和恶心。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": -20000, "irony": 15, "sanity": -10 } } ]
+        }]
+      },
+      {
+        "text": "向相关部门匿名举报这个拍卖会。这种东西不应该在私人之间流通。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "在你举报后的几分钟内，整个网站就下线了。……有这么高效吗？",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "anonymity": -10, "sanity": 2 } } ]
+        }]
+      }
+    ]
+  },{
+    "id": "conspiracy_27_club_lighter",
+    "title": "不祥之物",
+    "text": "你在一家杂货店的收银台前，看到一个玻璃罐里放满了各种用过的一次性打火机，大多是顾客用完后随手丢弃的。你随手伸进去拿了一个，出来才发现，是一个纯白色的。你的脑中突然闪过一个在网络上流传已久的都市传说：许多在27岁去世的传奇摇滚乐手——Jimi Hendrix, Kurt Cobain, Janis Joplin——据说在去世时口袋里都有一枚白色的打火机。",
+    "tags": ["conspiracy", "mystery", "item", "cursed", "unique", "art"],
+    "isUnique": true,
+    "priority": 20,
+    "choices": [
+      {
+        "text": "无稽之谈。相关性不代表因果性。这只是统计学上的巧合和事后穿凿附会。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你用理智打消了疑虑。它就只是一个普通的、白色的塑料打火机而已。你若无其事地把它放进了口袋。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "logic": 5, "sanity": 3 } }
+          ]
+        }]
+      },
+      {
+        "text": "这不是巧合，这是一个被诅咒的符号。我必须立刻摆脱它。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你感觉手中的打火机散发着一股不祥的寒意。你立刻将它扔进了街边的垃圾桶，并快步离开。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "我渴望与那些传奇产生连接，哪怕代价是同样的命运。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你紧紧地握着这枚打火机，感觉自己握住了一段传奇、疯狂且危险的历史。你决定将它作为护身符带在身边。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 10, "sanity": -15 } },
+              { "type": "add_item", "params": { "itemId": "cursed_white_lighter" } }
+            ]
+        }]
+      },
+      {
+        "text": "太棒了！这可是传奇摇滚明星的同款‘圣遗物’。我应该把它挂到网上拍卖。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你在商品描述里绘声绘色地讲述了‘27俱乐部’的故事，并暗示这枚打火机就是‘原物’。它竟然真的被一个神秘买家高价买走了。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "money": 2700, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "如果我用它点燃一支烟，我是不是就能写出像他们一样伟大的歌曲？",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你用它点燃了一支烟。在你吸入第一口时，一段完整的、从未听过的、忧伤而美妙的旋律在你脑中轰然炸响。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "weirdness": 15, "sanity": -15, "health": -10 } },
+              { "type": "add_status_effect", "params": { "statusId": "inspired", "duration": 10 } }
+            ]
+        }]
+      },
+      {
+        "text": "这个传说本身就很可疑。我需要先考证一下它的来源。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "logic", "operator": ">=", "value": 50 } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "经过一番深入的调查，你发现这个传说起源于90年代，且大部分都是无法证实的谣言——比如Kurt Cobain去世时现场并没有发现白色打火机。你用事实戳破了迷信。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 15, "sanity": 5 } } ]
+        }]
+      }
+    ]
+  },{
+    "id": "conspiracy_well_to_hell",
+    "title": "地狱之声",
+    "text": "在一个专门交流前苏联时期“暗黑科技”的论坛上，有人发布了一段据称是解密自西伯利亚某個废弃钻井项目的音频档案。帖子称，当钻头突破到12,000米深处时，探測到了一个巨大的地下空腔，当时的地质学家放下了一个耐高温的麦克风……你戴上耳机，点下了播放键。音频的前半段是沉闷的机械噪音，但在某一刻，噪音消失了，取而代之的是一阵……无法用语言形容的、混合了无数人惨叫和哀嚎的背景音。",
+    "tags": ["conspiracy", "history", "mystery", "supernatural", "cursed", "unique"],
+    "isUnique": true,
+    "priority": 25,
+    "choices": [
+      {
+        "text": "这是伪造的。声音可以被轻易地剪辑和混合。很可能只是个吸引眼球的恶作剧。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你关掉了音频。虽然声音确实令人不适，但你更愿意相信这是人类的恶意，而非超自然的存在。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "用专业的音频软件分析这段录音，看看是否存在剪辑或合成的痕迹。",
+        "worldview": "logic",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "分析结果让你不寒而栗。音频中没有任何剪辑点，所有的哀嚎都来自同一个声源，且背景中存在一种不属于任何已知物理现象的稳定低频共振。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 15, "gnosis": 10, "sanity": -20 } } ]
+        }]
+      },
+      {
+        "text": "这就是地狱的声音。人类无意中凿开了通往另一个维度的大门。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "这个发现让你对世界的认知产生了颠覆性的动摇。你开始在宗教典籍和地图上，寻找更多关于‘地下世界’的线索。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 12, "sanity": -18 } } ]
+        }]
+      },
+      {
+        "text": "尝试倒放这段音频。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "在倒放的、刺耳的哀嚎声中，你似乎分辨出了一个清晰的、反复出现的人声，在用一种古老的语言说：‘…不要听…’",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 15, "gnosis": 5, "sanity": -15 } } ]
+        }]
+      },
+      {
+        "text": "把这段音频作为素材，创作一首工业噪音或黑金属风格的曲子。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的作品因为其“极度真实的黑暗氛围”而备受好评。没人知道，你只是给地狱的原声配上了一段鼓点而已。你的创作才华得到了认可，但也让你每晚都做噩梦。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 10, "fame": 10, "sanity": -12 } } ]
+        }]
+      },
+      {
+        "text": "这不是‘地狱’，这是‘地球’本身的声音。是这颗星球在痛苦呻吟。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "primitivism", "operator": ">=", "value": 30 } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你从那些声音中听出的不是罪恶，而是来自盖亚的、被工业文明不断伤害的纯粹痛苦。你更加坚定了自己回归自然的决心。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "gnosis": 10, "sanity": -10 } },
+                { "type": "change_stat", "params": { "primitivism": 10 } }
+            ]
+        }]
+      }
+    ]
+  }
+  ,{
+    "id": "conspiracy_nibiru_cataclysm",
+    "title": "末日狂欢",
+    "text": "一则关于‘尼比鲁’的末日预言正在网上疯狂传播。预言称，这颗神秘的流浪行星将在明晚掠过地球，引发全球性的灾难。虽然所有官方机构都在辟谣，但恐慌和狂热的情绪已无法遏制。就在此时，你收到了邻居发来的派对邀请函，上面写着：‘管他是不是世界末日，我们都要在最好的音乐和朋友的陪伴下迎接它！明晚，我家天台，末日狂欢，不见不散！’",
+    "tags": ["conspiracy", "internet", "social", "unique", "sky"],
+    "isUnique": true,
+    "priority": 20,
+    "choices": [
+      {
+        "text": "去看看也无妨。就当是参加一个主题独特的派对，还能观察一下人们在末日谣言下的反应。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "派对上，有人在哭泣，有人在狂舞，有人在交换着最后的秘密。你像一个社会学家，冷静地观察着这场人性百态的展演。第二天，太阳照常升起。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "这不是玩笑。古老的预言和星象都指向了这场灾难。我没时间参加派对，我需要准备物资，找到避难所。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你在地下室里度过了紧张的一夜。虽然什么都没发生，但你的生存储备让你感到前所未有的安心。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "money": -1000, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "太棒了！世界的终点必须要有最棒的配乐！我不仅要去，还要带上我最好的音响和一份‘末日金曲’歌单。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的音乐让派对的气氛达到了高潮，所有人都为你欢呼。你成为了这场末日狂欢的DJ之王。第二天，你在宿醉中醒来，发现自己涨了不少粉。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 15, "fame": 10, "health": -5, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "尼比鲁不是毁灭者，它是‘净化者’。它的到来是一次宇宙尺度的意识升级。我应该去派对，但不是为了狂欢，而是为了迎接‘飞升’。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你在派对最吵闹的角落盘腿坐下，开始冥想。在音乐和人声的洪流中，你的精神似乎真的触碰到了一丝来自宇宙深处的、更高维度的信息。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 12, "gnosis": 5, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "我应该利用这个机会，向派对上的所有人科普天文知识，揭穿这个骗局。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你试图向几个正在狂欢的人解释“行星轨道”和“引力摄动”，但他们只是把一顶锡纸帽子戴在了你的头上，并给了你一杯啤酒。你的科普失败了，但你收获了一杯免费的啤酒。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "irony": 3, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "所有人都只看到了尼比鲁，却没注意到那颗跟在它后面的、真正巨大的‘眼睛’。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "gnosis", "operator": ">=", "value": 70 } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你没有参加派对，而是用自己的望远镜彻夜观察着天空。在预言的时刻，你什么行星也没看到。但在那片虚无的宇宙深处，你似乎真的看到了一双无法用言语形容的、巨大到超越所有星系的眼睛，它……眨了一下。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 25, "sanity": -30 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "conspiracy_spontaneous_combustion",
+    "title": "消防员的报告",
+    "text": "在一个专门分享都市传说的论坛上，一篇匿名帖子吸引了你的注意。发帖人自称是一名退休的消防员，他贴出了一份被涂抹掉关键信息的火警报告影本。报告记载了一次出警：报案原因是‘室内冒烟’。但抵达现场后，消防员发现公寓内没有任何火灾迹象，家具、墙纸、天花板都完好无损。唯一的异常，是在房间中央的安乐椅上，有一堆人形的、油腻的灰色灰烬，空气中弥漫着一股奇怪的甜腻气味。而在那堆灰烬的末端，一双穿着拖鞋的、完好无损的脚，静静地立在那里。",
+    "tags": ["conspiracy", "mystery", "supernatural", "cursed", "unique"],
+    "isUnique": true,
+    "priority": 25,
+    "choices": [
+      {
+        "text": "这是典型的‘烛芯效应’。人体脂肪在衣物的包裹下，就像一根蜡烛一样缓慢燃烧。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你找到了最符合逻辑的科学解释。虽然这个解释本身也足够骇人听闻，但它至少将事件归于物理法则，而非超自然。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "那不是‘燃烧’，那是‘净化’。某种来自高维度的能量，将一个罪恶的灵魂从这个世界上彻底抹除了。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "这个想法让你不寒而栗。你开始思考，怎样的‘罪’，才会招致如此精准而彻底的‘天罚’？",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 10, "sanity": -15 } } ]
+        }]
+      },
+      {
+        "text": "在帖子下面回复：“完美的低温烧烤，肉都化了，皮却还是脆的。给个好评。”",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的地狱笑话获得了几个同样病态的点赞。发帖的消防员回复了你一个呕吐的表情符号。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "我应该试试看。如果我一直坐在椅子上不动，我会不会也变成一堆温暖的灰烬和一双脚？",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你真的在椅子上坐了一整天，但除了腰酸背痛之外，什么也没发生。你感到一丝失望。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 10, "health": -5, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "尝试联系发帖人，看看能不能获取更多关于那双‘幸存’拖鞋的信息——比如品牌和材质。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的私信石沉大海。但你的问题让你从一个新的角度思考：也许解开谜题的关键，不在于那堆灰烬，而在于那些没有被烧毁的东西。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 2 } } ]
+        }]
+      },
+      {
+        "text": "这篇帖子的文笔很不错。这根本不是什么报告，而是一篇写得非常出色的伪纪实档案体恐怖故事。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你从写作技巧和叙事结构的角度，解构了这篇帖子。你将它作为一个优秀的文学作品收藏了起来。你看穿了‘故事’，但也可能因此忽略了‘真实’。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "irony": 3, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "那种‘甜腻’的气味才是关键。那不是燃烧的味道，那是‘转化’的味道。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始对气味变得异常敏感。你尝试在家里混合各种香料，试图复制出那种气味，相信它是一种能打开某种‘通道’的熏香。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "回复帖子：“感谢分享。请问在哪里可以体验到这项服务？需要预约吗？”",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的回复被管理员以“不当内容”为由删除了，并收到了一个警告。但你成功地用一种极致的荒诞，回敬了这份恐怖。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 10, "fame": -5, "sanity": 2 } } ]
         }]
       }
     ]
