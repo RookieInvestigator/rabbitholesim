@@ -121,7 +121,7 @@
         "results": [{
             "weight": 1,
             "feedback": "你立刻回放了录像。录像显示，你确实在路边停了车，并打开了后座的车门，对着空气说了几句话。但从头到尾，都没有任何人上车。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "sanity": -18 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": -3, "sanity": -18 } } ]
         }]
       },      
       {
@@ -131,7 +131,7 @@
         "results": [{
             "weight": 1,
             "feedback": "在你提交评价后，你收到了平台的一条自动回复：‘非常抱歉为您带来不愉快的体验，我们已将该乘客列入低优先级匹配名单。’你感觉自己用现代科技的官僚主义，成功地回击了一次超自然现象。",
-            "outcomes": [ { "type": "change_stat", "params": { "irony": 10, "logic": -2, "sanity": 5 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "logic": -2, "sanity": 5 } } ]
         }]
       },      
       {
@@ -141,7 +141,7 @@
         "results": [{
             "weight": 1,
             "feedback": "你在下一个路口下了车，开始练习如何让自己‘看起来像个幽灵’并‘瞬间移动’。虽然最终只是把自己淋成了落汤鸡，但你感觉自己的境界得到了升华。",
-            "outcomes": [ { "type": "change_stat", "params": { "irony": 12, "health": -5, "sanity": -5 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "health": -5, "sanity": -5 } } ]
         }]
       },
       {
@@ -281,7 +281,7 @@
         "results": [{
             "weight": 1,
             "feedback": "你开始在心里默想‘苹果’，但脸上却做出极度恐惧的表情。舞台上的机器人们显然混乱了，它们拼出了一半的‘苹’字，然后停止了运作。团长不动声色地看了你一眼，宣布今日表演结束。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "gnosis": 5, "sanity": -5 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 6, "gnosis": 5, "sanity": -5 } } ]
         }]
       },
       {
@@ -315,7 +315,7 @@
         "results": [{
             "weight": 1,
             "feedback": "你大声说出你的质疑，并头头是道地分析了他的所有“魔术”手法。那个老绅士并没有生气，只是微笑着为你鼓掌，说：‘这位先生的表演，比我的更精彩。’然后将观众的打赏分了你一半。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "irony": 10, "money": 500 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "irony": 2, "money": 500 } } ]
         }]
       }
     ]

@@ -323,4 +323,64 @@
       }
     ]
   }
+  ,{
+    "id": "daily_usability_testing",
+    "title": "有偿测试",
+    "text": "你看到一则线上招募广告：一家科技公司正在为其即将上线的新款社交App，招募一批“用户体验测试员”。工作内容很简单，只需要使用App半小时，并回答一些问题，就能获得一笔不菲的报酬。",
+    "tags": ["daily", "money", "internet", "tech"],
+    "isUnique": false,
+    "priority": 2,
+    "choices": [
+      {
+        "text": "听起来是个轻松的赚钱方法。报名参加。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你花了一些时间，认真地测试了App的各项功能，并提交了一份详尽的反馈报告。你专业的态度得到了对方的赞赏，并获得了报酬。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": 1500, "logic": 3 } } ]
+        }]
+      },
+      {
+        "text": "他们收集的不是‘用户体验’，而是‘用户数据’。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你拒绝了邀请。你相信，天下没有免费的午餐，尤其是来自科技公司的。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 2, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "在所有反馈栏里都填满胡言乱语和网络梗图。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "对方按照规定支付了报酬。你成功地在不付出任何有效劳动的情况下，赚到了一笔钱。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 1500, "irony": 5, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "在测试过程中，我应该尝试用各种非常规的操作，看看能不能搞崩它的服务器。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "在你进行了一系列疯狂的操作后，App闪退了。你可能真的发现了一个重大的系统漏洞。对方额外支付了你一笔奖金。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 2500, "weirdness": 5, "logic": 2 } } ]
+        }]
+      },
+      {
+        "text": "接受测试，但在测试结束后，反过来向他们推销我的‘专业用户体验咨询服务’。",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的自信和专业术语成功地唬住了对方。他们不仅支付了你的测试费用，还额外给了你一笔咨询费，并邀请你加入他们的外部专家库。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 5000, "irony": 8, "fame": 5 } } ]
+        }]
+      }
+    ]
+  }
 ]

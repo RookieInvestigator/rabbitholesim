@@ -1,6 +1,5 @@
 [
-  {
-    "id": "mystery_chemtrails",
+  {"id": "mystery_chemtrails",
     "title": "网格状的天空",
     "text": "你抬头仰望天空，发现今天的云很奇怪。飞机飞过的尾迹久久不能散去，在空中交织成一片巨大的、不自然的网格。",
     "tags": ["conspiracy", "sky", "mystery", "daily"],
@@ -12,7 +11,7 @@
         "results": [{
           "weight": 1,
           "feedback": "你用气象学知识打消了疑虑，天上的云看起来也没那么怪了。",
-          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 1 } } ]
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 2 } } ]
         }]
       },
       {
@@ -22,7 +21,7 @@
         "results": [{
           "weight": 1,
           "feedback": "你开始警惕地呼吸，并回家关上了门窗。你不知道他们在喷洒什么，但绝不会是什么好东西。",
-          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 2, "sanity": -2 } } ]
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "sanity": -2 , "logic": -1 } } ]
         }]
       },
       {
@@ -67,8 +66,7 @@
       }
     ]
   },
-  {
-    "id": "mystery_hollow_earth_map",
+  {"id": "mystery_hollow_earth_map",
     "title": "二手书里的地图",
     "text": "你在一家二手书店淘到一本破旧的科幻小说。翻开书，一张折叠起来的、像是手绘的地图掉了出来。地图的中央画着一个巨大的空洞，标注着“通往阿加森的入口”。",
     "tags": ["conspiracy", "discovery", "mystery", "book"],
@@ -135,8 +133,7 @@
       }
     ]
   },
-  {
-    "id": "mystery_lizard_person_glitch",
+  {"id": "mystery_lizard_person_glitch",
     "title": "屏幕上的异常",
     "text": "你在观看一场重要的政治演讲直播。在某个镜头切换的瞬间，画面卡顿了一下，就在那一帧，你似乎看到演讲者的瞳孔变成了垂直的、像爬行动物一样的形状，然后立刻恢复了正常。",
     "tags": ["conspiracy", "media", "politics", "mystery"],
@@ -203,8 +200,7 @@
       }
     ]
   },
-  {
-    "id": "mystery_birds_are_drones",
+  {"id": "mystery_birds_are_drones",
     "title": "机械之羽",
     "text": "你在路边发现一只死去的鸽子。出于一丝好奇，你用树枝拨开了它的羽毛，在它的皮肤下，你似乎看到了闪烁着金属光泽的、类似电路的东西。",
     "tags": ["conspiracy", "animals", "mystery", "daily"],
@@ -262,7 +258,7 @@
           {
             "weight": 3,
             "feedback": "那真的是电路板！你甚至看到了上面印着的微型序列号。在你试图看得更清楚时，电路板发出了一股青烟，自毁了。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "gnosis": 8, "sanity": -12 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "gnosis": 8, "sanity": -8 } } ]
           }
         ]
       },
@@ -281,8 +277,7 @@
       }
     ]
   },
-  {
-    "id": "daily_cursed_doll",
+  {"id": "daily_cursed_doll",
     "title": "不祥的玩偶",
     "text": "在一个周末的跳蚤市场，你被一个摊位角落里的东西吸引了。那是一个维多利亚风格的瓷质玩偶，穿着褪色的蕾丝裙，脸上带着一种僵硬而诡异的微笑。最让你不安的是它的玻璃眼珠——无论你从哪个角度看过去，都感觉它在静静地凝视着你。",
     "tags": ["daily", "item", "mystery", "cursed", "supernatural", "urban_legend"],
@@ -339,7 +334,7 @@
         "results": [{
           "weight": 1,
           "feedback": "你把它带回家，用工具小心翼翼地拆开了它的头部。让你脊背发凉的是，里面空空如也，没有任何机械装置。在你困惑时，那对被你取下的眼珠，在桌上自己滚动了一下，转向了你的方向。",
-          "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "gnosis": 10, "sanity": -18, "money": -200 } } ]
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 10, "sanity": -18, "money": -200 } } ]
         }]
       },
       {

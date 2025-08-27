@@ -5,7 +5,7 @@
     "tier": 1,
     "description": "你相信万物皆有逻辑可循。",
     "effects": [
-      { "type": "change_stat", "params": { "logic": 20, "weirdness": -5, "gnosis": -5 } },
+      { "type": "change_stat", "params": { "logic": 10, "weirdness": -5, "gnosis": -5 } },
       { "type": "change_tag_probability", "params": { "tag": "supernatural", "multiplier": 0.8 } },
       { "type": "change_tag_probability", "params": { "tag": "mystery", "multiplier": 0.85 } }
     ]
@@ -262,6 +262,15 @@
     "effects": [
       { "type": "change_stat", "params": { "gnosis": 10, "logic": -5, "primitivism": 10 } },
       { "type": "change_tag_probability", "params": { "tag": "anti-tech", "multiplier": 2.8 } }
+    ]
+  },
+    {
+    "id": "talent_zpe",
+    "name": "永动机狂人",
+    "tier": 2,
+    "description": "你执着于追求永动机的梦想。",
+    "effects": [
+      { "type": "change_stat", "params": {  "zpe_progress": 30 } }
     ]
   }
 ]

@@ -49,7 +49,7 @@
         "magnitude": 1,
         "results": [{
           "weight": 1,
-          "feedback": "你发帖说：“古人：‘那玩意儿’来了快跑！现代人：‘熊’。怪不得我们活得这么累。”你的帖子得到了几个赞。",
+          "feedback": "*古代人无忧无虑的秘诀：今天的晚餐是“那玩意”“那玩意”和“那玩意”。",
           "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "fame": 1 } } ]
         }]
       },
@@ -65,7 +65,7 @@
           "weight": 1,
           "feedback": "你的论文在语言学界引起了小小的轰动，你提出的“禁忌词根替换模型”为你赢得了一些声誉。",
           "outcomes": [
-            { "type": "change_stat", "params": { "logic": 12, "fame": 5 } },
+            { "type": "change_stat", "params": { "logic": 8, "fame": 5 } },
             { "type": "unlocksEvent", "params": { "eventId": "bear_02_the_naming" } }
           ]
         }]
@@ -107,7 +107,7 @@
         "results": [{
           "weight": 1,
           "feedback": "你没有贸然行事，而是开始研究各种保护性的符号和仪式，试图在“安全”的环境下进行这次实验。",
-          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 10, "logic": 3 } } ]
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 6, "logic": 3 } } ]
         }]
       },
       {
@@ -231,7 +231,7 @@
         "results": [{
           "weight": 1,
           "feedback": "在绝对的安静中，你感到那个存在逐渐失去了对你的“锚点”，最终悄然离去。这场修行极大地磨练了你的意志力。",
-          "outcomes": [ { "type": "change_stat", "params": { "sanity": 20, "logic": 15 } } ]
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": 20, "logic": 8 } } ]
         }]
       },
       {
@@ -278,8 +278,7 @@
           "weight": 1,
           "feedback": "蜂蜜的味道超乎想象，它仿佛蕴含着森林、大地和星辰的气息。在你吃下后，你感到自己的感官变得无比敏锐，并获得了一种奇特的“野性直觉”状态。",
           "outcomes": [
-            { "type": "change_stat", "params": { "gnosis": 15, "health": 10, "sanity": -8 } },
-            { "type": "add_status_effect", "params": { "statusId": "wild_instinct", "duration": 20 } }
+            { "type": "change_stat", "params": { "gnosis": 15, "health": 10, "sanity": -8 } }
           ]
         }]
       },
@@ -317,7 +316,7 @@
         "results": [{
             "weight": 1,
             "feedback": "你将样本送去化验。报告显示，蜂蜜中含有大量未知的花粉和一种能促进细胞活性的酶。这项发现足以在生物学界引起地震。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 20, "fame": 10, "money": -500 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 12, "fame": 10, "money": -500 } } ]
         }]
       },
       {

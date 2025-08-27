@@ -138,7 +138,7 @@
         "results": [{
           "weight": 1,
           "feedback": "你的问题让导师愣了一下，但他很快就用一套无法证伪的“灵性”话语绕了过去，并暗示你的“过度理性”正是需要被“净化”的障碍。一些成员开始对你投来同情的目光。",
-          "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "fame": -5, "sanity": -5 } } ]
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "fame": -5, "sanity": -5 } } ]
         }]
       },
       {
@@ -225,7 +225,7 @@
         "results": [{
           "weight": 1,
           "feedback": "你通过一些灰色渠道，查到了这个组织的财务报告。你发现大部分的捐款，最终都流入了“真父母”名下的数个空壳公司。这证实了你的猜想。",
-          "outcomes": [ { "type": "change_stat", "params": { "logic": 15, "gnosis": 10, "sanity": 5, "anonymity": -10 } } ]
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "gnosis": -4, "sanity": 5, "anonymity": -10 } } ]
         }]
       },
       {
@@ -240,7 +240,7 @@
             "weight": 1,
             "feedback": "你对自己记下的教义的熟练运用，让那对夫妇大吃一惊。他们连忙道歉，说自己理解有误，并对你的“虔诚”表示了高度赞赏。你成功地利用规则保护了自己。",
             "outcomes": [
-                { "type": "change_stat", "params": { "gnosis": 10, "logic": 5, "sanity": 5 } },
+                { "type": "change_stat", "params": { "gnosis": 4, "logic": 5, "sanity": 5 } },
                 { "type": "unlocksEvent", "params": { "eventId": "cult_family_04_the_matching" } }
             ]
         }]
@@ -264,7 +264,7 @@
           "weight": 1,
           "feedback": "你在角落里冷静地观察着这场大型社会实验。人性中脆弱、渴望、顺从与反抗的一面，在此刻暴露无遗。你的笔记本上又多了几页素材。",
           "outcomes": [
-            { "type": "change_stat", "params": { "logic": 10, "gnosis": 5, "sanity": -5 } },
+            { "type": "change_stat", "params": { "logic": 10, "gnosis": -5, "sanity": -5 } },
             { "type": "unlocksEvent", "params": { "eventId": "cult_family_05_the_assignment" } }
           ]
         }]
@@ -350,8 +350,7 @@
           "weight": 1,
           "feedback": "你的邻居赞许地点了点头。你感到自己正在从一个参与者，转变为这个巨大机器中的一个齿轮。",
           "outcomes": [
-            { "type": "change_stat", "params": { "logic": 5, "gnosis": 5, "sanity": -10 } },
-            { "type": "add_status_effect", "params": { "statusId": "recruitment_mission", "duration": 15 } }
+            { "type": "change_stat", "params": { "logic": 5, "gnosis": 5, "sanity": -10 } }
           ]
         }]
       },
@@ -453,7 +452,7 @@
           "feedback": "顾问赞许地接管了你的一切。你感到一阵前所未有的“轻松”，仿佛卸下了所有世俗的重担。你的账户被清空，只留下了基本生活费。",
           "outcomes": [
             { "type": "set_stat", "params": { "money": 200 } },
-            { "type": "change_stat", "params": { "gnosis": 10, "sanity": -15 } },
+            { "type": "change_stat", "params": { "gnosis": 10, "sanity": -15, "logic": -5 } },
             { "type": "unlocksEvent", "params": { "eventId": "cult_family_07_the_inner_circle" } }
           ]
         }]
@@ -470,9 +469,8 @@
           "feedback": "顾问微笑着表示，“大家庭”会帮助你解决这些“旧世界的束缚”。你的债务被还清了，但代价是你未来所有的收入都将归组织所有。",
           "outcomes": [
             { "type": "set_stat", "params": { "money": 200 } },
-            { "type": "change_stat", "params": { "irony": -10, "sanity": -15 } },
+            { "type": "change_stat", "params": { "irony": -10, "sanity": -15, "logic": -5 } },
             { "type": "remove_status_effect", "params": { "statusId": "in_debt" } },
-            { "type": "add_status_effect", "params": { "statusId": "indentured_servitude", "duration": 3650 } },
             { "type": "unlocksEvent", "params": { "eventId": "cult_family_07_the_inner_circle" } }
           ]
         }]
@@ -518,7 +516,7 @@
           "weight": 1,
           "feedback": "你利用精湛的技术，在他们提供的U盘中植入了可以回传数据的间谍软件。你没有交出真实的密码，而是给了他们一个专门用于监控的“蜜罐账户”。几天后，你成功截获了他们内部的账本和资金流向图。",
           "outcomes": [
-            { "type": "change_stat", "params": { "logic": 15, "anonymity": 10, "sanity": 5 } },
+            { "type": "change_stat", "params": { "logic": 10, "anonymity": 10, "sanity": 5 } },
             { "type": "add_item", "params": { "itemId": "financial_evidence_usb" } },
             { "type": "unlocksEvent", "params": { "eventId": "cult_family_07_the_inner_circle" } }
           ]

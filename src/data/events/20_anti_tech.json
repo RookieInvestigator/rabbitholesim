@@ -39,7 +39,7 @@
             "weight": 1,
             "feedback": "经过一番艰苦的努力，你竟然真的修好了它！你成功地对抗了消费主义的浪潮，获得了一种巨大的成就感。",
             "outcomes": [
-              { "type": "change_stat", "params": { "logic": 10, "sanity": 10, "money": -100 } },
+              { "type": "change_stat", "params": { "logic": 6, "sanity": 10, "money": -100 } },
               { "type": "change_stat", "params": { "primitivism": 3 } }
             ]
           },

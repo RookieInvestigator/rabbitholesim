@@ -64,7 +64,7 @@
           {
             "weight": 2,
             "feedback": "在影片的最后一帧，当画面即将切掉的瞬间，你发现背景的树丛里，站着一个同样没有脸的、穿着西装的高大人影。这让你不寒而栗。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "gnosis": 5, "sanity": -8 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": -2, "gnosis": 5, "sanity": -8 } } ]
           }
         ]
       },

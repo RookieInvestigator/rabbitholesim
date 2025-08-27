@@ -40,5 +40,14 @@
     "conditions": [
         { "type": "ending_id", "endingId": "unabomber_successor" }
     ]
+  },
+  {
+    "id": "ending_zpe_success",
+    "title": "新世界的普罗米修斯",
+    "description": "你成功了。那盏永不熄灭的灯泡，宣告了一个新纪元的到来。你小心翼翼地将蓝图和原型机公之于众。能源战争、环境污染、贫困……无数旧时代的顽疾，或许都在自由能源的浪潮下被治愈。",
+    "priority": 100,
+    "conditions": [
+      { "type": "ending_id", "endingId": "ending_zpe_success" }
+    ]
   }
 ]

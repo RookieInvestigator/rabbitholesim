@@ -72,7 +72,7 @@
         "results": [{
           "weight": 1,
           "feedback": "你拿出手机，打开了录音和摄像功能。那只猫似乎察觉到了你的意图，它只是轻蔑地哼了一声，然后从锁住的窗户里凭空消失了。",
-          "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "weirdness": 10, "sanity": -15 } } ]
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "weirdness": 10, "sanity": -15 } } ]
         }]
       }
     ]

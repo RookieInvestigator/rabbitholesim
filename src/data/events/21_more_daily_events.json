@@ -850,7 +850,7 @@
           {
             "weight": 2,
             "feedback": "在协议的第271条第8款的超链接脚注里，你找到了一行用Wingdings字体写的、几乎无法阅读的小字：【本协议最终解释权归地狱第七圈法务部所有】。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "gnosis": 10, "sanity": -15 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": -2, "gnosis": 10, "sanity": -10 } } ]
           }
         ]
       },

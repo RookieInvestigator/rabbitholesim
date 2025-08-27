@@ -13,10 +13,13 @@ const getInitialState = () => ({
   irony: 5,
   fame: 0,
   anonymity: 100,
+
+//事件进度
   primitivism: 0,
-  
+  zpe_progress: 0,
+
   deathReason: null,
-  endingTriggered: false, // <-- 用於標記結局是否觸發，以顯示meta事件按鈕
+  endingTriggered: false,
 
   statMultipliers: {},
   statusEffects: [],

@@ -40,5 +40,11 @@
     "outcomes": [
       { "type": "change_stat", "params": { "sanity": -0.3 } }
     ]
+  },
+  "building_zpe": {
+    "name": "伟大工程",
+    "outcomes": [
+      { "type": "change_stat", "params": { "zpe_progress": 4, "money": -100 } }
+    ]
   }
 }

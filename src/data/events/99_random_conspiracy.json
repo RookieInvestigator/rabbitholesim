@@ -282,12 +282,12 @@
         "results": [{
             "weight": 1,
             "feedback": "检测报告显示，冰淇淋中含有一种结构极其复杂、无法识别的古菌。在你收到报告的第二天，实验室就因“内部泄漏”而被无限期封锁了。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 15, "money": -2000, "anonymity": -15, "sanity": -10 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "money": -2000, "anonymity": -15, "sanity": -10 } } ]
         },
         {
             "weight": 9,
             "feedback": "检测报告显示，冰激凌成分一切正常，除了添加了过量的糖。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "money": -2000, "anonymity": -15, "sanity": 5 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "money": -2000, "sanity": 5 } } ]
         }
         ]
       },
@@ -428,7 +428,7 @@
         "results": [{
             "weight": 1,
             "feedback": "你悄悄在他身边坐下，低声说：‘别担心，我不会声张。告诉我你需要什么，反物质电池还是时间坐标的校准？’面具转向你，沉默地凝视了很久。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "gnosis": 5, "sanity": -5 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": -2, "gnosis": 5, "sanity": -5 } } ]
         }]
       },
       {
@@ -839,7 +839,7 @@
         "results": [{
             "weight": 1,
             "feedback": "经过一番深入的调查，你发现这个传说起源于90年代，且大部分都是无法证实的谣言——比如Kurt Cobain去世时现场并没有发现白色打火机。你用事实戳破了迷信。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 15, "sanity": 5 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 7, "sanity": 5 } } ]
         }]
       }
     ]
@@ -868,7 +868,7 @@
         "results": [{
             "weight": 1,
             "feedback": "分析结果让你不寒而栗。音频中没有任何剪辑点，所有的哀嚎都来自同一个声源，且背景中存在一种不属于任何已知物理现象的稳定低频共振。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 15, "gnosis": 10, "sanity": -20 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": -2, "gnosis": 10, "sanity": -12 } } ]
         }]
       },
       {

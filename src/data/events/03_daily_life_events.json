@@ -178,7 +178,7 @@
         }]
       },
       {
-        "text": "用通讯软体加这个号码为好友，看看对方的头像是什麽。",
+        "text": "用微信加这个号码为好友，看看对方的头像是什么。",
         "worldview": "logic",
         "magnitude": 2,
         "results": [
@@ -432,7 +432,7 @@
         "results": [{
             "weight": 1,
             "feedback": "你从社会语言学的角度，冷静地剖析了他们的对话模式。虽然理解了其“形式”，但你感觉自己似乎错过了其“本质”。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "gnosis": -5 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 6, "gnosis": -5 } } ]
         }]
       }
     ]
@@ -499,7 +499,7 @@
         "results": [{
             "weight": 1,
             "feedback": "你利用自己的技术，成功破解了卡带的存储芯片。在无数乱码的深处，你找到了一段加密的文本，似乎是一个坐标。这让你对接下来的探索有了新的方向。",
-            "outcomes": [ { "type": "change_stat", "params": { "logic": 12, "gnosis": 5 } }, {"type": "add_item", "params": { "itemId": "encrypted_coordinates" } }]
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "gnosis": 5 } }, {"type": "add_item", "params": { "itemId": "encrypted_coordinates" } }]
         }]
       },
       {
@@ -519,6 +519,133 @@
                 { "type": "add_item", "params": { "itemId": "activated_drone" } },
                 { "type": "add_event_modifier", "params": { "eventId": "mystery_birds_are_drones", "multiplier": 0, "duration": 9999 } }
             ]
+        }]
+      }
+    ]
+  }
+  ,{
+    "id": "social_lunar_effect_rave",
+    "title": "月下狂欢夜",
+    "text": "今晚的月亮大得惊人，银色的光辉将整座城市照得如同白昼。你走上街头，发现整个世界都陷入了一种奇异的狂热。公寓里传出震耳欲聋的音乐，平日里安静的邻居们在街上跳舞，远处甚至传来了狼嚎（或者只是某人喝多了）。空气中充满了自由、混乱和原始的能量。",
+    "tags": ["social", "weird", "sky", "mystery", "unique"],
+    "isUnique": true,
+    "priority": 15,
+    "choices": [
+      {
+        "text": "这只是集体歇斯底里，加上满月带来的心理暗示。我应该找个地方，记录下这些反常行为的数据。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你像一个战地记者，穿梭在狂欢的人群中，冷静地记录着一切。虽然你没有加入，但这场社会学观察让你收获颇丰。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "月亮正在释放它最原始的力量，唤醒了人们内心的野兽。我应该加入他们，释放自己。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你融入了人群，随着音乐和心跳尽情舞动。你忘记了时间，忘记了自我，体验了一场酣畅淋漓的原始狂欢。第二天，你在自家床上醒来，浑身酸痛但精神焕发。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 10, "sanity": 15, "health": -10 } } ]
+        }]
+      },
+      {
+        "text": "我明白了！月亮是个巨大的迪斯科球，而我们正在为即将到来的‘宇宙DJ’暖场！",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始对着天空大喊，邀请那位看不见的DJ播放你最喜欢的歌曲。作为回应，全城的灯光似乎随着你的节奏闪烁了一下。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 12, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "趁着所有人都这么嗨，街角的便利店应该没人看管吧？",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [
+          { "weight": 1, "feedback": "你成功地零元购了一些零食和饮料。在这场混乱中，没人注意到你。", "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "money": 500 } } ] },
+          { "weight": 1, "feedback": "你刚踏进便利店，就发现店主正戴着耳机，一边摇头晃脑一边给你结账，他甚至多找了你一些钱。", "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "money": 200 } } ] }
+        ]
+      },
+      {
+        "text": "爬到最高的楼顶，对着月亮开始我的个人演唱会。",
+        "worldview": "irony",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "fame", "operator": ">=", "value": 30 } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你的歌声通过楼宇的缝隙传遍了整个街区。楼下狂欢的人群渐渐停了下来，抬头仰望着你，仿佛在聆听一位降临在末世的偶像歌唱。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 15, "fame": 20, "sanity": 10 } } ]
+        }]
+      },
+      {
+        "text": "这不是狂欢，这是某种大型集体仪式的前奏。我需要找到仪式的中心。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "gnosis", "operator": ">=", "value": 50 } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你闭上眼睛，感受着人群‘能量’的流向。顺着这股流动的力量，你走到了城市中心的喷泉广场。那里空无一人，只有泉水在月光下反射出奇异的七彩光芒。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 15, "weirdness": 5, "sanity": -10 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "daily_raining_window",
+    "title": "窗外的雨",
+    "text": "窗外下起了雨，灰色的雨幕模糊了整个世界的轮廓。你放下手头所有的事情，泡了一杯热茶，静静地坐在窗前，看着雨滴在玻璃上划出蜿蜒的痕迹。",
+    "tags": ["daily", "personal", "health", "weather"],
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "什么也不想，只是单纯地享受这一刻的宁静。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "在雨声的陪伴下，你纷乱的思绪渐渐沉淀下来。你感到一种久违的、发自内心的平和与安宁。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": 15, "health": 2 } } ]
+        }]
+      },
+      {
+        "text": "雨水是天空的眼泪，它在洗刷这个世界的罪恶与悲伤。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你感觉自己的精神也随着这场雨，得到了一次深刻的洗涤。",
+            "outcomes": [ { "type": "change_stat", "params": { "sanity": 10, "gnosis": 3 } } ]
+        }]
+      },
+      {
+        "text": "如果我把脸贴在玻璃上，我是不是就能听到雨滴在唱什么歌？",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你真的这样做了。冰冷的玻璃让你打了个寒颤，但在那无序的雨声中，你似乎真的分辨出了一段微弱的、不成调的旋律。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "打开窗户，把手伸出去，假装自己在接取来自天空的神秘力量。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的手上沾满了冰冷的雨水，除此之外，什么也没发生。但这个中二的举动让你感觉很好。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "sanity": 5, "health": -1 } } ]
         }]
       }
     ]
