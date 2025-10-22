@@ -1,0 +1,72 @@
+[
+  {
+    "id": "daily_cereal_breakfast",
+    "title": "美味麦片早餐",
+    "text": "早晨的阳光洒进厨房，你为自己准备了一碗色彩缤纷的水果麦片，搭配冰凉的牛奶。看起来就让人心情愉悦。",
+    "tags": ["daily", "food", "health", "personal"],
+    "isUnique": false,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "坐下来，好好享受这份简单的美味。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "香甜的麦片和水果唤醒了你的味蕾，也为新的一天注入了活力。简单的早餐也能带来纯粹的快乐。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "sanity": 5, "health": 2 } }
+          ]
+        }]
+      },
+      {
+        "text": "狼吞虎咽地吃完，还有更重要的事情等着我。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你迅速解决了早餐，虽然有点囫囵吞枣，但至少填饱了肚子。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "sanity": 2, "health": 1 } }
+          ]
+        }]
+      },
+      {
+        "text": "早餐是一天中最重要的仪式。我应该一边吃，一边思考宇宙的奥秘。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "在咀嚼麦片的同时，你的思绪飘向了远方。早餐结束时，你感觉自己对世界的理解又加深了一层。",
+            "outcomes": [
+                { "type": "change_stat", "params": { "sanity": 3, "health": 1, "gnosis": 1 } }
+            ]
+        }]
+      },
+      {
+          "text": "把麦片按照颜色分类排列，然后再吃掉它们。",
+          "worldview": "weirdness",
+          "magnitude": 1,
+          "results": [{
+              "weight": 1,
+              "feedback": "你进行了一场小小的色彩强迫症仪式。虽然有点浪费时间，但这让你感到一种奇特的秩序感。",
+              "outcomes": [
+                  { "type": "change_stat", "params": { "sanity": 4, "health": 1, "weirdness": 1 } }
+              ]
+          }]
+      },
+      {
+          "text": "给麦片拍张照，加上滤镜，发到社交媒体上，配文：‘#健康生活 #元气满满’。",
+          "worldview": "irony",
+          "magnitude": 1,
+          "results": [{
+              "weight": 1,
+              "feedback": "你的帖子获得了一些赞。你用一碗麦片成功地塑造了积极向上的人设。",
+              "outcomes": [
+                  { "type": "change_stat", "params": { "sanity": 3, "health": 1, "irony": 1, "fame": 1 } }
+              ]
+          }]
+      }
+    ]
+  }
+]

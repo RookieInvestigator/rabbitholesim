@@ -277,12 +277,12 @@
           {
             "weight": 1,
             "feedback": "你感觉自己像一头野兽，充满了原始的生命力。",
-            "outcomes": [ { "type": "change_stat", "params": { "health": 5, "weirdness": 3, "logic": -2 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "health": 5, "weirdness": 3, "logic": -2 , "primitivism": 3 } } ]
           },
           {
             "weight": 1,
             "feedback": "你因此闹了肚子，上吐下泻。",
-            "outcomes": [ { "type": "change_stat", "params": { "health": -10, "sanity": -5 } } ]
+            "outcomes": [ { "type": "change_stat", "params": { "health": -10, "sanity": -5 , "primitivism": -1} } ]
           }
         ]
       }

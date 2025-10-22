@@ -488,78 +488,52 @@
     ]
   },
   {
-    "id": "anti_tech_pilgrimage_awakening",
-    "title": "圣地",
-    "text": "那股来自荒野的呼唤日益强烈，你无法再抗拒。你变卖了所有家当，告别了熟悉的一切，只带着最基本的装备，踏上了前往那个神秘坐标的旅途。脱离文明的第一天就让你吃尽了苦头：冰冷的雨水、挥之不去的饥饿感，以及失去了手机后那种深入骨髓的无聊。在经历了数日的艰苦跋涉后，你终于在森林深处，找到了那座几乎已被自然吞噬的腐朽小木屋。",
-    "tags": ["anti-tech", "philosophy", "unique", "ending_path", "conspiracy"],
-    "isUnique": true,
-    "priority": 500,
-    "conditions": [
-      { "type": "stat_check", "params": { "stat": "primitivism", "operator": ">=", "value": 50 } }
-    ],
+    "id": "anti_tech_concrete_jungle",
+    "title": "凝固的自然",
+    "text": "在城市的街道上，你看到一棵树被种植在一个小小的水泥树坑里。它的根系被坚硬的混凝土包裹，无法自由舒展。它挣扎着向上生长，但它的底部却被永久地禁锢。",
+    "tags": ["daily", "urban", "conspiracy", "anti-tech"],
+    "isUnique": false,
+    "priority": 5,
+    "conditions": [ { "type": "stat_check", "params": { "stat": "primitivism", "operator": ">=", "value": 20 } } ],
     "choices": [
       {
-        "text": "推开屋门。在腐朽的书桌上，我找到了前人的手稿、日记和一些未完成的“作品”蓝图。我将继承这一切。",
-        "worldview": "gnosis",
-        "magnitude": 3,
+        "text": "这真是人类的傲慢与愚蠢。我们为了让自然“融入”我们的世界，却不惜将其彻底禁锢。",
+        "worldview": "irony",
+        "magnitude": 2,
         "results": [{
           "weight": 1,
-          "feedback": "你贪婪地阅读着那些冰冷而愤怒的文字，一种前所未有的使命感充满了你的内心。你不再是你自己，你成了一个理念，一个幽灵，一个向工业社会宣战的符号。你的探索将迎来终局……",
-          "outcomes": [
-            { "type": "trigger_ending", "params": { "endingId": "unabomber_successor" } }
-          ]
+          "feedback": "你感到一种荒诞的幽默感。这棵树就像被困在笼子里的狮子，但却无人察觉它的困境。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 2, "sanity": 1 ,"primitivism": 1} } ]
         }]
       },
       {
-        "text": "我不关心屋里有什么。我需要的只是这片荒野。我将住在这里，成为一个真正的隐士。",
+        "text": "用你随身携带的工具，试图凿开水泥，解放这棵树的根系。",
         "worldview": "weirdness",
-        "magnitude": 3,
-        "results": [{
-          "weight": 1,
-          "feedback": "你对前人的遗产毫无兴趣，只是将小木屋打扫干净，作为自己融入自然的第一个庇护所。你没有成为一个符号，你只是成为了一个真正自由的、无名的人。你的探索将迎来终局……",
-          "outcomes": [
-            { "type": "trigger_ending", "params": { "endingId": "anarcho_primitivism" } }
-          ]
-        }]
-      },
-      {
-        "text": "这太疯狂了！没有暖气，没有外卖，甚至没有厕纸！我受够了，我现在就要回到文明世界！",
-        "worldview": "logic",
-        "magnitude": 3,
-        "results": [{
-          "weight": 1,
-          "feedback": "你连滚带爬地逃离了森林。当你重新看到柏油马路和便利店的灯光时，你几乎要哭出来。你狼狈地回到了城市，但你早已一无所有，只能从零开始。",
-          "outcomes": [
-            { "type": "set_stat", "params": { "money": 0, "health": 40, "sanity": 30, "primitivism": 0 } }
-          ]
-        }]
-      },
-      {
-        "text": "将手稿和日记带走，匿名发布到网上，让全世界来审判这份遗产。",
-        "worldview": "irony",
-        "magnitude": 3,
-        "results": [{
-          "weight": 1,
-          "feedback": "你的举动在全球网络上掀起了一场剧烈的思想风暴，引发了无尽的混乱和辩论。你成为了这个时代的“模因之王”，但也可能是最危险的麻烦制造者。",
-          "outcomes": [
-            { "type": "change_stat", "params": { "irony": 25, "fame": 50, "anonymity": -100, "sanity": -15 } },
-            { "type": "set_stat", "params": { "primitivism": 0 } }
-          ]
-        }]
-      },
-      {
-        "text": "这些东西……可都是真迹！它们在收藏家市场上绝对价值连城。",
-        "worldview": "irony",
-        "magnitude": 3,
-        "results": [{
+        "magnitude": 2,
+        "results": [
+          {
             "weight": 1,
-            "feedback": "你小心翼翼地将所有物品打包带走，并成功地与一位神秘的富豪达成了交易。你用一份足以颠覆世界的思想，换来了一生都花不完的财富。",
-            "outcomes": [
-                { "type": "set_stat", "params": { "money": 100000, "primitivism": 0 } },
-                { "type": "change_stat", "params": { "irony": 20, "logic": -10, "sanity": 5 } }
-            ]
+            "feedback": "水泥异常坚固，你的工具损坏了，你也累得气喘吁吁。但你至少凿出了一道裂缝，让这棵树有了自由呼吸的可能。",
+            "outcomes": [ { "type": "change_stat", "params": { "health": -5, "money": -50, "primitivism": 5, "sanity": 2 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "你被路人当成了一个疯子。保安将你驱逐，并警告你不要破坏公共设施。",
+            "outcomes": [ { "type": "change_stat", "params": { "anonymity": -5, "sanity": -5, "primitivism": 3 } } ]
+          }
+        ]
+      },
+      {
+        "text": "静静地站在这棵树旁，闭上眼睛，尝试与它的痛苦共鸣。倾听它被压抑的愤怒。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你感到一种强大的、无声的痛苦正在通过树干传导给你。你听到来自地底深处的愤怒低吼。这棵树不是在哭泣，它是在等待。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "gnosis": 3, "primitivism": 6 } } ]
         }]
       }
     ]
   }
+
 ]
