@@ -80,8 +80,8 @@ const tierClass = (talent) => `tier-${talent.tier || 1}`;
 <template>
   <div class="selector-compact">
     <div class="selector-header">
-      <h2 class="selector-title">選擇初始天賦 ({{ selectedTalents.length }}/{{ maxSelection }})</h2>
-      <button @click="emit('open-editor')" class="editor-button">事件編輯器</button>
+      <h2 class="selector-title">选择初始天赋 ({{ selectedTalents.length }}/{{ maxSelection }})</h2>
+      <button @click="emit('open-editor')" class="editor-button">事件编辑器</button>
     </div>
     
     <div class="talent-grid">
@@ -99,10 +99,10 @@ const tierClass = (talent) => `tier-${talent.tier || 1}`;
 
     <div class="button-group">
       <button @click="confirmSelection('interactive')" :disabled="selectedTalents.length !== maxSelection">
-        手動探索
+        手动探索
       </button>
       <button @click="confirmSelection('simulation')" :disabled="selectedTalents.length !== maxSelection">
-        自動模擬
+        自动模拟（未完成）
       </button>
     </div>
   </div>
