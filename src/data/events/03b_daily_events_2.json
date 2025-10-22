@@ -68,5 +68,115 @@
           }]
       }
     ]
+  },
+  {
+    "id": "daily_bus_stop_stranger",
+    "title": "公交站的陌生人",
+    "text": "你在等公交，一个穿着旧风衣、提着沉重手提箱的陌生人，突然在你身边坐下。他转过头，用一种异常平静的语气问你：“请问，现在是什么年份？”",
+    "tags": ["daily", "mystery", "social", "time_travel"],
+    "isUnique": true,
+    "priority": 1,
+    "choices": [
+      {
+        "text": "“今年是2026年。”",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "他听到你的回答后，露出了极度震惊和困惑的表情，喃喃自语着：“不可能……我明明设置的是……”然后便不再说话。公交来了，你赶紧上了车。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 1, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "反问他：“你觉得现在应该是什么年份？”",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "他愣了一下，然后苦笑道：“一个……更好的年份。”公交来了，他没有上车，只是目送着公交远去。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "sanity": -1 } } ]
+        }]
+      },
+      {
+        "text": "“朋友，重要的不是年份，而是活在当下。”",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "他若有所思地看了你一眼，然后笑了：“你说得对。或许我该放下过去，迎接未来。”说完，他站起身来，朝远处走去，消失在街角。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 4, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "“年份？现在流行用‘版本号’了。目前是地球Online v2025.10 更新包。”",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "他茫然地看着你，似乎完全无法理解你的话，然后叹了口气，站起身来：“看来我真的穿越错了时代。”说完，他拖着行李离开了公交站。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 4, "logic": -1 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "challenge_giant_burger",
+    "title": "巨兽汉堡挑战",
+    "text": "城里新开了一家美式餐厅，推出了一个噱头十足的“巨兽汉堡挑战”：在30分钟内吃完一个重达5磅、堆满了肉饼、芝士和各种配料的超级汉堡，就能免单并获得一件纪念T恤。餐厅的墙上挂满了挑战失败者的照片。",
+    "tags": ["challenge", "food", "health", "money", "fame", "daily"],
+    "isUnique": false,
+    "priority": 1.4,
+    "choices": [
+      {
+        "text": "这太不健康了。点一份普通的沙拉就好。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你享用了一顿清淡健康的晚餐。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": 4, "sanity": 1, "money": -100 } } ]
+        }]
+      },
+      {
+        "text": "为了荣誉（和免费的食物）！我接受挑战！",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [
+            {
+              "weight": 3,
+              "feedback": "你奋力拼搏，最终在时限内奇迹般地吃完了整个汉堡！你感到胃部极度不适，但成功赢得了免单、T恤和全场的欢呼。",
+              "outcomes": [ { "type": "change_stat", "params": { "irony": 10, "fame": 8, "health": -15, "sanity": 5 } }, { "type": "add_item", "params": { "itemId": "burger_challenge_tshirt" } } ]
+            },
+            {
+              "weight": 7,
+              "feedback": "你高估了自己的实力。吃到一半你就败下阵来，感觉未来三天都不想再看到任何食物。你付了汉堡的钱，并在耻辱墙上留下了自己的照片。",
+              "outcomes": [ { "type": "change_stat", "params": { "irony": 2, "fame": -3, "health": -10, "sanity": -5, "money": -300 } } ]
+            }
+        ]
+      },
+      {
+        "text": "仔细研究汉堡的结构和成分，计算出最优的进食策略。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "conditions": [
+          { "type": "stat_check", "params": { "stat": "logic", "operator": ">=", "value": 30 } }
+        ],
+        "results": [{
+            "weight": 1,
+            "feedback": "你像进行科学实验一样分析了汉堡，并制定了详细的计划（比如先把蔬菜吃掉，把肉饼分开等等）。虽然最终还是失败了，但你严谨的态度令人印象深刻。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "health": -8, "sanity": -4, "money": -300 } } ]
+        }]
+      },
+      {
+        "text": "现代社会的过剩与贪婪……",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你没有参与挑战，只是在一旁静静地观察着那些挣扎的食客，思考着这场盛宴背后的象征意义。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "sanity": 1 } } ]
+        }]
+      }
+    ]
   }
 ]

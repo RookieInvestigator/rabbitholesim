@@ -366,7 +366,7 @@
     "text": "你正穿过一条熟悉的街道，无意中一瞥，你看到街对面有一个和你穿着一模一样、发型也完全相同的人，正以和你完全同步的步伐往前走。你看向他时，他也恰好回过头，你们的目光在空中交汇。",
     "tags": ["urban_legend", "supernatural", "mystery", "doppelganger"],
     "isUnique": false,
-    "priority": 2,
+    "priority": 1.5,
     "choices": [
       {
         "text": "世界上总有穿着品味相似的人，纯属巧合。",
