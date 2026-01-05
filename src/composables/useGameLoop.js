@@ -1,12 +1,12 @@
 import { ref } from 'vue';
 // ✨ 修改：不再直接 import playerStore
 // import { usePlayerStore } from '@/stores/playerStore';
-import { useEventEngine } from './useEventEngine';
+import { useEventCenter } from './eventCenter';
 
 export function useGameLoop() {
   // ✨ 修改：player store 現在作為參數傳入
   let player = null; 
-  const { findTriggerableEvent, processEvent } = useEventEngine();
+  const { findTriggerableEvent, processEvent } = useEventCenter();
   const isRunning = ref(false);
   let gameInterval = null;
 

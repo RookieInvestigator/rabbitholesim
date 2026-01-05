@@ -13,7 +13,9 @@
         "results": [{
           "weight": 1,
           "feedback": "你合上了笔记，归档了这次探索的数据。",
-          "outcomes": []
+          "outcomes": [
+            { "type": "trigger_ending", "params": { "endingId": "report_viewed" } }
+          ]
         }]
       }
     ]

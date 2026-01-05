@@ -1,5 +1,6 @@
-import { defineStore } from 'pinia'
-import allStatusEffects from '@/data/status_effects.json'
+import { defineStore } from 'pinia';
+import { useAchievementStore } from './achievementStore';
+import allStatusEffects from '@/data/status_effects.json';
 
 const getInitialState = () => ({
   isAlive: true,
@@ -16,7 +17,6 @@ const getInitialState = () => ({
 
 //事件进度
   primitivism: 0,
-  zpe_progress: 0,
 
   deathReason: null,
   endingTriggered: false,
@@ -51,13 +51,19 @@ export const usePlayerStore = defineStore('player', {
   },
 
   actions: {
-    reset() {
+    reset(customStats = []) {
       Object.assign(this, getInitialState());
+
+      // ✨ 新增：初始化来自DLC的自定义数值
+      customStats.forEach(stat => {
+        this[stat.id] = stat.initialValue;
+      });
+
       this.addLog({ message: '...系统重置 // 探索重开...', type: 'system' });
     },
     
-    initializeWithTalents(talents) {
-      this.reset();
+    initializeWithTalents(talents, customStats = []) {
+      this.reset(customStats);
       this.talents = talents;
       this.addLog({ message: `你带着天赋 [${talents.map(t => t.name).join(', ')}] 进入了兔子洞。`, type: 'system' });
       
@@ -75,6 +81,8 @@ export const usePlayerStore = defineStore('player', {
 
     applyOutcomes(outcomes) {
       if (!outcomes) return;
+      const achievementStore = useAchievementStore();
+
       outcomes.forEach(outcome => {
         switch (outcome.type) {
           case 'change_stat':
@@ -149,7 +157,7 @@ export const usePlayerStore = defineStore('player', {
             break;
 
           case 'trigger_ending':
-            this.endGame(outcome.params.endingId, '你的探索迎来了终局...');
+            this.triggerEnding(outcome.params.endingId, '你的探索迎来了终局...');
             break;
             
           case 'reset_event':
@@ -157,8 +165,22 @@ export const usePlayerStore = defineStore('player', {
               this.triggeredEventIds.delete(outcome.params.eventId);
             }
             break;
+          
+          case 'unlock_achievement':
+            if (outcome.params.achievementId) {
+              achievementStore.unlockAchievement(outcome.params.achievementId);
+            }
+            break;
         }
       });
+    },
+
+    // ✨ 新增：专门处理因数值归零导致的“死亡”
+    handleStatDeath(reasonKey, logMessage) {
+        if (!this.isAlive) return;
+        this.isAlive = false;
+        this.deathReason = reasonKey;
+        this.addLog({ message: `【探索中断】${logMessage}`, type: 'ending' });
     },
 
     nextTurn() {
@@ -195,17 +217,37 @@ export const usePlayerStore = defineStore('player', {
           this.eventModifiers = this.eventModifiers.filter(modifier => modifier.duration > 0);
       }
       
-      if (this.health <= 0) this.endGame('health', '你的心脏已不足以支撑身体。');
-      if (this.sanity <= 0) this.endGame('sanity', '你的精神完整性已彻底崩溃。');
-      if (this.money < -5000) this.endGame('debt', '你被巨额的债务彻底压垮，在绝望中结束了这一切。');
+      // ✨ 修改：调用新的 handleStatDeath
+      if (this.health <= 0) {
+        this.handleStatDeath('health', '你的心脏已不足以支撑身体。');
+      } else if (this.sanity <= 0) {
+        this.handleStatDeath('sanity', '你的精神完整性已彻底崩溃。');
+      } else if (this.money < -5000) {
+        this.handleStatDeath('debt', '你被巨额的债务彻底压垮，在绝望中结束了这一切。');
+      } else if (this.fame > 100) {
+        this.handleStatDeath('fame_death', '你变得过于出名，一举一动都活在聚光灯下，失去了探索的自由。');
+      } else if (this.anonymity < 0) {
+        this.handleStatDeath('anonymity_death', '你的身份被彻底曝光，来自现实的压力让你无法再继续探索。');
+      }
     },
 
-    endGame(reasonKey, logMessage) {
-      if (!this.isAlive) return;
-      this.isAlive = false;
-      this.deathReason = reasonKey;
-      this.endingTriggered = true;
-      this.addLog({ message: `【探索结束】${logMessage}`, type: 'ending' });
+    // ✨ 修改：原 endGame 重命名为 triggerEnding，专门用于触发结局画面
+    triggerEnding(reasonKey, logMessage) {
+      if (!this.isAlive) {
+        // 如果玩家已经“死亡”，现在就正式触发结局
+        // 关键修正：不覆盖已有的stat death reason
+        if (!this.deathReason) {
+            this.deathReason = reasonKey;
+        }
+        this.endingTriggered = true;
+        // this.addLog({ message: `【最终报告】${logMessage}`, type: 'ending' });
+      } else {
+        // 如果玩家还“活着”，那么这是一个直接的叙事性结局
+        this.isAlive = false;
+        this.deathReason = reasonKey;
+        this.endingTriggered = true;
+        this.addLog({ message: `【探索结束】${logMessage}`, type: 'ending' });
+      }
     }
   },
 })

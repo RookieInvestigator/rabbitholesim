@@ -1,0 +1,1701 @@
+{
+  "id": "perpetual_motion",
+  "name": "永动机",
+  "author": "官方",
+  "description": "一个关于追求终极能源的DLC，包含新的事件、天赋和自定义数值。",
+  "customStats": [
+    {
+      "id": "zpe_progress",
+      "name": "永动机进度",
+      "initialValue": 0
+    }
+  ],
+  "statusEffects": {
+    "building_zpe": {
+      "name": "伟大工程",
+      "outcomes": [
+        {
+          "type": "change_stat",
+          "params": {
+            "zpe_progress": 4,
+            "money": -100
+          }
+        }
+      ]
+    }
+  },
+  "endings": [
+    {
+      "id": "ending_zpe_success",
+      "title": "新世界的普罗米修斯",
+      "description": "你成功了。那盏永不熄灭的灯泡，宣告了一个新纪元的到来。你小心翼翼地将蓝图和原型机公之于众。能源战争、环境污染、贫困……无数旧时代的顽疾，或许都在自由能源的浪潮下被治愈。",
+      "priority": 100,
+      "conditions": [
+        {
+          "type": "ending_id",
+          "endingId": "ending_zpe_success"
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "id": "talent_zpe",
+      "name": "永动机狂人",
+      "tier": 2,
+      "description": "你执着于追求永动机的梦想。",
+      "effects": [
+        {
+          "type": "change_stat",
+          "params": {
+            "zpe_progress": 30
+          }
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "conspiracy_free_energy",
+      "title": "被压制的天火",
+      "text": "凭借你卓越的信息检索能力，你从一个专门收录“因违反物理学常识而被驳回的专利申请”的在线数据库中，筛选出了一份来自上个世纪初的、被标记为“违反热力学第二定律”的古怪蓝图。图纸描绘了一个极其精密的、由磁铁和线圈构成的装置，其设计理论声称可以从“零点能”中汲取近乎无限的能源。在文件的注释区，发明者用潦草的字迹写道：‘他们想把这份礼物从我们手中夺走。’",
+      "tags": [
+        "conspiracy",
+        "tech",
+        "mystery",
+        "unique",
+        "industrial_complex",
+        "logic"
+      ],
+      "isUnique": true,
+      "priority": 20,
+      "conditions": [
+        {
+          "type": "stat_check",
+          "params": {
+            "stat": "logic",
+            "operator": ">=",
+            "value": 120
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "一个设计精巧的永动机骗局。虽然理论上不可行，但其工程设计思路值得研究。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你将蓝图保存了下来，不是因为它可行，而是因为它代表了人类历史上一种屡败屡战的、悲剧性的智慧。你从中汲取了知识，而非幻想。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "logic": 10,
+                    "sanity": 5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "‘他们’压制它的原因，或许不是因为它‘可行’，而是因为它‘看起来可行’，足以动摇现有的能源体系。",
+          "worldview": "gnosis",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你意识到，有时候一个足够以假乱真的‘谎言’，和‘真相’一样具有颠覆性的力量。你将这份蓝图视为一件危险的武器。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "gnosis": 12,
+                    "logic": 5,
+                    "sanity": -10
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "将蓝图的核心部分匿名发布出去，但隐去关键参数。让全世界的聪明人一起来验证（或者浪费时间）。",
+          "worldview": "irony",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你的帖子掀起了一场旷日持久的、充满争吵和激情的全球性科学辩论。你没有公布真相，而是选择成为这场混乱的匿名观察者。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "irony": 15,
+                    "fame": 10,
+                    "anonymity": 10,
+                    "sanity": -5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "我要把它造出来。不是为了自由能源，而是为了亲自验证它。",
+          "worldview": "logic",
+          "magnitude": 3,
+          "isSpecial": true,
+          "conditions": [],
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你投入了巨大的精力和财力，在你家车库里启动了这个宏大的项目。这将是一段漫长而艰苦的旅程，但你知道，这是值得的。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "money": -3000
+                  }
+                },
+                {
+                  "type": "add_status_effect",
+                  "params": {
+                    "statusId": "building_zpe",
+                    "duration": 9999
+                  }
+                },
+                {
+                  "type": "unlocksEvent",
+                  "params": {
+                    "eventId": "project_zpe_completion"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "project_zpe_funding_crisis",
+      "title": "关键零件",
+      "text": "你的项目遇到了一个突如其来的、灾难性的障碍。一个从海外订购的、无法替代的核心零件，在海关被扣押了，理由是“可能涉及军用技术出口管制”。官方的申诉流程冗长得令人绝望。但你从一个论坛的内部人士那里听说，有一条“非官方”的渠道，可以‘加速’这个流程，只是价格……非常高昂。",
+      "tags": [
+        "project_zpe",
+        "money",
+        "tech",
+        "conspiracy",
+        "crime"
+      ],
+      "isUnique": false,
+      "priority": 5,
+      "conditions": [
+        {
+          "type": "status_check",
+          "params": {
+            "has": "building_zpe"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "走官方流程。我相信我的项目是合法的。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你开始了与官僚主义的漫长斗争。在耗费了大量时间和精力后，你的零件最终被放行了，但整个项目因此被拖延了很久。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "logic": 5,
+                    "sanity": -10
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": -20
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "这是‘他们’的又一次打压。我必须用‘他们’的方式来解决问题。",
+          "worldview": "gnosis",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你通过那个灰色渠道支付了‘加急费’。第二天，零件就奇迹般地出现在了你的门口。你绕过了规则，但也让自己的双手沾上了污泥。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "money": -10000,
+                    "gnosis": 8,
+                    "sanity": -5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "我自己造一个出来。",
+          "worldview": "logic",
+          "magnitude": 3,
+          "isSpecial": true,
+          "conditions": [
+            {
+              "type": "stat_check",
+              "params": {
+                "stat": "logic",
+                "operator": ">=",
+                "value": 160
+              }
+            }
+          ],
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你将自己关在车库里，凭借超凡的才智和逆向工程能力，竟然真的复刻出了那个零件。你不仅解决了问题，还让自己的技术更进了一步。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "logic": 15,
+                    "health": -10
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": 10
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "在网上发起一场舆论运动，控诉海关的官僚主义正在扼杀下一个特斯拉。",
+          "worldview": "irony",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你那充满煽动性的帖子意外地火了。在舆论的压力下，海关‘重新评估’了你的包裹，并加快了放行速度。你用一种现代的方式解决了问题。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "irony": 5,
+                    "fame": 10
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "用催眠或精神暗示，让海关的工作人员相信我的包裹里只是一堆乐高积木。",
+          "worldview": "weirdness",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你彻夜不眠，将自己的意念投射到那个遥远的海关仓库。第二天，你接到了电话，对方用一种充满困惑的语气告诉你，你的‘玩具’可以取走了。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "weirdness": 10,
+                    "sanity": -15
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "把那枚‘幸运币’弹进海关负责人的口袋里。",
+          "worldview": "gnosis",
+          "magnitude": 3,
+          "isSpecial": true,
+          "conditions": [
+            {
+              "type": "inventory_check",
+              "params": {
+                "has": "lucky_coin"
+              }
+            }
+          ],
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "这是一个疯狂的计划。你花了两天时间，终于找到了那个关键人物。在你与他擦肩而过的瞬间，你用一种神乎其技的手法，将硬币弹进了他的口袋。第二天，你的零件就被放行了。你不知道他经历了什么，但你的‘幸运’起作用了。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "gnosis": 10,
+                    "irony": 5,
+                    "sanity": -10
+                  }
+                },
+                {
+                  "type": "remove_item",
+                  "params": {
+                    "itemId": "lucky_coin"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "project_zpe_funding",
+      "title": "资金危机",
+      "text": "你的项目遇到了一个意料之中、但依旧致命的难题：资金短缺。一个关键的定制零件价格远超预期，你的银行账户余额正在发出刺眼的红色警报。如果不能尽快找到一笔新的资金，整个项目都将停滞不前。",
+      "tags": [
+        "conspiracy",
+        "tech",
+        "project_zpe",
+        "money"
+      ],
+      "isUnique": false,
+      "priority": 5,
+      "conditions": [
+        {
+          "type": "status_check",
+          "params": {
+            "has": "building_zpe"
+          }
+        },
+        {
+          "type": "stat_check",
+          "params": {
+            "stat": "money",
+            "operator": "<=",
+            "value": 2000
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "去找一份高强度的短期兼职，用体力换取资金。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你度过了一段白天在工地搬砖、晚上回家研究图纸的艰苦日子。虽然身体疲惫不堪，但你成功地为项目争取到了继续下去的资金。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "money": 5000,
+                    "health": -20,
+                    "sanity": -5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "向银行申请一笔高额贷款。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "银行拒绝了你的贷款申请，理由是你的项目‘缺乏商业可行性’。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "sanity": -10
+                  }
+                }
+              ]
+            },
+            {
+              "weight": 1,
+              "feedback": "你的贷款申请被批准了！",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "money": 10000
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "我相信，只要我的信念足够坚定，宇宙就会为我提供所需的资金。",
+          "worldview": "gnosis",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你开始进行长达数日的冥想和祈祷。几天后，你收到了一封匿名信，里面是一张中了奖的彩票。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "money": 8000,
+                    "gnosis": 10,
+                    "sanity": -5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "在网上发起众筹，项目名称是：《一个将彻底改变人类历史的艺术装置》。",
+          "worldview": "irony",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你那充满激情和模糊措辞的项目描述，意外地吸引了一批追求新潮艺术的投资人。你成功地筹到了一笔资金，虽然他们可能永远也不知道自己投资的到底是什么。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "money": 12000,
+                    "irony": 8,
+                    "fame": 5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "也许……这个项目从一开始就是个错误。我应该放弃。",
+          "worldview": "logic",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你做出了一个沉重但理智的决定。你拆除了车库里的所有设备，将零件变卖，回归了正常的生活。你所有的努力都化为泡影，但也让你感到一阵解脱。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "money": 5000,
+                    "sanity": 25,
+                    "logic": 10
+                  }
+                },
+                {
+                  "type": "remove_status_effect",
+                  "params": {
+                    "statusId": "building_zpe"
+                  }
+                },
+                {
+                  "type": "set_stat",
+                  "params": {
+                    "zpe_progress": 0
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "project_zpe_complaint",
+      "title": "社区投诉",
+      "text": "你的宏伟项目并非无人知晓。你收到了一封来自社区管理委员会的正式信函，信中援引了多位邻居的投诉，抱怨你的车库在深夜发出‘持续的低频嗡鸣’、‘导致灯光闪烁的电力浪涌’，以及‘令人不安的紫色辉光’。信函要求你立刻对此做出解释，并停止这些干扰行为。",
+      "tags": [
+        "project_zpe",
+        "social",
+        "tech",
+        "conspiracy"
+      ],
+      "isUnique": false,
+      "priority": 5,
+      "conditions": [
+        {
+          "type": "status_check",
+          "params": {
+            "has": "building_zpe"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "写一封措辞严谨的回信，解释说我正在修复一台复杂的古董电影放映设备。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "他们暂时接受了你的解释，但要求你必须在白天进行工作。这拖慢了你的项目进度。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "logic": 5,
+                    "sanity": 3
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": -10
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "他们是‘他们’派来的探子！投诉只是借口，他们想破坏我的工作！",
+          "worldview": "gnosis",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你立刻停止了所有工作，并花了两天时间在车库周围布置了各种‘反精神侦测’的符文和锡纸装置。你感觉自己安全多了，但项目也因此停滞了两天。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "gnosis": 8,
+                    "sanity": -10
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": -15
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "举办一次社区烧烤派对，向所有人‘道歉’，并公开展示我的‘现代艺术装置’。",
+          "worldview": "irony",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你的邻居们虽然对你那堆闪着紫光的废铜烂铁感到困惑，但免费的汉堡和啤酒让他们决定暂时容忍你这个‘古怪的艺术家’。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "irony": 8,
+                    "fame": 5,
+                    "money": -800,
+                    "sanity": 5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "这嗡鸣声是我的‘音乐’。我应该将它分享给社区。",
+          "worldview": "weirdness",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你将装置的嗡鸣声录了下来，混合成一段极简氛围音乐，并将其上传到了社区的社交主页。出乎意料的是，有几位失眠的邻居表示，这段音乐对他们的睡眠很有帮助。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "weirdness": 8,
+                    "fame": 3,
+                    "sanity": 3
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": 5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "匿名给所有投诉的邻居信箱里塞一笔‘噪音污染补偿费’。",
+          "worldview": "irony",
+          "magnitude": 3,
+          "conditions": [
+            {
+              "type": "stat_check",
+              "params": {
+                "stat": "money",
+                "operator": ">=",
+                "value": 3000
+              }
+            }
+          ],
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "投诉的声音奇迹般地消失了。金钱也许买不来自由能源，但可以买来清净。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "money": -3000,
+                    "irony": 5
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "project_zpe_doubt",
+      "title": "理性的腐蚀",
+      "text": "你已经不记得是第几个通宵了。车库里堆满了能量饮料的空罐和写满复杂计算的草稿纸。项目进入了瓶颈期，无论你如何调试，装置都无法稳定输出能量。一个可怕的念头在你脑中升起：如果那些被主流科学界所抛弃的理论，从一开始就是错的呢？如果我不是一个被埋没的天才，而只是一个沉浸在自己幻想中的疯子呢？",
+      "tags": [
+        "conspiracy",
+        "tech",
+        "project_zpe",
+        "personal",
+        "health"
+      ],
+      "isUnique": false,
+      "priority": 5,
+      "conditions": [
+        {
+          "type": "status_check",
+          "params": {
+            "has": "building_zpe"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "疲劳是理性最大的敌人。我需要放下工作，好好睡一觉，明天再重新审视所有数据。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "在长达12个小时的深度睡眠后，你的大脑恢复了清明。你重新检查了设计图，发现了一个之前一直忽略的、微小的计算错误。这个错误导致你此前的大量努力付诸东流。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "sanity": 15,
+                    "logic": 5,
+                    "health": 5
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": -5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "这种怀疑并非源于我自己，而是‘他们’对我进行的认知攻击，企图在精神上瓦解我。",
+          "worldview": "gnosis",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你看穿了这场看不见的战争。你加强了车库的物理和‘形而上学’防御，你的意志变得更加坚定，但也更加偏执。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "gnosis": 8,
+                    "sanity": -15
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "我应该把我的大脑和机器连接起来，让它自己告诉我它需要什么。",
+          "worldview": "weirdness",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你用一些电极和数据线，将自己的太阳穴和装置的核心连接了起来。在一阵剧烈的电流冲击和无数的数据洪流后，你晕了过去。醒来时，你发现自己凭直觉就完成了一项关键的调试。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "weirdness": 10,
+                    "sanity": -20,
+                    "health": -20
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": 15
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "将自己的日常拍摄成视频：《为疯子准备的永动机制造教程》。",
+          "worldview": "irony",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你的直播大受欢迎。观众们纷纷为你“精湛的表演”和“逼真的道具”献上打赏。你把这些钱都投入到了项目中。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "irony": 8,
+                    "fame": 5,
+                    "money": 3000
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "无尽……对了，丰饶之角！",
+          "worldview": "gnosis",
+          "magnitude": 3,
+          "isSpecial": true,
+          "conditions": [
+            {
+              "type": "inventory_check",
+              "params": {
+                "has": "cornucopia_soda"
+              }
+            }
+          ],
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你将那杯永远喝不完的可乐，小心翼翼地倒入了装置的冷却系统中。在可乐接触到核心的瞬间，整个装置发出了欢快的嗡鸣声，能量输出的稳定性奇迹般地提升了。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "gnosis": 10,
+                    "weirdness": 5,
+                    "sanity": 10
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": 20
+                  }
+                },
+                {
+                  "type": "remove_item",
+                  "params": {
+                    "itemId": "cornucopia_soda"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "project_zpe_interference",
+      "title": "不速之客",
+      "text": "你正在车库里为你的项目工作，一阵敲门声打断了你的思路。门口站着两个西装革履、表情严肃的男人。他们自称来自‘能源部下属技术安全评估办公室’，声称收到了‘匿名举报’，需要对你正在进行的‘高耗能实验’进行一次例行安全检查。",
+      "tags": [
+        "conspiracy",
+        "tech",
+        "project_zpe"
+      ],
+      "isUnique": false,
+      "priority": 10,
+      "conditions": [
+        {
+          "type": "status_check",
+          "params": {
+            "has": "building_zpe"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "冷静应对，告诉他们这只是一个复杂的业余无线电项目。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "他们半信半疑地检查了你的设备，虽然没看出什么名堂，但还是警告你‘不要玩火’。在你送走他们后，你发现设备的某个关键部件被他们‘不经意地’碰坏了。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "logic": 5,
+                    "sanity": -5
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": -10
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "他们就是‘他们’！绝不能让他们靠近我的设备！",
+          "worldview": "gnosis",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你当场拒绝，并威胁要报警。他们对视了一眼，没有坚持，只是留下了一句‘我们会再回来的’。你成功地保护了项目，但也暴露了自己。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "gnosis": 5,
+                    "anonymity": -15
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "热情地邀请他们进来，并开始滔滔不绝地向他们介绍这个装置的‘真正用途’——一个能与外星文明通讯的电话。",
+          "worldview": "weirdness",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "他们用看疯子的眼神听你讲了半个小时，然后匆匆离开了，似乎认为你没有任何威胁。你用疯狂伪装了秘密。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "weirdness": 5,
+                    "sanity": 2
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "“你们来晚了，这东西刚刚已经爆炸了。这是赔偿账单。”",
+          "worldview": "irony",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你的胡搅蛮缠显然打乱了他们的计划。在长久的沉默后，他们留下一句“我们会核实的”，然后离开了。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "irony": 8,
+                    "sanity": -2
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "贿赂他们。",
+          "worldview": "irony",
+          "magnitude": 3,
+          "conditions": [
+            {
+              "type": "stat_check",
+              "params": {
+                "stat": "money",
+                "operator": ">=",
+                "value": 5000
+              }
+            }
+          ],
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你给了他们一笔‘封口费’。他们收下了钱，在你的报告上盖了个‘安全无害’的章。你用金钱暂时解决了问题。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "money": -5000,
+                    "irony": 5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "我相信我的邻居们会为我作证的。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "isSpecial": true,
+          "conditions": [
+            {
+              "type": "event_check",
+              "params": {
+                "has_triggered": "cult_family_01_invitation"
+              }
+            }
+          ],
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你那对总是笑眯眯的邻居夫妇恰好路过。他们热情地向调查员们担保你是一个‘热爱和平的好公民’。调查员们似乎很信任他们，在简单交谈后就离开了。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "logic": 5,
+                    "sanity": 5,
+                    "anonymity": -5
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "project_zpe_anomaly",
+      "title": "物理学的哀嚎",
+      "text": "你正在对装置进行一次关键的能量测试，周围的物理定律似乎开始变得……不稳定。你放在桌上的扳手突然悬浮了起来，你皮肤上的汗毛倒立，空气中充满了静电和臭氧的味道。装置的核心正在发出一阵低沉的、仿佛来自另一个维度的嗡鸣。",
+      "tags": [
+        "conspiracy",
+        "tech",
+        "project_zpe",
+        "weird"
+      ],
+      "isUnique": false,
+      "priority": 3,
+      "conditions": [
+        {
+          "type": "status_check",
+          "params": {
+            "has": "building_zpe"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "立刻切断所有电源，进行一次全面的安全检查和参数重校。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "在切断电源后，所有的异常都消失了。你花了一整天的时间重新检查线路，这虽然延误了进度，但避免了一场潜在的灾难。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "logic": 8,
+                    "sanity": 5
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": -5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "加大能量输出！我正在打开一扇门，我必须看看门的另一边是什么！",
+          "worldview": "gnosis",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "在你加大功率的瞬间，你眼前的空间像玻璃一样碎裂开来，你看到了无数个自己正在建造无数个同样的装置。这个景象只持续了一秒，随后装置因为过载而冒出了一股黑烟，部分零件损毁了。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "gnosis": 15,
+                    "sanity": -20
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": -10
+                  }
+                }
+              ]
+            },
+            {
+              "weight": 1,
+              "feedback": "机器高亢的嗡鸣声愈发刺耳，在一阵炫目白光过后，你发现机器的输出功率稳定在了更高的水平上。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "gnosis": 15,
+                    "sanity": 5
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": 10
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "这不是故障，这是‘沟通’。我应该跟着它的频率一起嗡鸣。",
+          "worldview": "weirdness",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你开始模仿那段低沉的嗡鸣。在你发出声音的瞬间，悬浮的扳手掉回了桌上，装置也恢复了平稳运行。你似乎安抚了它。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "weirdness": 8,
+                    "sanity": -5
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": 5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "趁着东西在飘，赶紧拍张照发到网上，就说我掌握了反重力技术。",
+          "worldview": "irony",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "在你手忙脚乱地找手机时，所有的异常现象都消失了。你错过了一次成为网红的机会。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "irony": 5,
+                    "sanity": -2
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "project_zpe_overheating",
+      "title": "失控的热量",
+      "text": "警报！装置核心的温度正在指数级飙升，远超任何理论模型的预测。你现有的冷却系统已经达到了极限，刺耳的蜂鸣声预示着一场灾难性的熔毁随时可能发生。你必须立刻做出决断。",
+      "tags": [
+        "project_zpe",
+        "tech",
+        "conspiracy"
+      ],
+      "isUnique": false,
+      "priority": 100,
+      "conditions": [
+        {
+          "type": "status_check",
+          "params": {
+            "has": "building_zpe"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "相信我的计算。风险越大，回报越高。继续注入能量，强行突破临界点。",
+          "worldview": "logic",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你赌赢了！在温度达到峰值的瞬间，核心内部发生了奇妙的相变，装置的能量效率得到了永久性的提升。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": 25
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "logic": 10,
+                    "sanity": -10
+                  }
+                }
+              ]
+            },
+            {
+              "weight": 1,
+              "feedback": "一次剧烈的能量过载烧毁了几个关键部件。你被迫停机进行维修，项目进度严重倒退。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": -30
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "sanity": -15
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "热量不是‘问题’，而是装置的‘语言’。它在发烧，我需要安抚它。",
+          "worldview": "gnosis",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你切断了部分电源，并将手轻轻地放在冰冷的金属外壳上，开始低声哼唱。奇迹发生了，装置的温度竟真的缓缓降了下来。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "gnosis": 5,
+                    "sanity": -3
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": 5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "用我自己的身体，强行吸收逸散的能量。",
+          "worldview": "weirdness",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你将双手直接按在了装置滚烫的核心上。在难以忍受的剧痛中，你感觉自己的生命力正被源源不断地吸走，而装置的温度也奇迹般地稳定了下来。你用自己的血肉，换来了项目的进展。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "health": -40,
+                    "sanity": -15,
+                    "weirdness": 10
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": 30
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "把它扔进我后院的游泳池里。",
+          "worldview": "irony",
+          "magnitude": 2,
+          "isSpecial": true,
+          "conditions": [
+            {
+              "type": "stat_check",
+              "params": {
+                "stat": "money",
+                "operator": ">=",
+                "value": 20000
+              }
+            }
+          ],
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "在一阵巨大的、足以煮熟一头牛的蒸汽喷发后，你的游泳池变成了滚烫的温泉，而装置也成功冷却了下来。你失去了一个泳池，但保住了项目。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "irony": 5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "去技术论坛发帖求助：“我的自制核聚变反应堆好像有点热，该怎么办？在线等，挺急的。”",
+          "worldview": "irony",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 5,
+              "feedback": "你的帖子被当成了年度最佳钓鱼帖，引来了无数网友的嘲讽和玩梗，没有人提供任何有用的建议。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "irony": 8,
+                    "fame": 5,
+                    "sanity": -5
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": -5
+                  }
+                }
+              ]
+            },
+            {
+              "weight": 3,
+              "feedback": "一个匿名的、IP地址指向某个军事基地的用户，回复了一个看似胡言乱语、但实际上极其有用的散热建议。你照做之后，问题解决了。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "irony": 8,
+                    "logic": 5,
+                    "gnosis": 5
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": 15
+                  }
+                }
+              ]
+            },
+            {
+              "weight": 1,
+              "feedback": "你的帖子引起了当局的注意。几小时后，一群穿着防化服的人冲进了你的车库，没收了你的几个‘关键零件’，并对你处以高额罚款。。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "irony": 5,
+                    "fame": 10,
+                    "anonymity": -50,
+                    "money": -10000,
+                    "sanity": -20
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": -50
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "project_zpe_fame",
+      "title": "意外名声",
+      "text": "你的秘密项目出现了一次意想不到的泄漏。也许是某次能量测试产生的异常信号被无线电爱好者捕捉到了，也许是某个邻居把你车库里的紫色辉光拍了下来发到了网上。无论如何，一个名为‘车库里的反物质引擎？’的帖子正在本地论坛上疯狂传播。虽然大部分人都觉得是恶作剧，但你已经吸引到了一些不必要的注意。",
+      "tags": [
+        "project_zpe",
+        "social",
+        "tech",
+        "conspiracy",
+        "fame"
+      ],
+      "isUnique": false,
+      "priority": 5,
+      "conditions": [
+        {
+          "type": "status_check",
+          "params": {
+            "has": "building_zpe"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "立刻发布一篇技术长文，‘辟谣’说这只是一个复杂的特斯拉线圈实验。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你那充满专业术语和复杂图表的帖子成功地劝退了大部分吃瓜群众。虽然有几个硬核技术宅还在和你辩论，但风波总算是暂时平息了。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "logic": 5,
+                    "anonymity": 10,
+                    "fame": -5
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "这是‘他们’的警告。他们正在用舆论向我施压。",
+          "worldview": "gnosis",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你将这次泄漏视为一次试探。你立刻暂停了所有工作，并开始用更复杂的加密手段来保护你的数据。你失去了宝贵的时间，但感觉自己的堡垒更加坚固了。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "gnosis": 5,
+                    "sanity": -8
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "zpe_progress": -10
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "承认。并声称我即将完成一项伟大的行为艺术，欢迎大家前来参观。",
+          "worldview": "irony",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你的“自曝”让所有人都以为这真的是一场营销炒作。一些本地的艺术爱好者甚至开始在你的车库门口打卡。你成功地用一种更响亮的声音掩盖了真相。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "irony": 8,
+                    "fame": 10,
+                    "anonymity": -10
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "在帖子里回复：“这不是反物质引擎。它是一个梦境捕获装置。昨晚，我用它录下了我们城市共同的梦。”",
+          "worldview": "weirdness",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你那充满诗意和神秘主义的回复，成功地带偏了整个话题。人们开始激烈地讨论梦境和集体潜意识，很快就忘了那个“引擎”。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "weirdness": 5,
+                    "anonymity": 5,
+                    "sanity": -3
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "顺水推舟，匿名在网上出售所谓的‘反物质引擎能量水晶’（其实是我家猫的猫砂结块）。",
+          "worldview": "irony",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "出乎意料的是，真的有人买了你的‘水晶’。你用这笔意外之财，为项目购入了一批新的零件。",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "irony": 10,
+                    "money": 3000
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "利用这个名声，去联系那位对神秘事物同样感兴趣的亿万富翁。",
+          "worldview": "logic",
+          "magnitude": 3,
+          "isSpecial": true,
+          "conditions": [
+            {
+              "type": "event_check",
+              "params": {
+                "has_triggered": "high_money_burden_of_wealth"
+              }
+            }
+          ],
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你将那篇网路热帖的链接，发送给了‘真理代价’组织。几小时后，你的账户里收到了一笔巨额的‘赞助’，附言是：‘我们很期待你的作品。’",
+              "outcomes": [
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "money": 30000,
+                    "anonymity": -25,
+                    "gnosis": 5
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "project_zpe_completion",
+      "title": "突破奇点",
+      "text": "经过无数个不眠之夜的努力，消耗了数不清的咖啡和金钱后，你车库里的那个装置终于接近完成。金属外壳嗡嗡作响，空气中充满了静电的味道。",
+      "tags": [
+        "conspiracy",
+        "tech",
+        "unique",
+        "logic",
+        "consequence",
+        "ending_path"
+      ],
+      "isUnique": true,
+      "priority": 1000,
+      "requiresUnlock": true,
+      "conditions": [
+        {
+          "type": "stat_check",
+          "params": {
+            "stat": "zpe_progress",
+            "operator": ">=",
+            "value": 100
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "启动它，并将蓝图公之于众。",
+          "worldview": "logic",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你合上了最后一道电闸。在一阵刺眼的白光和短暂的沉默后，你车库里的一个灯泡，正发出永不熄灭的、冰冷的白光。你……成功了。",
+              "outcomes": [
+                {
+                  "type": "remove_status_effect",
+                  "params": {
+                    "statusId": "building_zpe"
+                  }
+                },
+                {
+                  "type": "trigger_ending",
+                  "params": {
+                    "endingId": "ending_zpe_success"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "我制造了一个怪物……",
+          "worldview": "gnosis",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "在最后时刻，你终于意识到并非自己主动建造了这个装置，而是它蛊惑了你成为了它的创造者。你挥舞起工具，将这台机械巨兽砸成了碎片。从机器里冒出的紫色电光涌入了你的大脑……",
+              "outcomes": [
+                {
+                  "type": "remove_status_effect",
+                  "params": {
+                    "statusId": "building_zpe"
+                  }
+                },
+                {
+                  "type": "set_stat",
+                  "params": {
+                    "zpe_progress": 0
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "sanity": -10,
+                    "gnosis": 50,
+                    "weirdness": 30,
+                    "logic": -50
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "将装置的启动按钮，连接到隔壁家的智能门铃上。",
+          "worldview": "irony",
+          "magnitude": 3,
+          "isSpecial": true,
+          "conditions": [
+            {
+              "type": "stat_check",
+              "params": {
+                "stat": "irony",
+                "operator": ">=",
+                "value": 80
+              }
+            }
+          ],
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "第二天早上，当你的邻居按下门铃准备出门时，人类历史的新纪元，伴随着一阵滑稽的‘叮咚’声，被意外地开启了。没有人知道，这一切的开关，竟然如此随意。",
+              "outcomes": [
+                {
+                  "type": "remove_status_effect",
+                  "params": {
+                    "statusId": "building_zpe"
+                  }
+                },
+                {
+                  "type": "trigger_ending",
+                  "params": {
+                    "endingId": "ending_zpe_success"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "我的资金链已经断裂……恐怕无法完成最后的步骤了。",
+          "worldview": "logic",
+          "magnitude": 3,
+          "isSpecial": true,
+          "conditions": [
+            {
+              "type": "stat_check",
+              "params": {
+                "stat": "money",
+                "operator": "<=",
+                "value": 1000
+              }
+            }
+          ],
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你别无选择，联系了一家曾对你表示过兴趣的能源科技公司。他们以一个你无法拒绝的天价，收购了你的整个项目和所有专利。你变得无比富有，但那个本可以改变世界的奇迹，现在被锁在了一个公司的保险库里。",
+              "outcomes": [
+                {
+                  "type": "remove_status_effect",
+                  "params": {
+                    "statusId": "building_zpe"
+                  }
+                },
+                {
+                  "type": "set_stat",
+                  "params": {
+                    "zpe_progress": 0
+                  }
+                },
+                {
+                  "type": "set_stat",
+                  "params": {
+                    "money": 500000
+                  }
+                },
+                {
+                  "type": "change_stat",
+                  "params": {
+                    "sanity": -20,
+                    "anonymity": -50
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -23,6 +23,22 @@
       { "type": "death_reason", "reason": "debt" }
     ]
   },
+    {
+    "id": "ending_fame_death",
+    "title": "盛名所累",
+    "description": "你成为了网络上的名人，但随之而来的关注让你不堪重负。你的每一次点击，每一次发言，都被无数双眼睛盯着并过度解读。你不再是一个探索者，而是一个被观赏的偶像。最终，你关闭了网络，结束了这场身不由己的表演。",
+    "conditions": [
+      { "type": "death_reason", "reason": "fame_death" }
+    ]
+  },
+  {
+    "id": "ending_anonymity_death",
+    "title": "无处可藏",
+    "description": "你在网络世界的边缘游走太久，终于有人顺着网线找上了你。你的真实身份、家庭住址、人际关系被公之于众。现实世界的骚扰和压力让你无法再安全地进行探索。你被迫拔掉了网线，从赛博世界彻底蒸发。",
+    "conditions": [
+      { "type": "death_reason", "reason": "anonymity_death" }
+    ]
+  },
   {
     "id": "anarcho_primitivism",
     "title": "回归野性",
@@ -42,12 +58,12 @@
     ]
   },
   {
-    "id": "ending_zpe_success",
-    "title": "新世界的普罗米修斯",
-    "description": "你成功了。那盏永不熄灭的灯泡，宣告了一个新纪元的到来。你小心翼翼地将蓝图和原型机公之于众。能源战争、环境污染、贫困……无数旧时代的顽疾，或许都在自由能源的浪潮下被治愈。",
-    "priority": 100,
+    "id": "report_viewed",
+    "title": "探索结束",
+    "description": "你回顾了自己在这段时间的经历，无论结果如何，这都是一段独特的旅程。",
+    "priority": 1,
     "conditions": [
-      { "type": "ending_id", "endingId": "ending_zpe_success" }
+      { "type": "ending_id", "endingId": "report_viewed" }
     ]
   }
 ]

@@ -1,22 +1,24 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import allTalents from '@/data/talents.json';
+import { useDataCenter } from '@/composables/dataCenter';
 
-const emit = defineEmits(['start', 'open-editor']);
+const emit = defineEmits(['start']);
+const { gameData } = useDataCenter();
 
 const availableTalents = ref([]);
 const selectedTalents = ref([]);
 const maxSelection = 3;
 
-// ✨ 核心修改：按真實機率抽樣天賦
-onMounted(() => {
+function drawTalents() {
+  selectedTalents.value = [];
+  const allTalents = [...gameData.talents];
+
   const tier1 = allTalents.filter(t => t.tier === 1);
   const tier2 = allTalents.filter(t => t.tier === 2);
   const tier3 = allTalents.filter(t => t.tier === 3);
 
   const shuffle = (array) => array.sort(() => 0.5 - Math.random());
   
-  // 先將所有池子洗牌
   shuffle(tier1);
   shuffle(tier2);
   shuffle(tier3);
@@ -24,26 +26,21 @@ onMounted(() => {
   const picked = [];
   const pickedIds = new Set();
   
-  // 總共要抽出 10 個天賦
   while (picked.length < 10 && (tier1.length + tier2.length + tier3.length > 0)) {
     const rand = Math.random();
     let chosenTierPool;
 
-    // 按機率決定從哪個池子抽
-    // 您可以在這裡調整機率！
-    if (rand < 0.05 && tier3.length > 0) { // 5% 的機率抽傳說
+    if (rand < 0.05 && tier3.length > 0) {
       chosenTierPool = tier3;
-    } else if (rand < 0.30 && tier2.length > 0) { // 25% 的機率抽稀有 (0.05 + 0.25 = 0.30)
+    } else if (rand < 0.30 && tier2.length > 0) {
       chosenTierPool = tier2;
-    } else if (tier1.length > 0) { // 剩下 70% 的機率抽普通
+    } else if (tier1.length > 0) {
       chosenTierPool = tier1;
     } else {
-       // 如果高稀有度池子抽完了，就從還有剩的池子裡抽
        chosenTierPool = tier2.length > 0 ? tier2 : tier3;
-       if (!chosenTierPool || chosenTierPool.length === 0) break; // 都抽完了
+       if (!chosenTierPool || chosenTierPool.length === 0) break;
     }
 
-    // 從選中的池子裡拿一個天賦，並確保不重複
     const talent = chosenTierPool.pop(); 
     if (talent && !pickedIds.has(talent.id)) {
       picked.push(talent);
@@ -51,9 +48,10 @@ onMounted(() => {
     }
   }
 
-  availableTalents.value = shuffle(picked); // 最後再將抽出的卡片洗牌
-});
+  availableTalents.value = shuffle(picked);
+}
 
+onMounted(drawTalents);
 
 function toggleTalent(talent) {
   const index = selectedTalents.value.findIndex(t => t.id === talent.id);
@@ -81,7 +79,7 @@ const tierClass = (talent) => `tier-${talent.tier || 1}`;
   <div class="selector-compact">
     <div class="selector-header">
       <h2 class="selector-title">选择初始天赋 ({{ selectedTalents.length }}/{{ maxSelection }})</h2>
-      <button @click="emit('open-editor')" class="editor-button">事件编辑器</button>
+      <button @click="drawTalents" class="refresh-button">刷新</button>
     </div>
     
     <div class="talent-grid">
@@ -102,14 +100,13 @@ const tierClass = (talent) => `tier-${talent.tier || 1}`;
         手动探索
       </button>
       <button @click="confirmSelection('simulation')" :disabled="selectedTalents.length !== maxSelection">
-        自动模拟（未完成）
+        自动模拟
       </button>
     </div>
   </div>
 </template>
 
 <style scoped>
-/* 樣式部分與上一版相同，無需修改 */
 .selector-header {
   display: flex;
   justify-content: space-between;
@@ -122,7 +119,7 @@ const tierClass = (talent) => `tier-${talent.tier || 1}`;
   font-size: 1.2rem;
   color: #ccc;
 }
-.editor-button {
+.refresh-button {
   background: #555;
   color: white;
   border: none;
@@ -131,7 +128,7 @@ const tierClass = (talent) => `tier-${talent.tier || 1}`;
   cursor: pointer;
   font-size: 0.9rem;
 }
-.editor-button:hover {
+.refresh-button:hover {
   background: #666;
 }
 .selector-compact {

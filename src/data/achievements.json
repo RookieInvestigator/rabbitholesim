@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ach_zpe_success",
+    "name": "新世界的普罗米修斯",
+    "description": "你成功了。那盏永不熄灭的灯泡，宣告了一个新纪元的到来。",
+    "hidden": false,
+    "conditions": [
+      { "type": "ending_id", "params": { "is": "ending_zpe_success" } }
+    ]
+  },
+  {
+    "id": "ach_rich",
+    "name": "富甲一方",
+    "description": "你的财富已经达到了惊人的数量。",
+    "hidden": false,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "money", "operator": ">=", "value": 100000 } }
+    ]
+  },
+  {
+    "id": "ach_guru",
+    "name": "理性化身",
+    "description": "你的逻辑值突破了凡人的极限。",
+    "hidden": false,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "logic", "operator": ">=", "value": 200 } }
+    ]
+  },
+  {
+    "id": "ach_madness",
+    "name": "窥见真实",
+    "description": "你的认知值高到开始触碰这个世界的真实构造。",
+    "hidden": false,
+    "conditions": [
+      { "type": "stat_check", "params": { "stat": "gnosis", "operator": ">=", "value": 200 } }
+    ]
+  },
+  {
+    "id": "ach_cat_person",
+    "name": "猫咪的青睐",
+    "description": "你似乎很受猫咪的欢迎。",
+    "hidden": true,
+    "conditions": [
+      { "type": "event_check", "params": { "has_triggered": "cat_friend_relationship" } }
+    ]
+  }
+]

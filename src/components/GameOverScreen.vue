@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, watch } from 'vue';
 import { usePlayerStore } from '@/stores/playerStore';
 import allEndings from '@/data/endings.json';
 
@@ -7,17 +7,14 @@ const player = usePlayerStore();
 const emit = defineEmits(['restart']);
 const finalEnding = ref({ title: '探索结束', description: '你的数据已被归档。' });
 
-onMounted(() => {
-  if (player.deathReason) {
-    // ✨ 核心修复：修改匹配逻辑，使其能够同时处理两种结局类型
+watch(() => player.deathReason, (newReason) => {
+  if (newReason) {
     const matchedEnding = allEndings.find(ending => 
       ending.conditions.some(cond => {
-        // 检查是否是标准死亡结局
-        if (cond.type === 'death_reason' && cond.reason === player.deathReason) {
+        if (cond.type === 'death_reason' && cond.reason === newReason) {
           return true;
         }
-        // 检查是否是特殊事件触发的结局
-        if (cond.type === 'ending_id' && cond.endingId === player.deathReason) {
+        if (cond.type === 'ending_id' && cond.endingId === newReason) {
           return true;
         }
         return false;
@@ -28,7 +25,7 @@ onMounted(() => {
       finalEnding.value = matchedEnding;
     }
   }
-});
+}, { immediate: true });
 
 const format = (num) => Number(num).toFixed(0);
 </script>

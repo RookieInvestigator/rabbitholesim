@@ -1,8 +1,10 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue';
 import { usePlayerStore } from '@/stores/playerStore';
-import { useEventEngine } from '@/composables/useEventEngine';
+import { useEventCenter } from '@/composables/eventCenter';
+import { useDataCenter } from '@/composables/dataCenter';
 import { useGameLoop } from '@/composables/useGameLoop';
+import { useInteractiveGame } from '@/composables/useInteractiveGame'; // ✨ 1. 导入新的手动模式引擎
 import { v4 as uuidv4 } from 'uuid';
 
 import WorldviewDisplay from '@/components/WorldviewDisplay.vue';
@@ -12,106 +14,29 @@ import GameOverScreen from '@/components/GameOverScreen.vue';
 import ChoiceDisplay from '@/components/ChoiceDisplay.vue';
 import EditorView from './EditorView.vue';
 
+defineEmits(['back']);
+
 const player = usePlayerStore();
-const { isLoading, loadEvents, findTriggerableEvent, findEventById, isConditionMet } = useEventEngine();
+const { findEventById } = useEventCenter();
+const { loadAllData } = useDataCenter();
 const { start: startSimulation, stop: stopSimulation } = useGameLoop();
+// ✨ 2. 使用新的手动模式引擎，并获取其状态和方法
+const { currentManualChoices, nextTurn, handleChoiceSelected } = useInteractiveGame();
 
 const gameState = ref('talent');
 const gameMode = ref('interactive');
-const currentManualChoices = ref([]);
+const loadedCustomStats = ref([]);
 
-onMounted(loadEvents);
+onMounted(async () => {
+  const stats = await loadAllData();
+  loadedCustomStats.value = stats;
+});
 
-function nextTurn() {
-  if (!player.isAlive) return;
-  player.nextTurn();
-  
-  if (gameMode.value === 'interactive' && player.isAlive) {
-    currentManualChoices.value = []; // 清空选项
-    const event = findTriggerableEvent();
-    
-    if (event) {
-      player.addLog({ message: { title: event.title, text: event.text }, type: 'event' });
-      
-      // ✨ 修复 #1: 过滤不满足出现条件的选项
-      let choicesToShow = (event.choices || []).filter(c => {
-        if (!c.conditions || c.conditions.length === 0) {
-          return true;
-        }
-        return c.conditions.every(isConditionMet);
-      });
-      
-      // ✨ 修复 #2: 如果满足条件的选项多于3个，则随机抽取3个
-      if (choicesToShow.length > 3) {
-        choicesToShow.sort(() => 0.5 - Math.random());
-        choicesToShow = choicesToShow.slice(0, 3);
-      }
-      
-      currentManualChoices.value = choicesToShow.map(c => ({ 
-        ...c, 
-        uuid: uuidv4(),
-        parentEventId: event.id
-      }));
-    } else {
-      player.addLog({ message: '你静静地思索着，没有什么特别的事情发生。', type: 'system' });
-      if (player.isAlive) {
-        setTimeout(nextTurn, 1000);
-      }
-    }
-  }
-}
-
-function handleChoiceSelected(choice) {
-  // 处理 meta 事件的特殊逻辑
-  if (choice.id === 'choice_show_game_over') {
-    showGameOverScreen();
-    const feedback = choice.results?.[0]?.feedback;
-    if (feedback) {
-        player.addLog({ message: `> ${choice.text}`, type: 'choice' });
-        player.addLog({ message: feedback, type: 'feedback' });
-    }
-    return;
-  }
-  
-  if (!player.isAlive) return;
-  
-  if (choice.parentEventId) {
-    player.triggeredEventIds.add(choice.parentEventId);
-  }
-
-  if (choice.id) {
-    player.madeChoices.add(choice.id);
-  }
-  
-  player.addLog({ message: `> ${choice.text}`, type: 'choice' });
-
-  let finalResult = null;
-  if (choice.results && choice.results.length > 0) {
-    const weights = choice.results.map(r => r.weight || 1);
-    const totalWeight = weights.reduce((sum, w) => sum + w, 0);
-    let randomTarget = Math.random() * totalWeight;
-    for (let i = 0; i < choice.results.length; i++) {
-      randomTarget -= weights[i];
-      if (randomTarget <= 0) { finalResult = choice.results[i]; break; }
-    }
-    if (!finalResult) finalResult = choice.results[choice.results.length - 1];
-  } else {
-    finalResult = { feedback: choice.feedback, outcomes: choice.outcomes };
-  }
-
-  if (finalResult) {
-    player.applyOutcomes(finalResult.outcomes);
-    if (finalResult.feedback) player.addLog({ message: finalResult.feedback, type: 'feedback' });
-  }
-
-  if (player.isAlive) {
-    setTimeout(nextTurn, 1200);
-  }
-}
-
+// ✨ 3. startGame 现在调用从 useInteractiveGame 获取的 nextTurn
 function startGame(pickedTalents, mode) {
+  console.log('--- DEBUG: Starting game with mode:', mode, '---');
   gameMode.value = mode;
-  player.initializeWithTalents(pickedTalents);
+  player.initializeWithTalents(pickedTalents, loadedCustomStats.value);
   if (gameMode.value === 'simulation') {
     startSimulation(player);
   } else {
@@ -136,17 +61,25 @@ function hideEditor() {
   gameState.value = 'talent';
 }
 
-watch(() => player.isAlive, (isAlive) => {
-  if (!isAlive && gameState.value === 'playing') {
+watch([() => player.isAlive, () => player.endingTriggered], ([isAlive, endingTriggered]) => {
+  if (gameState.value !== 'playing') return;
+
+  if (endingTriggered) {
+    // 结局已正式触发，直接跳转到结束画面
+    gameState.value = 'game_over';
+  } else if (!isAlive) {
+    // 玩家刚刚“死亡”，但结局报告尚未查看
     stopSimulation();
     const endEvent = findEventById('meta_end_of_exploration');
     if (endEvent) {
       player.addLog({ message: { title: endEvent.title, text: endEvent.text }, type: 'event' });
+      // 当玩家死亡或结局触发时，显示最终报告选项
       currentManualChoices.value = endEvent.choices.map(c => ({
         ...c,
         uuid: uuidv4()
       }));
     } else {
+        // 如果找不到 meta 事件，作为后备方案直接结束
         gameState.value = 'game_over';
     }
   }
@@ -154,14 +87,14 @@ watch(() => player.isAlive, (isAlive) => {
 </script>
 
 <template>
-  <div v-if="isLoading">正在加载事件库...</div>
-
-  <TalentSelector v-else-if="gameState === 'talent'" @start="startGame" @open-editor="showEditor" />
+  <TalentSelector v-if="gameState === 'talent'" @start="startGame" @open-editor="showEditor" />
   
   <div v-else-if="gameState === 'playing'" class="game-grid-container">
+    <button class="back-to-menu" @click="$emit('back')">返回菜单</button>
     <div class="stat-area"><WorldviewDisplay /></div>
     <div class="log-area"><EventLog /></div>
     <div class="choice-area">
+      <!-- ✨ 4. 模板直接绑定从 useInteractiveGame 获取的状态和方法 -->
       <ChoiceDisplay 
         v-if="gameMode === 'interactive' && currentManualChoices.length > 0"
         :choices="currentManualChoices"
@@ -176,7 +109,25 @@ watch(() => player.isAlive, (isAlive) => {
 </template>
 
 <style scoped>
+.back-to-menu {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  background: rgba(40, 40, 40, 0.8);
+  border: 1px solid #555;
+  color: #ccc;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.back-to-menu:hover {
+  background: #c7a5ff;
+  color: #1a1a1a;
+}
+
 .game-grid-container {
+  position: relative;
   display: grid;
   grid-template-rows: auto 1fr auto;
   height: 100%;
