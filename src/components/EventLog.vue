@@ -1,120 +1,77 @@
 <script setup>
-import { ref, watch, nextTick } from 'vue';
 import { usePlayerStore } from '@/stores/playerStore';
 
 const player = usePlayerStore();
-const logContainer = ref(null);
-
-watch(
-  () => player.log.length,
-  async () => {
-    await nextTick();
-    const container = logContainer.value;
-    if (container) {
-      container.scrollTop = container.scrollHeight;
-    }
-  }
-);
 </script>
 
 <template>
-  <div class="event-log" ref="logContainer">
-    <ul>
-      <li v-for="log in player.log" :key="log.id" :class="`log-${log.type}`">
+  <div class="terminal-log">
+    <div class="log-content">
+      <div 
+        v-for="log in player.log" 
+        :key="log.id" 
+        :class="['log-entry', `type-${log.type}`]"
+      >
         <template v-if="log.type === 'event' && typeof log.message === 'object'">
-          <div class="event-title">{{ log.message.title || '无标题事件' }}</div>
+          <div class="event-title">{{ log.message.title || 'NULL_ID' }}</div>
           <div class="event-text">{{ log.message.text }}</div>
         </template>
+        
         <template v-else>
-          {{ log.message }}
+          <div class="generic-text">{{ typeof log.message === 'object' ? log.message.text : log.message }}</div>
         </template>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.event-log {
-  height: 100%;
+.terminal-log {
+  background: #000;
+  overflow-x: hidden;
+  padding: 1.5rem;
   box-sizing: border-box;
-  background: #1e1e1e;
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  border: 1px solid #333;
-  overflow-y: auto;
+  font-family: "Source Han Sans SC", "Source Han Sans TC", sans-serif;
 }
 
-ul { 
-  list-style: none; 
-  padding: 0; 
+.log-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.log-entry {
+  align-self: flex-start;
+  width: 100%;
+  border-left: 1px solid #111; /* 預設為極深灰 */
+  padding-left: 1rem;
+  transition: border-color 0.3s ease; /* 增加一個平滑過渡，讓指示更自然 */
+}
+
+/* ✨ 微弱指示器：將最後一個條目的邊框調亮 ✨ */
+.log-entry:last-child {
+  border-left-color: #444; /* 稍微亮一點的灰色，指示當前位置 */
+}
+
+.event-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ccc;
+  margin: 0 0 0.5rem 0;
+}
+
+/* 稀有度顏色僅作用於文字 */
+.type-rare .event-title { color: #4A90E2; }
+.type-legend .event-title { color: #ffc878; }
+.type-ending .event-title { color: #ff4757; }
+
+.event-text, .generic-text {
+  font-size: 0.95rem;
+  color: #888;
+  line-height: 1.6;
+  white-space: pre-wrap;
   margin: 0;
 }
 
-li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #2a2a2a;
-  color: #ccc;
-  line-height: 1.5;
-  font-size: 0.9rem;
-}
-
-li:last-child { 
-  border-bottom: none; 
-}
-
-.event-title { 
-    font-size: 1rem;
-    margin-bottom: 0.25rem;
-    color: #ffc878;
-}
-.event-text {
-    font-weight: normal;
-    color: #e0e0e0;
-}
-.log-choice { 
-    font-size: 0.85rem;
-    color: #8cb4ff;
-}
-.log-feedback {
-    font-style: italic;
-    color: #888;
-}
-.log-system {
-    text-align: center;
-    color: #666;
-    font-style: italic;
-}
-.log-ending {
-    text-align: center;
-    color: #ffc878;
-    font-weight: bold;
-}
-
-/* ✨ 核心修改：新增自訂滾動條樣式 ✨ */
-
-/* 針對 Firefox */
-.event-log {
-  scrollbar-width: thin;
-  scrollbar-color: #4a4a4a #1e1e1e;
-}
-
-/* 針對 WebKit 瀏覽器 (Chrome, Safari, Edge 等) */
-.event-log::-webkit-scrollbar {
-  width: 8px; /* 滾動條寬度 */
-}
-
-.event-log::-webkit-scrollbar-track {
-  background: #1e1e1e; /* 軌道顏色，與背景色相同 */
-  border-radius: 4px;
-}
-
-.event-log::-webkit-scrollbar-thumb {
-  background-color: #4a4a4a; /* 滑塊顏色 */
-  border-radius: 4px;
-  border: 2px solid #1e1e1e; /* 創造類似 padding 的效果 */
-}
-
-.event-log::-webkit-scrollbar-thumb:hover {
-  background-color: #6a6a6a; /* 滑塊在滑鼠懸停時的顏色 */
-}
+.type-choice .generic-text { color: #555555; }
 </style>

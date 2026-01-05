@@ -1,0 +1,445 @@
+{
+  "id": "cicada_3301",
+  "name": "蝉 3301",
+  "author": "3301",
+  "description": "寻找高度智慧的个体。一个涉及密码学、数论以及深层网络协议的全球谜题。你将被卷入一场关于真实与虚拟边界的隐秘选拔。",
+  "customStats": [
+    {
+      "id": "cicada_decryption",
+      "name": "蝉解密度",
+      "initialValue": 0
+    }
+  ],
+  "statusEffects": {
+    "cicada_tracing": {
+      "name": "蝉响应",
+      "description": "你正在追踪蝉的协议。解密度会随时间缓慢波动。",
+      "outcomes": [
+        {
+          "type": "change_stat",
+          "params": {
+            "cicada_decryption": 1,
+            "sanity": -1
+          }
+        }
+      ]
+    }
+  },
+  "endings": [
+    {
+      "id": "ending_cicada_initiate",
+      "title": "蝉之子",
+      "description": "你解开了最后一个哈希值。在深网最偏僻的节点，你通过了验证。你不再是互联网上的一串匿名代码，你成为了‘他们’的一员。世界的真相将对你敞开，虽然你可能再也无法回到平凡的生活中。",
+      "priority": 100,
+      "conditions": [
+        {
+          "type": "ending_id",
+          "endingId": "ending_cicada_initiate"
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "id": "talent_cicada_3301",
+      "name": "蝉鸣共振",
+      "tier": 2,
+      "description": "你对素数与隐写术有种病态的直觉，总是能捕捉到那些隐藏在数字背后的深意。",
+      "effects": [
+        {
+          "type": "change_tag_probability",
+          "params": {
+            "tag": "cicada",
+            "multiplier": 2.8
+          }
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "cicada_ev_repeatable_meditation",
+      "title": "深度冥思",
+      "text": "你闭上双眼，让意识沉入深层协议的底部。周围变得极其安静，只有微弱的、节奏古怪的嗡鸣声在脑海中回荡。你试图从这些虚无的噪音中捕捉那些若隐若现的素数序列。",
+      "tags": ["cicada", "mental"],
+      "isUnique": false,
+      "priority": 1,
+      "conditions": [
+        {
+          "type": "stat_check",
+          "params": { "stat": "cicada_decryption", "operator": "<", "value": 100 }
+        }
+      ],
+      "choices": [
+        {
+          "text": "聚焦于那段规律的电子脉冲，试图将其转化为二进制代码。",
+          "worldview": "logic",
+          "magnitude": 1,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你在脑海中构建了一个临时的编译器。一段模糊的文本一闪而过，解密进度略微提升。",
+              "outcomes": [{ "type": "change_stat", "params": { "cicada_decryption": 5, "logic": 2 } }]
+            }
+          ]
+        },
+        {
+          "text": "顺着蝉鸣的频率调整自己的呼吸，寻找意识与协议的共振点。",
+          "worldview": "gnosis",
+          "magnitude": 1,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你的感知变得敏锐。你察觉到了一些原本隐藏在数据噪点背后的模式。",
+              "outcomes": [{ "type": "change_stat", "params": { "cicada_decryption": 3, "gnosis": 2, "sanity": -2 } }]
+            }
+          ]
+        },
+        {
+          "text": "仅仅是观察这些噪音，不做任何解读，等待潜意识自行反馈。",
+          "worldview": "weirdness",
+          "magnitude": 1,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "虚无中产生了一些破碎的图像。你无法确定它们意味着什么，但解密的感觉更近了。",
+              "outcomes": [{ "type": "change_stat", "params": { "cicada_decryption": 4, "weirdness": 3 } }]
+            }
+          ]
+        },
+        {
+          "text": "嘲笑这种试图通过冥想来解密的荒谬行为，但手还是诚实地记录下了一些字符。",
+          "worldview": "irony",
+          "magnitude": 1,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "这种矛盾的心态反而让你避开了思维陷阱。你偶然发现了一个哈希漏洞。",
+              "outcomes": [{ "type": "change_stat", "params": { "cicada_decryption": 6, "irony": 4 } }]
+            }
+          ]
+        },
+        {
+          "text": "中断冥思。你需要更清醒的头脑去处理现实世界的逻辑。",
+          "worldview": "logic",
+          "magnitude": 1,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你退出了深度思考。虽然进度停滞，但你的精神状态恢复了不少。",
+              "outcomes": [{ "type": "change_stat", "params": { "sanity": 10, "logic": 5 } }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cicada_ev_1_discovery",
+      "title": "启程：哈希中的蝉鸣",
+      "text": "你在一个极度冷门的黑客论坛发现了一张全黑的图片。描述极其傲慢：'Hello. We are looking for highly intelligent individuals.' 在图像末尾的元数据中，你嗅到了一股不同寻常的、属于数学逻辑的严密气息。这不像是某个闲散黑客的恶作剧。",
+      "tags": ["cicada", "tech", "mystery", "logic"],
+      "isUnique": true,
+      "priority": 20,
+      "conditions": [
+        { "type": "stat_check", "params": { "stat": "logic", "operator": ">=", "value": 120 } }
+      ],
+      "choices": [
+        {
+          "text": "使用隐写术工具提取图像末尾的隐藏文本。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 7,
+              "feedback": "你提取出了一段凯撒密码，指向了一个位于得克萨斯州的电话号码。蝉鸣声开始在你的处理器中回荡。",
+              "outcomes": [{ "type": "change_stat", "params": { "logic": 15, "cicada_decryption": 15, "sanity": -2 } }]
+            },
+            {
+              "weight": 3,
+              "feedback": "你的工具遭遇了干扰，图像中潜伏的破坏脚本烧毁了你的部分驱动程序。但这证明了对方确实拥有极高的技术力。",
+              "outcomes": [{ "type": "change_stat", "params": { "logic": 5, "money": -500, "sanity": -10 } }]
+            }
+          ]
+        },
+        {
+          "text": "这种老掉牙的把戏，大概又是某个ARG游戏在钓鱼。",
+          "worldview": "irony",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你在回帖中冷嘲热讽了一番，顺便分析了该图片使用的老旧算法。这种行为让你在黑客圈子里小有名气。",
+              "outcomes": [{ "type": "change_stat", "params": { "irony": 12, "fame": 10 } }]
+            }
+          ]
+        },
+        {
+          "text": "盯着图像中杂乱的像素噪点，寻找它们在非欧几里得几何下的排列规律。",
+          "worldview": "weirdness",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你陷入了一种奇妙的幻觉。你发誓自己听到了一万只蝉同时鸣叫的声音，虽然解密没有进展，但你感受到了‘某种东西’。",
+              "outcomes": [{ "type": "change_stat", "params": { "weirdness": 20, "sanity": -15, "gnosis": 10 } }]
+            }
+          ]
+        },
+        {
+          "text": "意识到这可能是一个涉及全球的秘密招募，我必须立刻加入这场竞赛。",
+          "worldview": "gnosis",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你将蓝图和相关数据备份到了三个不同的加密云端。这场朝圣正式开始了。",
+              "outcomes": [
+                { "type": "change_stat", "params": { "gnosis": 10, "cicada_decryption": 10 } },
+                { "type": "add_status_effect", "params": { "statusId": "cicada_tracing", "duration": 9999 } }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "关闭网页，这种侵入感令人不快。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你避开了麻烦，但也失去了通往深渊的机会。",
+              "outcomes": [{ "type": "change_stat", "params": { "sanity": 5 } }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cicada_ev_2_physical",
+      "title": "锚点：坐标、灯柱与蝉",
+      "text": "解密进度把你引向了一个地理坐标，令人不安的是，那就在你居住城市的街道尽头。你顶着深夜的寒风前往。在一根锈迹斑斑的灯柱上，你发现了一张贴着二维码的纸条。二维码的中心，印着那只冷漠的、灰白的蝉。",
+      "tags": ["cicada", "weird", "physical"],
+      "isUnique": true,
+      "priority": 15,
+      "conditions": [
+        { "type": "stat_check", "params": { "stat": "cicada_decryption", "operator": ">=", "value": 20 } }
+      ],
+      "choices": [
+        {
+          "text": "扫描二维码，进入他们预设的深层链路。",
+          "worldview": "gnosis",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你的手机跳出一段极其底层的、不属于任何商用系统的命令行界面。倒计时开始了，你感到一股寒意顺着脊椎爬升。",
+              "outcomes": [{ "type": "change_stat", "params": { "gnosis": 15, "cicada_decryption": 20, "sanity": -10 } }]
+            }
+          ]
+        },
+        {
+          "text": "检查纸条背后的隐写术痕迹，也许物理层面也有秘密。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你在纸条背面发现了一串微小的素数。通过将其与灯柱的编号进行运算，你得到了一个暗网地址。",
+              "outcomes": [{ "type": "change_stat", "params": { "logic": 15, "cicada_decryption": 15 } }]
+            }
+          ]
+        },
+        {
+          "text": "在二维码旁边贴上一张你自制的、包含‘Rickroll’视频的假二维码。",
+          "worldview": "irony",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你的恶搞行为在这个严肃的招募过程中显得格外突兀，但你意外地感到心情舒畅。",
+              "outcomes": [{ "type": "change_stat", "params": { "irony": 25, "sanity": 10 } }]
+            }
+          ]
+        },
+        {
+          "text": "报警。有人在公共设施上乱贴可能含有非法病毒的链接。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "警察拆除了纸条，并对你进行了口头表扬。你感觉安全了一些，但‘蝉鸣’似乎正在远离你。",
+              "outcomes": [
+                { "type": "change_stat", "params": { "logic": 10, "irony": 5 } },
+                { "type": "change_stat", "params": { "cicada_decryption": -10 } }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "撕下纸条带回家，放在显微镜下研究纸张的纹理。",
+          "worldview": "weirdness",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你发现纸张的纤维排列似乎也构成了一种某种古老的咒语模式。这已经超出了纯粹黑客技术的范畴。",
+              "outcomes": [{ "type": "change_stat", "params": { "weirdness": 15, "gnosis": 5 } }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cicada_ev_3_deepweb",
+      "title": "深渊：.onion 的尽头",
+      "text": "浏览器缓慢地加载着那个 .onion 地址。屏幕上没有任何装饰，只有跳动的字符。一个深色的蝉形图标占据了屏幕中心。系统提示：‘你已经走得够远了。现在，向我们展示你的意志。’",
+      "tags": ["cicada", "tech", "logic"],
+      "isUnique": true,
+      "priority": 15,
+      "conditions": [
+        { "type": "stat_check", "params": { "stat": "cicada_decryption", "operator": ">=", "value": 40 } }
+      ],
+      "choices": [
+        {
+          "text": "运行提供的哈希破解程序，消耗大量算力进行暴力破解。",
+          "worldview": "logic",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你的电脑由于全速运转而发出阵阵热浪。在一阵死寂后，你获得了一串通往下一层级的密钥。",
+              "outcomes": [{ "type": "change_stat", "params": { "logic": 20, "cicada_decryption": 25, "money": -500 } }]
+            }
+          ]
+        },
+        {
+          "text": "在对话框中尝试输入‘正典’（Liber Primus）的译文片段。",
+          "worldview": "gnosis",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "字符变为了亮绿色。你被允许访问更深层的目录。你感觉自己正在接触某种宇宙的真实代码。",
+              "outcomes": [{ "type": "change_stat", "params": { "gnosis": 20, "cicada_decryption": 20, "sanity": -10 } }]
+            }
+          ]
+        },
+        {
+          "text": "利用这个机会反向追踪服务器，试图揭开组织者的真面目。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你的追踪请求被一道极其精密的防火墙拦截了。虽然失败了，但你对他们的技术深度有了更深的畏惧。",
+              "outcomes": [{ "type": "change_stat", "params": { "logic": 10, "sanity": -5 } }]
+            }
+          ]
+        },
+        {
+          "text": "在留言板上发送一段极其无厘头的、关于蝉肉烹饪的笑话。",
+          "worldview": "irony",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你收到了一个自动回复：‘幽默是智力的溢出。’ 你的这种叛逆似乎意外地符合他们的标准。",
+              "outcomes": [{ "type": "change_stat", "params": { "irony": 20, "cicada_decryption": 5 } }]
+            }
+          ]
+        },
+        {
+          "text": "拔掉网线。这种仿佛被监视的感觉已经让你无法忍受。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你退出了。但即便在断网的状态下，你的屏幕上似乎仍能看到蝉的残影。",
+              "outcomes": [{ "type": "change_stat", "params": { "sanity": -5, "weirdness": 10 } }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cicada_ev_completion",
+      "title": "蝉鸣终点：最终验证",
+      "text": "解密进度达到了临界值。所有的线索——素数、暗网地址、地理坐标、隐写术——最终汇聚成了一个简单的验证窗口。蝉 3301 的声音最后一次响起：‘如果你已经读到了这里，证明你就是我们要找的人。你准备好舍弃那个平庸的自我了吗？’",
+      "tags": ["cicada", "ending_path"],
+      "isUnique": true,
+      "priority": 100,
+      "conditions": [
+        { "type": "stat_check", "params": { "stat": "cicada_decryption", "operator": ">=", "value": 100 } }
+      ],
+      "choices": [
+        {
+          "text": "输入最后的验证码，正式加入‘蝉 3301’组织。",
+          "worldview": "gnosis",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "验证通过。你的意识似乎连接到了一个宏大、冰冷且精密的集体网络中。",
+              "outcomes": [
+                { "type": "trigger_ending", "params": { "endingId": "ending_cicada_initiate" } }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "公开所有解密过程，让这个秘密社团彻底暴露在阳光下。",
+          "worldview": "logic",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你将所有的文档上传到了全球最大的代码托管平台。蝉鸣声消失了，转而代之的是世人的喧嚣。你摧毁了这个神话，但也失去了成为神的机会。",
+              "outcomes": [
+                { "type": "change_stat", "params": { "logic": 50, "irony": 30, "fame": 100 } },
+                { "type": "remove_status_effect", "params": { "statusId": "cicada_tracing" } }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "意识到这只是一场高等级的心理控制实验，选择冷静地格式化硬盘。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你重置了系统，也重置了生活。在清空的磁盘空间里，不再有素数和隐秘的蝉影。你感到前所未有的自由。",
+              "outcomes": [{ "type": "change_stat", "params": { "sanity": 50, "logic": 20 } }]
+            }
+          ]
+        },
+        {
+          "text": "回信询问他们：‘你们招募了这么多人，真的提供五险一金吗？’",
+          "worldview": "irony",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "网页崩溃了。在一阵乱码中，你仿佛看到了一只蝉在对你翻白眼。你用冷笑话终结了这场史诗般的朝圣。",
+              "outcomes": [{ "type": "change_stat", "params": { "irony": 100, "sanity": 20 } }]
+            }
+          ]
+        },
+        {
+          "text": "在那只‘蝉’的注视下，通过反向哈希，将一个破坏性的病毒注入他们的网络。",
+          "worldview": "weirdness",
+          "magnitude": 3,
+          "results": [
+            {
+              "weight": 1,
+              "feedback": "你听到了数据崩塌的声音。在意识的深处，那只巨大的蝉发出了一声凄厉的、不属于物理世界的尖叫。",
+              "outcomes": [{ "type": "change_stat", "params": { "weirdness": 50, "gnosis": 20, "sanity": -30 } }]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -13,10 +13,10 @@ const format = (num) => Number(num).toFixed(0);
       <span class="stat-item">💰 <strong>{{ format(player.money) }}</strong></span>
     </div>
     <div class="stat-group">
-      <span class="stat-item">邏: <strong>{{ format(player.logic) }}</strong></span>
-      <span class="stat-item">靈: <strong>{{ format(player.gnosis) }}</strong></span>
-      <span class="stat-item">奇: <strong>{{ format(player.weirdness) }}</strong></span>
-      <span class="stat-item">構: <strong>{{ format(player.irony) }}</strong></span>
+      <span class="stat-item">逻辑 <strong>{{ format(player.logic) }}</strong></span>
+      <span class="stat-item">灵知 <strong>{{ format(player.gnosis) }}</strong></span>
+      <span class="stat-item">怪奇 <strong>{{ format(player.weirdness) }}</strong></span>
+      <span class="stat-item">戏讽 <strong>{{ format(player.irony) }}</strong></span>
     </div>
     <div v-if="player.statusEffects.length > 0" class="stat-group status-group">
         <span v-for="effect in player.statusEffects" :key="effect.id" class="stat-item status-effect">

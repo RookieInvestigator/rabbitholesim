@@ -44,7 +44,7 @@ function handleNavigation(view) {
 </script>
 
 <template>
-  <div class="app-container">
+  <div class="app-container" :class="{ 'game-active': currentView === 'game' }">
     <main class="main-content">
       <StartView 
         v-if="currentView === 'start'" 
@@ -68,13 +68,26 @@ function handleNavigation(view) {
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
+  transition: max-width 0.3s ease, margin 0.3s ease; /* 平滑過渡 */
 }
 
 .main-content {
   height: 100%;
   padding: 0.5rem;
   box-sizing: border-box;
+  transition: padding 0.3s ease; /* 平滑過渡 */
 }
+
+/* 當遊戲啟動時，讓容器全螢幕化 */
+.app-container.game-active {
+  max-width: 100%;
+  margin: 0;
+}
+
+.app-container.game-active .main-content {
+  padding: 0;
+}
+
 
 /* 占位符的简单样式 */
 h1, p {
