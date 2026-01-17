@@ -2,6 +2,25 @@
 import { usePlayerStore } from '@/stores/playerStore';
 
 const player = usePlayerStore();
+
+const worldviewColors = {
+  logic: '#3498db',
+  gnosis: '#9b59b6',
+  weirdness: '#2ecc71',
+  irony: '#e67e22',
+};
+
+function parseText(text) {
+  if (!text) return '';
+  // Escape basic HTML to prevent injection, except for our own markup
+  const escapedText = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  // Replace our custom markup with styled spans
+  return escapedText.replace(/\[\[(logic|gnosis|weirdness|irony):(.+?)\]\]/g, (match, tendency, content) => {
+    const color = worldviewColors[tendency] || '#888';
+    return `<span style="color: ${color}; font-weight: 500;">${content}</span>`;
+  });
+}
 </script>
 
 <template>
@@ -14,11 +33,11 @@ const player = usePlayerStore();
       >
         <template v-if="log.type === 'event' && typeof log.message === 'object'">
           <div class="event-title">{{ log.message.title || 'NULL_ID' }}</div>
-          <div class="event-text">{{ log.message.text }}</div>
+          <div class="event-text" v-html="parseText(log.message.text)"></div>
         </template>
         
         <template v-else>
-          <div class="generic-text">{{ typeof log.message === 'object' ? log.message.text : log.message }}</div>
+          <div class="generic-text" v-html="parseText(typeof log.message === 'object' ? log.message.text : log.message)"></div>
         </template>
       </div>
     </div>

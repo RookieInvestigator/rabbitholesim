@@ -2,8 +2,9 @@
   "id": "the_cult_of_family",
   "name": "幸福者之家",
   "author": "官方",
+  "icon": "fas fa-eye",
   "description": "一个关于爱、控制和奉献的DLC。你真的找到了家人吗？",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "customStats": [
     {
       "id": "devotion",

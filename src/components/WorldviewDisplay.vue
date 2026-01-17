@@ -19,23 +19,23 @@ const displayedEffects = computed(() => {
 <template>
   <div class="monitor-container">
     <div class="worldview-grid">
-      <div class="worldview-card">
-        <span class="icon">🧠</span>
+      <div class="worldview-card logic-card">
+        <span class="icon"><i class="fas fa-atom icon-logic"></i></span>
         <span class="value">{{ format(player.logic) }}</span>
         <span class="label">逻辑</span>
       </div>
-      <div class="worldview-card">
-        <span class="icon">👁️</span>
+      <div class="worldview-card gnosis-card">
+        <span class="icon"><i class="fas fa-eye icon-gnosis"></i></span>
         <span class="value">{{ format(player.gnosis) }}</span>
         <span class="label">灵知</span>
       </div>
-      <div class="worldview-card">
-        <span class="icon">🌀</span>
+      <div class="worldview-card weirdness-card">
+        <span class="icon"><i class="fas fa-spider icon-weirdness"></i></span>
         <span class="value">{{ format(player.weirdness) }}</span>
         <span class="label">怪奇</span>
       </div>
-      <div class="worldview-card">
-        <span class="icon">🎭</span>
+      <div class="worldview-card irony-card">
+        <span class="icon"><i class="fas fa-masks-theater icon-irony"></i></span>
         <span class="value">{{ format(player.irony) }}</span>
         <span class="label">戏讽</span>
       </div>
@@ -95,12 +95,25 @@ const displayedEffects = computed(() => {
   align-items: center;
   justify-content: center; 
   text-align: center;
+  transition: background-color 0.2s ease; /* 過渡效果 */
 }
+
+/* --- Hover Effects --- */
+.logic-card:hover { background-color: rgba(52, 152, 219, 0.1); }
+.gnosis-card:hover { background-color: rgba(155, 89, 182, 0.1); }
+.weirdness-card:hover { background-color: rgba(46, 204, 113, 0.1); }
+.irony-card:hover { background-color: rgba(230, 126, 34, 0.1); }
+
 
 .icon { 
   font-size: 1.2rem; 
   margin-bottom: 0.4rem;
 }
+
+.icon-logic { color: #3498db; }
+.icon-gnosis { color: #9b59b6; }
+.icon-weirdness { color: #2ecc71; }
+.icon-irony { color: #e67e22; }
 
 .value { 
   font-size: 1.2rem; 
@@ -110,10 +123,11 @@ const displayedEffects = computed(() => {
 }
 
 .label { 
-  font-size: 0.65rem; 
-  color: #333; 
+  font-size: 0.7rem; 
+  color: #888; /* 標籤文字顏色更亮 */
+  font-weight: 500;
   margin-top: 0.4rem;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 /* 核心指標 2x2 佈局 */
@@ -181,10 +195,12 @@ const displayedEffects = computed(() => {
     font-size: 1rem; /* 縮小數值 */
   }
 
-  .label {
-    font-size: 0.5rem; /* 縮小標籤文字 */
-    margin-top: 0.1rem;
-    letter-spacing: 0px;
+  .label { 
+    font-size: 0.6rem; /* 標籤文字顏色更亮 */
+    color: #888;
+    font-weight: 500;
+    margin-top: 0.2rem;
+    letter-spacing: 1px;
   }
 
   .metric-item {

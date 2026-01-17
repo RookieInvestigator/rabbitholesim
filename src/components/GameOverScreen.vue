@@ -47,19 +47,19 @@ const format = (num) => Number(num).toFixed(0);
             <span class="s-value">{{ format(player.money) }}</span>
           </div>
           <div class="stat-item">
-            <span class="s-label">🧠 逻辑</span>
+            <span class="s-label"><i class="fas fa-atom icon-logic"></i> 逻辑</span>
             <span class="s-value">{{ format(player.logic) }}</span>
           </div>
           <div class="stat-item">
-            <span class="s-label">👁️ 灵知</span>
+            <span class="s-label"><i class="fas fa-eye icon-gnosis"></i> 灵知</span>
             <span class="s-value">{{ format(player.gnosis) }}</span>
           </div>
           <div class="stat-item">
-            <span class="s-label">🌀 怪奇</span>
+            <span class="s-label"><i class="fas fa-spider icon-weirdness"></i> 怪奇</span>
             <span class="s-value">{{ format(player.weirdness) }}</span>
           </div>
           <div class="stat-item">
-            <span class="s-label">🎭 戏讽</span>
+            <span class="s-label"><i class="fas fa-masks-theater icon-irony"></i> 戏讽</span>
             <span class="s-value">{{ format(player.irony) }}</span>
           </div>
         </div>
@@ -167,6 +167,16 @@ const format = (num) => Number(num).toFixed(0);
   font-size: 0.8rem;
   color: #444;
 }
+
+.s-label i {
+  margin-right: 0.5rem;
+  font-size: 0.9em;
+}
+
+.icon-logic { color: #3498db; }
+.icon-gnosis { color: #9b59b6; }
+.icon-weirdness { color: #2ecc71; }
+.icon-irony { color: #e67e22; }
 
 .s-value {
   font-size: 1rem;

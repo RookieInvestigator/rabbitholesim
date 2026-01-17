@@ -8,12 +8,12 @@ function selectChoice(choice) {
   emit('choice-selected', choice);
 }
 
-// 保留 Emoji 映射
+// Map worldview to Font Awesome classes
 const worldviewIcons = { 
-  logic: '🧠', 
-  gnosis: '👁️', 
-  weirdness: '🌀', 
-  irony: '🎭' 
+  logic: 'fas fa-atom icon-logic', 
+  gnosis: 'fas fa-eye icon-gnosis', 
+  weirdness: 'fas fa-spider icon-weirdness', 
+  irony: 'fas fa-masks-theater icon-irony' 
 };
 </script>
 
@@ -27,7 +27,7 @@ const worldviewIcons = {
     >
       <div class="cursor">       
         <div v-if="choice.worldview" class="worldview-tag">
-          <span class="icon">{{ worldviewIcons[choice.worldview] || '🔘' }}</span>
+          <span class="icon"><i :class="worldviewIcons[choice.worldview] || 'fas fa-question-circle'"></i></span>
         </div>
       </div>
       
@@ -102,15 +102,15 @@ const worldviewIcons = {
 
 .worldview-tag .icon {
   font-size: 0.8rem;
-  filter: grayscale(0.5); /* 稍微降低 Emoji 亮度以符合整體風格 */
 }
+
+.icon-logic { color: #3498db; }
+.icon-gnosis { color: #9b59b6; }
+.icon-weirdness { color: #2ecc71; }
+.icon-irony { color: #e67e22; }
 
 .choice-node:hover .worldview-tag {
   color: #888;
-}
-
-.choice-node:hover .worldview-tag .icon {
-  filter: grayscale(0);
 }
 
 .worldview-tag .value {

@@ -2,6 +2,8 @@
   "id": "perpetual_motion",
   "name": "永动机",
   "author": "官方",
+  "version": "1.0.1",
+  "icon": "fas fa-infinity",
   "description": "一个关于追求终极能源的DLC，包含新的事件、天赋和自定义数值。",
   "customStats": [
     {

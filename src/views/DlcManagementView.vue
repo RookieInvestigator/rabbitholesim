@@ -30,6 +30,7 @@
           <div class="module-content">
             <div class="module-info">
               <div class="name-row">
+                <span v-if="dlc.icon" class="icon-wrapper"><i :class="dlc.icon"></i></span>
                 <h2 class="module-name">{{ dlc.name }}</h2>
                 <span class="module-author">@{{ dlc.author || 'UNKNOWN' }}</span>
               </div>
@@ -148,9 +149,10 @@ const handleDeleteDlc = (id) => {
 }
 
 .module-info { flex: 1; }
-.name-row { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.6rem; }
+.name-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; }
+.icon-wrapper { font-size: 1rem; color: #444; }
 .module-name { font-size: 1.1rem; margin: 0; font-weight: 700; color: #eee; }
-.module-author { font-size: 0.75rem; color: #333; font-family: monospace; }
+.module-author { font-size: 0.75rem; color: #333; font-family: monospace; margin-left: auto; }
 .module-desc { font-size: 0.85rem; color: #555; margin: 0; line-height: 1.6; }
 
 /* ✨ 重點優化：加大後的切換按鈕 ✨ */

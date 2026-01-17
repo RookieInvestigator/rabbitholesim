@@ -43,16 +43,20 @@ export const useDlcStore = defineStore('dlc', {
       if (this.isLoaded) return;
       console.log('正在初始化DLC系统...');
 
-      // 1. 播种内置DLC
+      // 1. 播种内置DLC, 检查版本更新
       const storedDlcs = await getAllDlcs();
-      const storedDlcIds = new Set(storedDlcs.map(d => d.id));
+      const storedDlcMap = new Map(storedDlcs.map(d => [d.id, d]));
       
       const seedingPromises = Object.entries(builtInDlcModules).map(async ([path, loader]) => {
         const module = await loader();
         const builtInDlc = module.default;
-        if (builtInDlc && !storedDlcIds.has(builtInDlc.id)) {
-          console.log(`发现新的内置DLC '${builtInDlc.id}'，正在植入数据库...`);
-          await setDlc(builtInDlc);
+        if (builtInDlc) {
+          const existingDlc = storedDlcMap.get(builtInDlc.id);
+          // 如果DLC不存在，或版本不一致，则植入/更新
+          if (!existingDlc || existingDlc.version !== builtInDlc.version) {
+            console.log(`发现内置DLC '${builtInDlc.id}' 更新或为新DLC，正在植入/更新数据库...`);
+            await setDlc(builtInDlc);
+          }
         }
       });
       await Promise.all(seedingPromises);

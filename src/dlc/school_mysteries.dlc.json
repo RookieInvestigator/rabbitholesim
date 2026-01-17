@@ -1,0 +1,711 @@
+{
+  "id": "school_mysteries",
+  "name": "校园七大不可思议",
+  "author": "官方",
+  "version": "1.0.2",
+  "icon": "fas fa-school",
+  "description": "一所古老的高中，七个流传已久的怪谈。你，是选择用理性揭穿谎言，还是会沉沦在怪异的真相之中？",
+  "customStats": [
+    {
+      "id": "mysteries_uncovered",
+      "name": "解明神秘",
+      "initialValue": 0
+    }
+  ],
+  "statusEffects": {
+    "part_of_the_legend": {
+      "name": "传说的一部分",
+      "description": "你的事迹，已经成为了这所学校新的怪谈。",
+      "outcomes": [
+        {
+        }
+      ]
+    }
+  },
+  "talents": [
+    {
+      "id": "school_legend_attractor",
+      "name": "校园怪谈体质",
+      "description": "你似乎特别容易被卷入校园里的神秘事件。",
+      "effects": [
+        {
+          "type": "add_event_modifier",
+          "params": {
+            "eventId": "school_rumors_start",
+            "multiplier": 5.0,
+            "duration": 9999
+          }
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "school_rumors_start",
+      "title": "黄昏的学生论坛",
+      "text": "一个无聊的下午，你在学校的内部论坛里，发现了一个被顶上来的、发布于十几年前的旧帖子，标题是：《我们学校的七大不可思议，你经历过几个？》。帖子里罗列了七个听起来神乎其神的校园怪谈，回复者众说纷纭，但都语焉不详。",
+      "tags": ["school", "mystery", "chain_start"],
+      "isUnique": true,
+      "priority": 10,
+      "choices": [
+        {
+          "text": "无稽之谈。不过是学生们为了寻求刺激而编造的故事罢了。",
+          "worldview": "logic",
+          "results": [{
+            "weight": 1,
+            "feedback": "你嗤之以鼻地关掉了帖子。相比这些虚无缥缈的传说，你更关心今晚的数学作业。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 1 } } ]
+          }]
+        },
+        {
+          "text": "这些传说背后，或许隐藏着不为人知的真实事件。我应该去调查一下。",
+          "worldview": "gnosis",
+          "results": [{
+            "weight": 1,
+            "feedback": "你的好奇心被点燃了。你决定从第一个传说开始调查：那个据说会自己转向的、音乐教室里的贝多芬石膏像。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 5, "sanity": -2 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_01_beethoven" } }
+            ]
+          }]
+        },
+        {
+          "text": "听起来像是很有趣的都市传说大冒险！今晚就去探险吧！",
+          "worldview": "weirdness",
+          "results": [{
+            "weight": 1,
+            "feedback": "你将七个传说一一记下，并制定了一份详尽的“圣地巡礼”计划。对你来说，这比任何游戏都更有吸引力。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "weirdness": 5, "sanity": -2 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_01_beethoven" } }
+            ]
+          }]
+        },
+        {
+          "text": "在帖子下面回复：“第八大不可思议：校长其实是外星人。我昨天看见他用触手喝水了。”",
+          "worldview": "irony",
+          "results": [{
+            "weight": 1,
+            "feedback": "你的回复很快就获得了高赞，并引发了新一轮的恶搞歪楼。你满意地看着自己的杰作，感觉给这个老掉牙的传说注入了新的活力。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "sanity": 2 } } ]
+          }]
+        },
+        {
+          "text": "黑进学校的服务器，看看能不能找到和这些传说相关的、被删除的旧帖子或文件。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "isSpecial": true,
+          "conditions": [
+            { "type": "stat_check", "params": { "stat": "logic", "operator": ">=", "value": 30 } }
+          ],
+          "results": [{
+            "weight": 1,
+            "feedback": "你利用一个已知的系统漏洞，成功访问了服务器的归档区。你发现，所有提及“七大不可思议”的帖子，在发布后的某个时间点，都会被一个管理员账号神秘地删除或隐藏。这背后似乎有某种力量在刻意掩盖什么。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 8, "gnosis": 5, "sanity": -4 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_01_beethoven" } }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "id": "mystery_01_beethoven",
+      "title": "第一不可思议：转向的贝多芬",
+      "text": "音乐教室里那尊贝多芬石膏像，总是面向钢琴。但传说在午夜时分，如果你背对着它，它会悄悄地转过头来，凝视着你的后背。当你回头时，它又会恢复原状。",
+      "tags": ["school", "mystery", "supernatural"],
+      "isUnique": true,
+      "requiresUnlock": true,
+      "priority": 15,
+      "choices": [
+        {
+          "text": "在教室里安放两台摄像机，一台对着雕像，一台对着我，同步录制。",
+          "worldview": "logic",
+          "results": [{
+            "weight": 1,
+            "feedback": "录像显示，在你背对雕像的瞬间，它真的、以一种不可能的角度、瞬间转过了头。而在你回头的前一帧，它又瞬间转了回去。你的逻辑受到了挑战。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 8, "gnosis": 5, "sanity": -8 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_02_bookshelf" } }
+            ]
+          }]
+        },
+        {
+          "text": "也许它不是在看我，而是在看别的什么东西。调查雕像面对的方向有什么。",
+          "worldview": "gnosis",
+          "results": [{
+            "weight": 1,
+            "feedback": "你发现雕像转向时面对的墙上，挂着一幅前任校长的肖像画。你感觉这两者之间存在某种不为人知的联系。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 8, "logic": 3, "sanity": -6 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_02_bookshelf" } }
+            ]
+          }]
+        },
+        {
+          "text": "在它面前放一面镜子，这样我就能时刻“监视”它了。",
+          "worldview": "weirdness",
+          "results": [{
+            "weight": 1,
+            "feedback": "你背对着雕像，眼睛却紧紧盯着镜子。镜子里，雕像一动不动。但你却感觉，镜子里的‘你’，在你没有察觉的时候，悄悄地对雕像笑了笑。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "weirdness": 8, "gnosis": 3, "sanity": -10 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_02_bookshelf" } }
+            ]
+          }]
+        },
+        {
+          "text": "用胶带在地上标出它的‘正确朝向’，如果它动了，就给它贴张罚单。",
+          "worldview": "irony",
+          "results": [{
+            "weight": 1,
+            "feedback": "第二天，你发现雕像回到了原位，但你贴的罚单不见了。取而代之的，是雕像基座上多出了一枚古旧的硬币。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "irony": 8, "weirdness": 3, "sanity": 5, "money": 10 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_02_bookshelf" } }
+            ]
+          }]
+        },
+        {
+          "text": "不停地来回转身，看是它转得快还是我转得快。",
+          "worldview": "irony",
+          "magnitude": 2,
+          "results": [
+            {
+              "weight": 2,
+              "feedback": "你像个傻瓜一样在原地疯狂转身，直到头晕眼花，一头栽倒在地。在你失去意识的最后一刻，你似乎听到了一声来自古典时代的、充满鄙夷的叹息。",
+              "outcomes": [
+                { "type": "change_stat", "params": { "irony": 15, "health": -5, "sanity": -5 } },
+                { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+                { "type": "unlocksEvent", "params": { "eventId": "mystery_02_bookshelf" } }
+              ]
+            },
+            {
+              "weight": 1,
+              "feedback": "你以极高的频率来回转身，竟然成功捕捉到了雕像转到一半的瞬间！它僵在了那里，仿佛一个做坏事被当场抓包的小孩。空气中弥漫着尴尬的气氛。",
+              "outcomes": [
+                { "type": "change_stat", "params": { "irony": 10, "weirdness": 10, "sanity": 5 } },
+                { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+                { "type": "unlocksEvent", "params": { "eventId": "mystery_02_bookshelf" } }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mystery_02_bookshelf",
+      "title": "第二不可思议：自动归位的书架",
+      "text": "图书馆的管理员有个奇怪的习惯：他们从不整理通宵阅览室的书籍，无论前一天晚上弄得多乱，第二天早上，所有的书都会自动回到它们原来的位置。今晚，阅览室只为你一人开放。",
+      "tags": ["school", "mystery", "magic"],
+      "isUnique": true,
+      "requiresUnlock": true,
+      "priority": 15,
+      "choices": [
+        {
+          "text": "将几本书藏在隐蔽的角落，并对书架和书籍喷洒只有在紫外线下才可见的荧光剂，追踪它们的移动轨迹。",
+          "worldview": "logic",
+          "results": [{
+            "weight": 1,
+            "feedback": "第二天，你用紫外线灯照射，发现整个房间布满了复杂的、肉眼不可见的荧光轨迹，它们像一张巨大的蜘蛛网，连接着每一本书和书架。书籍仿佛是在一个你看不到的维度上滑行归位。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 10, "sanity": -8 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_03_hanako" } }
+            ]
+          }]
+        },
+        {
+          "text": "或许是某位爱书的‘幽灵’在帮忙。在书桌上留下一杯热茶和一张写着‘辛苦了’的纸条。",
+          "worldview": "gnosis",
+          "results": [{
+            "weight": 1,
+            "feedback": "第二天，茶杯空了，纸条上多了一行娟秀的字迹：‘谢谢，不过请不要把书的折角弄乱。’",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 10, "sanity": 5 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_03_hanako" } }
+            ]
+          }]
+        },
+        {
+          "text": "故意将所有的书都放错位置，比如把漫画塞进历史区，把哲学著作放进烹饪区。",
+          "worldview": "weirdness",
+          "results": [{
+            "weight": 1,
+            "feedback": "第二天，你发现所有的书都回到了原位。但在你昨晚放错的每一本书里，都夹着一张书签，上面画着一个愤怒的简笔画小人。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "weirdness": 10, "irony": 5, "sanity": -4 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_03_hanako" } }
+            ]
+          }]
+        },
+        {
+          "text": "找一本最厚的字典，在里面掏个洞，把自己的手机放进去，录一整晚。",
+          "worldview": "irony",
+          "results": [{
+            "weight": 1,
+            "feedback": "录像只拍到了无尽的黑暗。但在音频里，你听到了一声非常清晰的、压抑着怒火的‘啧’。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "irony": 10, "sanity": -2 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_03_hanako" } }
+            ]
+          }]
+        },
+        {
+          "text": "干脆睡在图书馆，亲眼看看这一切是如何发生的。",
+          "worldview": "gnosis",
+          "magnitude": 2,
+          "results": [{
+            "weight": 1,
+            "feedback": "你在午夜时分惊醒，发现自己正飘浮在半空中，无数的书籍像鱼群一样环绕着你，将你轻轻地送回原位。你感觉自己也成了一本被归位的‘书’。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 15, "weirdness": 10, "sanity": -15 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_03_hanako" } }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "id": "mystery_03_hanako",
+      "title": "第三不可思议：染血的洗手池",
+      "text": "在旧教学楼三楼的女厕所，最里面的那个洗手池，传说只要在午夜时分打开水龙头，流出来的就不是自来水，而是殷红的鲜血。你站在那个据说从未有人清理干净、总是残留着暗红色锈迹的洗手池前。",
+      "tags": ["school", "mystery", "ghost"],
+      "isUnique": true,
+      "requiresUnlock": true,
+      "priority": 15,
+      "choices": [
+        {
+          "text": "采集‘血液’样本，并带到化学实验室进行成分分析。",
+          "worldview": "logic",
+          "results": [
+            {
+              "weight": 3,
+              "feedback": "分析结果显示，液体的主要成分是水和大量的氧化铁，但其中还混杂着一种无法识别的、微量的有机物。它在模仿血液。",
+              "outcomes": [
+                { "type": "change_stat", "params": { "logic": 12, "sanity": -5 } },
+                { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+                { "type": "unlocksEvent", "params": { "eventId": "mystery_04_model" } }
+              ]
+            },
+            {
+              "weight": 1,
+              "feedback": "在你进行分析时，样本突然剧烈地沸腾起来，并融化了试管。你的实验搞砸了，但你确认了这东西绝不是普通物质。",
+              "outcomes": [
+                { "type": "change_stat", "params": { "logic": 5, "weirdness": 10, "sanity": -10 } },
+                { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+                { "type": "unlocksEvent", "params": { "eventId": "mystery_04_model" } }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "这或许是某种献祭仪式的残留。用清水反复冲洗水池，并默念净化祷文。",
+          "worldview": "gnosis",
+          "results": [{
+            "weight": 1,
+            "feedback": "在你冲洗了近一个小时后，水龙头里流出的液体终于恢复了清澈。你听到空气中传来一声解脱般的叹息。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 10, "sanity": 5 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_04_model" } }
+            ]
+          }]
+        },
+        {
+          "text": "用流出的‘血’在镜子上画画。",
+          "worldview": "weirdness",
+          "results": [{
+            "weight": 1,
+            "feedback": "你用那粘稠的红色液体，在镜子上画了一个微笑的脸。画完成的瞬间，镜子里的笑脸对你眨了眨眼。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "weirdness": 12, "sanity": -10 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_04_model" } }
+            ]
+          }]
+        },
+        {
+          "text": "用这些‘血’洗脸，看看会不会有什么美容效果。",
+          "worldview": "irony",
+          "results": [{
+            "weight": 1,
+            "feedback": "并没有什么美容效果，反而让你的脸上沾满了铁锈味。第二天，你的几颗痘痘神秘地消失了，但代价是你的脸看起来比以前苍白了不少。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "irony": 10, "health": 5, "sanity": -8 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_04_model" } }
+            ]
+          }]
+        },
+        {
+          "text": "堵住下水口，把整个水池都蓄满‘血’。",
+          "worldview": "gnosis",
+          "magnitude": 2,
+          "results": [{
+            "weight": 1,
+            "feedback": "当红色的液体蓄满整个水池时，池水开始像镜子一样，倒映出的却不是天花板，而是一张苍白、悲伤的女孩的脸。她看着你，无声地张了张嘴，似乎在说什么。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 15, "weirdness": 5, "sanity": -15 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_04_model" } }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "id": "mystery_04_model",
+      "title": "第四不可思议：奔跑的人体模型",
+      "text": "生物教室里那具用作教学的人体模型，据说会在深夜沿着走廊奔跑，像是在寻找着什么。它的速度极快，没人能看清它的样子，只能听到沉重的脚步声在空旷的走廊里回荡。",
+      "tags": ["school", "mystery", "living_object"],
+      "isUnique": true,
+      "requiresUnlock": true,
+      "priority": 15,
+      "choices": [
+        {
+          "text": "在走廊上安装几个运动感应摄像头和激光绊线，捕捉它的行动轨迹和速度。",
+          "worldview": "logic",
+          "results": [{
+            "weight": 1,
+            "feedback": "摄像头成功地捕捉到了它的身影。它不是在‘跑’，而是在以一种不符合物理规律的方式‘闪现’。它似乎能感知到你的窥探，每次都会在被完全拍到前消失在下一个监控死角。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 12, "sanity": -8 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_05_locker" } }
+            ]
+          }]
+        },
+        {
+          "text": "它在寻找什么？也许和学校里其他的怪谈有关。",
+          "worldview": "gnosis",
+          "results": [{
+            "weight": 1,
+            "feedback": "你开始将不同怪谈的线索串联起来。奔跑的模型、转向的雕像、流血的水池...它们之间似乎存在某种悲伤的、内在的联系。你感觉自己触摸到了真相的一角。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 10, "logic": 2, "sanity": -4 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_05_locker" } }
+            ]
+          }]
+        },
+        {
+          "text": "在走廊的尽头画上终点线，并为它准备一瓶水和一条毛巾。",
+          "worldview": "weirdness",
+          "results": [{
+            "weight": 1,
+            "feedback": "第二天，你发现终点线被冲过了，水和毛巾也都不见了。地上留下了一串奇怪的、类似脚印的印记。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "weirdness": 10, "sanity": 2 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_05_locker" } }
+            ]
+          }]
+        },
+        {
+          "text": "换上我最专业的跑鞋，和它来一场堂堂正正的竞速比赛。",
+          "worldview": "irony",
+          "results": [{
+            "weight": 1,
+            "feedback": "你听到了身后的脚步声，然后拼尽全力向前冲刺。但那脚步声始终与你保持着固定的距离，不远不近，像是在戏耍你一般。最终你累得半死，也没能看到它。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "irony": 10, "health": -5 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_05_locker" } }
+            ]
+          }]
+        },
+        {
+          "text": "如果它在寻找...也许我可以指引它。",
+          "worldview": "gnosis",
+          "magnitude": 2,
+          "isSpecial": true,
+          "conditions": [ { "type": "stat_check", "params": { "stat": "gnosis", "operator": ">=", "value": 40 } } ],
+          "results": [{
+            "weight": 1,
+            "feedback": "你站在走廊的中央，闭上眼睛，将自己的感知提升到极限。你‘看’到了那个在不同时空碎片中奔跑的模型，并向它发出了一个指引：去往天台的楼梯。脚步声消失了。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 20, "weirdness": 10, "sanity": -15 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_05_locker" } }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "id": "mystery_05_locker",
+      "title": "第五不可思议：打不开的储物柜",
+      "text": "在走廊的尽头，有一个早已被遗忘的、锈迹斑斑的储物柜。没有人知道它的主人是谁，也没有任何钥匙或密码能将它打开。但偶尔，在深夜里，有人会听到从里面传来微弱的抓挠声。",
+      "tags": ["school", "mystery", "sealed"],
+      "isUnique": true,
+      "requiresUnlock": true,
+      "priority": 15,
+      "choices": [
+        {
+          "text": "从金工教室借来切割工具，把它暴力拆解开。",
+          "worldview": "logic",
+          "results": [{
+            "weight": 1,
+            "feedback": "在一阵刺耳的噪音和火花后，储物柜被你切开了。里面空空如也，只有一张泛黄的纸条，上面写着：‘自由’",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 10, "sanity": -5 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_06_13th_step" } }
+            ]
+          }]
+        },
+        {
+          "text": "这不是储物柜，这是一个坟墓。我应该调查一下学校历史上有没有失踪的学生。",
+          "worldview": "gnosis",
+          "results": [{
+            "weight": 1,
+            "feedback": "你查阅了大量的旧档案，但没有找到任何与此相关的失踪人口记录。但在一个角落，你发现了一份关于学校在建立初期，曾是一个‘无名儿童收容所’的记录。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 10, "sanity": -4 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_06_13th_step" } }
+            ]
+          }]
+        },
+        {
+          "text": "把耳朵贴在柜门上，轻声问：‘你在里面吗？需要我帮忙吗？’",
+          "worldview": "weirdness",
+          "results": [{
+            "weight": 1,
+            "feedback": "里面的抓挠声停了下来。一个微弱、颤抖的声音回应道：‘...太黑了...我好怕...’",
+            "outcomes": [
+              { "type": "change_stat", "params": { "weirdness": 12, "sanity": -10 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_06_13th_step" } }
+            ]
+          }]
+        },
+        {
+          "text": "在柜门上贴一张‘内有恶犬，请勿靠近’的贴纸。",
+          "worldview": "irony",
+          "results": [{
+            "weight": 1,
+            "feedback": "你的贴纸成功地劝退了其他所有好奇的学生。里面的抓挠声似乎也变得更起劲了。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "irony": 8, "sanity": 2 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_06_13th_step" } }
+            ]
+          }]
+        },
+        {
+          "text": "用听诊器和精密的机械知识，尝试破解密码锁。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "isSpecial": true,
+          "conditions": [ { "type": "stat_check", "params": { "stat": "logic", "operator": ">=", "value": 60 } } ],
+          "results": [{
+            "weight": 1,
+            "feedback": "在长达数小时的专注后，你听到了锁芯发出的最后一声轻响。‘咔’的一声，柜门开了。里面...是通往另一个储物柜的门。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 15, "weirdness": 10, "sanity": -12 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_06_13th_step" } }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "id": "mystery_06_13th_step",
+      "title": "第六不可思议：多出来的第十三级台阶",
+      "text": "通往天台的楼梯，白天数是十二级，晚上数也是十二级。但传说在午夜十二点整，如果你从下往上数，会发现多出了第十三级台阶。据说，踏上那级台阶的人，会进入另一个世界，再也回不来了。",
+      "tags": ["school", "mystery", "liminal_space"],
+      "isUnique": true,
+      "requiresUnlock": true,
+      "priority": 15,
+      "choices": [
+        {
+          "text": "用尺子和激光水平仪精确测量每一级台阶的尺寸，并在午夜进行对比，分析空间是否发生了物理变化。",
+          "worldview": "logic",
+          "results": [{
+            "weight": 1,
+            "feedback": "数据没有任何变化。但就在午夜十二点整，你的激光水平仪发出刺耳的警报，显示整个楼梯的水平基准发生了无法理解的、瞬时的偏移。仪器无法解释它测量到了什么。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 15, "sanity": -10 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_07_mirror" } }
+            ]
+          }]
+        },
+        {
+          "text": "在午夜十二点整，毫不犹豫地踏上那第十三级台阶。",
+          "worldview": "gnosis",
+          "results": [{
+            "weight": 1,
+            "feedback": "你踏了上去。周围的景物瞬间扭曲，你发现自己仍然站在楼梯上，但四周的教学楼变得残破不堪，天空挂着一轮紫色的月亮。你回头，发现已经没有退路了。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 20, "sanity": -25 } },
+              { "type": "add_status_effect", "params": { "statusId": "other_side", "duration": 1 } }
+            ]
+          }]
+        },
+        {
+          "text": "在第十三级台阶上放一小块巧克力，作为给‘另一个世界’的见面礼。",
+          "worldview": "weirdness",
+          "results": [{
+            "weight": 1,
+            "feedback": "巧克力在出现的瞬间就融化了，仿佛被无形的火焰吞噬。空气中传来一声满足的叹息，第十三级台阶也随之消失了。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "weirdness": 12, "sanity": -5 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_07_mirror" } }
+            ]
+          }]
+        },
+        {
+          "text": "在第十二级台阶上坐下来，看看有没有人从第十三级台阶上走下来，然后问他需不需要帮忙。",
+          "worldview": "irony",
+          "results": [{
+            "weight": 1,
+            "feedback": "你等了很久，什么也没发生。但第二天，你在自己的鞋柜里发现了一张纸条，上面写着：‘谢谢，不过我们这边的路还挺好走的。’",
+            "outcomes": [
+              { "type": "change_stat", "params": { "irony": 10, "sanity": 5 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_07_mirror" } }
+            ]
+          }]
+        },
+        {
+          "text": "将一本关于‘非欧几里得几何’的书扔到第十三级台阶上。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [{
+            "weight": 1,
+            "feedback": "书在接触到台阶的瞬间，像被投入水中一样泛起涟漪，然后消失了。几秒钟后，一本你从未见过的、封面是用奇怪金属制成的书，从台阶上浮现了出来。你似乎完成了一次‘知识交换’。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 15, "weirdness": 10, "sanity": -10 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "add_item", "params": { "itemId": "non_euclidean_book" } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_07_mirror" } }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "id": "mystery_07_mirror",
+      "title": "第七不可思议：镜中多出的人影",
+      "text": "舞蹈教室有一面巨大的落地镜。传说在黄昏时分，当夕阳的余晖以特定的角度照进教室时，如果你背对着镜子跳舞，镜中的倒影里，会多出一个根本不存在的人，在你的身后模仿着你的动作。",
+      "tags": ["school", "mystery", "doppelganger"],
+      "isUnique": true,
+      "requiresUnlock": true,
+      "priority": 15,
+      "choices": [
+        {
+          "text": "用摄像机从多个角度录下整个过程，通过后期逐帧对比，分析是光学现象还是其他原因。",
+          "worldview": "logic",
+          "results": [{
+            "weight": 1,
+            "feedback": "录像证实了传言。在某个瞬间，你的身后确实出现了一个模糊的、和你动作完全一致的人影。但当你放大画面时，你发现它不是在‘模仿’你，而是它的动作比你还早了零点几秒。是你...在模仿它。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 15, "gnosis": 10, "sanity": -25 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_08_the_observer" } }
+            ]
+          }]
+        },
+        {
+          "text": "那个影子是我的一部分。我应该试着与它对话，或者...与它融合。",
+          "worldview": "gnosis",
+          "results": [{
+            "weight": 1,
+            "feedback": "当你产生这个念头的瞬间，镜中的你露出了一个诡异的微笑。你感到一阵天旋地转，当你再次睁开眼睛时，你发现自己‘身处’镜中，而‘另一个你’，正在镜子外面，好奇地看着你。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 20, "weirdness": 15, "sanity": -30 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_08_the_observer" } }
+            ]
+          }]
+        },
+        {
+          "text": "在跳舞时，突然做一个它意想不到的、非常难看的鬼脸。",
+          "worldview": "irony",
+          "results": [{
+            "weight": 1,
+            "feedback": "镜子里的人影愣了一下，随后，它做了个比你更难看的鬼脸。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "irony": 15, "sanity": 10 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_08_the_observer" } }
+            ]
+          }]
+        },
+        {
+          "text": "邀请那个影子一起跳双人舞。",
+          "worldview": "weirdness",
+          "results": [{
+            "weight": 1,
+            "feedback": "你伸出了手，镜中的影子也伸出了手。当你们的手指即将触碰的瞬间，镜面如水波般荡漾开来。你感觉到一股冰冷的暖流传遍全身。你和你的影子，达成了一种奇妙的和谐。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "weirdness": 20, "sanity": -10 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_08_the_observer" } }
+            ]
+          }]
+        },
+        {
+          "text": "砸碎镜子。",
+          "worldview": "logic",
+          "magnitude": 2,
+          "results": [{
+            "weight": 1,
+            "feedback": "你抄起一把椅子，用尽全力砸向镜子。镜子应声碎裂，无数个‘你’在碎片中同时尖叫、破碎。第二天，学校宣布舞蹈教室因装修停用。没有人记得那里曾经有过一面镜子。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 10, "sanity": 5 } },
+              { "type": "change_stat", "params": { "mysteries_uncovered": 1 } },
+              { "type": "unlocksEvent", "params": { "eventId": "mystery_08_the_observer" } }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "id": "mystery_08_the_observer",
+      "title": "第八不可思议：不存在的学生",
+      "text": "在你调查完所有传说之后，学校里开始流传一个新的故事：一个神秘的学生，ta对学校的一切怪谈都了如指掌，独来独往，像个幽灵一样调查着什么。学生们在论坛上猜测着你的身份，给你起了个代号——‘观察者’。你，成为了第八个不可思议。",
+      "tags": ["school", "mystery", "meta"],
+      "isUnique": true,
+      "requiresUnlock": true,
+      "priority": 1000,
+      "conditions": [
+        { "type": "stat_check", "params": { "stat": "mysteries_uncovered", "operator": ">=", "value": 7 } }
+      ],
+      "choices": [
+        {
+          "text": "接受这个身份。从此，你将成为这个校园新的守护者和传说的引导者。",
+          "results": [{
+            "weight": 1,
+            "feedback": "你选择拥抱这个新的身份。从此，校园里多了一个关于“观察者”的传说，而你，正是这个传说的主角。[[gnosis:你成为了新的‘系统管理员’，负责维护和修订这些传说，引导后来者，并保护那些脆弱的‘信息体’。]]",
+            "outcomes": [ 
+              { "type": "change_stat", "params": { "gnosis": 20, "anonymity": 20, "sanity": 10 } },
+              { "type": "add_status_effect", "params": { "statusId": "part_of_the_legend", "duration": 9999 } }
+            ]
+          }]
+        },
+        {
+          "text": "这只是故事的结束。我将回归平凡的生活。",
+           "results": [{
+            "weight": 1,
+            "feedback": "你选择回归日常。虽然关于“观察者”的传说还在流传，但你只是付之一笑，深藏功与名。那段奇妙的经历，最终只化为了你青春中一段难忘的回忆。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 10, "sanity": 20 } } ]
+          }]
+        }
+      ]
+    }
+  ]
+}
