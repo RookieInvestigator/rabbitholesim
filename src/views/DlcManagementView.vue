@@ -1,13 +1,23 @@
 <template>
   <div class="dlc-view-root">
+    <div class="ambient-bg"></div>
+
     <div class="dlc-container">
       <header class="view-header">
         <div class="brand-info">
-          <span class="protocol-code">PROTOCOL: DLC_MANAGER</span>
-          <h1 class="title">扩展模块管理 [{{ dlcStore.dlcs.length }}]</h1>
+          <h1 class="title">
+            扩展模块管理
+            <span class="count-badge" :class="{ 'has-items': dlcStore.dlcs.length > 0 }">
+              [{{ dlcStore.enabledDlcIds.size }} / {{ dlcStore.dlcs.length }}]
+            </span>
+          </h1>
+          <span class="protocol-code">SYSTEM_EXTENSION_PROTOCOL // READY</span>
         </div>
+
         <div class="header-actions">
-          <button class="btn-ctrl primary" @click="triggerFileInput">导入新协议</button>
+          <button class="btn-ctrl primary" @click="triggerFileInput">
+            <span class="icon">+</span> 导入新模块
+          </button>
           <button class="btn-ctrl" @click="$emit('back')">返回</button>
         </div>
       </header>
@@ -15,34 +25,52 @@
       <input type="file" ref="fileInput" @change="handleFileImport" multiple accept=".json,.dlc" style="display: none" />
 
       <div class="module-list">
-        <div v-if="dlcStore.dlcs.length === 0" class="empty-msg">
-          NO_EXTERNAL_MODULES_DETECTED
+        <!-- 空状态 -->
+        <div v-if="dlcStore.dlcs.length === 0" class="empty-state">
+          <div class="empty-icon">∅</div>
+          <p>未检测到外部模块</p>
+          <p class="sub-text">请导入 .json 或 .dlc 格式的扩展包</p>
         </div>
-        
-        <div 
-          v-for="dlc in dlcStore.dlcs" 
-          :key="dlc.id" 
-          class="module-item"
+
+        <!-- 列表项 -->
+        <div
+          v-for="dlc in dlcStore.dlcs"
+          :key="dlc.id"
+          class="module-card"
           :class="{ active: dlcStore.enabledDlcIds.has(dlc.id) }"
         >
-          <div class="status-indicator"></div>
-          
+          <div class="status-bar"></div>
+
           <div class="module-content">
-            <div class="module-info">
-              <div class="name-row">
-                <span v-if="dlc.icon" class="icon-wrapper"><i :class="dlc.icon"></i></span>
-                <h2 class="module-name">{{ dlc.name }}</h2>
-                <span class="module-author">@{{ dlc.author || 'UNKNOWN' }}</span>
+            <div class="module-main">
+              <div class="top-row">
+                <h2 class="module-name">
+                  <!-- 这里！你的 Icon 回来了！ -->
+                  <span v-if="dlc.icon" class="icon-wrapper">
+                    <i :class="dlc.icon"></i>
+                  </span>
+                  <!-- 如果没有图标，就显示个小圆点 -->
+                  <span v-else class="indicator-dot"></span>
+
+                  {{ dlc.name }}
+                </h2>
+                <span class="module-ver">v{{ dlc.version || '1.0' }}</span>
               </div>
-              <p class="module-desc">{{ dlc.description || '该模块未提供详细描述数据。' }}</p>
+
+              <div class="meta-row">
+                 <span class="module-author">作者: {{ dlc.author || '未知' }}</span>
+                 <span class="module-id">ID: {{ dlc.id }}</span>
+              </div>
+
+              <p class="module-desc">{{ dlc.description || '该模块暂无详细描述。' }}</p>
             </div>
-            
-            <div class="module-actions">
+
+            <div class="module-ctrl">
               <button class="btn-toggle" @click="dlcStore.toggleDlc(dlc.id)">
-                {{ dlcStore.enabledDlcIds.has(dlc.id) ? '已启用' : '未激活' }}
+                {{ dlcStore.enabledDlcIds.has(dlc.id) ? '已启用' : '未启用' }}
               </button>
               <button class="btn-delete" @click="handleDeleteDlc(dlc.id)">
-                卸载
+                卸载模块
               </button>
             </div>
           </div>
@@ -53,6 +81,7 @@
 </template>
 
 <script setup>
+/* 逻辑部分没变，为了省篇幅就不重复贴了，和上一个版本一样 */
 import { ref } from 'vue';
 import { useDlcStore } from '@/stores/dlcStore';
 
@@ -69,144 +98,149 @@ const handleFileImport = async (e) => {
 };
 
 const handleDeleteDlc = (id) => {
-  if (confirm(`确定永久卸载模块 [${id}] 吗？`)) {
+  if (confirm(`警告：确定要永久卸载模块 [${id}] 吗？`)) {
     dlcStore.removeDlc(id);
   }
 };
 </script>
 
 <style scoped>
-/* 全面採用思源黑體與黑白終端風格 */
+/* 字体回归通用黑体，更适合中文 */
 .dlc-view-root {
-  font-family: "Source Han Sans SC", "Source Han Sans TC", sans-serif;
+  font-family: "Source Han Sans CN", "Microsoft YaHei", sans-serif;
   min-height: 100vh;
-  background-color: #000;
-  color: #fff;
+  background-color: #050505;
+  color: #ccc;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.ambient-bg {
+  position: fixed; inset: 0; pointer-events: none;
+  /* 背景光改成淡紫色 */
+  background: radial-gradient(circle at 80% 20%, rgba(162, 155, 254, 0.08), transparent 60%);
+  z-index: 0;
 }
 
 .dlc-container {
-  max-width: 1000px;
+  position: relative; z-index: 1;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 3rem 2rem;
 }
 
-/* 標頭樣式 */
+/* Header */
 .view-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 3rem;
-  border-bottom: 1px solid #111;
-  padding-bottom: 1rem;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem;
 }
+.title {
+  font-size: 1.8rem; font-weight: 700; color: #fff; margin: 0;
+  display: flex; align-items: baseline; gap: 1rem;
+}
+.count-badge { font-size: 1rem; color: #555; font-weight: 400; }
+.count-badge.has-items { color: #a29bfe; } /* 有物品时变紫 */
 
-.protocol-code { font-size: 0.7rem; color: #333; letter-spacing: 2px; }
-.title { font-size: 1.5rem; margin: 0.2rem 0 0 0; font-weight: 700; }
+.protocol-code { font-size: 0.75rem; color: #444; letter-spacing: 1px; margin-top: 5px; display: block;}
 
-.header-actions { display: flex; gap: 0.8rem; }
-
-/* 頂部控制按鈕 */
+.header-actions { display: flex; gap: 1rem; }
 .btn-ctrl {
-  background: transparent;
-  color: #666;
-  border: 1px solid #111;
-  padding: 0.5rem 1.2rem;
-  font-size: 0.85rem;
-  cursor: pointer;
-  font-weight: 700;
+  background: transparent; border: 1px solid #333; color: #ccc;
+  padding: 0.6rem 1.2rem; cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; gap: 0.5rem;
 }
-.btn-ctrl:hover { color: #fff; border-color: #444; }
-.btn-ctrl.primary { background: #fff; color: #000; border-color: #fff; }
+.btn-ctrl:hover { border-color: #fff; color: #fff; }
+.btn-ctrl.primary { background: #eee; color: #000; border-color: #eee; font-weight: bold; }
+.btn-ctrl.primary:hover { background: #fff; }
 
-/* 列表樣式 */
+/* 列表 */
 .module-list { display: flex; flex-direction: column; gap: 1rem; }
+.empty-state { text-align: center; padding: 4rem; border: 1px dashed #222; color: #444; }
+.empty-icon { font-size: 2rem; opacity: 0.5; margin-bottom: 1rem; }
 
-.module-item {
+/* 卡片样式 */
+.module-card {
   position: relative;
-  display: flex;
-  background: #000;
-  border: 1px solid #111;
-  transition: all 0.1s ease;
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid #222;
+  border-radius: 4px;
+  display: flex; overflow: hidden;
+  transition: all 0.2s ease-out;
 }
 
-.status-indicator {
-  width: 4px;
-  background: #111;
-  flex-shrink: 0;
+/* 悬浮效果保留，但稍微内敛一点 */
+.module-card:hover {
+  transform: translateY(-3px);
+  background: #1a1a1a;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  border-color: #444;
 }
 
-/* 啟動狀態 */
-.module-item.active { border-color: #222; }
-.module-item.active .status-indicator { background: #a29bfe; }
+.status-bar { width: 4px; background: #222; flex-shrink: 0; transition: background 0.3s; }
 
 .module-content {
-  flex: 1;
-  padding: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start; /* 核心：上端對齊 */
-  gap: 2rem;
+  flex: 1; padding: 1.2rem 1.5rem;
+  display: flex; justify-content: space-between; gap: 1.5rem;
 }
 
-.module-info { flex: 1; }
-.name-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; }
-.icon-wrapper { font-size: 1rem; color: #444; }
-.module-name { font-size: 1.1rem; margin: 0; font-weight: 700; color: #eee; }
-.module-author { font-size: 0.75rem; color: #333; font-family: monospace; margin-left: auto; }
-.module-desc { font-size: 0.85rem; color: #555; margin: 0; line-height: 1.6; }
+.module-main { flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
 
-/* ✨ 重點優化：加大後的切換按鈕 ✨ */
-.module-actions { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 0.6rem; 
-  flex-shrink: 0; 
-  width: 100px; /* 固定寬度讓按鈕對齊 */
+.top-row { display: flex; align-items: center; gap: 1rem; }
+.module-name {
+  font-size: 1.1rem; color: #ddd; margin: 0; font-weight: 600;
+  display: flex; align-items: center; gap: 0.6rem;
 }
 
+/* Icon 样式 */
+.icon-wrapper { color: #a29bfe; font-size: 1.1rem; }
+.indicator-dot { width: 6px; height: 6px; background: #333; border-radius: 50%; }
+
+.module-ver { font-size: 0.75rem; color: #555; background: #111; padding: 1px 5px; border-radius: 2px; }
+.meta-row { font-size: 0.75rem; color: #666; display: flex; gap: 1rem; margin-top: 0.2rem; }
+.module-desc { font-size: 0.85rem; color: #888; margin-top: 0.5rem; line-height: 1.5; }
+
+/* 按钮区 */
+.module-ctrl {
+  display: flex; flex-direction: column; gap: 0.8rem; justify-content: center;
+  width: 100px; flex-shrink: 0; border-left: 1px solid #222; padding-left: 1.5rem;
+}
 .btn-toggle {
-  background: transparent;
-  border: 1px solid #222;
-  color: #444;
-  padding: 0.6rem 0;
-  font-size: 0.8rem;
-  font-weight: 700;
-  cursor: pointer;
-  text-align: center;
+  background: transparent; border: 1px solid #444; color: #888;
+  padding: 0.5rem; font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
 }
-
-.btn-toggle:hover { border-color: #444; color: #888; }
-
-/* 啟用狀態下的按鈕視覺 */
-.active .btn-toggle {
-  border-color: #a29bfe;
-  color: #a29bfe;
-  background: rgba(162, 155, 254, 0.05);
-}
+.btn-toggle:hover { border-color: #888; color: #ccc; }
 
 .btn-delete {
-  background: transparent;
-  border: none;
-  color: #222;
-  font-size: 0.75rem;
-  cursor: pointer;
-  text-decoration: underline;
-  padding: 0.2rem 0;
+  background: transparent; border: none; color: #444; font-size: 0.75rem;
+  cursor: pointer; text-align: right; text-decoration: underline;
 }
-.btn-delete:hover { color: #ff4757; }
+.btn-delete:hover { color: #d32f2f; }
 
-/* 手機版適配 */
+
+/* --- 激活状态 (Active State) --- */
+/* 紫色系主题 #a29bfe */
+.module-card.active {
+  border-color: #6c5ce7; /* 深紫边框 */
+  background: rgba(162, 155, 254, 0.05); /* 极淡紫背景 */
+}
+.module-card.active .status-bar { background: #a29bfe; box-shadow: 2px 0 8px rgba(162, 155, 254, 0.4); }
+.module-card.active .indicator-dot { background: #a29bfe; box-shadow: 0 0 5px #a29bfe; }
+.module-card.active .module-name { color: #fff; }
+.module-card.active .module-desc { color: #aaa; }
+
+.module-card.active .btn-toggle {
+  border-color: #a29bfe; color: #fff; background: #a29bfe;
+  font-weight: bold; box-shadow: 0 2px 8px rgba(162, 155, 254, 0.3);
+}
+.module-card.active .btn-toggle:hover {
+  background: #b2adff; border-color: #b2adff;
+}
+
 @media (max-width: 768px) {
-  .view-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-  .module-content { flex-direction: column; gap: 1.5rem; padding: 1.2rem; }
-  .module-actions { 
-    width: 100%; 
-    flex-direction: row; 
-    justify-content: space-between; 
-    align-items: center;
-    border-top: 1px solid #111;
-    padding-top: 1rem;
+  .module-content { flex-direction: column; }
+  .module-ctrl {
+    width: 100%; border-left: none; border-top: 1px solid #222;
+    padding-left: 0; padding-top: 1rem; flex-direction: row; justify-content: space-between; align-items: center;
   }
-  .btn-toggle { flex: 1; padding: 0.8rem 0; }
 }
 </style>
