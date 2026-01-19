@@ -130,7 +130,7 @@ function hasTagRequirement(choice) {
 }
 
 .tag-req-marker {
-  font-size: 1em;
+  font-size: 0.6em;
   color: #666;
   font-weight: bold;
   display: inline-block;

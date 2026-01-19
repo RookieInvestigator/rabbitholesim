@@ -62,6 +62,10 @@ export function useEventCenter() {
         if (params.has) return player.talents.some(t => t.id === params.has);
         if (params.has_not) return !player.talents.some(t => t.id === params.has_not);
         return false;
+      case 'tag_check':
+        if (params.has) return player.tags && player.tags.includes(params.has);
+        if (params.has_not) return !player.tags || !player.tags.includes(params.has_not);
+        return false;
       default: return true;
     }
   }

@@ -68,7 +68,7 @@
     "text": "在一个暴雨的深夜，你开车行驶在一条荒凉的国道上。路边一个浑身湿透、穿着单薄白裙的女孩正在焦急地招手。你心生怜悯，停下车让她上了车。她道了谢，说自己家就在前面不远的XX路口。你们简单交谈了几句，但当你再次从后视镜看她时，后座上空空如也，只有一片人形的水渍证明她曾存在过。",
     "tags": ["urban_legend", "supernatural", "mystery", "chinese_folklore", "road_trip"],
     "isUnique": false,
-    "priority": 5,
+    "priority": 1.3,
     "choices": [
       {
         "text": "我太疲劳了，刚才的一切都是幻觉。后座的水渍只是漏雨而已。",
