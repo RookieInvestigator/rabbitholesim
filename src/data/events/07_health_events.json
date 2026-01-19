@@ -33,13 +33,27 @@
         ]
       },
       {
-        "text": "这是一种“灵性流感”，是身体在排出负能量。我需要冥想。",
-        "worldview": "gnosis",
+        "text": "拔掉网线，手机关机，享受一个完全不被任何人打扰的病假。",
+        "worldview": "logic",
         "magnitude": 1,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
         "results": [{
           "weight": 1,
-          "feedback": "你点上熏香，开始冥想。感冒并没有因此好转，但你的精神似乎变得更清澈了。",
-          "outcomes": [ { "type": "change_stat", "params": { "health": -5, "gnosis": 3, "sanity": 2 } } ]
+          "feedback": "在绝对的安静中，你感觉身体和精神都得到了宝贵的喘息机会。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": 5, "sanity": 8 } } ]
+        }]
+      },
+      {
+        "text": "在网上发一张自己病恹恹的自拍，配文：“生病了，求安慰。”",
+        "worldview": "irony",
+        "magnitude": 1,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "extrovert" } }],
+        "results": [{
+          "weight": 1,
+          "feedback": "你收获了很多朋友的关心和一些无聊的“多喝热水”的评论。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": -2, "sanity": 3, "fame": 2 } } ]
         }]
       },
       {
@@ -50,16 +64,6 @@
           "weight": 1,
           "feedback": "你将每一次咳嗽都视为一次“旧文件”的删除，将每一次流涕都看作一次“缓存”的清理。",
           "outcomes": [ { "type": "change_stat", "params": { "health": -2, "weirdness": 2, "sanity": 1 } } ]
-        }]
-      },
-      {
-        "text": "在网上发一张自己病恹恹的自拍，配文：“生病了，求安慰。”",
-        "worldview": "irony",
-        "magnitude": 1,
-        "results": [{
-          "weight": 1,
-          "feedback": "你收获了很多朋友的关心和一些无聊的“多喝热水”的评论。",
-          "outcomes": [ { "type": "change_stat", "params": { "health": -2, "sanity": 3, "fame": 2 } } ]
         }]
       },
       {
@@ -78,6 +82,16 @@
                 "outcomes": [ { "type": "change_stat", "params": { "health": -10, "sanity": -5 } } ]
             }
         ]
+      },
+       {
+        "text": "这是一种“灵性流感”，是身体在排出负能量。我需要冥想。",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你点上熏香，开始冥想。感冒并没有因此好转，但你的精神似乎变得更清澈了。",
+          "outcomes": [ { "type": "change_stat", "params": { "health": -5, "gnosis": 3, "sanity": 2 } } ]
+        }]
       }
     ]
   },

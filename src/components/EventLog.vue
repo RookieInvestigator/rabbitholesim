@@ -46,7 +46,6 @@ function parseText(text) {
 
 <style scoped>
 .terminal-log {
-  background: #000;
   overflow-x: hidden;
   padding: 1.5rem;
   box-sizing: border-box;
@@ -60,37 +59,61 @@ function parseText(text) {
 }
 
 .log-entry {
+  position: relative; /* for pseudo-elements */
   align-self: flex-start;
   width: 100%;
-  border-left: 1px solid #111; /* 預設為極深灰 */
-  padding-left: 1rem;
-  transition: border-color 0.3s ease; /* 增加一個平滑過渡，讓指示更自然 */
+  border-left: 1px solid #222; /* 預設為深灰 */
+  padding-left: 1.2rem;
+  transition: border-color 0.3s ease;
 }
 
-/* ✨ 微弱指示器：將最後一個條目的邊框調亮 ✨ */
+/* ✨ 指示器：將最後一個條目的邊框調亮 ✨ */
 .log-entry:last-child {
-  border-left-color: #444; /* 稍微亮一點的灰色，指示當前位置 */
+  border-left-color: #555; /* 亮灰色，指示當前位置 */
 }
 
 .event-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #ccc;
+  color: #ddd; /* 提升基礎標題亮度 */
   margin: 0 0 0.5rem 0;
 }
 
-/* 稀有度顏色僅作用於文字 */
-.type-rare .event-title { color: #4A90E2; }
-.type-legend .event-title { color: #ffc878; }
-.type-ending .event-title { color: #ff4757; }
+/* 稀有度顏色，加一點光暈更顯眼 */
+.type-rare .event-title { 
+  color: #5cadff;
+  text-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+}
+.type-legend .event-title { 
+  color: #ffda8e;
+  text-shadow: 0 0 10px rgba(255, 200, 120, 0.4);
+}
+.type-ending .event-title { 
+  color: #ff6b7a;
+  text-shadow: 0 0 10px rgba(255, 71, 87, 0.4);
+}
 
 .event-text, .generic-text {
   font-size: 0.95rem;
-  color: #888;
-  line-height: 1.6;
+  color: #aaa; /* 提升基礎文本亮度 */
+  line-height: 1.7; /* 增加行高，提升可讀性 */
   white-space: pre-wrap;
   margin: 0;
 }
 
-.type-choice .generic-text { color: #555555; }
+/* 玩家選擇的樣式，更清晰 */
+.type-choice .generic-text { 
+  color: #888;
+  font-style: italic;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.type-choice .generic-text::before {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: #666;
+  font-size: 0.8rem;
+}
 </style>

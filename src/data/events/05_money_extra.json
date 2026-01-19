@@ -3,7 +3,7 @@
     "id": "money_gray_gig",
     "title": "灰色兼职",
     "text": "你的财务状况有些紧张，你在一个匿名论坛上看到一则招聘启事，上面写着“招募任务执行员，工作内容简单，报酬优厚，无需经验”。",
-    "tags": ["money", "internet", "crime", "mystery"],
+    "tags": ["money", "internet", "crime", "mystery", "part_time_job"],
     "priority": 10,
     "conditions": [
         { "type": "stat_check", "params": { "stat": "money", "operator": "<=", "value": 1000 } }
@@ -127,19 +127,11 @@
         }]
       },
       {
-        "text": "把它格式化，然后存满猫咪的照片，再放回长椅下。",
-        "worldview": "irony",
-        "magnitude": 1,
-        "results": [{
-            "weight": 1,
-            "feedback": "你也许会让下一个捡到它的人，在紧张和期待中，收获一个巨大的惊喜。",
-            "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "sanity": 2 } } ]
-        }]
-      },
-      {
         "text": "在U盘丢失的地方贴一张“失物招领”，看看谁会来联系你。",
         "worldview": "logic",
         "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "extrovert" } }],
         "results": [{
           "weight": 1,
           "feedback": "一个西装革履、戴着墨镜的男人联系了你，他给了你一笔丰厚的“感谢费”并拿走了U盘，同时警告你忘掉这件事。",
@@ -155,6 +147,16 @@
           "feedback": "你将U盘放在钱包里。从那天起，你发现自己经常能捡到小额的现金。",
           "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "money": 500 } },
                 { "type": "change_tag_probability", "params": { "tag": "money", "multiplier": 1.2 } } ]
+        }]
+      },
+      {
+        "text": "把它带回家，藏在抽屉的最深处，作为一个只属于我的秘密。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你将这个小小的秘密藏了起来。偶尔，你会把它拿出来看一看，猜想里面到底有什么。",
+            "outcomes": [ { "type": "add_item", "params": { "itemId": "mysterious_usb" } }, { "type": "change_stat", "params": { "sanity": 1 } } ]
         }]
       }
     ]
@@ -327,7 +329,7 @@
     "id": "daily_usability_testing",
     "title": "有偿测试",
     "text": "你看到一则线上招募广告：一家科技公司正在为其即将上线的新款社交App，招募一批“用户体验测试员”。工作内容很简单，只需要使用App半小时，并回答一些问题，就能获得一笔不菲的报酬。",
-    "tags": ["daily", "money", "internet", "tech"],
+    "tags": ["daily", "money", "internet", "tech", "part_time_job"],
     "isUnique": false,
     "priority": 2,
     "choices": [
@@ -352,13 +354,15 @@
         }]
       },
       {
-        "text": "在所有反馈栏里都填满胡言乱语和网络梗图。",
-        "worldview": "irony",
-        "magnitude": 2,
+        "text": "我只想快点做完测试拿钱走人，最好不需要和任何人说话。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
         "results": [{
             "weight": 1,
-            "feedback": "对方按照规定支付了报酬。你成功地在不付出任何有效劳动的情况下，赚到了一笔钱。",
-            "outcomes": [ { "type": "change_stat", "params": { "money": 1500, "irony": 5, "sanity": -2 } } ]
+            "feedback": "你以最高效率完成了所有必填项目，用最简洁的语言回答了问题，拿到了报酬。全程没有进行任何不必要的交流。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 1500, "logic": 2 } } ]
         }]
       },
       {
@@ -379,6 +383,16 @@
             "weight": 1,
             "feedback": "你的自信和专业术语成功地唬住了对方。他们不仅支付了你的测试费用，还额外给了你一笔咨询费，并邀请你加入他们的外部专家库。",
             "outcomes": [ { "type": "change_stat", "params": { "money": 5000, "irony": 8, "fame": 5 } } ]
+        }]
+      },
+      {
+        "text": "这个App的UI设计得太丑了，我要给它重新设计一遍再提交反馈。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你花了一整天的时间，为这个App做了一套全新的视觉设计方案。对方被你的专业能力（和热情）所折服，不仅支付了报酬，还向你约稿。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 3000, "fame": 5, "logic": 3, "health": -3 } } ]
         }]
       }
     ]

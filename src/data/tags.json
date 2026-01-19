@@ -1,0 +1,61 @@
+{
+  "gated_event_tags": ["school", "work", "cult", "anti-tech"],
+  "tags": [
+    {
+      "id": "student",
+      "name": "学生",
+      "description": "你是一名学生，可以触发校园相关的事件。",
+      "group": "occupation",
+      "unlocks_event_tags": ["school"]
+    },
+    {
+      "id": "employee",
+      "name": "职员",
+      "description": "你是一名职员，可以触发工作相关的事件。",
+      "group": "occupation",
+      "unlocks_event_tags": ["work"]
+    },
+    {
+      "id": "neet",
+      "name": "NEET",
+      "description": "你目前没有在学习或工作。",
+      "group": "occupation"
+    },
+    {
+      "id": "introvert",
+      "name": "内向",
+      "description": "你倾向于独处，从中获得能量。",
+      "group": "personality"
+    },
+    {
+      "id": "extrovert",
+      "name": "外向",
+      "description": "你喜欢社交，并从中获得能量。",
+      "group": "personality"
+    },
+    {
+      "id": "optimist",
+      "name": "乐观主义",
+      "description": "你总是看到事物光明的一面。",
+      "group": "philosophy"
+    },
+    {
+      "id": "pessimist",
+      "name": "悲观主义",
+      "description": "你总是先看到事物最坏的可能性。这让你更能共情反科技思潮。",
+      "group": "philosophy",
+      "unlocks_event_tags": ["anti-tech"]
+    },
+    {
+      "id": "realist",
+      "name": "现实主义",
+      "description": "你专注于事物的实际情况而非理想。",
+      "group": "philosophy"
+    }
+  ],
+  "conflicts": [
+    ["student", "employee", "neet"],
+    ["introvert", "extrovert"],
+    ["optimist", "pessimist"]
+  ]
+}

@@ -138,9 +138,11 @@
         }]
       },
       {
-        "text": "为了荣誉（和免费的食物）！我接受挑战！",
+        "text": "（外向）为了荣誉（和免费的食物）！我接受挑战！",
         "worldview": "irony",
         "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "extrovert" } }],
         "results": [
             {
               "weight": 3,
@@ -153,6 +155,18 @@
               "outcomes": [ { "type": "change_stat", "params": { "irony": 2, "fame": -3, "health": -10, "sanity": -5, "money": -300 } } ]
             }
         ]
+      },
+      {
+        "text": "现代社会的过剩与贪婪……",
+        "worldview": "gnosis",
+        "magnitude": 1,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
+        "results": [{
+            "weight": 1,
+            "feedback": "你没有参与挑战，只是在一旁静静地观察着那些挣扎的食客，思考着这场盛宴背后的象征意义。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "sanity": 1 } } ]
+        }]
       },
       {
         "text": "仔细研究汉堡的结构和成分，计算出最优的进食策略。",
@@ -168,13 +182,23 @@
         }]
       },
       {
-        "text": "现代社会的过剩与贪婪……",
-        "worldview": "gnosis",
-        "magnitude": 1,
+        "text": "与店家协商，看看是否可以只挑战‘精神上’吃完汉堡。",
+        "worldview": "irony",
+        "magnitude": 2,
         "results": [{
-            "weight": 1,
-            "feedback": "你没有参与挑战，只是在一旁静静地观察着那些挣扎的食客，思考着这场盛宴背后的象征意义。",
-            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "sanity": 1 } } ]
+          "weight": 1,
+          "feedback": "店家被你的脑回路惊呆了，为了请你这位‘大佛’离开，他同意让你免单，并送了你一件T恤。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": 5 } }, { "type": "add_item", "params": { "itemId": "burger_challenge_tshirt" } } ]
+        }]
+      },
+      {
+        "text": "把汉堡当作一个祭品，举行一个仪式，召唤出传说中的[[weirdness:汉堡之神]]。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "在你装模作样地[[weirdness:念咒]]时，餐厅经理走了过来，用看疯子的眼神看着你，并礼貌地请你离开。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "fame": -5, "sanity": -2 } } ]
         }]
       }
     ]

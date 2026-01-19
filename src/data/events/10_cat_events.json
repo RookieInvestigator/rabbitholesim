@@ -10,6 +10,8 @@
         "text": "“我看你像一个非常逼真的、内置了扬声器的恶作剧玩偶。”",
         "worldview": "logic",
         "magnitude": 1,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
         "results": [{
           "weight": 1,
           "feedback": "你蹲下身，开始寻找它身上的接缝和电池仓。那只猫厌恶地看了你一眼，走开了。",
@@ -73,6 +75,16 @@
           "weight": 1,
           "feedback": "你拿出手机，打开了录音和摄像功能。那只猫似乎察觉到了你的意图，它只是轻蔑地哼了一声，然后从锁住的窗户里凭空消失了。",
           "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "weirdness": 10, "sanity": -15 } } ]
+        }]
+      },
+      {
+        "text": "坐下来，和它聊聊它的猫生，以及它对人类社会的看法。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "“人类社会？不过是一个更大的、由无形丝线操控的猫抓板罢了。”它留下这句充满禅意的话，便转身离开了。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -2 } } ]
         }]
       }
     ]

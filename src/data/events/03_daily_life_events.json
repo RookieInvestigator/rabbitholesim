@@ -8,9 +8,11 @@
     "priority": 1,
     "choices": [
       {
-        "text": "戴上耳机，静静地听完。这正是我的大脑现在所需要的。",
+        "text": "戴上耳机，静静地听完。这是隔绝世界的最佳方式。",
         "worldview": "logic",
         "magnitude": 1,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
         "results": [{
           "weight": 1,
           "feedback": "那些轻柔、规律的声音像是一场精神按摩，抚平了你紧绷的神经。你感到前所未有的放松。",
@@ -38,13 +40,23 @@
         }]
       },
       {
-        "text": "我不是在听，我是在‘进入’那个空间。我的灵魂正与视频制作者一同整理那些书籍。",
+        "text": "我的灵魂正与视频制作者一同整理那些书籍，共同分享这份宁静。",
         "worldview": "weirdness",
         "magnitude": 1,
         "results": [{
             "weight": 1,
             "feedback": "你闭上眼睛，甚至能闻到旧书页的尘埃气味。这是一种奇妙的灵魂出窍体验。",
             "outcomes": [ { "type": "change_stat", "params": { "weirdness": 3, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "把视频外放，并大声模仿视频里的声音，进行一场行为艺术。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的邻居敲门让你安静一点。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "sanity": -4, "fame": -2 } } ]
         }]
       }
     ]
@@ -250,19 +262,11 @@
         ]
       },
       {
-        "text": "尝试用感应和直觉来判断哪几种食材的“能量”比较契合。",
-        "worldview": "gnosis",
-        "magnitude": 1,
-        "results": [{
-          "weight": 1,
-          "feedback": "你凭感觉做出了一顿饭，味道很玄妙，但你觉得它对你的精神很有好处。",
-          "outcomes": [ { "type": "change_stat", "params": { "health": 2, "sanity": 2, "gnosis": 2 } } ]
-        }]
-      },
-      {
         "text": "将食材拍照上传，让社交网络上的朋友们投票决定做什么。",
         "worldview": "irony",
         "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "extrovert" } }],
         "results": [{
           "weight": 1,
           "feedback": "你的朋友们给出了各种不靠谱的建议，你综合了一下，做出了一顿味道古怪但充满“网络智慧”的饭菜。",
@@ -285,6 +289,16 @@
             "outcomes": [ { "type": "change_stat", "params": { "health": -10, "sanity": -5 , "primitivism": -1} } ]
           }
         ]
+      },
+      {
+        "text": "无视这些食材，转而去储藏室找找有没有不需要烹饪的压缩饼干。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你找到了半包受潮的饼干，解决了饥饿问题，但心情变得更差了。",
+            "outcomes": [ { "type": "change_stat", "params": { "health": 1, "sanity": -2 } } ]
+        }]
       }
     ]
   },
@@ -479,7 +493,7 @@
         }]
       },
       {
-        "text": "这个笑脸……它好像在看着我。它不是被画上去的，它是从卡带里面“长”出来的。",
+        "text": "这个笑脸……它好像在看着我。它从卡带里面‘长’出来了。",
         "worldview": "weirdness",
         "magnitude": 2,
         "results": [{
@@ -532,9 +546,11 @@
     "priority": 15,
     "choices": [
       {
-        "text": "这只是集体歇斯底里，加上满月带来的心理暗示。我应该找个地方，记录下这些反常行为的数据。",
+        "text": "这只是集体歇斯底里。我应该找个地方，冷静地记录下这些反常行为的数据。",
         "worldview": "logic",
         "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
         "results": [{
           "weight": 1,
           "feedback": "你像一个战地记者，穿梭在狂欢的人群中，冷静地记录着一切。虽然你没有加入，但这场社会学观察让你收获颇丰。",
@@ -545,6 +561,8 @@
         "text": "月亮正在释放它最原始的力量，唤醒了人们内心的野兽。我应该加入他们，释放自己。",
         "worldview": "gnosis",
         "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "extrovert" } }],
         "results": [{
             "weight": 1,
             "feedback": "你融入了人群，随着音乐和心跳尽情舞动。你忘记了时间，忘记了自我，体验了一场酣畅淋漓的原始狂欢。第二天，你在自家床上醒来，浑身酸痛但精神焕发。",
@@ -576,7 +594,7 @@
         "magnitude": 3,
         "isSpecial": true,
         "conditions": [
-          { "type": "stat_check", "params": { "stat": "fame", "operator": ">=", "value": 30 } }
+          { "type": "stat_check", "params": { "stat": "fame", "operator": ">=", "value": 40 } }
         ],
         "results": [{
             "weight": 1,
@@ -596,6 +614,16 @@
             "weight": 1,
             "feedback": "你闭上眼睛，感受着人群‘能量’的流向。顺着这股流动的力量，你走到了城市中心的喷泉广场。那里空无一人，只有泉水在月光下反射出奇异的七彩光芒。",
             "outcomes": [ { "type": "change_stat", "params": { "gnosis": 15, "weirdness": 5, "sanity": -10 } } ]
+        }]
+      },
+      {
+        "text": "这场狂欢缺乏一个主题。我应该立刻回家，换上我最华丽的衣服，作为‘月神’的使者重返现场。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你盛装出席，你的出现让这场狂欢找到了它的‘王’。人们自发地追随你，将你举过头顶。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 10, "fame": 15, "sanity": 5 } } ]
         }]
       }
     ]

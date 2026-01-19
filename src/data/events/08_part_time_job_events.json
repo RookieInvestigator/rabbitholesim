@@ -1,0 +1,263 @@
+[
+  {
+    "id": "parttime_warehouse_inventory",
+    "title": "19号仓库",
+    "text": "你的钱包空空如也，在一个同城招工App上，接下了一份在郊区仓库做夜班盘点员的日结工作。仓库里堆满了蒙着灰尘的箱子，没有标签，没有货物清单。老板只是给了你一个计数器，让你清点‘单位’的总数。",
+    "tags": ["part_time_job", "daily", "mystery", "money"],
+    "priority": 10,
+    "conditions": [
+        { "type": "stat_check", "params": { "stat": "money", "operator": "<=", "value": 800 } }
+    ],
+    "choices": [
+      {
+        "text": "埋头苦干，尽快点完下班。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你机械地工作了一整晚，赚到了微薄的日薪。你没有探究那些箱子里到底是什么，那不重要。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": 800, "health": -5 } } ]
+        }]
+      },
+      {
+        "text": "打开其中一个箱子看看。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 6,
+            "feedback": "箱子里装满了制作粗糙的、一模一样的塑料假笑面具。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -4 } } ]
+          },
+          {
+            "weight": 3,
+            "feedback": "箱子里是一堆无法理解的、似乎由金属和有机物混合而成的几何体，它们在黑暗中微微搏动。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 10, "sanity": -12 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "箱子是空的。但在你注视箱底的瞬间，你似乎听到有人在你耳边轻声说：‘谢谢你的观看。’",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 15, "sanity": -20 } } ]
+          }
+        ]
+      },
+      {
+        "text": "这里的工作环境太压抑了。找个角落躲起来摸鱼，等下班时再随便报个数字。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "你成功地在角落里睡了一觉，然后领到了工资。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 800, "irony": 3, "health": 2 } } ]
+        }]
+      },
+      {
+        "text": "在仓库最深的货架后面找到一个安静的角落，这样可以一个人默默工作，不被任何人打扰。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
+        "results": [{
+            "weight": 1,
+            "feedback": "在这个安静的角落，你发现了一个被遗忘的笔记本，上面记载着一些关于货物“收容”和“保管”的奇怪注意事项。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "money": 800, "health": -4, "gnosis": 5 } },
+              { "type": "add_item", "params": { "itemId": "containment_log" } }
+            ]
+        }]
+      },
+      {
+        "text": "用这些箱子搭一个堡垒，把自己围起来。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你拥有了一个属于自己的、由神秘货物构成的王国。虽然并没有什么用，但这让你在无聊的工作中找到了乐趣。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "闭上眼睛，把手放在箱子上，尝试‘感知’里面是什么。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的指尖传来一阵冰冷的、类似静电的触感。你的脑海中闪过了无数破碎的画面：星空、沙漠、以及一个巨大的、正在哭泣的眼睛。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 8, "sanity": -6 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "parttime_errand_runner_package",
+    "title": "货到付款",
+    "text": "手机App弹出一个高价跑腿订单：去城市另一头的废弃气象站，取一个包裹，然后送到码头的一艘旧渔船上。酬劳很高，但备注里写着：‘绝对不要打开包裹，绝对不要和收货人说话。’",
+    "tags": ["part_time_job", "daily", "mystery", "money", "crime"],
+    "priority": 10,
+    "conditions": [
+        { "type": "stat_check", "params": { "stat": "money", "operator": "<=", "value": 500 } }
+    ],
+    "choices": [
+      {
+        "text": "一份工作而已，按要求做完拿钱走人。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你成功完成了任务，对方爽快地支付了酬劳。你对自己专业的职业态度感到满意。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": 1500, "anonymity": -5 } } ]
+        }]
+      },
+      {
+        "text": "在送达前，晃一晃包裹，听听里面是什么声音。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 6,
+            "feedback": "里面传来了液体晃动的声音。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3 } } ]
+          },
+          {
+            "weight": 3,
+            "feedback": "里面传来了一阵微弱的、仿佛来自活物的抓挠声。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -8 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "你晃动包裹时，一个低沉的声音从里面传来：‘别晃了，晕船。’",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 15, "sanity": -20, "weirdness": 10 } } ]
+          }
+        ]
+      },
+      {
+        "text": "无视警告，在交货时热情地和收货人搭话。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "extrovert" } }],
+        "results": [{
+            "weight": 1,
+            "feedback": "收货人是一个面无表情的壮汉，他没有理会你的热情，只是拿走了包裹，然后往你怀里塞了一张额外的钞票，似乎是让你闭嘴。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 2000, "irony": 5, "anonymity": -8 } } ]
+        }]
+      },
+      {
+        "text": "用手机拍下交易的全过程，以防万一。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你悄悄地录下了视频。虽然什么也没发生，但这份证据让你感到了一丝安全。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 1500, "logic": 3, "anonymity": -5 } } ]
+        }]
+      },
+      {
+        "text": "用万能表测一下包裹有没有发出什么奇怪的电波。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "万用表显示包裹正在发出一种稳定但无法识别的低频信号。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 2 } } ]
+        }]
+      },
+      {
+        "text": "在包裹上贴一张‘内有活体克苏鲁，请轻拿轻放’的标签。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [{
+            "weight": 1,
+            "feedback": "收货人看到标签后，面无表情地撕了下来，然后多给了你一点钱，让你忘掉这件事。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 1800, "irony": 5, "anonymity": -6 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "parttime_content_farm_repost",
+    "title": "信息搬运工",
+    "text": "你接了一个在社交媒体上当“信息搬运工”的日结兼职。你的上线给了你一堆文档和几十个账号，要求你把文档里的内容，用不同的账号，一字不差地发布到各大论坛和评论区。你瞥了一眼文档，里面的内容光怪陆离，充满了各种无法证实的阴谋论和末日预言。",
+    "tags": ["part_time_job", "daily", "mystery", "money", "internet", "conspiracy"],
+    "priority": 10,
+    "conditions": [
+        { "type": "stat_check", "params": { "stat": "money", "operator": "<=", "value": 1000 } }
+    ],
+    "choices": [
+      {
+        "text": "拿钱办事，复制粘贴就好。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你花了一天时间，像个机器人一样发布了所有内容，然后领到了工资。",
+          "outcomes": [ { "type": "change_stat", "params": { "money": 1000, "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "这份工作让我感觉自己像一个没有感情的机器人，我感到非常不适。我决定只做完最低限度的工作量就立刻辞职。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
+        "results": [{
+            "weight": 1,
+            "feedback": "你完成了最低要求后，立刻删除了上线的所有联系方式，并拿到了部分酬劳。你感觉自己逃离了一个精神污染源。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 300, "sanity": 5, "logic": 2 } } ]
+        }]
+      },
+      {
+        "text": "在每一条发布的内容后面，都加上一个“（手动狗头）”的表情。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的上线很快就发现了你的小动作，他愤怒地扣了你一半的工钱，并把你拉黑了。但你觉得很值。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 500, "irony": 8, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "在这些信息中，夹杂一条我自己编造的、关于“所有路灯都在监视你”的阴谋论。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 6,
+            "feedback": "你将自己的创作混入了信息的洪流。工作结束后你领到了全额的工资，没人发现异常。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 1000, "weirdness": 5, "irony": 3 } } ]
+          },
+          {
+            "weight": 3,
+            "feedback": "你编造的阴谋论获得了一些零星的讨论，有人似乎真的开始研究路灯了。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 1000, "weirdness": 8, "irony": 5, "fame": 2 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "你编造的阴谋论像病毒一样传播开来，引发了一场小规模的社会恐慌，甚至登上了本地新闻。你的上线给了你一笔封口费，并永久删除了你的所有联系方式。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 5000, "weirdness": 15, "irony": 10, "anonymity": -10, "sanity": -10 } } ]
+          }
+        ]
+      },
+      {
+        "text": "研究这些账号，分析它们的注册时间、发帖规律，试图找出幕后的操盘者。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你发现所有账号都注册于同一个时间段，其IP地址指向一个早已废弃的数据中心。线索中断了。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 2, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "用AI批量生成更多、更疯狂的阴谋论，然后交差。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的上线对你高效的工作能力和惊人的创造力大加赞赏，并把你升级成了“创意总监”。",
+            "outcomes": [ { "type": "change_stat", "params": { "money": 2000, "irony": 8, "fame": 5 } } ]
+        }]
+      }
+    ]
+  }
+]

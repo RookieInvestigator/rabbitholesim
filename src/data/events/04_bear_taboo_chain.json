@@ -21,7 +21,7 @@
         }]
       },
       {
-        "text": "一个词根在如此庞大的语系中被系统性地抹除，绝非巧合。这不是“敬畏”，这是“恐惧”。他们在害怕什么？",
+        "text": "一个词根在如此庞大的语系中被系统性地抹除，绝非巧合。他们在害怕什么？",
         "worldview": "gnosis",
         "magnitude": 2,
         "results": [{
@@ -31,16 +31,6 @@
             { "type": "change_stat", "params": { "gnosis": 8, "sanity": -4 } },
             { "type": "unlocksEvent", "params": { "eventId": "bear_02_the_naming" } }
           ]
-        }]
-      },
-      {
-        "text": "也许“熊”这个物种，是某个高等存在的“商标”，未经授权不许使用。",
-        "worldview": "weirdness",
-        "magnitude": 1,
-        "results": [{
-          "weight": 1,
-          "feedback": "你开始尝试给身边的所有东西都取一个绰号，以示“尊重”。",
-          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 2, "irony": 1 } } ]
         }]
       },
       {
@@ -54,12 +44,13 @@
         }]
       },
       {
-        "text": "用统计学和计算机模型，分析词根的演化和替代路径。我要写一篇关于此的论文。",
+        "text": "（内向）用统计学和计算机模型，分析词根的演化和替代路径。我要独自完成一篇关于此的论文。",
         "worldview": "logic",
         "magnitude": 3,
         "isSpecial": true,
         "conditions": [
-          { "type": "stat_check", "params": { "stat": "logic", "operator": ">=", "value": 40 } }
+            { "type": "stat_check", "params": { "stat": "logic", "operator": ">=", "value": 40 } },
+            { "type": "tag_check", "params": { "has": "introvert" } }
         ],
         "results": [{
           "weight": 1,
@@ -78,6 +69,23 @@
           "weight": 1,
           "feedback": "在你的精神世界里，你似乎真的触碰到了一片无法被描述、无法被定义的“空白区域”。这种感觉让你头晕目眩。",
           "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": -4 } } ]
+        }]
+      },
+      {
+        "text": "（外向）立刻在相关的学术论坛上开一个帖子，召集同好一起讨论这个发现。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [
+            { "type": "tag_check", "params": { "has": "extrovert" } }
+        ],
+        "results": [{
+          "weight": 1,
+          "feedback": "你的帖子引发了热烈的讨论，虽然大部分都是民科和阴谋论者，但你从与他人的交流中获得了新的灵感。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "logic": 3, "fame": 2, "gnosis": 2 } },
+            { "type": "unlocksEvent", "params": { "eventId": "bear_02_the_naming" } }
+          ]
         }]
       }
     ]
@@ -101,16 +109,6 @@
         }]
       },
       {
-        "text": "语言本身就是一种力量。在念出它之前，我需要做一些准备，布置一个保护性的仪式。",
-        "worldview": "gnosis",
-        "magnitude": 2,
-        "results": [{
-          "weight": 1,
-          "feedback": "你没有贸然行事，而是开始研究各种保护性的符号和仪式，试图在“安全”的环境下进行这次实验。",
-          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 6, "logic": 3 } } ]
-        }]
-      },
-      {
         "text": "大声地、清晰地念出这个词。我渴望知道会发生什么。",
         "worldview": "weirdness",
         "magnitude": 3,
@@ -131,9 +129,11 @@
         ]
       },
       {
-        "text": "去动物园，找到棕熊区，然后隔着安全距离大声喊出这个名字！",
+        "text": "（外向）去动物园，找到棕熊区，然后隔着安全距离大声喊出这个名字！",
         "worldview": "irony",
         "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "extrovert" } }],
         "results": [{
           "weight": 1,
           "feedback": "那头正在打盹的棕熊猛地抬起头，用一种充满智慧和无尽疲惫的眼神，深深地看了你一眼。你被动物园的保安请了出去。",
@@ -168,6 +168,21 @@
           "weight": 1,
           "feedback": "你的账户确实变得无比安全。但每次登录时，你都感觉自己正在向某个未知的存在进行一次“验证”。",
           "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "logic": 5, "sanity": -2 } } ]
+        }]
+      },
+      {
+        "text": "（内向）将这个词根作为种子，用它来生成一幅只有自己能看懂的、复杂的抽象画。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
+        "results": [{
+          "weight": 1,
+          "feedback": "你画了一整天。这幅画作充满了原始的、混乱的力量，观看它的人都会感到轻微的不安。你没有给任何人看这幅画。",
+          "outcomes": [
+            { "type": "change_stat", "params": { "weirdness": 10, "sanity": -5 } },
+            { "type": "unlocksEvent", "params": { "eventId": "bear_03_the_presence" } }
+          ]
         }]
       }
     ]

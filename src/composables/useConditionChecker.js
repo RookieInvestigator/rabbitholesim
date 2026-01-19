@@ -52,6 +52,10 @@ export function useConditionChecker() {
         if (params.has) return playerState.talents.some(t => t.id === params.has);
         if (params.has_not) return !playerState.talents.some(t => t.id === params.has_not);
         return false;
+      case 'tag_check':
+        if (params.has) return playerState.tags.includes(params.has);
+        if (params.has_not) return !playerState.tags.includes(params.has_not);
+        return false;
       case 'ending_id': // ✨ 新增：用于成就检查
         return playerState.deathReason === params.is;
       default: return true;

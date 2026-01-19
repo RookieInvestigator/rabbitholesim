@@ -15,6 +15,11 @@ const worldviewIcons = {
   weirdness: 'fas fa-spider icon-weirdness', 
   irony: 'fas fa-masks-theater icon-irony' 
 };
+
+function hasTagRequirement(choice) {
+  if (!choice.conditions) return false;
+  return choice.conditions.some(c => c.type === 'tag_check');
+}
 </script>
 
 <template>
@@ -32,8 +37,10 @@ const worldviewIcons = {
       </div>
       
       <div class="choice-body">
-        <p class="main-text">{{ choice.text }}</p>
-      
+        <p class="main-text">
+          {{ choice.text }}          
+          <span v-if="hasTagRequirement(choice)" class="tag-req-marker" title="特殊">◆</span>
+        </p>
       </div>
     </div>
   </div>
@@ -120,5 +127,20 @@ const worldviewIcons = {
 
 .choice-node:hover .value {
   color: #a29bfe;
+}
+
+.tag-req-marker {
+  font-size: 1em;
+  color: #666;
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 0.4rem;
+  transition: color 0.2s, text-shadow 0.2s;
+  vertical-align: middle;
+}
+
+.choice-node:hover .tag-req-marker {
+  color: #a29bfe;
+  text-shadow: 0 0 8px rgba(162, 155, 254, 0.7);
 }
 </style>

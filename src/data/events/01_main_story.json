@@ -14,47 +14,33 @@
         "text": "大概是早期摄影器材的解析度太低，或是影片压缩时造成的失真。",
         "worldview": "logic",
         "magnitude": 1,
-        "results": [{
-          "weight": 1,
-          "feedback": "你为这个现象找到了最合理的解释，然后继续观看下一个猫咪影片。",
-          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 2 } } ]
-        }]
+        "results": [{"weight": 1, "feedback": "你为这个现象找到了最合理的解释，然后继续观看下一个猫咪影片。", "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 2 } } ]}]
       },
       {
         "text": "去评论区看看，也许有人知道这段影片的来源或背景故事。",
         "worldview": "gnosis",
         "magnitude": 1,
-        "results": [{
-          "weight": 1,
-          "feedback": "评论区众说纷纭，有人说这是某个被诅咒的游乐园，也有人说这是一个邪教的宣传片。你对这些说法半信半疑，但它们确实在你心中埋下了一颗种子。",
-          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "sanity": -1 } } ]
-        }]
+        "isSpecial": true,
+        "results": [{"weight": 1, "feedback": "评论区众说纷纭，有人说这是某个被诅咒的游乐园，也有人说这是一个邪教的宣传片。你对这些说法半信半疑，但它们确实在你心中埋下了一颗种子。", "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "sanity": -1 } } ]}]
       },
       {
         "id": "01a",
         "text": "这段影片的氛围很独特，让你想起了一些被遗忘的童年回忆。",
         "worldview": "weirdness",
         "magnitude": 1,
-        "results": [{
-          "weight": 1,
-          "feedback": "你将这段影片保存了下来。那种怪异而怀旧的感觉让你着迷，你开始在网上寻找更多类似风格的内容。",
-          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 3, "sanity": -1 } } ]
-        }]
+        "results": [{"weight": 1, "feedback": "你将这段影片保存了下来。那种怪异而怀旧的感觉让你着迷，你开始在网上寻找更多类似风格的内容。", "outcomes": [ { "type": "change_stat", "params": { "weirdness": 3, "sanity": -1 } } ]}]
       },
       {
         "text": "把这个「无脸孩童」的画面截图，做成一个表情包，配文：“周一早上来上班的我本人。”",
         "worldview": "irony",
         "magnitude": 1,
-        "results": [{
-          "weight": 1,
-          "feedback": "你的表情包在朋友间引起了共鸣，大家纷纷表示“确实”。",
-          "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "sanity": 1 } } ]
-        }]
+        "results": [{"weight": 1, "feedback": "你的表情包在朋友间引起了共鸣，大家纷纷表示“确实”。", "outcomes": [ { "type": "change_stat", "params": { "irony": 3, "sanity": 1 } } ]}]
       },
       {
         "text": "下载影片，尝试用影片编辑软体逐帧分析，看看能不能找到什么线索。",
         "worldview": "logic",
         "magnitude": 2,
+        "isSpecial": true,
         "results": [
           {
             "weight": 8,
@@ -69,14 +55,16 @@
         ]
       },
       {
-        "text": "这不是“没有脸”，而是他们的脸被“拿走”了。这个影片本身就是一种诅咒或警告。",
+        "text": "这个影片本身就是一种诅咒或警告，它的存在扭曲了观看者的认知。",
         "worldview": "gnosis",
         "magnitude": 2,
-        "results": [{
-          "weight": 1,
-          "feedback": "你立刻关掉了影片，并开始在房间里所有的镜子和反光物上盖上布。你感觉有什么东西正在透过屏幕注视着你。",
-          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -5 } } ]
-        }]
+        "results": [{"weight": 1, "feedback": "你立刻关掉了影片，并开始在房间里所有的镜子和反光物上盖上布。你感觉有什么东西正在透过屏幕注视着你。", "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -5 } } ]}]
+      },
+      {
+        "text": "将影片的音频倒放，听听里面是否藏着什么信息。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{"weight": 1, "feedback": "在刺耳的噪音中，你似乎听到了一个断断续续的声音在说：‘……它在看着……’", "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "gnosis": 2, "sanity": -6 } } ]}]
       }
     ]
   }

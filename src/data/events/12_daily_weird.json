@@ -27,7 +27,7 @@
         }]
       },
       {
-        "text": "这些数字不是念给人听的，它们是念给“世界”听的。这是一种维持现实稳定的“校准码”。",
+        "text": "这些数字是维持现实稳定的“校准码”。",
         "worldview": "weirdness",
         "magnitude": 2,
         "results": [{
@@ -225,19 +225,11 @@
         }]
       },
       {
-        "text": "这不是“既视感”，这是时间线在重复。我是唯一察觉到“重启”的人。",
-        "worldview": "gnosis",
-        "magnitude": 2,
-        "results": [{
-            "weight": 1,
-            "feedback": "你紧紧地盯着咖啡师，内心充满了期待和恐惧。但最终什么也没发生。你开始怀疑，是不是“更高层”的存在发现了你的窥探，临时修改了“剧本”。",
-            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -4 } } ]
-        }]
-      },
-      {
         "text": "立刻大喊：“小心！奶泡要洒了！”",
         "worldview": "weirdness",
         "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "extrovert" } }],
         "results": [
           {
             "weight": 8,
@@ -275,6 +267,8 @@
         "text": "什么也不做，就静静地看着，验证自己的“预言”是否会成真。",
         "worldview": "logic",
         "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
         "results": [
           {
             "weight": 1,
@@ -287,6 +281,16 @@
             "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 2 } } ]
           }
         ]
+      },
+      {
+        "text": "用手机录下接下来的一分钟，然后和‘记忆中’的影像进行比对。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "回看录像，你发现现实和你的记忆存在0.5秒的延迟。你不知道是你的记忆出了问题，还是你的手机出了问题。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "gnosis": 2, "sanity": -2 } } ]
+        }]
       }
     ]
   },
@@ -379,23 +383,15 @@
         }]
       },
       {
-        "text": "那是我的“分身”。一个活生生的、代表着我另一种可能性的存在。",
-        "worldview": "gnosis",
+        "text": "立刻冲过马路，和那人来一场“蜘蛛人互指”的经典场面。",
+        "worldview": "irony",
         "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "extrovert" } }],
         "results": [{
             "weight": 1,
-            "feedback": "你没有感到恐惧，反而有一种奇特的亲切感。你决定不去打扰他，只是目送着“另一个自己”远去。",
-            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -3 } } ]
-        }]
-      },
-      {
-        "text": "他会替换我！",
-        "worldview": "gnosis",
-        "magnitude": 3,
-        "results": [{
-            "weight": 1,
-            "feedback": "你感到一阵强烈的恐慌，立刻开始四处寻找可以躲避的地方。你决定不让他/她接近你，直到你弄清楚这到底是怎么回事。",
-            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -8, "anonymity": 5 } } ]
+            "feedback": "你和[[irony:你]]在街中央相遇，互相指着对方，场面一度非常尴尬。周围的路人纷纷拿出手机拍照。最终，对方叹了口气说：‘好吧，这次算你赢了。’然后转身离开。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "fame": 5, "sanity": 2 } } ]
         }]
       },
       {
@@ -409,23 +405,35 @@
         }]
       },
       {
-        "text": "立刻冲过马路，和那人来一场“蜘蛛人互指”的经典场面。",
-        "worldview": "irony",
-        "magnitude": 2,
-        "results": [{
-            "weight": 1,
-            "feedback": "你和“你”在街中央相遇，互相指着对方，场面一度非常尴尬。周围的路人纷纷拿出手机拍照。最终，对方叹了口气说：‘好吧，这次算你赢了。’然后转身离开。",
-            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "fame": 5, "sanity": 2 } } ]
-        }]
-      },
-      {
         "text": "跟踪他，看看“我”不住在这里时，会去向何方。",
         "worldview": "gnosis",
         "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
         "results": [{
             "weight": 1,
             "feedback": "你小心翼翼地跟在后面，穿过几条你从未走过的小巷。最终，那个人走进一栋普通的居民楼，消失了。而那栋楼的地址，你感觉自己似乎在哪里见过。",
             "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "anonymity": 5, "sanity": -5 } } ]
+        }]
+      },
+      {
+        "text": "无视他。我的世界里只能有一个我，那个冒牌货只是一个无关紧要的背景板。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你移开了视线，继续走自己的路。没什么能比自己的事更重要。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "他会替换我！",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你感到一阵强烈的恐慌，立刻开始四处寻找可以躲避的地方。你决定不让他/她接近你，直到你弄清楚这到底是怎么回事。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "sanity": -8, "anonymity": 5 } } ]
         }]
       }
     ]

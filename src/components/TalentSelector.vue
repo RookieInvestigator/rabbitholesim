@@ -1,7 +1,7 @@
 <script setup>
-// 逻辑部分完全保持原样，神力内核稳如老狗
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useDataCenter } from '@/composables/dataCenter';
+import { conflicts as tagConflicts } from '@/data/tags.json';
 
 const emit = defineEmits(['start', 'back']);
 const { gameData } = useDataCenter();
@@ -9,6 +9,67 @@ const { gameData } = useDataCenter();
 const availableTalents = ref([]);
 const selectedTalents = ref([]);
 const maxSelection = 3;
+
+// --- 冲突检测逻辑 ---
+
+const getTalentTags = (talent) => {
+  return (talent.effects || [])
+    .filter(effect => effect.type === 'add_tag')
+    .map(effect => effect.params.tag);
+};
+
+const allSelectedTags = computed(() => {
+  return selectedTalents.value.flatMap(getTalentTags);
+});
+
+const conflictingGroup = computed(() => {
+  const tags = allSelectedTags.value;
+  for (const group of tagConflicts) {
+    const intersection = tags.filter(tag => group.includes(tag));
+    
+    // Use a Set to find unique tags in the intersection
+    const uniqueIntersection = new Set(intersection);
+    
+    if (uniqueIntersection.size > 1) {
+      return Array.from(uniqueIntersection); // Return the unique conflicting tags
+    }
+  }
+  return null;
+});
+
+const isTalentDisabled = (talent) => {
+  // 规则1: 永不禁用已选中的天赋
+  if (isSelected(talent)) return false;
+  
+  // 规则2: 如果已达到选择上限，则禁用所有未选中的
+  if (selectedTalents.value.length >= maxSelection) return true;
+
+  // 规则3: 检查标签冲突
+  const talentTags = getTalentTags(talent);
+  if (talentTags.length === 0) return false; // 没有标签的天赋不会引起冲突
+
+  const currentSelectedTags = allSelectedTags.value;
+
+  for (const tag of talentTags) {
+    // 对于此天赋的每个标签...
+    const conflictGroup = tagConflicts.find(group => group.includes(tag));
+    if (!conflictGroup) continue; // 此标签不属于任何冲突组
+
+    // 检查是否已有选中的天赋中包含此冲突组里的其他（对立）标签
+    const opposingTagSelected = conflictGroup.some(opposingTag => {
+      return tag !== opposingTag && currentSelectedTags.includes(opposingTag);
+    });
+
+    if (opposingTagSelected) {
+      return true; // 发现冲突！禁用此天赋
+    }
+  }
+
+  return false; // 未发现冲突
+};
+
+
+// --- 核心组件逻辑 ---
 
 function drawTalents() {
   selectedTalents.value = [];
@@ -44,6 +105,11 @@ function drawTalents() {
 onMounted(drawTalents);
 
 function toggleTalent(talent) {
+  // 在切换前再次检查是否被禁用（以防万一）
+  if (isTalentDisabled(talent) && !isSelected(talent)) {
+    return;
+  }
+  
   const index = selectedTalents.value.findIndex(t => t.id === talent.id);
   if (index > -1) {
     selectedTalents.value.splice(index, 1);
@@ -57,7 +123,7 @@ function isSelected(talent) {
 }
 
 function confirmSelection(mode) {
-  if (selectedTalents.value.length === maxSelection) {
+  if (selectedTalents.value.length === maxSelection && !conflictingGroup.value) {
     emit('start', selectedTalents.value, mode);
   }
 }
@@ -69,8 +135,8 @@ function confirmSelection(mode) {
       <div class="header-left">
         <h2 class="title">天赋选择       
             <div class="subtitle">
-              <span :class="{ 'text-highlight': selectedTalents.length === maxSelection }">
-                [{{ selectedTalents.length }}/{{ maxSelection }}]
+              <span :class="{ 'text-highlight': selectedTalents.length === maxSelection && !conflictingGroup, 'text-danger': conflictingGroup }">
+                [{{ selectedTalents.length }}/{{ maxSelection }}] {{ conflictingGroup ? `冲突: ${conflictingGroup.join(', ')}` : '' }}
               </span>
            </div>
         </h2>
@@ -90,6 +156,7 @@ function confirmSelection(mode) {
           class="card"
           :class="[
             isSelected(talent) ? 'selected' : '',
+            isTalentDisabled(talent) ? 'disabled' : '',
             `tier-${talent.tier || 1}`
           ]"
           @click="toggleTalent(talent)"
@@ -109,14 +176,14 @@ function confirmSelection(mode) {
       <button
         class="btn-main"
         @click="confirmSelection('interactive')"
-        :disabled="selectedTalents.length !== maxSelection"
+        :disabled="selectedTalents.length !== maxSelection || conflictingGroup"
       >
         > 手动探索
       </button>
       <button
         class="btn-link"
         @click="confirmSelection('simulation')"
-        :disabled="selectedTalents.length !== maxSelection"
+        :disabled="selectedTalents.length !== maxSelection || conflictingGroup"
       >
         > 自动模拟
       </button>
@@ -183,6 +250,28 @@ function confirmSelection(mode) {
   color: #ffffff; /* 亮蓝色，或者换成你喜欢的金色 #ffd700 */
   text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
   transition: all 0.3s ease;
+}
+
+.text-danger {
+  color: #ff6b7a;
+  text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+  font-weight: 700;
+}
+
+/* --- 卡牌禁用状态 --- */
+.card.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: #222 !important;
+  background: rgba(10, 10, 10, 0.4) !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+.card.disabled .name,
+.card.disabled .desc {
+  color: #666 !important;
+  text-shadow: none !important;
 }
 
 

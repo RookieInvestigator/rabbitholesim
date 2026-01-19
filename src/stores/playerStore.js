@@ -27,6 +27,7 @@ const getInitialState = () => ({
   talents: [],
   triggeredEventIds: new Set(),
   unlockedEventIds: new Set(),
+  tags: [], // 储存玩家的永久状态Tag
   log: [],
 
   // --- 统一后的状态 ---
@@ -129,6 +130,14 @@ export const usePlayerStore = defineStore('player', {
             if (outcome.params.statusId) {
               if (!this.statusEffects.some(e => e.id === outcome.params.statusId)) {
                 this.statusEffects.push({ id: outcome.params.statusId, duration: outcome.params.duration || 9999 });
+              }
+            }
+            break;
+
+          case 'add_tag':
+            if (outcome.params.tag) {
+              if (!this.tags.includes(outcome.params.tag)) {
+                this.tags.push(outcome.params.tag);
               }
             }
             break;

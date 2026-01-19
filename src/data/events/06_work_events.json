@@ -1,0 +1,162 @@
+[
+  {
+    "id": "work_endless_meeting",
+    "title": "永无止境的会议",
+    "text": "你被拉进了一个临时会议。一个半小时过去了，议题已经从‘第三季度营销策略’，漂移到了‘茶水间的咖啡豆品牌是否需要升级’。你看着PPT上毫无意义的图表，感觉自己的灵魂正在被缓慢地抽走。",
+    "tags": ["work", "daily", "social"],
+    "priority": 5,
+    "choices": [
+      {
+        "text": "保持职业微笑，点头，假装自己仍在认真听讲。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你成功地扮演了一个合格的社畜。会议又持续了一个小时，但你的精神状态和薪水都没有任何变化。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": -5, "health": -2 } } ]
+        }]
+      },
+      {
+        "text": "打断会议，指出目前讨论的议题已经偏离，并建议大家回到重点或结束会议。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你的直言不讳让会议室陷入了尴尬的沉默。领导赞赏了你的效率，会议很快结束了。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "sanity": 5, "fame": 2 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "你的提议被领导以“我们正在进行头脑风暴”为由驳回了。你感觉自己成了会议室里的异类。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": -8, "fame": -3 } } ]
+          }
+        ]
+      },
+      {
+        "text": "这个会议是一个“意识同步”仪式。领导正在用冗长的发言，将我们的思维频率调整到和公司一致。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你开始尝试主动与这个“公司意识”进行共鸣。你似乎听懂了那些商业黑话背后的真正含义，那是一种关于服从和秩序的低语。",
+          "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "在笔记本上画小人，或者玩手机，精神上提前下班。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
+        "results": [{
+          "weight": 1,
+          "feedback": "你摸了一小时的鱼，感觉自己在这场时间的拉锯战中取得了阶段性的胜利。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 4, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "主动承担起会议主持人的角色，试图搞活气氛，让会议变得有趣起来。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "extrovert" } }],
+        "results": [{
+          "weight": 1,
+          "feedback": "你讲了几个笑话，并组织大家玩起了猜词游戏。会议的议题彻底跑偏了，但所有人都很开心，除了你的领导。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": 5, "fame": -2 } } ]
+        }]
+      },
+      {
+        "text": "开始想象所有与会者都变成了某种动物。比如，滔滔不绝的领导是一只肥硕的河马，而你旁边打瞌睡的同事是一只考拉。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "这个小小的精神游戏让你原本无聊的时间变得有趣起来。你甚至差点笑出了声。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": 4 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "work_coffee_machine_crisis",
+    "title": "咖啡机危机",
+    "text": "办公室的咖啡机坏了。对于依靠咖啡因来维持生命体征的同事们来说，这无异于一场灾难。办公室里弥漫着一股绝望和烦躁的气氛。",
+    "tags": ["work", "daily", "social", "tech"],
+    "priority": 3,
+    "choices": [
+      {
+        "text": "立刻打电话给行政部门报修。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你做了一个最标准、最正确的操作。剩下的就只能等待了。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2 } } ]
+        }]
+      },
+      {
+        "text": "自己动手，尝试修复它。我以前在网上看过维修视频。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你奇迹般地修好了它！在重新飘起的咖啡香气中，你成为了全办公室的英雄。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "fame": 10, "sanity": 8 } } ]
+          },
+          {
+            "weight": 1,
+            "feedback": "你让它坏得更彻底了。行政部门的同事告诉你，公司将从你的工资里扣除一部分维修费。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": -2, "money": -500, "sanity": -5 } } ]
+          }
+        ]
+      },
+      {
+        "text": "这是一个机会！立刻下楼买十几杯咖啡回来，高价卖给那些急需的同事。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "extrovert" } }],
+        "results": [{
+          "weight": 1,
+          "feedback": "你敏锐的商业嗅觉让你小赚了一笔。你感觉自己找到了新的财富密码。",
+          "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "money": 800, "fame": -5 } } ]
+        }]
+      },
+      {
+        "text": "咖啡因是一种“精神枷锁”，用来让我们适应不人道的工作节奏。咖啡机的损坏，是宇宙在给我们一个解放的机会。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你开始向同事们宣传“无咖啡因工作”的理念，并分享你的冥想技巧。大部分人觉得你疯了。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 5, "fame": -3, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "太好了，这下没人有精力来烦我了。我正好可以安安静静地处理我的工作。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
+        "results": [{
+          "weight": 1,
+          "feedback": "在周围一片的哀嚎声中，你享受到了难得的清静，工作效率出奇地高。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 3, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "将咖啡机拟人化，并为它写一篇情真意切的“悼词”，然后发在公司群里。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "你的悼词引起了同事们的共鸣，大家纷纷开始怀念起有咖啡机的美好日子。你在公司里的形象变得有些奇怪。",
+          "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "irony": 3, "fame": 2, "sanity": 3 } } ]
+        }]
+      }
+    ]
+  }
+]

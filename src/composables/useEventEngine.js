@@ -1,7 +1,9 @@
 import { ref } from 'vue';
 import { usePlayerStore } from '@/stores/playerStore';
 import { v4 as uuidv4 } from 'uuid';
+import tagData from '@/data/tags.json';
 
+const { tags: characterTagDefs, gated_event_tags } = tagData;
 let allEvents = [];
 
 export function useEventEngine() {
@@ -17,7 +19,6 @@ export function useEventEngine() {
     isLoading.value = false;
   }
 
-  // ✨ 新增: 按ID查找特定事件的函數
   function findEventById(eventId) {
     return allEvents.find(event => event.id === eventId) || null;
   }
@@ -63,17 +64,51 @@ export function useEventEngine() {
         if (params.has) return player.talents.some(t => t.id === params.has);
         if (params.has_not) return !player.talents.some(t => t.id === params.has_not);
         return false;
+      
+      case 'tag_check':
+        if (params.has) return player.tags.includes(params.has);
+        if (params.has_not) return !player.tags.includes(params.has_not);
+        return false;
+
       default: return true;
     }
   }
+
+  function getPlayerUnlockedEventTags() {
+    const unlocked = new Set();
+    const playerCharTags = player.tags;
+    if (playerCharTags && characterTagDefs) {
+      characterTagDefs.forEach(def => {
+        if (playerCharTags.includes(def.id) && def.unlocks_event_tags) {
+          def.unlocks_event_tags.forEach(tag => unlocked.add(tag));
+        }
+      });
+    }
+    return unlocked;
+  }
+
+  function isEventAvailable(event, playerUnlockedEventTags) {
+    if (event.isUnique && player.triggeredEventIds.has(event.id)) return false;
+    if (event.requiresUnlock && !player.unlockedEventIds.has(event.id)) return false;
+
+    const eventTags = event.tags || [];
+    const relevantGatedTags = eventTags.filter(t => gated_event_tags.includes(t));
+    
+    if (relevantGatedTags.length > 0) {
+      const hasAccess = relevantGatedTags.some(gatedTag => playerUnlockedEventTags.has(gatedTag));
+      if (!hasAccess) {
+        return false;
+      }
+    }
+    
+    return !event.conditions || event.conditions.every(isConditionMet);
+  }
   
   function findTriggerableEvent() {
+    const playerUnlockedEventTags = getPlayerUnlockedEventTags();
     const available = allEvents.filter(event => {
-      // ✨ 修改: 過濾掉 meta 事件，防止它在常規流程中被抽到
       if (event.tags && event.tags.includes('meta')) return false;
-      if (event.isUnique && player.triggeredEventIds.has(event.id)) return false;
-      if (event.requiresUnlock && !player.unlockedEventIds.has(event.id)) return false;
-      return !event.conditions || event.conditions.every(isConditionMet);
+      return isEventAvailable(event, playerUnlockedEventTags);
     });
 
     if (available.length === 0) return null;
@@ -81,7 +116,6 @@ export function useEventEngine() {
     const weights = available.map(event => {
       let finalWeight = Math.max(0.1, event.priority || 1);
 
-      // 方案一: 应用标签权重
       if (event.tags && Array.isArray(event.tags)) {
         event.tags.forEach(tag => {
           if (player.tagProbabilityModifiers[tag]) {
@@ -90,18 +124,17 @@ export function useEventEngine() {
         });
       }
 
-      // 方案三: 应用所有匹配的事件权重调整（包括永久和临时）
       player.eventModifiers.forEach(modifier => {
         if (modifier.eventId === event.id) {
           finalWeight *= modifier.multiplier;
         }
       });
       
-      return Math.max(0, finalWeight); // 确保权重不会是负数
+      return Math.max(0, finalWeight);
     });
 
     const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
-    if (totalWeight <= 0) return null; // 如果所有事件权重都为0，则不触发事件
+    if (totalWeight <= 0) return null;
 
     let randomTarget = Math.random() * totalWeight;
     for (let i = 0; i < available.length; i++) {
@@ -134,7 +167,7 @@ export function useEventEngine() {
     player.triggeredEventIds.add(event.id);
     const choice = makeChoice(event.choices);
     if (choice) {
-      if (choice.id) { // 方案二: 记录选择
+      if (choice.id) {
           player.madeChoices.add(choice.id);
       }
       player.addLog({ message: `> ${choice.text}`, type: 'choice' });
@@ -162,12 +195,9 @@ export function useEventEngine() {
 
   function getManualChoices(count = 3) {
     const finalChoices = [];
+    const playerUnlockedEventTags = getPlayerUnlockedEventTags();
     
-    const availableEvents = allEvents.filter(event => {
-      if (event.isUnique && player.triggeredEventIds.has(event.id)) return false;
-      if (event.requiresUnlock && !player.unlockedEventIds.has(event.id)) return false;
-      return !event.conditions || event.conditions.every(isConditionMet);
-    });
+    const availableEvents = allEvents.filter(event => isEventAvailable(event, playerUnlockedEventTags));
 
     if (availableEvents.length === 0) return [];
 

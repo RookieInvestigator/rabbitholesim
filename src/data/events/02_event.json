@@ -15,9 +15,11 @@
         }]
       },
       {
-        "text": "这不是云，这是“化学尾迹”。“他们”正在向大气中喷洒着什么。",
+        "text": "（内向）这不是云，这是“化学尾迹”。“他们”正在向大气中喷洒着什么。",
         "worldview": "gnosis",
         "magnitude": 1,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "introvert" } }],
         "results": [{
           "weight": 1,
           "feedback": "你开始警惕地呼吸，并回家关上了门窗。你不知道他们在喷洒什么，但绝不会是什么好东西。",
@@ -62,6 +64,16 @@
             "weight": 1,
             "feedback": "你为自己泡了一杯据说能净化身体的特制花草茶。虽然不知道是否真的有效，但这让你感觉安心了不少。",
             "outcomes": [ { "type": "change_stat", "params": { "gnosis": 3, "health": 1, "sanity": 2 } } ]
+        }]
+      },
+      {
+        "text": "立刻组织一场‘观云会’，和邻居们一起讨论这个奇景。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的热情感染了邻居们，你们在楼下进行了一场热烈的、但毫无结果的讨论，邻里关系因此变得更好了。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 2, "fame": 2, "sanity": 3 } } ]
         }]
       }
     ]
@@ -122,7 +134,7 @@
         }]
       },
       {
-        "text": "这不是地图，这是一个“符印”。它描绘的不是物理空间，而是精神世界的路径。",
+        "text": "这个地图描绘的不是物理空间，而是精神世界的路径。",
         "worldview": "weirdness",
         "magnitude": 2,
         "results": [{
@@ -295,7 +307,7 @@
         }]
       },
       {
-        "text": "这东西散发着不祥的气息。它不是一个玩偶，它是一个‘容器’。我应该离它越远越好。",
+        "text": "这东西散发着不祥的气息。它是一个‘容器’。我应该离它越远越好。",
         "worldview": "gnosis",
         "magnitude": 2,
         "results": [{
@@ -321,6 +333,8 @@
         "text": "绝佳的直播素材！买下它，然后回家给它办一场“招魂仪式”，全程直播。",
         "worldview": "irony",
         "magnitude": 2,
+        "isSpecial": true,
+        "conditions": [{ "type": "tag_check", "params": { "has": "extrovert" } }],
         "results": [{
           "weight": 1,
           "feedback": "你的直播大获成功。在你装模作样地念咒时，玩偶的头突然自己转了180度。这个惊悚的片段为你带来了巨大的流量和名气。",
@@ -345,6 +359,16 @@
           "weight": 1,
           "feedback": "在你哼唱时，你似乎看到玩偶脸上的微笑变得柔和了一些。摊主用看疯子的眼神看着你。",
           "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "就这么远远地看着，在速写本上画下它诡异的微笑。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你不想与它产生任何实际的接触，只是将其作为一个异质的、闯入你视野的‘景观’记录了下来。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 2, "sanity": 1 } } ]
         }]
       }
     ]
