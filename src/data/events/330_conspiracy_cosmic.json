@@ -1,0 +1,185 @@
+[
+  {
+    "id": "cosmic_silent_star",
+    "title": "沉默的星星",
+    "text": "你像往常一样仰望夜空，试图找到熟悉的猎户座。但你反复确认，腰带上最亮的那颗星……消失了。新闻、网络、天文学会，没有任何相关的报告，仿佛那颗星从未存在过，只有[[logic:你的记忆在提出抗议]]。",
+    "tags": ["conspiracy", "cosmic", "mystery", "unique"],
+    "priority": 8,
+    "isUnique": true,
+    "choices": [
+      {
+        "text": "我的眼睛出问题了，或者是我记错了。星星不可能就这么消失。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你揉了揉眼睛，决定不再去想这件事。宇宙的尺度太过庞大，而人类的[[logic:感官和记忆总是不可靠的]]。也许是最近压力太大了。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 5, "sanity": 3 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "这是一个‘删除’。某种[[gnosis:更高维度的力量]]正在编辑现实，而我恰好能察觉到‘编辑痕迹’。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你感到一阵莫名的恐惧，但也有一丝兴奋。世界在你眼中不再是坚不可摧的实体，而是一段[[gnosis:可以被修改的代码]]。你接触到了宇宙的‘后台’。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 10, "sanity": -8 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "立刻上论坛发帖：《震惊！猎户座腰带少了一颗星！是[[irony:曼德拉效应]]还是宇宙级阴谋？》",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 6,
+            "feedback": "你的帖子火了，引来了一大群UFO爱好者和阴谋论者。你们彻夜讨论，从“光线被偏折”聊到“戴森球遮蔽”。虽然没什么结论，但你感觉不那么孤单了。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "fame": 5, "irony": 3, "sanity": 5 } }
+            ]
+          },
+          {
+            "weight": 3,
+            "feedback": "你的帖子被当成钓鱼帖，收到了大量嘲讽。有人回复了一张星图，上面那颗星星好好地待在原处。是你疯了，还是[[weirdness:他们都活在幻觉里]]？",
+            "outcomes": [
+              { "type": "change_stat", "params": { "fame": -2, "sanity": -5 } }
+            ]
+          },
+          {
+            "weight": 1,
+            "feedback": "你的帖子很快就消失了，仿佛从未存在过。你的账号也被封禁，理由是‘传播不实信息’。你感到一阵[[gnosis:寒意从屏幕对面传来]]。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "anonymity": -10, "sanity": -8, "gnosis": 5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "星星回家了。它在天上待了太久，现在该下班了。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你向着那个空洞挥了挥手，祝它旅途愉快。夜空似乎也因此变得不那么寂寞了。你甚至觉得，在那个位置，有什么东西[[weirdness:也向你挥了挥手]]。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "weirdness": 8, "sanity": 2 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "租用远程天文台的观测时间，亲自验证。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "conditions": [{ "type": "stat_check", "params": { "money": ">=", "value": 500 } }],
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你花了一笔钱，连接上专业级的望远镜。经过比对，你确认了那片天区的星图和公开数据完全一致，那颗星好好地待在那里。是你的记忆出了问题，还是[[gnosis:有人在你观测的瞬间修改了结果]]？",
+            "outcomes": [
+              { "type": "change_stat", "params": { "money": -500, "logic": 10, "sanity": -5 } }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cosmic_numbers_station",
+    "title": "深空电台",
+    "text": "你淘来的一台[[tech:老式短波收音机]]在午夜时分突然开始发出声音。一个单调的电子女声正在用一种你听不懂的语言，播报着一连串数字。在背景的杂音中，你似乎听到了[[weirdness:脉冲星的稳定节拍]]。",
+    "tags": ["conspiracy", "cosmic", "tech", "mystery"],
+    "priority": 7,
+    "choices": [
+      {
+        "text": "录下来，试着用密码学知识破解。这可能是某种军用或间谍密电。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你花了一整晚分析，发现数字的排列组合毫无规律，但背景的脉冲星信号却指向一个[[gnosis:从未被标记过的空间坐标]]。你把坐标记录了下来。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 10, "sanity": -5, "gnosis": 5 } },
+              { "type": "add_tag", "params": { "tag": "has_deepspace_coordinate" } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "这不是给地球人听的。我应该尝试与之共鸣。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "当你集中精神时，那些数字似乎在你脑中化为了[[gnosis:旋转的星图和陌生的几何体]]。你感到自己的意识正在被拉向远方，并领悟了什么。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 12, "sanity": -10, "weirdness": 5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "跟着它念。说不定能学会一门外星语。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你用蹩脚的发音模仿着那个声音。收音机里的声音突然停了，几秒后，用同样单调的电子音说出了一句标准的普通话：‘[[weirdness:请不要打断广播]]’。然后它又继续播报起数字。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "sanity": -10, "weirdness": 10 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "关了收音机。大半夜的吵死了。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "世界清静了。你感觉自己拒绝了一个天大的麻烦，或是错过了一个天大的机遇。不过，[[irony:能睡个好觉才是最重要的]]。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "irony": 5, "sanity": 5, "logic": -2, "gnosis": -2 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "把这段声音采样，做成一首噪音音乐发布。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "conditions": [{ "type": "stat_check", "params": { "irony": ">=", "value": 20 } }],
+        "results": [
+          {
+            "weight": 2,
+            "feedback": "你把这段“外星信号”做成了一首前卫的噪音音乐，并上传到了网上。出乎意料，它在小众圈子里火了，被誉为‘[[irony:来自宇宙深处的真实呼唤]]’。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "fame": 10, "money": 200, "irony": 5 } }
+            ]
+          },
+          {
+            "weight": 1,
+            "feedback": "你的音乐无人问津，只有一条评论：‘什么玩意儿？吵死了。’ 但几天后，一个匿名账号给你打了一笔钱，留言是：‘[[gnosis:谢谢你，我们收到了。不要再广播了。]]’",
+            "outcomes": [
+              { "type": "change_stat", "params": { "money": 1000, "anonymity": -5, "gnosis": 5 } }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

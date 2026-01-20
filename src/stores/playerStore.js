@@ -142,6 +142,15 @@ export const usePlayerStore = defineStore('player', {
             }
             break;
           
+          case 'remove_tag':
+            if (outcome.params.tag) {
+              const tagIndex = this.tags.indexOf(outcome.params.tag);
+              if (tagIndex > -1) {
+                this.tags.splice(tagIndex, 1);
+              }
+            }
+            break;
+          
           case 'remove_status_effect':
             if (outcome.params.statusId) {
               this.statusEffects = this.statusEffects.filter(e => e.id !== outcome.params.statusId);

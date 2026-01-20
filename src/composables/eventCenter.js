@@ -202,7 +202,7 @@ export function useEventCenter() {
       });
     });
 
-    if (specialChoices.length > 0 && Math.random() < 0.8) {
+    if (specialChoices.length > 0 && Math.random() < 0.5) {
       const selectedSpecial = specialChoices[Math.floor(Math.random() * specialChoices.length)];
       finalChoices.push(selectedSpecial);
     }

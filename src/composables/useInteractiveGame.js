@@ -35,9 +35,11 @@ export function useInteractiveGame() {
       let choicesToShow = (event.choices || []).filter(c => {
         return !c.conditions || c.conditions.every(isConditionMet);
       });
+
+      choicesToShow.sort(() => 0.5 - Math.random());
       
       if (choicesToShow.length > 3) {
-        choicesToShow.sort(() => 0.5 - Math.random());
+
         choicesToShow = choicesToShow.slice(0, 3);
       }
       

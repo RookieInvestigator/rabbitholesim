@@ -1,7 +1,7 @@
 [
   {
     "id": "work_endless_meeting",
-    "title": "永无止境的会议",
+    "title": "官僚危害",
     "text": "你被拉进了一个临时会议。一个半小时过去了，议题已经从‘第三季度营销策略’，漂移到了‘茶水间的咖啡豆品牌是否需要升级’。你看着PPT上毫无意义的图表，感觉自己的灵魂正在被缓慢地抽走。",
     "tags": ["work", "daily", "social"],
     "priority": 5,
@@ -155,6 +155,127 @@
           "weight": 1,
           "feedback": "你的悼词引起了同事们的共鸣，大家纷纷开始怀念起有咖啡机的美好日子。你在公司里的形象变得有些奇怪。",
           "outcomes": [ { "type": "change_stat", "params": { "weirdness": 5, "irony": 3, "fame": 2, "sanity": 3 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "work_ghost_mail",
+    "title": "幽灵邮件",
+    "text": "你正在处理一堆积压的邮件，收件箱里突然跳出了一封新邮件。发件人是你部门去年因病去世的同事，标题是‘关于XX项目的几个问题’，邮件内容也是他生前一贯的简洁风格，仿佛他从未离开过。",
+    "tags": ["work", "mystery", "supernatural", "horror", "ghost"],
+    "priority": 8,
+    "choices": [
+      {
+        "text": "这是黑客盗用了他的邮箱地址发送的钓鱼邮件。检查一下邮件头信息，然后报告给IT部门。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "IT部门检查后，发现这封邮件的发送IP地址竟然来自公司内部……的一个已经废弃的服务器。他们建议你删除邮件，不要回复。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "gnosis": 5, "sanity": -8 } } ]
+        }]
+      },
+      {
+        "text": "直接删除，就当没看见。这种事最好不要扯上关系。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [{
+          "weight": 1,
+          "feedback": "你迅速删除了邮件，并清空了回收站。但那个发件人的名字一直在你脑中盘旋。",
+          "outcomes": [ { "type": "change_stat", "params": { "sanity": -3 } } ]
+        }]
+      },
+      {
+        "text": "他只是放不下工作。我应该像往常一样回复他，解答他的问题。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你详细地回复了邮件。几分钟后，你收到了一封新的回复，邮件里只有两个字：‘谢谢’。之后，你再也没有收到过他的邮件。",
+            "outcomes": [ { "type": "change_stat", "params": { "gnosis": 8, "weirdness": 5, "sanity": 5 } } ]
+        }]
+      },
+      {
+        "text": "回复邮件：‘老王，你那边网速怎么样？需不需要我给你烧个路由器过去？’",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "对方没有回复。你用一种黑色幽默的方式化解了这次灵异事件。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": 3 } } ]
+        }]
+      },
+      {
+        "text": "群发给所有同事：‘诈尸了，速来围观’。",
+        "worldview": "irony",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的行为引起了公愤，尤其是和老王关系好的几位同事。你被领导叫去训话，并被要求公开道歉。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 5, "fame": -10, "sanity": -10 } } ]
+        }]
+      }
+    ]
+  },
+  {
+    "id": "work_cylinder_seal",
+    "title": "古代文书",
+    "text": "公司新来了一位作风复古的同事。他不使用电脑，所有工作都在一种柔软的泥板上完成。今天，他递给你一块刚写好的泥板，以及一个由青金石制成的滚筒印章，请你为这份‘文件’进行‘签核’。印章上刻满了繁复的楔形文字和扭曲的神明图案，散发着一股凉意。",
+    "tags": ["work", "mystery", "supernatural", "history", "unique"],
+    "priority": 10,
+    "choices": [
+      {
+        "text": "拒绝。告诉他所有文件必须通过公司的电子系统归档。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+          "weight": 1,
+          "feedback": "同事失望地收回了印章和泥板，一声不吭地走开了。",
+          "outcomes": [ { "type": "change_stat", "params": { "logic": 5, "fame": -2 } } ]
+        }]
+      },
+      {
+        "text": "这是一份来自古代的契约。我将用我的意志，为其注入力量。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "你接过印章，用力在湿润的泥板上滚过。在你完成签核的瞬间，印章上的图案似乎闪烁了一下，你感到自己与某个古老而强大的存在建立了联系。你获得了一件物品。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 12, "sanity": -10 } },
+              { "type": "add_item", "params": { "itemId": "sumerian_contract_seal" } }
+            ]
+        }]
+      },
+      {
+        "text": "“这东西看起来比我的萝卜章酷多了！”把它当玩具一样在自己手臂上滚来滚去。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "你的手臂上留下了一长串奇怪的印记。那位同事惊恐地看着你，一把抢过印章，仿佛你亵渎了什么圣物。",
+            "outcomes": [ { "type": "change_stat", "params": { "irony": 8, "sanity": -5, "health": -2 } } ]
+        }]
+      },
+      {
+        "text": "将印章贴在额头上，试图通过第三只眼解读上面的信息。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "results": [{
+            "weight": 1,
+            "feedback": "冰冷的触感让你打了个寒颤。你的脑海中涌入了大量关于洪水、星辰和无名神祇的破碎画面，让你头痛欲裂。",
+            "outcomes": [ { "type": "change_stat", "params": { "weirdness": 15, "sanity": -20 } } ]
+        }]
+      },
+      {
+        "text": "拿出手机，拍下印章上的图案，用图片搜索看看这是什么时代的文物。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [{
+            "weight": 1,
+            "feedback": "搜索结果显示，这个印章的风格与任何已知的苏美尔或阿卡德时期的文物都对不上。它的形制更古老、更……陌生。",
+            "outcomes": [ { "type": "change_stat", "params": { "logic": 8, "gnosis": 5, "sanity": -5 } } ]
         }]
       }
     ]
