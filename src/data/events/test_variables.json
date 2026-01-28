@@ -1,0 +1,66 @@
+[
+  {
+    "id": "test_variable_system_main",
+    "title": "测试变量系统",
+    "text": "这是一个测试变量和随机文本的事件。\n\n【随机】你看到了{红色|绿色|蓝色}的门。\n【变量】treasure_count: {var.treasure_count}\n\n试试随机选择和变量操作吧！",
+    "tags": ["test"],
+    "isUnique": false,
+    "priority": 1000,
+    "requiresUnlock": true,
+    "choices": [
+      {
+        "text": "设置 treasure_count = 5",
+        "outcomes": [
+          { "type": "set_variable", "params": { "key": "treasure_count", "value": 5 } }
+        ]
+      },
+      {
+        "text": "treasure_count + 5",
+        "outcomes": [
+          { "type": "change_variable", "params": { "key": "treasure_count", "delta": 5 } }
+        ]
+      },
+      {
+        "text": "检查: treasure_count > 7",
+        "conditions": [
+          { "type": "variable_check", "params": { "key": "treasure_count", "operator": ">", "value": 7 } }
+        ],
+        "outcomes": [
+          { "type": "add_log", "params": { "message": "发现大宝藏！" } }
+        ]
+      },
+      {
+        "text": "条件文本: {$treasure_count>=7:很多|很少} 宝藏",
+        "outcomes": []
+      },
+      {
+        "text": "设置 treasure_count = 42",
+        "outcomes": [
+          { "type": "set_variable", "params": { "key": "treasure_count", "value": 42 } }
+        ]
+      },
+      {
+        "text": "清空 treasure_count",
+        "outcomes": [
+          { "type": "clear_variable", "params": { "key": "treasure_count" } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unlock_test_variable_system",
+    "title": "解锁变量测试",
+    "text": "你需要先解锁测试事件才能使用。",
+    "tags": ["test"],
+    "isUnique": true,
+    "priority": 10000000,
+    "choices": [
+      {
+        "text": "解锁测试事件",
+        "outcomes": [
+          { "type": "unlocksEvent", "params": { "eventId": "test_variable_system_main" } }
+        ]
+      }
+    ]
+  }
+]

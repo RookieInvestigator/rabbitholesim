@@ -12,10 +12,7 @@ const worldviewColors = {
 
 function parseText(text) {
   if (!text) return '';
-  // Escape basic HTML to prevent injection, except for our own markup
   const escapedText = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
-  // Replace our custom markup with styled spans
   return escapedText.replace(/\[\[(logic|gnosis|weirdness|irony):(.+?)\]\]/g, (match, tendency, content) => {
     const color = worldviewColors[tendency] || '#888';
     return `<span style="color: ${color}; font-weight: 500;">${content}</span>`;
@@ -30,6 +27,7 @@ function parseText(text) {
         v-for="log in player.log" 
         :key="log.id" 
         :class="['log-entry', `type-${log.type}`]"
+        class="log-entry-enter"
       >
         <template v-if="log.type === 'event' && typeof log.message === 'object'">
           <div class="event-title">{{ log.message.title || 'NULL_ID' }}</div>
@@ -59,27 +57,37 @@ function parseText(text) {
 }
 
 .log-entry {
-  position: relative; /* for pseudo-elements */
+  position: relative;
   align-self: flex-start;
   width: 100%;
-  border-left: 1px solid #222; /* 預設為深灰 */
+  border-left: 1px solid #222;
   padding-left: 1.2rem;
   transition: border-color 0.3s ease;
+  animation: slideIn 0.3s ease-out;
 }
 
-/* ✨ 指示器：將最後一個條目的邊框調亮 ✨ */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .log-entry:last-child {
-  border-left-color: #555; /* 亮灰色，指示當前位置 */
+  border-left-color: #555;
 }
 
 .event-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #ddd; /* 提升基礎標題亮度 */
+  color: #ddd;
   margin: 0 0 0.5rem 0;
 }
 
-/* 稀有度顏色，加一點光暈更顯眼 */
 .type-rare .event-title { 
   color: #5cadff;
   text-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
@@ -95,13 +103,12 @@ function parseText(text) {
 
 .event-text, .generic-text {
   font-size: 0.95rem;
-  color: #aaa; /* 提升基礎文本亮度 */
-  line-height: 1.7; /* 增加行高，提升可讀性 */
+  color: #aaa;
+  line-height: 1.7;
   white-space: pre-wrap;
   margin: 0;
 }
 
-/* 玩家選擇的樣式，更清晰 */
 .type-choice .generic-text { 
   color: #888;
   font-style: italic;

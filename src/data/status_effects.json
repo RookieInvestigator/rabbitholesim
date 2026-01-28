@@ -1,44 +1,97 @@
 {
   "paranoid": {
     "name": "偏执",
+    "description": "你开始怀疑一切。",
     "outcomes": [
+      { "type": "change_stat", "params": { "sanity": -0.5 } }
+    ],
+    "outcomes_per_level": [
       { "type": "change_stat", "params": { "sanity": -0.5, "gnosis": 0.2 } }
     ]
   },
   "inspired": {
     "name": "灵感迸发",
+    "description": "灵感如泉涌。",
     "outcomes": [
       { "type": "change_stat", "params": { "irony": 0.3, "weirdness": 0.3 } }
     ]
   },
   "in_debt": {
     "name": "负债",
+    "description": "你欠下了债务。级数越高，每回合扣除的钱越多。",
     "outcomes": [
-      { "type": "change_stat", "params": { "sanity": -1, "health": -0.5, "money": -50 } }
-    ]
+      { "type": "change_stat", "params": { "sanity": -1, "money": -50 } }
+    ],
+    "outcomes_per_level": [
+      { "type": "change_stat", "params": { "money": -50 } }
+    ],
+    "levels_on_duration": 5
   },
   "regeneration": {
     "name": "再生",
+    "description": "你的身体正在缓慢恢复。",
     "outcomes": [
+      { "type": "change_stat", "params": { "health": 1 } }
+    ],
+    "outcomes_per_level": [
       { "type": "change_stat", "params": { "health": 1 } }
     ]
   },
   "derealization": {
     "name": "现实解离",
+    "description": "现实变得不那么真实。",
     "outcomes": [
+      { "type": "change_stat", "params": { "sanity": -1 } }
+    ],
+    "outcomes_per_level": [
       { "type": "change_stat", "params": { "sanity": -1 } }
     ]
   },
   "indentured_servitude": {
     "name": "契约奴役",
+    "description": "你被卖身还债。",
     "outcomes": [
       { "type": "change_stat", "params": { "money": -50, "sanity": -1, "health": -1 } }
+    ],
+    "outcomes_per_level": [
+      { "type": "change_stat", "params": { "money": -50 } }
     ]
   },
   "marked_target": {
     "name": "心有余悸",
+    "description": "那个眼神让你不安。",
     "outcomes": [
       { "type": "change_stat", "params": { "sanity": -0.3 } }
+    ]
+  },
+  "focus": {
+    "name": "专注",
+    "description": "你进入专注状态，学习效率提升。",
+    "outcomes": [
+      { "type": "change_stat", "params": { "logic": 2 } }
+    ],
+    "outcomes_per_level": [
+      { "type": "change_stat", "params": { "logic": 1 } }
+    ]
+  },
+  "blur": {
+    "name": "恍惚",
+    "description": "精神恍惚，注意力涣散。",
+    "outcomes": [
+      { "type": "change_stat", "params": { "sanity": -1 } }
+    ],
+    "outcomes_per_level": [
+      { "type": "change_stat", "params": { "sanity": -1, "logic": -0.5 } }
+    ]
+  },
+  "fatigue": {
+    "name": "疲劳",
+    "description": "身体逐渐疲惫。级数越高，健康下降越多。",
+    "outcomes": [
+      { "type": "change_stat", "params": { "health": -2, "sanity": -1 } }
+    ],
+    "outcomes_per_level": [
+      { "type": "change_stat", "params": { "health": -2 } }
     ]
   }
 }

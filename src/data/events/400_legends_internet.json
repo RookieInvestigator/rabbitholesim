@@ -1,1 +1,89 @@
-[]
+[
+  {
+    "id": "legend_knockoff_painting",
+    "title": "山寨诅咒",
+    "text": "在一个廉价的在线艺术品商店里，你看到一幅画得相当拙劣的画，标题是《双脚推开他》。构图明显在模仿某张著名的网络怪谈图片，但画中的男孩变成了女孩，她身后的玻璃门外，印着几只模糊的[[irony:卡通脚印]]。商品描述煞有其事地写着：“注意！画中的女孩和脚印可能会在半夜移动！给你带来‘惊喜’！”",
+    "tags": ["internet", "legend", "supernatural", "art", "irony"],
+    "priority": 3,
+    "isUnique": true,
+    "choices": [
+      {
+        "text": "拙劣的模仿，毫无价值。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你一眼就看出了这是对著名怪谈的蹩脚模仿，画工粗糙，创意更是零分。你摇了摇头，关掉了这个污染你眼睛的网页。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "太搞笑了，花10块钱买下来挂在家里当乐子。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 4,
+            "feedback": "几天后，你收到了这幅画。你把它挂在墙上，每次看到它都想笑。你的朋友们来做客时，也纷纷表示这绝对是顶级的行为艺术。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "money": -10, "sanity": 5, "irony": 8 } }
+            ]
+          },
+          {
+            "weight": 1,
+            "feedback": "你把画挂在墙上。那天深夜，你被客厅传来的“哒、哒、哒”的脚步声吵醒。你走出去，看到那幅画掉在了地上，而你的地板上，出现了一串小小的、湿漉漉的[[weirdness:脚印]]，从墙边一直延伸到你卧室门口。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "money": -10, "sanity": -20, "weirdness": 15 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "给卖家留言，嘲笑他的“诅咒”描述。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你在评论区写道：“我买了，现在画里的女孩已经跑出来帮我做家务了，五星好评。”你的幽默感引来了不少点赞，但卖家给你发来一条私信：“是吗？那祝你和她相处愉快。”",
+            "outcomes": [
+              { "type": "change_stat", "params": { "irony": 10, "fame": 2 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "研究一下这种“二次创作”怪谈的现象。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你发现，许多都市传说在网络传播中都会产生变体。你甚至找到了一个论坛，专门收集和讨论这些“[[gnosis:模因突变体]]”。有人提出理论：当一个传说被足够多的人相信时，它的力量就会溢出，甚至感染到它的模仿者身上。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 15, "sanity": -5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "就算是假的，也感觉有点毛骨悚然。",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "尽管理智告诉你这很可笑，但你的情感却无法摆脱那种原始的恐惧。你关掉网页，但脑海里总是不由自主地想起那扇门和外面的脚印。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "sanity": -5, "weirdness": 2 } }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

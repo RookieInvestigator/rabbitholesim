@@ -1,0 +1,289 @@
+[
+  {
+    "id": "meme_nonexistent_town_qiqikan",
+    "title": "不存在的小镇：齐齐坎",
+    "text": "你最近上网，总会刷到一个莫名其妙的地名：“齐齐坎”。起初你没在意，但它像病毒一样扩散开来。无数网友仿佛都去过那里，他们煞有其事地分享着“齐齐坎生活小贴士”：“镇中心的巨大独眼猫雕像，记得只在日落后参拜”；“别吃街边贩卖的彩色浆果，除非你想进行一次计划外的灵魂出窍”；“齐齐坎的特产是发光蘑菇，官方唯一指定货币”。但当你打开任何地图软件，输入“齐齐坎”，得到的永远是“查无此地”。这究竟是一场精心策划的[[irony:集体网络行为艺术]]，还是你遗忘了什么重要的事？",
+    "tags": ["internet", "meme", "irony", "social", "nonexistent_places"],
+    "priority": 5,
+    "isUnique": true,
+    "choices": [
+      {
+        "text": "加入他们，编一个自己的“齐齐坎”故事。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你灵感迸发，在论坛写道：‘刚从齐齐坎回来，累死我了。那里的公交车都是活的巨型甲虫，虽然颠了点，但胜在绝对服从指挥。哦对了，别忘了给甲虫师傅喂食苔藓，不然它会罢工。’ 你的帖子因其生动的细节而迅速走红，收获了成千上万的点赞和转发。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "irony": 10, "fame": 8, "sanity": 5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "在搜索引擎上仔细查查这个地方。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 4,
+            "feedback": "你花了好几个小时，像一个真正的侦探一样，在搜索引擎的废墟中挖掘。你交叉比对信息，追踪最早的帖子来源，分析每一个“目击者”的账号。结果显而易见：所有的线索都指向几个著名的创意论坛，一切都是新时代的‘楚门的世界’。你松了口气，同时也为自己的清醒和理性感到一丝自得。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 8, "sanity": 2 } }
+            ]
+          },
+          {
+            "weight": 1,
+            "feedback": "在搜索引擎翻到快要放弃的第二十几页，一个标题由乱码组成的链接吸引了你的注意。你点进去，网页加载了很久，最后只显示出一个破碎的论坛页面。在文字和图片碎片的缝隙中，一张被严重压缩的黑白照片若隐若现。你把图片下载下来，用软件放大、锐化，最终，在照片的右下角，你看到了一个几乎无法辨认的路牌，上面似乎用英文写着：“Welcome to Qiqikan, Pop. ???”。[[gnosis:一股寒意从你的脊椎窜了上来]]。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": -5, "gnosis": 15, "sanity": -15, "weirdness": 5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "嗤之以鼻，又一场无聊的网络狂欢。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你关掉了所有相关网页，感觉自己的大脑得到了净化。把宝贵的时间浪费在这种虚无缥缈的集体幻想上，简直是可悲。你决定出门散散步，感受一下真实世界坚实的地面和温暖的阳光，那比任何虚构的狂欢都更让你安心。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "等一下...我好像真的去过这个地方？",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [{ "type": "stat_check", "params": { "stat": "sanity", "operator": "<", "value": 40 } }],
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "当大家都在编造故事时，你的脑海中却浮现出真实的、不请自来的记忆碎片：灰蒙蒙的天空下，行人都穿着一模一样的灰色长袍，沉默地行走；空气中弥漫着一股潮湿泥土和蘑菇混合的气味。这是网络Meme触发了你的虚假记忆，还是[[weirdness:一段被深埋的真实经历正在苏醒]]？你开始感到恐惧。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "weirdness": 20, "sanity": -15 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "在最专业的地图软件上进行地毯式搜索。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你黑进了一个提供高精度卫星地图服务的非公开图层，试图找到一些蛛丝马迹。在某个流传最广的“齐齐坎坐标”上，你惊讶地发现那片区域被一片巨大的、纯黑色的像素块覆盖了，就像一个永远无法加载出来的贴图错误。你尝试了所有方法，都无法窥探这片[[logic:数据的虚空]]之下究竟隐藏着什么。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 10, "gnosis": 5, "sanity": -5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "这背后一定有阴谋，是某种社会实验。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你匿名在各个阴谋论论坛发帖，将“齐齐坎”Meme解读为一次大规模的全球记忆植入实验。你旁征博引，将它与几个著名的都市传说联系起来，声称这是“深层政府”筛选超能力者的前奏。你的理论虽然荒诞，却意外地获得了一小撮人的狂热追捧，他们尊称你为“唤醒者”。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 10, "fame": 5, "anonymity": -5 } }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meme_nonexistent_island_hybrasil",
+    "title": "不存在的岛屿：海波拉西",
+    "text": "在一个专门收录古籍善本的线上图书馆，你偶然翻开了一份文艺复兴时期的[[gnosis:古旧航海图]]电子版。图的精确度令人惊叹，但就在你以为这不过是一份普通历史文件时，你在爱尔兰以西的茫茫大西洋中，发现了一个被清晰标注出来的圆形岛屿——“海波拉西”（Hy-Brasil）。上面甚至用极小的字迹画着聚落和港口的标志。然而，当你切换到任何现代地图，那个坐标点上都只有一片虚无的蓝色。",
+    "tags": ["internet", "meme", "gnosis", "history", "nonexistent_places"],
+    "priority": 4,
+    "isUnique": true,
+    "choices": [
+      {
+        "text": "不过是古代地图的常见错误罢了。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你耸耸肩，关闭了网页。你很清楚，在那个充满想象和未知的大航海时代，地图上画满幽灵岛、海怪和黄金国是再正常不过的事情。这不过是历史长河中一个无伤大雅的错误，一个早已被现代科学勘正的浪漫幻想。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "翻阅各种书籍，深入研究“海波拉西”的传说。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你一头扎进了图书馆和网络数据库。你发现“海波拉西”的传说远比你想象的要古老和普遍。传说它被永恒的迷雾笼罩，每隔七年才会在凡人眼前出现一天。岛上居住着拥有高度文明的先民，他们的城市由黄金与水晶构成。这些[[gnosis:引人入胜的故事]]让你对世界的真实性产生了怀疑。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 15, "sanity": -5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "在历史论坛上分享这个发现。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你的帖子在历史爱好者和地图迷中引发了热烈的讨论。有人贴出了更多版本的古地图，佐证或反驳你的观点。一个热门回复写道：“有没有可能，不是岛屿消失了，而是我们所在的这个‘现实’，本身就是一座每隔七年出现一次的海波拉西？”",
+            "outcomes": [
+              { "type": "change_stat", "params": { "irony": 8, "fame": 5, "sanity": 3 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "用现代卫星地图对比那个坐标。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 3,
+            "feedback": "你打开了高清卫星地图，将古地图上的坐标转换后精确定位。那里只有一望无际的蓝色海面，海浪的纹理在阳光下清晰可见。你甚至能看到几条鲸鱼留下的航迹。科学和理性再一次告诉你，那里什么都没有，过去没有，现在也没有。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 8, "sanity": 2 } }
+            ]
+          },
+          {
+            "weight": 1,
+            "feedback": "就在你将卫星图像的缩放比例调到最大的那一瞬间，你的电脑屏幕猛地闪烁了一下，仿佛电流不稳。一帧[[weirdness:绝对不该存在的画面]]混了进来：一个完美的圆形岛屿轮廓，以及岛屿中央一座反射着柔和白光的尖塔。下一秒，画面恢复了正常的无尽汪洋，但你的心脏还在狂跳。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": -5, "weirdness": 20, "sanity": -10 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "也许我可以去那里看看。",
+        "worldview": "weirdness",
+        "magnitude": 2,
+        "conditions": [{ "type": "stat_check", "params": { "stat": "money", "operator": ">=", "value": 10000 } }],
+        "results": [
+           {
+            "weight": 1,
+            "feedback": "你花了一大笔钱包下了一条可靠的渔船，从爱尔兰的港口出发，前往那个神秘的坐标。船长以为你疯了。在海上漂泊了几天后，你们到达了目的地。这里什么都没有，只有海风和无尽的浪涛。你在失望中返航，但内心深处，某种东西被永远地改变了。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "money": -10000, "weirdness": 15, "sanity": 5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "如果它不想被看见，那就用别的方法看。",
+        "worldview": "gnosis",
+        "magnitude": 3,
+        "isSpecial": true,
+        "conditions": [{ "type": "stat_check", "params": { "stat": "gnosis", "operator": ">", "value": 100 } }],
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你关掉电脑，在绝对安静的房间中央盘腿坐下。你放空思想，回忆着从某本古籍中看到的星体投射法门，将自己的意识凝聚成一点，投向那个大洋深处的坐标。在[[gnosis:穿越了无尽的精神海洋]]后，你的“眼前”出现了一片温暖的浓雾。你尝试进入，却被一股温柔而坚定的力量推开。当你从冥想中醒来时，发现房间里弥漫着一股浓郁的海盐和水仙花的香气。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 30, "sanity": -20 } }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meme_nonexistent_country_finland",
+    "title": "不存在的国家：芬兰",
+    "text": "你在一个常逛的论坛的子版块的置顶帖的摘要的链接里，发现了一个结构完整、逻辑自洽得可怕的阴谋论：“芬兰其实不存在”。该理论图文并茂地论证，这个所谓的“国家”其实是上世纪日本和前苏联为了合法化他们在波罗的海的渔业合作，而共同捏造的地理学谎言。所有你听说的“芬兰人”、“芬兰语”和“芬兰产品”，背后都有一个名为“日俄渔业同盟”的影子组织在运作，这是一个[[irony:何其宏大的骗局]]。",
+    "tags": ["internet", "meme", "irony", "conspiracy", "nonexistent_places"],
+    "priority": 4,
+    "isUnique": true,
+    "choices": [
+      {
+        "text": "笑死，网友的脑洞也太大了。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你被这个理论的荒谬和严肃之间的反差逗得前仰后合。为了让更多人分享这份快乐，你把帖子转发到了自己的社交媒体上，并附言：“郑重声明，本人从未去过芬兰，也从未吃过芬兰渔场的鱼，请‘日俄渔业同盟’不要再监视我了，谢谢。”",
+            "outcomes": [
+              { "type": "change_stat", "params": { "irony": 10, "sanity": 5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "看看他们所谓的“证据”。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你带着批判性的眼光，点开了理论支持者们整理的“证据包”。里面有：诺基亚的早期专利和日本某重工企业的相似性分析；芬兰语和日语在某些句法结构上的惊人一致；以及利用全球GPS数据分析出的，在“芬兰”上空可疑的永久性数据盲点。这些[[gnosis:似是而非的论证]]让你开始怀疑自己对现实的认知。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 10, "logic": -5, "sanity": -8 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "用事实和数据写一篇雄文来驳斥它。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你花了一个下午，查阅了大量历史文献、联合国人口普查数据和芬兰的进出口贸易记录，写出了一篇逻辑严密、证据确凿的驳论文。你的文章得到了主流舆论的赞扬，但阴谋论者们却在你的评论区狂欢，声称你的雄文恰恰证明了你是“日俄渔业同盟”的高级宣传员。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 15, "fame": 5, "anonymity": -5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "制作“芬兰是什么？”的Meme。",
+        "worldview": "irony",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你下载了一张世界地图，用绘图软件将芬兰的区域整个涂黑，并用巨大的红色字体打上问号，配文：“这里到底是什么？在线等，挺急的。”这张简单粗暴的图片迅速在网络上传播开来，成为了“芬兰不存在”阴谋论的标志性Meme，出现在各种无关的场合。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "irony": 15, "fame": 10 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "那...我手机上的“诺基亚”是什么？",
+        "worldview": "weirdness",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你翻出了自己珍藏多年的，可以砸核桃的诺基亚老手机。你凝视着机身上那个熟悉的“NOKIA”标志，它在你眼中开始变得陌生、扭曲。突然，你似乎从那几个字母的组合中，看出了日语“Nihon”和俄语“Oktyabr”的影子。你猛地眨了眨眼，一切又恢复了正常。[[weirdness:是你看错了吗？还是你看到了真相的一角？]]",
+            "outcomes": [
+              { "type": "change_stat", "params": { "weirdness": 15, "sanity": -10 } }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

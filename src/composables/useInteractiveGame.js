@@ -1,13 +1,14 @@
 import { ref } from 'vue';
 import { usePlayerStore } from '@/stores/playerStore';
 import { useEventCenter } from '@/composables/eventCenter';
+import { choiceAddsConflictingTag } from '@/utils/tagUtils';
+import { parseText } from '@/utils/textParser';
 import { v4 as uuidv4 } from 'uuid';
 
-// ✨ 用于无事发生时，伪装成选项的系统指令
 const TIME_PASSES_CHOICE = {
   id: 'system_time_passes',
   text: '[ 时间流逝... ]',
-  isSystemChoice: true, 
+  isSystemChoice: true,
 };
 
 export function useInteractiveGame() {
@@ -19,56 +20,54 @@ export function useInteractiveGame() {
   const nextTurn = () => {
     if (!player.isAlive) return;
 
-    // 清空上一回合的选项
     currentManualChoices.value = []; 
     player.nextTurn();
 
-    // ✨ 核心修正：在回合更新后，玩家可能因状态结算而“死亡”。
-    // 如果“死亡”，则立刻停止，让 GameView 中的 watch 来处理结束流程。
     if (!player.isAlive) return;
 
     const event = findTriggerableEvent();
     
     if (event) {
-      player.addLog({ message: { title: event.title, text: event.text }, type: 'event' });
-      
+      const title = parseText(event.title, { player });
+      const text = parseText(event.text, { player });
+      player.addLog({ message: { title, text }, type: 'event' });
+
       let choicesToShow = (event.choices || []).filter(c => {
-        return !c.conditions || c.conditions.every(isConditionMet);
+        if (c.isSystemChoice) return true;
+        if (c.conditions && !c.conditions.every(isConditionMet)) return false;
+        if (choiceAddsConflictingTag(c, player.tags)) return false;
+        return true;
       });
 
       choicesToShow.sort(() => 0.5 - Math.random());
-      
-      if (choicesToShow.length > 3) {
 
+      if (choicesToShow.length > 3) {
         choicesToShow = choicesToShow.slice(0, 3);
       }
-      
-      currentManualChoices.value = choicesToShow.map(c => ({ 
-        ...c, 
+
+      currentManualChoices.value = choicesToShow.map(c => ({
+        ...c,
+        text: parseText(c.text, { player }),
         uuid: uuidv4(),
         parentEventId: event.id
       }));
 
-      // 如果事件没有有效选项，则提供“时间流逝”选项
       if (currentManualChoices.value.length === 0) {
         player.addLog({ message: '> 你感到一阵迷茫，不知何去何从。', type: 'system' });
         currentManualChoices.value = [TIME_PASSES_CHOICE];
       }
     } else {
-      // 如果找不到任何可触发事件，也提供“时间流逝”选项
       player.addLog({ message: '你静静地思索着，没有什么特别的事情发生。', type: 'system' });
       currentManualChoices.value = [TIME_PASSES_CHOICE];
     }
   };
 
   const handleChoiceSelected = (choice) => {
-    // 如果是系统生成的“时间流逝”选项，则直接进入下一回合
     if (choice.isSystemChoice) {
       nextTurn();
       return;
     }
     
-    // --- 以下是选择处理逻辑 ---
     if (choice.parentEventId) player.triggeredEventIds.add(choice.parentEventId);
     if (choice.id) player.madeChoices.add(choice.id);
     player.addLog({ message: `> ${choice.text}`, type: 'choice' });
@@ -88,11 +87,13 @@ export function useInteractiveGame() {
     }
 
     if (finalResult) {
+      if (finalResult.feedback) {
+        const feedback = parseText(finalResult.feedback, { player });
+        player.addLog({ message: feedback, type: 'feedback' });
+      }
       player.applyOutcomes(finalResult.outcomes);
-      if (finalResult.feedback) player.addLog({ message: finalResult.feedback, type: 'feedback' });
     }
 
-    // ✨ 核心修改：处理完结果后，如果玩家存活，立刻进入下一回合
     if (player.isAlive) {
       nextTurn();
     }

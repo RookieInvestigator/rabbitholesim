@@ -4,7 +4,8 @@ import GameView from './views/GameView.vue';
 import StartView from './views/StartView.vue';
 import EditorView from './views/EditorView.vue';
 import DlcManagementView from './views/DlcManagementView.vue';
-import AchievementView from './views/AchievementView.vue'; // 1. 导入成就视图
+import AchievementView from './views/AchievementView.vue';
+import DeveloperConsole from './components/DeveloperConsole.vue';
 import { useDataCenter } from '@/composables/dataCenter';
 
 const currentView = ref('start');
@@ -59,6 +60,7 @@ function handleNavigation(view) {
       <DlcManagementView v-else-if="currentView === 'dlc'" @back="handleNavigation('start')" />
       <AchievementView v-else-if="currentView === 'achievements'" @back="handleNavigation('start')" />
     </main>
+    <DeveloperConsole />
   </div>
 </template>
 

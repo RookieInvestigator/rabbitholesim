@@ -1,7 +1,13 @@
 // src/composables/eventCenter.js
 import { usePlayerStore } from '@/stores/playerStore';
-import { useDataCenter } from '@/composables/dataCenter'; // ✨ 导入新的数据中心！
+import { useDataCenter } from '@/composables/dataCenter';
+import { useDevConfig } from '@/composables/devConfig';
 import { v4 as uuidv4 } from 'uuid';
+import tagData from '@/data/tags.json';
+import { getConflictingTags, choiceAddsConflictingTag } from '@/utils/tagUtils';
+import { parseText } from '@/utils/textParser';
+
+const { gated_event_tags } = tagData;
 
 /**
  * @description 这是全新的事件处理中心！
@@ -9,9 +15,9 @@ import { v4 as uuidv4 } from 'uuid';
  */
 export function useEventCenter() {
   const player = usePlayerStore();
-  const { gameData } = useDataCenter(); // ✨ 从数据中心获取游戏数据
+  const { gameData } = useDataCenter();
+  const { showTestEvents } = useDevConfig();
 
-  // ✨ 备注: allEvents 现在从 gameData.events 获取，不再自己加载了！
   const allEvents = gameData.events;
 
   /**
@@ -66,6 +72,27 @@ export function useEventCenter() {
         if (params.has) return player.tags && player.tags.includes(params.has);
         if (params.has_not) return !player.tags || !player.tags.includes(params.has_not);
         return false;
+      case 'variable_check':
+        if (params.key) {
+          const value = player.variables?.[params.key];
+          if (value === undefined) {
+            if (params.exists !== undefined) {
+              return !params.exists;
+            }
+            return false;
+          }
+          const numValue = Number(value);
+          switch (params.operator) {
+            case '>=': return numValue >= params.value;
+            case '<=': return numValue <= params.value;
+            case '==': return numValue == params.value;
+            case '>': return numValue > params.value;
+            case '<': return numValue < params.value;
+            case '!=': return numValue != params.value;
+            default: return !!value;
+          }
+        }
+        return false;
       default: return true;
     }
   }
@@ -77,6 +104,7 @@ export function useEventCenter() {
   function findTriggerableEvent() {
     const available = allEvents.filter(event => {
       if (event.tags && event.tags.includes('meta')) return false;
+      if (!showTestEvents.value && event.tags && event.tags.includes('test')) return false;
       if (event.isUnique && player.triggeredEventIds.has(event.id)) return false;
       if (event.requiresUnlock && !player.unlockedEventIds.has(event.id)) return false;
       return !event.conditions || event.conditions.every(isConditionMet);
@@ -119,7 +147,11 @@ export function useEventCenter() {
    * @returns {object|null}
    */
   function makeChoice(choices) {
-    const validChoices = (choices || []).filter(c => !c.conditions || c.conditions.every(isConditionMet));
+    const validChoices = (choices || []).filter(c => {
+      if (c.conditions && !c.conditions.every(isConditionMet)) return false;
+      if (choiceAddsConflictingTag(c, player.tags)) return false;
+      return true;
+    });
     if (validChoices.length === 0) return null;
     const scores = validChoices.map(choice => {
       const worldviewForce = (player[choice.worldview] || 0) * (choice.magnitude || 1);
@@ -140,12 +172,15 @@ export function useEventCenter() {
    * @param {object} event - 要处理的事件对象
    */
   function processEvent(event) {
-    player.addLog({ message: { title: event.title, text: event.text }, type: 'event' });
+    const title = parseText(event.title, { player });
+    const text = parseText(event.text, { player });
+    player.addLog({ message: { title, text }, type: 'event' });
     player.triggeredEventIds.add(event.id);
     const choice = makeChoice(event.choices);
     if (choice) {
       if (choice.id) player.madeChoices.add(choice.id);
-      player.addLog({ message: `> ${choice.text}`, type: 'choice' });
+      const choiceText = parseText(choice.text, { player });
+      player.addLog({ message: `> ${choiceText}`, type: 'choice' });
       let finalResult = null;
       if (choice.results && choice.results.length > 0) {
         const weights = choice.results.map(r => r.weight || 1);
@@ -160,8 +195,11 @@ export function useEventCenter() {
         finalResult = { feedback: choice.feedback, outcomes: choice.outcomes };
       }
       if (finalResult) {
+        if (finalResult.feedback) {
+          const feedback = parseText(finalResult.feedback, { player });
+          player.addLog({ message: feedback, type: 'feedback' });
+        }
         player.applyOutcomes(finalResult.outcomes);
-        if (finalResult.feedback) player.addLog({ message: finalResult.feedback, type: 'feedback' });
       }
     } else {
       player.addLog({ message: '> 你感到一阵迷茫，不知何去何从。', type: 'system' });
@@ -173,14 +211,16 @@ export function useEventCenter() {
    * @param {number} count - 需要的选项数量
    * @returns {Array<object>}
    */
-  function getManualChoices(count = 3) {
-    const finalChoices = [];
-    
-    const availableEvents = allEvents.filter(event => {
-      if (event.isUnique && player.triggeredEventIds.has(event.id)) return false;
-      if (event.requiresUnlock && !player.unlockedEventIds.has(event.id)) return false;
-      return !event.conditions || event.conditions.every(isConditionMet);
-    });
+   function getManualChoices(count = 3) {
+     const finalChoices = [];
+
+     const availableEvents = allEvents.filter(event => {
+       if (event.tags && event.tags.includes('meta')) return false;
+       if (!showTestEvents.value && event.tags && event.tags.includes('test')) return false;
+       if (event.isUnique && player.triggeredEventIds.has(event.id)) return false;
+       if (event.requiresUnlock && !player.unlockedEventIds.has(event.id)) return false;
+       return !event.conditions || event.conditions.every(isConditionMet);
+     });
 
     if (availableEvents.length === 0) return [];
 
@@ -193,7 +233,12 @@ export function useEventCenter() {
           ...choice,
           parentEvent: { id: event.id, title: event.title, text: event.text },
         };
+        
         const choiceConditionsMet = !choice.conditions || choice.conditions.every(isConditionMet);
+        const hasTagConflict = choiceAddsConflictingTag(choice, player.tags);
+        
+        if (hasTagConflict) return;
+        
         if (choice.isSpecial && choiceConditionsMet) {
           specialChoices.push(choiceWithMeta);
         } else if (!choice.isSpecial && choiceConditionsMet) {

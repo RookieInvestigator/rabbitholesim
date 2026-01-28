@@ -1,0 +1,77 @@
+[
+  {
+    "id": "test_tag_conflict_system",
+    "title": "【测试】标签互斥系统验证",
+    "text": "这是一个用于测试标签互斥机制的事件。请确保你拥有以下标签之一：student、employee、neet、introvert、extrovert、optimist、pessimist。系统会自动显示/隐藏对应选项。",
+    "tags": ["test"],
+    "priority": 1000,
+    "isUnique": false,
+    "choices": [
+      {
+        "text": "【无replace】添加 neet（如果已有 student/employee 会被过滤）",
+        "worldview": "logic",
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你成为了NEET。",
+            "outcomes": [
+              { "type": "add_tag", "params": { "tag": "neet" } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "【有replace】添加 employee（即使有冲突标签也会显示并自动替换）",
+        "worldview": "logic",
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你成为了职员。",
+            "outcomes": [
+              { "type": "add_tag", "params": { "tag": "employee", "replace": true } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "【无replace】添加 extrovert（如果已有 introvert 会被过滤）",
+        "worldview": "irony",
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你变得外向起来。",
+            "outcomes": [
+              { "type": "add_tag", "params": { "tag": "extrovert" } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "【有replace】添加 introvert（即使有冲突标签也会显示并自动替换）",
+        "worldview": "gnosis",
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你变得内向了。",
+            "outcomes": [
+              { "type": "add_tag", "params": { "tag": "introvert", "replace": true } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "添加 optimist（不会与任何现有标签冲突，始终显示）",
+        "worldview": "weirdness",
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你变得乐观了。",
+            "outcomes": [
+              { "type": "add_tag", "params": { "tag": "optimist" } }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

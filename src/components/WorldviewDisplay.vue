@@ -8,9 +8,11 @@ const format = (num) => Number(num).toFixed(0);
 
 const displayedEffects = computed(() => {
   return player.statusEffects.map(effect => {
+    const def = allStatusEffects[effect.id];
     return {
       id: effect.id,
-      name: allStatusEffects[effect.id]?.name || effect.id
+      name: def?.name || effect.id,
+      levels: effect.levels
     };
   });
 });
@@ -62,14 +64,13 @@ const displayedEffects = computed(() => {
 
     <div v-if="player.statusEffects.length > 0" class="effects-tray">
       <div v-for="effect in displayedEffects" :key="effect.id" class="status-tag">
-        {{ effect.name }}
+        {{ effect.name }}<span v-if="effect.levels && effect.levels > 1" class="effect-level"> {{ effect.levels }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-/* 全面採用思源黑體與直角細邊框 */
 .monitor-container {
   font-family: "Source Han Sans SC", "Source Han Sans TC", sans-serif;
   background-color: #000;
@@ -79,7 +80,6 @@ const displayedEffects = computed(() => {
   gap: 0.8rem;
 }
 
-/* 4 欄橫向網格 */
 .worldview-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -89,24 +89,22 @@ const displayedEffects = computed(() => {
 .worldview-card {
   border: 1px solid #111;
   background: #000;
-  padding: 0.8rem 0; 
+  padding: 0.8rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   text-align: center;
-  transition: background-color 0.2s ease; /* 過渡效果 */
+  transition: background-color 0.2s ease;
 }
 
-/* --- Hover Effects --- */
 .logic-card:hover { background-color: rgba(52, 152, 219, 0.1); }
 .gnosis-card:hover { background-color: rgba(155, 89, 182, 0.1); }
 .weirdness-card:hover { background-color: rgba(46, 204, 113, 0.1); }
 .irony-card:hover { background-color: rgba(230, 126, 34, 0.1); }
 
-
-.icon { 
-  font-size: 1.2rem; 
+.icon {
+  font-size: 1.2rem;
   margin-bottom: 0.4rem;
 }
 
@@ -115,27 +113,26 @@ const displayedEffects = computed(() => {
 .icon-weirdness { color: #2ecc71; }
 .icon-irony { color: #e67e22; }
 
-.value { 
-  font-size: 1.2rem; 
-  font-weight: 700; 
-  color: #fff; 
+.value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
   line-height: 1;
 }
 
-.label { 
-  font-size: 0.7rem; 
-  color: #888; /* 標籤文字顏色更亮 */
+.label {
+  font-size: 0.7rem;
+  color: #888;
   font-weight: 500;
   margin-top: 0.4rem;
   letter-spacing: 1px;
 }
 
-/* 核心指標 2x2 佈局 */
 .core-metrics {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1px;
-  background-color: #111; 
+  background-color: #111;
   border: 1px solid #111;
 }
 
@@ -158,12 +155,11 @@ const displayedEffects = computed(() => {
   color: #888;
 }
 
-/* 狀態標籤區域 */
 .effects-tray {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  justify-content: center; 
+  justify-content: center;
   border-top: 1px dashed #111;
   padding-top: 0.8rem;
 }
@@ -176,39 +172,41 @@ const displayedEffects = computed(() => {
   font-weight: bold;
 }
 
-/* ✨ 手機版專屬緊湊優化 ✨ */
+.effect-level {
+  color: #c66;
+  margin-left: 2px;
+}
+
 @media (max-width: 768px) {
   .monitor-container {
-    gap: 0.4rem; /* 縮小容器間距 */
+    gap: 0.4rem;
   }
 
   .worldview-card {
-    padding: 0.4rem 0; /* 縮減上下內邊距 */
+    padding: 0.4rem 0;
   }
 
   .icon {
-    font-size: 1rem; /* 縮小 Emoji */
+    font-size: 1rem;
     margin-bottom: 0.2rem;
   }
 
   .value {
-    font-size: 1rem; /* 縮小數值 */
+    font-size: 1rem;
   }
 
-  .label { 
-    font-size: 0.6rem; /* 標籤文字顏色更亮 */
+  .label {
+    font-size: 0.6rem;
     color: #888;
-    font-weight: 500;
     margin-top: 0.2rem;
-    letter-spacing: 1px;
   }
 
   .metric-item {
-    padding: 0.3rem 0.6rem; /* 縮減核心指標內距 */
+    padding: 0.3rem 0.6rem;
   }
 
   .m-label, .m-value {
-    font-size: 0.65rem; /* 統一縮小核心指標文字 */
+    font-size: 0.65rem;
   }
 
   .effects-tray {

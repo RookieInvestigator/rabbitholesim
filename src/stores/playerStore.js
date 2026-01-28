@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { useAchievementStore } from './achievementStore';
 import allStatusEffects from '@/data/status_effects.json';
+import { getConflictingTags } from '@/utils/tagUtils';
 
 const getInitialState = () => ({
   isAlive: true,
@@ -15,7 +16,7 @@ const getInitialState = () => ({
   fame: 0,
   anonymity: 100,
 
-//事件进度
+  //事件进度
   primitivism: 0,
 
   deathReason: null,
@@ -27,13 +28,16 @@ const getInitialState = () => ({
   talents: [],
   triggeredEventIds: new Set(),
   unlockedEventIds: new Set(),
-  tags: [], // 储存玩家的永久状态Tag
+  tags: [],
   log: [],
 
-  // --- 统一后的状态 ---
-  madeChoices: new Set(), // 方案二: 记录玩家做出的选择ID
-  tagProbabilityModifiers: {}, // 方案一: 储存事件标签的出现概率乘数 { tagName: multiplier }
-  eventModifiers: [], // 方案三 (统一): 储存所有事件概率调整 { eventId, multiplier, duration }
+   // --- 统一后的状态 ---
+  madeChoices: new Set(),
+  tagProbabilityModifiers: {},
+  eventModifiers: [],
+
+  // 数值变量系统
+  variables: {},
 });
 
 export const usePlayerStore = defineStore('player', {
@@ -128,16 +132,55 @@ export const usePlayerStore = defineStore('player', {
             break;
           case 'add_status_effect':
             if (outcome.params.statusId) {
-              if (!this.statusEffects.some(e => e.id === outcome.params.statusId)) {
-                this.statusEffects.push({ id: outcome.params.statusId, duration: outcome.params.duration || 9999 });
+              const existing = this.statusEffects.find(e => e.id === outcome.params.statusId);
+              const levels = outcome.params.levels || 1;
+              const duration = outcome.params.duration || 9999;
+              
+              if (existing) {
+                existing.levels = (existing.levels || 1) + levels;
+                existing.duration = Math.max(existing.duration, duration);
+              } else {
+                this.statusEffects.push({ 
+                  id: outcome.params.statusId, 
+                  duration: duration,
+                  levels: levels
+                });
+              }
+            }
+            break;
+
+          case 'remove_status_effect':
+            if (outcome.params.statusId) {
+              const levelsToRemove = outcome.params.levels || 1;
+              const existing = this.statusEffects.find(e => e.id === outcome.params.statusId);
+              if (existing) {
+                existing.levels = (existing.levels || 1) - levelsToRemove;
+                if (existing.levels <= 0) {
+                  this.statusEffects = this.statusEffects.filter(e => e.id !== outcome.params.statusId);
+                }
               }
             }
             break;
 
           case 'add_tag':
             if (outcome.params.tag) {
-              if (!this.tags.includes(outcome.params.tag)) {
-                this.tags.push(outcome.params.tag);
+              if (outcome.params.replace) {
+                const conflicts = getConflictingTags(outcome.params.tag);
+                const tagsToRemove = this.tags.filter(t => conflicts.includes(t));
+                tagsToRemove.forEach(t => {
+                  const idx = this.tags.indexOf(t);
+                  if (idx > -1) this.tags.splice(idx, 1);
+                });
+                if (!this.tags.includes(outcome.params.tag)) {
+                  this.tags.push(outcome.params.tag);
+                }
+                if (tagsToRemove.length > 0) {
+                  this.addLog({ message: `标签已替换：${tagsToRemove.join(', ')} → ${outcome.params.tag}`, type: 'feedback' });
+                }
+              } else {
+                if (!this.tags.includes(outcome.params.tag)) {
+                  this.tags.push(outcome.params.tag);
+                }
               }
             }
             break;
@@ -153,7 +196,14 @@ export const usePlayerStore = defineStore('player', {
           
           case 'remove_status_effect':
             if (outcome.params.statusId) {
-              this.statusEffects = this.statusEffects.filter(e => e.id !== outcome.params.statusId);
+              const levelsToRemove = outcome.params.levels || 1;
+              const existing = this.statusEffects.find(e => e.id === outcome.params.statusId);
+              if (existing) {
+                existing.levels = (existing.levels || 1) - levelsToRemove;
+                if (existing.levels <= 0) {
+                  this.statusEffects = this.statusEffects.filter(e => e.id !== outcome.params.statusId);
+                }
+              }
             }
             break;
           
@@ -178,19 +228,46 @@ export const usePlayerStore = defineStore('player', {
             this.triggerEnding(outcome.params.endingId, '你的探索迎来了终局...');
             break;
             
-          case 'reset_event':
-            if (outcome.params.eventId) {
-              this.triggeredEventIds.delete(outcome.params.eventId);
-            }
-            break;
-          
-          case 'unlock_achievement':
-            if (outcome.params.achievementId) {
-              achievementStore.unlockAchievement(outcome.params.achievementId);
-            }
-            break;
-        }
-      });
+           case 'reset_event':
+             if (outcome.params.eventId) {
+               this.triggeredEventIds.delete(outcome.params.eventId);
+             }
+             break;
+
+            case 'unlock_achievement':
+              if (outcome.params.achievementId) {
+                achievementStore.unlockAchievement(outcome.params.achievementId);
+              }
+              break;
+
+            case 'set_variable':
+              if (outcome.params.key) {
+                this.variables[outcome.params.key] = outcome.params.value;
+              }
+              break;
+
+            case 'change_variable':
+              if (outcome.params.key) {
+                if (this.variables[outcome.params.key] === undefined) {
+                  this.variables[outcome.params.key] = 0;
+                }
+                this.variables[outcome.params.key] += outcome.params.delta || 0;
+              }
+              break;
+
+            case 'clear_variable':
+              if (outcome.params.key) {
+                delete this.variables[outcome.params.key];
+              }
+              break;
+
+            case 'add_log':
+              if (outcome.params.message) {
+                this.addLog({ message: outcome.params.message, type: outcome.params.type || 'feedback' });
+              }
+              break;
+          }
+       });
     },
 
     // ✨ 新增：专门处理因数值归零导致的“死亡”
@@ -207,7 +284,7 @@ export const usePlayerStore = defineStore('player', {
 
       const isInDebt = this.statusEffects.some(e => e.id === 'in_debt');
       if (this.money < 0 && !isInDebt) {
-        this.statusEffects.push({ id: 'in_debt', duration: 9999 });
+        this.statusEffects.push({ id: 'in_debt', duration: 9999, levels: 1, debtDays: 0 });
         this.addLog({ message: '你的财务状况急转直下，你陷入了负债。', type: 'feedback' });
       }
       else if (this.money >= 0 && isInDebt) {
@@ -215,13 +292,36 @@ export const usePlayerStore = defineStore('player', {
         this.addLog({ message: '你还清了所有欠款，终于松了一口气。', type: 'feedback' });
       }
 
-      // 处理 status effects
       if (this.statusEffects.length > 0) {
         this.statusEffects.forEach(effect => {
           const effectData = allStatusEffects[effect.id];
-          if (effectData && effectData.outcomes) {
-            this.applyOutcomes(effectData.outcomes);
+          const levels = effect.levels || 1;
+          
+          if (effectData) {
+            if (effectData.outcomes) {
+              this.applyOutcomes(effectData.outcomes);
+            }
+            
+            if (levels > 1 && effectData.outcomes_per_level) {
+              const extraLevels = levels - 1;
+              for (let i = 0; i < extraLevels; i++) {
+                this.applyOutcomes(effectData.outcomes_per_level);
+              }
+            }
+            
+            if (effectData.levels_on_duration) {
+              effect.debtDays = (effect.debtDays || 0) + 1;
+              const daysPerLevel = effectData.levels_on_duration;
+              if (effect.debtDays % daysPerLevel === 0) {
+                effect.levels = (effect.levels || 1) + 1;
+                const effectDef = allStatusEffects[effect.id];
+                if (effectDef && effectDef.outcomes_per_level) {
+                  this.applyOutcomes(effectDef.outcomes_per_level);
+                }
+              }
+            }
           }
+          
           effect.duration--;
         });
         this.statusEffects = this.statusEffects.filter(effect => effect.duration > 0);

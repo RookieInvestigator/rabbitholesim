@@ -1,0 +1,96 @@
+[
+  {
+    "id": "test_status_levels_main",
+    "title": "测试状态级数系统",
+    "text": "这是一个测试事件，用于验证 status effect 级数系统。\n\n【测试说明】\n- 负债效果：每回合扣除 money -50，级数越高扣得越多\n- 负债特殊：每 5 天自动 +1 级\n- 专注效果：每级增加 logic\n- 疲劳效果：每级额外扣 health\n\n请通过选择来测试各级数效果：",
+    "tags": ["test"],
+    "isUnique": false,
+    "priority": 1000,
+    "requiresUnlock": true,
+    "choices": [
+      {
+        "text": "【增加负债】获得 +500 金钱，获得 1 级负债",
+        "outcomes": [
+          { "type": "change_stat", "params": { "money": 500 } },
+          { "type": "add_status_effect", "params": { "statusId": "in_debt", "levels": 1, "duration": 9999 } }
+        ]
+      },
+      {
+        "text": "【减少负债】负债级数 -1",
+        "conditions": [
+          { "type": "status_check", "params": { "has": "in_debt" } }
+        ],
+        "outcomes": [
+          { "type": "remove_status_effect", "params": { "statusId": "in_debt", "levels": 1 } }
+        ]
+      },
+      {
+        "text": "【完全移除】彻底摆脱负债",
+        "conditions": [
+          { "type": "status_check", "params": { "has": "in_debt" } }
+        ],
+        "outcomes": [
+          { "type": "remove_status_effect", "params": { "statusId": "in_debt" } }
+        ]
+      },
+      {
+        "text": "【专注 buff】获得专注效果 +2 级",
+        "outcomes": [
+          { "type": "add_status_effect", "params": { "statusId": "focus", "levels": 2, "duration": 10 } }
+        ]
+      },
+      {
+        "text": "【疲劳 debuff】获得疲劳效果 +3 级",
+        "outcomes": [
+          { "type": "add_status_effect", "params": { "statusId": "fatigue", "levels": 3, "duration": 10 } }
+        ]
+      },
+      {
+        "text": "【减少专注】专注级数 -1",
+        "conditions": [
+          { "type": "status_check", "params": { "has": "focus" } }
+        ],
+        "outcomes": [
+          { "type": "remove_status_effect", "params": { "statusId": "focus", "levels": 1 } }
+        ]
+      },
+      {
+        "text": "【观察状态】每回合回复 3 级再生（3 回合）",
+        "outcomes": [
+          { "type": "add_status_effect", "params": { "statusId": "regeneration", "levels": 3, "duration": 3 } }
+        ]
+      },
+      {
+        "text": "【一键清理】移除所有测试状态",
+        "outcomes": [
+          { "type": "remove_status_effect", "params": { "statusId": "in_debt" } },
+          { "type": "remove_status_effect", "params": { "statusId": "focus" } },
+          { "type": "remove_status_effect", "params": { "statusId": "fatigue" } },
+          { "type": "remove_status_effect", "params": { "statusId": "regeneration" } }
+        ]
+      },
+      {
+        "text": "【快速扣钱】直接负债 5 级",
+        "outcomes": [
+          { "type": "add_status_effect", "params": { "statusId": "in_debt", "levels": 5, "duration": 9999 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unlock_test_status_levels",
+    "title": "解锁测试事件",
+    "text": "你需要先解锁测试事件才能使用。",
+    "tags": ["test"],
+    "isUnique": true,
+    "priority": 10000000,
+    "choices": [
+      {
+        "text": "解锁测试事件",
+        "outcomes": [
+          { "type": "unlocksEvent", "params": { "eventId": "test_status_levels_main" } }
+        ]
+      }
+    ]
+  }
+]

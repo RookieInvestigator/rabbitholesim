@@ -1,0 +1,113 @@
+[
+  {
+    "id": "ooze_black_ceiling",
+    "title": "天花板上的黑渍",
+    "text": "你醒来时，感觉有什么东西滴到了脸上。睁开眼，你看到天花板上有一块拳头大小的[[weirdness:黑色污渍]]，一滴粘稠、油亮的液体正悬在半空，摇摇欲坠。它看起来像原油，又像某种生物的体液，散发着一股类似旧书和臭氧混合的奇特气味。",
+    "tags": ["supernatural", "weird", "daily", "horror"],
+    "priority": 5,
+    "isUnique": true,
+    "choices": [
+      {
+        "text": "用毛巾把它擦掉。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 6,
+            "feedback": "你用湿毛巾费力地擦拭，黑色物质比想象中更顽固。擦了半天，污渍只是变淡了一些，但不再滴落了。毛巾变得漆黑，像是被墨水浸透。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "sanity": -2, "health":-1 } }
+            ]
+          },
+          {
+            "weight": 3,
+            "feedback": "在你擦拭的时候，那东西似乎“活”了过来，它顺着毛巾缠上了你的手。你感到一阵刺骨的冰冷，急忙甩开。污渍消失了，但你的手臂上留下了一道黑色的印记。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "sanity": -10, "weirdness": 10 } }
+            ]
+          },
+          {
+            "weight": 1,
+            "feedback": "毛巾刚一接触，那团粘液就猛地收缩，然后像水蛭一样钻进了你的皮肤！你没感到疼痛，只觉得有什么东西在你体内游走，大脑里充满了[[gnosis:陌生的低语]]。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "sanity": -25, "gnosis": 20, "weirdness": 5 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "找个容器接住滴落的液体。",
+        "worldview": "logic",
+        "magnitude": 2,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你拿了一个玻璃杯放在下面。液体滴入杯中，发出“嘶嘶”的轻响，杯底很快积了一小滩。也许之后会有用。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "logic": 5, "weirdness": 5 } },
+              { "type": "add_item", "params": { "itemId": "black_ooze_sample" } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "尝尝看是什么味道。",
+        "worldview": "weirdness",
+        "magnitude": 3,
+        "isSpecial": true,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你伸出舌头，接住了一滴。一股无法形容的味道在你嘴里炸开：是铁锈、是墨水、是星空、也是遗忘。你的视野开始扭曲，[[weirdness:世界的颜色]]在你眼中变得前所未有的鲜活。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "health": -20, "sanity": -20, "weirdness": 30, "gnosis": 10 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "无视它，也许过一会就自己干了。",
+        "worldview": "logic",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你翻了个身，决定眼不见为净。但那股奇怪的味道似乎一直在你的鼻尖萦绕。第二天，污渍消失了，仿佛一切都没发生过。真的没发生过吗？",
+            "outcomes": [
+              { "type": "change_stat", "params": { "sanity": 2 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "拍照发到网上，问问网友这是什么。",
+        "worldview": "irony",
+        "magnitude": 1,
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你把照片发到社交媒体。网友们纷纷开始玩梗：“这是石油，你发财了！”“是毒液共生体，快和它融合！”“我家也一样，习惯就好。”在一片插科打诨中，你似乎得到了某种[[irony:赛博慰藉]]。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "fame": 5, "irony": 5, "sanity": 3 } }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "这是一种交流的尝试。我应该回应它。",
+        "worldview": "gnosis",
+        "magnitude": 2,
+        "conditions": [{ "type": "stat_check", "params": { "stat": "gnosis", "operator": ">", "value": 30 } }],
+        "results": [
+          {
+            "weight": 1,
+            "feedback": "你凝视着那团黑色，尝试理解它的存在。你伸出手，将精神集中于其上。一瞬间，一段[[gnosis:不属于你的记忆]]涌入脑海：一个冰冷的、由纯粹几何构成的维度，以及一个正在“流泪”的宏伟存在。",
+            "outcomes": [
+              { "type": "change_stat", "params": { "gnosis": 25, "sanity": -15 } }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
