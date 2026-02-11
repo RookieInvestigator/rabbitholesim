@@ -27,7 +27,6 @@ const gameMode = ref('interactive');
 const loadedCustomStats = ref([]);
 const logContainer = ref(null);
 
-// --- 滾動邏輯 ---
 const scrollToBottom = async () => {
   await nextTick();
   if (logContainer.value) {
@@ -59,8 +58,13 @@ function restartGame() {
   gameState.value = 'talent';
 }
 
-function showEditor() { gameState.value = 'editor'; }
-function hideEditor() { gameState.value = 'talent'; }
+function showEditor() {
+  gameState.value = 'editor';
+}
+
+function hideEditor() {
+  gameState.value = 'talent';
+}
 
 watch([() => player.isAlive, () => player.endingTriggered], ([isAlive, endingTriggered]) => {
   if (gameState.value !== 'playing') return;
@@ -85,7 +89,7 @@ watch([() => player.isAlive, () => player.endingTriggered], ([isAlive, endingTri
 <template>
   <div class="terminal-frame">
     <div class="layout-grid" v-if="gameState === 'playing'">
-      
+
       <section class="module monitor-section">
         <header class="wing-head">
           <span>MONITOR</span>
@@ -106,7 +110,7 @@ watch([() => player.isAlive, () => player.endingTriggered], ([isAlive, endingTri
       <section class="module command-section">
         <header class="wing-head">COMMAND_INPUT</header>
         <div class="choice-scroll-lock">
-          <ChoiceDisplay 
+          <ChoiceDisplay
             v-if="gameMode === 'interactive' && currentManualChoices.length > 0"
             :choices="currentManualChoices"
             @choice-selected="handleChoiceSelected"
@@ -124,71 +128,89 @@ watch([() => player.isAlive, () => player.endingTriggered], ([isAlive, endingTri
 </template>
 
 <style scoped>
-/* 全面採用思源黑體與硬核終端美學 */
 .terminal-frame {
   height: 100vh;
-  background: #000;
-  color: #fff;
+  background: var(--bg-color);
+  color: var(--text-primary);
   overflow: hidden;
-  font-family: "Source Han Sans SC", "Source Han Sans TC", sans-serif;
+  font-family: var(--font-sans);
 }
 
-/* 核心響應式網格 */
 .layout-grid {
   display: grid;
   height: 100%;
 }
 
-/* PC 版佈局：380px 左欄，其餘右欄 */
 @media (min-width: 769px) {
   .layout-grid {
     grid-template-columns: 380px 1fr;
     grid-template-rows: auto 1fr;
-    grid-template-areas: 
+    grid-template-areas:
       "monitor log"
       "command log";
   }
 }
 
-/* 手機版佈局：指令區置底，日誌居中伸展 */
 @media (max-width: 768px) {
   .layout-grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
-    grid-template-areas: 
+    grid-template-areas:
       "monitor"
       "log"
       "command";
   }
 }
 
-/* 區域指定 */
-.monitor-section { grid-area: monitor; border-right: 1px solid #111; border-bottom: 1px solid #111; }
-.log-section { grid-area: log; overflow: hidden; display: flex; flex-direction: column; }
-.command-section { grid-area: command; border-right: 1px solid #111; display: flex; flex-direction: column; }
-
-/* 手機版邊框修正 */
-@media (max-width: 768px) {
-  .monitor-section { border-right: none; }
-  .command-section { border-right: none; border-top: 1px solid #111; }
-  .log-section { border-bottom: 1px solid #111; }
+.monitor-section {
+  grid-area: monitor;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
-/* 模組內容樣式 */
+.log-section {
+  grid-area: log;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.command-section {
+  grid-area: command;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .monitor-section {
+    border-right: none;
+  }
+
+  .command-section {
+    border-right: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .log-section {
+    border-bottom: 1px solid var(--border);
+  }
+}
+
 .module {
-  background: #000;
+  background: var(--bg-color);
 }
 
 .wing-head {
   height: 28px;
-  background: #080808;
-  border-bottom: 1px solid #111;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border);
   padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.65rem;
-  color: #333;
+  color: var(--text-muted);
   letter-spacing: 2px;
 }
 
@@ -198,28 +220,41 @@ watch([() => player.isAlive, () => player.endingTriggered], ([isAlive, endingTri
 
 .choice-scroll-lock {
   padding: 1rem;
-  overflow: hidden; /* 強制選項區域不滾動 */
+  overflow: hidden;
 }
 
-/* 日誌捲動區域 */
 .log-container-fixed {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #222 #000;
+  scrollbar-color: var(--border) var(--bg-color);
 }
 
-.log-container-fixed::-webkit-scrollbar { width: 2px; }
-.log-container-fixed::-webkit-scrollbar-thumb { background: #222; }
+.log-container-fixed::-webkit-scrollbar {
+  width: 2px;
+}
+
+.log-container-fixed::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
 
 .status-msg {
-  color: #1a1a1a;
+  color: var(--bg-tertiary);
   font-size: 0.8rem;
   text-align: center;
   margin-top: 1rem;
 }
 
-.exit-link { background: transparent; border: none; color: #333; cursor: pointer; font-size: 0.6rem; }
-.exit-link:hover { color: #833; }
+.exit-link {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.6rem;
+}
+
+.exit-link:hover {
+  color: var(--danger);
+}
 </style>

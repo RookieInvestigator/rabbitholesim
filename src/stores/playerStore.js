@@ -185,29 +185,16 @@ export const usePlayerStore = defineStore('player', {
             }
             break;
           
-          case 'remove_tag':
-            if (outcome.params.tag) {
-              const tagIndex = this.tags.indexOf(outcome.params.tag);
-              if (tagIndex > -1) {
-                this.tags.splice(tagIndex, 1);
-              }
-            }
-            break;
-          
-          case 'remove_status_effect':
-            if (outcome.params.statusId) {
-              const levelsToRemove = outcome.params.levels || 1;
-              const existing = this.statusEffects.find(e => e.id === outcome.params.statusId);
-              if (existing) {
-                existing.levels = (existing.levels || 1) - levelsToRemove;
-                if (existing.levels <= 0) {
-                  this.statusEffects = this.statusEffects.filter(e => e.id !== outcome.params.statusId);
-                }
-              }
-            }
-            break;
-          
-          case 'change_tag_probability': 
+           case 'remove_tag':
+             if (outcome.params.tag) {
+               const tagIndex = this.tags.indexOf(outcome.params.tag);
+               if (tagIndex > -1) {
+                 this.tags.splice(tagIndex, 1);
+               }
+             }
+             break;
+
+           case 'change_tag_probability':
             const { tag, multiplier: tagMultiplier } = outcome.params;
             if (!this.tagProbabilityModifiers[tag]) {
                 this.tagProbabilityModifiers[tag] = 1;

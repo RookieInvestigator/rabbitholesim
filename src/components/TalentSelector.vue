@@ -10,8 +10,6 @@ const availableTalents = ref([]);
 const selectedTalents = ref([]);
 const maxSelection = 3;
 
-// --- 冲突检测逻辑 ---
-
 const getTalentTags = (talent) => {
   return (talent.effects || [])
     .filter(effect => effect.type === 'add_tag')
@@ -26,50 +24,30 @@ const conflictingGroup = computed(() => {
   const tags = allSelectedTags.value;
   for (const group of tagConflicts) {
     const intersection = tags.filter(tag => group.includes(tag));
-    
-    // Use a Set to find unique tags in the intersection
     const uniqueIntersection = new Set(intersection);
-    
     if (uniqueIntersection.size > 1) {
-      return Array.from(uniqueIntersection); // Return the unique conflicting tags
+      return Array.from(uniqueIntersection);
     }
   }
   return null;
 });
 
 const isTalentDisabled = (talent) => {
-  // 规则1: 永不禁用已选中的天赋
   if (isSelected(talent)) return false;
-  
-  // 规则2: 如果已达到选择上限，则禁用所有未选中的
   if (selectedTalents.value.length >= maxSelection) return true;
-
-  // 规则3: 检查标签冲突
   const talentTags = getTalentTags(talent);
-  if (talentTags.length === 0) return false; // 没有标签的天赋不会引起冲突
-
+  if (talentTags.length === 0) return false;
   const currentSelectedTags = allSelectedTags.value;
-
   for (const tag of talentTags) {
-    // 对于此天赋的每个标签...
     const conflictGroup = tagConflicts.find(group => group.includes(tag));
-    if (!conflictGroup) continue; // 此标签不属于任何冲突组
-
-    // 检查是否已有选中的天赋中包含此冲突组里的其他（对立）标签
+    if (!conflictGroup) continue;
     const opposingTagSelected = conflictGroup.some(opposingTag => {
       return tag !== opposingTag && currentSelectedTags.includes(opposingTag);
     });
-
-    if (opposingTagSelected) {
-      return true; // 发现冲突！禁用此天赋
-    }
+    if (opposingTagSelected) return true;
   }
-
-  return false; // 未发现冲突
+  return false;
 };
-
-
-// --- 核心组件逻辑 ---
 
 function drawTalents() {
   selectedTalents.value = [];
@@ -105,11 +83,7 @@ function drawTalents() {
 onMounted(drawTalents);
 
 function toggleTalent(talent) {
-  // 在切换前再次检查是否被禁用（以防万一）
-  if (isTalentDisabled(talent) && !isSelected(talent)) {
-    return;
-  }
-  
+  if (isTalentDisabled(talent) && !isSelected(talent)) return;
   const index = selectedTalents.value.findIndex(t => t.id === talent.id);
   if (index > -1) {
     selectedTalents.value.splice(index, 1);
@@ -133,7 +107,7 @@ function confirmSelection(mode) {
   <div class="selector-container">
     <header class="header">
       <div class="header-left">
-        <h2 class="title">天赋选择       
+        <h2 class="title">天赋选择
             <div class="subtitle">
               <span :class="{ 'text-highlight': selectedTalents.length === maxSelection && !conflictingGroup, 'text-danger': conflictingGroup }">
                 [{{ selectedTalents.length }}/{{ maxSelection }}] {{ conflictingGroup ? `冲突: ${conflictingGroup.join(', ')}` : '' }}
@@ -165,13 +139,11 @@ function confirmSelection(mode) {
             <h3 class="name">{{ talent.name }}</h3>
             <p class="desc">{{ talent.description }}</p>
           </div>
-          <!-- 选中标记 -->
           <div class="selected-mark" v-if="isSelected(talent)"></div>
         </div>
       </div>
     </main>
 
-    <!-- 底部双按钮归位！ -->
     <footer class="footer">
       <button
         class="btn-main"
@@ -192,24 +164,20 @@ function confirmSelection(mode) {
 </template>
 
 <style scoped>
-/* 容器风格同 StartScreen，保持统一 */
 .selector-container {
   height: 100vh;
   height: 100dvh;
   display: flex;
   flex-direction: column;
-  background: #000;
-  color: #fff;
+  background: var(--bg-color);
+  color: var(--text-primary);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-
-  /* 统一背景 */
   background-image:
     radial-gradient(circle at 50% 30%, rgba(20, 20, 30, 0.4) 0%, rgba(0, 0, 0, 1) 70%),
     repeating-linear-gradient(transparent 0, transparent 2px, rgba(255, 255, 255, 0.02) 3px);
   background-size: 100% 100%, 100% 4px;
 }
 
-/* Header & Footer */
 .header {
   padding: 1.5rem 2rem;
   display: flex;
@@ -217,52 +185,48 @@ function confirmSelection(mode) {
   align-items: flex-end;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-/* 修改 Header 布局，让标题和计数器完美对齐 */
+
 .header-left {
-  /* 确保左侧容器内容横向排列 */
   display: flex;
-  align-items: baseline; /* 关键：基线对齐，这样文字底部会在一条线上 */
+  align-items: baseline;
   gap: 1rem;
 }
 
 .title {
   display: flex;
-  align-items: baseline; /* 让 h2 内部的文字和那个 div 也对齐 */
+  align-items: baseline;
   gap: 1rem;
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 2px;
   margin: 0;
-  color: #fff;
+  color: var(--text-primary);
 }
 
-/* 强行修正你那个嵌套 div 的样式，让它变回行内块 */
 .title .subtitle {
   display: inline-block;
-  font-size: 1.2rem; /* 比标题稍微小一点 */
-  color: #666;
+  font-size: 1.2rem;
+  color: var(--text-dim);
   font-weight: 400;
   letter-spacing: 1px;
 }
 
-/* 关键信息高亮状态 */
 .text-highlight {
-  color: #ffffff; /* 亮蓝色，或者换成你喜欢的金色 #ffd700 */
+  color: var(--text-primary);
   text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
   transition: all 0.3s ease;
 }
 
 .text-danger {
-  color: #ff6b7a;
+  color: var(--danger);
   text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
   font-weight: 700;
 }
 
-/* --- 卡牌禁用状态 --- */
 .card.disabled {
   opacity: 0.4;
   cursor: not-allowed;
-  border-color: #222 !important;
+  border-color: var(--border-light) !important;
   background: rgba(10, 10, 10, 0.4) !important;
   box-shadow: none !important;
   animation: none !important;
@@ -270,12 +234,9 @@ function confirmSelection(mode) {
 
 .card.disabled .name,
 .card.disabled .desc {
-  color: #666 !important;
+  color: var(--text-dim) !important;
   text-shadow: none !important;
 }
-
-
-/* 修改 .grid-wrapper 和 .talent-grid */
 
 .grid-wrapper {
   flex: 1;
@@ -283,8 +244,6 @@ function confirmSelection(mode) {
   padding: 1.5rem 2rem;
   overflow-y: auto;
   scrollbar-width: none;
-
-  /* 新增：让内部的内容垂直居中 */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -293,17 +252,15 @@ function confirmSelection(mode) {
 .talent-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  /* 修改：让行高自适应，但给一个更大的最小值，让卡片看起来更饱满 */
   grid-auto-rows: minmax(160px, auto);
   gap: 1.5rem;
-  width: 100%; /* 确保占满宽度 */
+  width: 100%;
 }
 
-/* --- 卡牌设计：黑底 + 边框色区分 --- */
 .card {
   position: relative;
-  background: rgba(10, 10, 10, 0.6); /* 稍微深一点的黑底 */
-  border: 1px solid #333;
+  background: rgba(10, 10, 10, 0.6);
+  border: 1px solid var(--border-light);
   padding: 1rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -312,67 +269,92 @@ function confirmSelection(mode) {
 }
 
 .name {
-  font-size: 0.95rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #ccc;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-secondary);
   transition: color 0.3s;
 }
 
 .desc {
-  font-size: 0.75rem; color: #666; margin: 0; line-height: 1.4;
-  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   transition: color 0.3s;
 }
 
-/* --- 稀有度与 Hover 效果 --- */
+.tier-1:hover {
+  border-color: #888;
+  background: rgba(255,255,255,0.05);
+}
 
-/* T1: 普通 (白/灰) */
-.tier-1:hover { border-color: #888; background: rgba(255,255,255,0.05); }
 .tier-1.selected {
-  border-color: #fff;
-  background: rgba(255,255,255,0.1); /* 只是稍微提亮背景，不刺眼 */
+  border-color: var(--text-primary);
+  background: rgba(255,255,255,0.1);
   box-shadow: 0 0 15px rgba(255,255,255,0.15);
 }
-.tier-1.selected .name { color: #fff; text-shadow: 0 0 5px rgba(255,255,255,0.5); }
 
-/* T2: 稀有 (冰蓝) */
-.tier-2 { border-color: rgba(0, 200, 255, 0.3); 
+.tier-1.selected .name {
+  color: var(--text-primary);
+  text-shadow: 0 0 5px rgba(255,255,255,0.5);
+}
+
+.tier-2 {
+  border-color: rgba(0, 200, 255, 0.3);
   box-shadow: 0 0 20px rgba(0, 195, 255, 0.2);
 }
-.tier-2 .name { color: #5dade2; } /* 默认也是蓝色字 */
+
+.tier-2 .name {
+  color: #5dade2;
+}
+
 .tier-2:hover {
   border-color: #00c3ff;
   background: rgba(0, 195, 255, 0.05);
   box-shadow: 0 0 10px rgba(0, 195, 255, 0.3);
 }
+
 .tier-2.selected {
   border-color: #00c3ff;
-  background: rgba(0, 195, 255, 0.1); /* 蓝色背景光 */
-  box-shadow: 0 0 20px rgba(0, 195, 255, 0.4); /* 蓝色外发光 */
-}
-.tier-2.selected .name {
-  color: #fff;
-  text-shadow: 0 0 8px #00c3ff; /* 蓝色字光 */
+  background: rgba(0, 195, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 195, 255, 0.4);
 }
 
-/* T3: 传说 (辉金) */
-.tier-3 {
-  border-color: rgba(255, 215, 0, 0.5); /* 默认边框更亮 */
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); /* 默认就有一点点微光 */
+.tier-2.selected .name {
+  color: var(--text-primary);
+  text-shadow: 0 0 8px #00c3ff;
 }
-.tier-3 .name { color: #f1c40f; } /* 默认也是金色字 */
+
+.tier-3 {
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.tier-3 .name {
+  color: #f1c40f;
+}
+
 .tier-3:hover {
   border-color: #ffd700;
   background: rgba(255, 215, 0, 0.05);
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
 }
+
 .tier-3.selected {
   border-color: #ffd700;
-  background: rgba(255, 215, 0, 0.1); /* 金色背景光 */
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5); /* 金色外发光 */
-  animation: pulse-gold 2s infinite; /* 传说级要会呼吸！ */
+  background: rgba(255, 215, 0, 0.1);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+  animation: pulse-gold 2s infinite;
 }
+
 .tier-3.selected .name {
-  color: #fff;
-  text-shadow: 0 0 10px #ffd700; /* 金色字光 */
+  color: var(--text-primary);
+  text-shadow: 0 0 10px #ffd700;
 }
 
 @keyframes pulse-gold {
@@ -381,11 +363,20 @@ function confirmSelection(mode) {
   100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
 }
 
-/* 选中后的通用变化：描述文字变亮 */
-.card.selected .desc { color: #bbb; }
+.selected-mark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  background: var(--text-primary);
+  border-radius: 50%;
+}
 
+.card.selected .desc {
+  color: var(--text-secondary);
+}
 
-/* --- 底部按钮 (双按钮恢复) --- */
 .footer {
   padding: 1.5rem 2rem;
   display: flex;
@@ -395,36 +386,63 @@ function confirmSelection(mode) {
 
 .btn-main {
   flex: 2;
-  background: #fff;
-  color: #000;
+  background: var(--text-primary);
+  color: var(--bg-color);
   border: none;
   padding: 1rem;
   cursor: pointer;
   font-weight: 700;
   transition: all 0.2s;
 }
-.btn-main:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 0 15px rgba(255,255,255,0.3); }
-.btn-main:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.btn-main:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+}
+
+.btn-main:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
 
 .btn-link {
   flex: 1;
   background: transparent;
-  color: #888;
-  border: 1px solid #333;
+  color: var(--text-dim);
+  border: 1px solid var(--border-light);
   padding: 1rem;
   cursor: pointer;
   font-weight: 500;
   transition: all 0.2s;
 }
-.btn-link:hover:not(:disabled) { border-color: #fff; color: #fff; }
-.btn-link.sm { padding: 0.4rem 0.8rem; font-size: 0.75rem; flex: initial; }
 
+.btn-link:hover:not(:disabled) {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
 
-/* 响应式 */
+.btn-link.sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  flex: initial;
+}
+
 @media (max-width: 768px) {
-  .header { padding: 1rem; }
-  .grid-wrapper { padding: 1rem; }
-  .footer { padding: 1rem; }
-  .talent-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+  .header {
+    padding: 1rem;
+  }
+
+  .grid-wrapper {
+    padding: 1rem;
+  }
+
+  .footer {
+    padding: 1rem;
+  }
+
+  .talent-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
 }
 </style>

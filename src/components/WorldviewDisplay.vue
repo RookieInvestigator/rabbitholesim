@@ -72,9 +72,9 @@ const displayedEffects = computed(() => {
 
 <style scoped>
 .monitor-container {
-  font-family: "Source Han Sans SC", "Source Han Sans TC", sans-serif;
-  background-color: #000;
-  color: #fff;
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -87,8 +87,8 @@ const displayedEffects = computed(() => {
 }
 
 .worldview-card {
-  border: 1px solid #111;
-  background: #000;
+  border: 1px solid var(--border);
+  background: var(--bg-color);
   padding: 0.8rem 0;
   display: flex;
   flex-direction: column;
@@ -116,13 +116,13 @@ const displayedEffects = computed(() => {
 .value {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-primary);
   line-height: 1;
 }
 
 .label {
   font-size: 0.7rem;
-  color: #888;
+  color: var(--text-dim);
   font-weight: 500;
   margin-top: 0.4rem;
   letter-spacing: 1px;
@@ -132,12 +132,12 @@ const displayedEffects = computed(() => {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1px;
-  background-color: #111;
-  border: 1px solid #111;
+  background-color: var(--border);
+  border: 1px solid var(--border);
 }
 
 .metric-item {
-  background-color: #000;
+  background-color: var(--bg-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -146,13 +146,13 @@ const displayedEffects = computed(() => {
 
 .m-label {
   font-size: 0.7rem;
-  color: #c0c0c0;
+  color: var(--text-secondary);
 }
 
 .m-value {
   font-size: 0.85rem;
   font-weight: bold;
-  color: #888;
+  color: var(--text-dim);
 }
 
 .effects-tray {
@@ -160,7 +160,7 @@ const displayedEffects = computed(() => {
   flex-wrap: wrap;
   gap: 0.4rem;
   justify-content: center;
-  border-top: 1px dashed #111;
+  border-top: 1px dashed var(--border);
   padding-top: 0.8rem;
 }
 
@@ -197,7 +197,7 @@ const displayedEffects = computed(() => {
 
   .label {
     font-size: 0.6rem;
-    color: #888;
+    color: var(--text-dim);
     margin-top: 0.2rem;
   }
 

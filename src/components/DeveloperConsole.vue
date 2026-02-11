@@ -64,6 +64,18 @@ const addAllWorldviews = () => {
   player.irony = 50
   addLog('世界观已均衡')
 }
+
+const currentTheme = ref('default')
+const themes = ['default', 'cyberpunk']
+
+const switchTheme = (theme) => {
+  document.documentElement.classList.remove('theme-cyberpunk')
+  currentTheme.value = theme
+  if (theme === 'cyberpunk') {
+    document.documentElement.classList.add('theme-cyberpunk')
+  }
+  addLog(`主题已切换至: ${theme}`)
+}
 </script>
 
 <template>
@@ -231,6 +243,20 @@ const addAllWorldviews = () => {
             {{ player.log?.slice(-5).map(l => l.type).join(', ') || '无' }}
           </div>
         </div>
+        <div class="debug-info">
+          <div class="debug-header">主题切换</div>
+          <div class="theme-selector">
+            <button
+              v-for="theme in themes"
+              :key="theme"
+              :class="{ active: currentTheme === theme }"
+              @click="switchTheme(theme)"
+              class="theme-btn"
+            >
+              {{ theme === 'cyberpunk' ? '赛博朋克' : '默认' }}
+            </button>
+          </div>
+        </div>
         <div class="quick-actions">
           <button @click="addLog('测试日志')">📝 添加日志</button>
           <button @click="resetGame" class="btn-danger">🔄 重置游戏</button>
@@ -246,7 +272,7 @@ const addAllWorldviews = () => {
   bottom: 10px;
   right: 10px;
   z-index: 9999;
-  font-family: monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
 }
 
@@ -254,8 +280,8 @@ const addAllWorldviews = () => {
   width: 28px;
   height: 28px;
   background: rgba(30, 30, 30, 0.8);
-  border: 1px solid #444;
-  color: #666;
+  border: 1px solid var(--border-highlight);
+  color: var(--text-dim);
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
@@ -268,8 +294,8 @@ const addAllWorldviews = () => {
 
 .dev-toggle:hover {
   opacity: 1;
-  color: #0f0;
-  border-color: #0f0;
+  color: var(--success);
+  border-color: var(--success);
 }
 
 .dev-content {
@@ -277,12 +303,12 @@ const addAllWorldviews = () => {
   bottom: 35px;
   right: 0;
   background: rgba(10, 10, 10, 0.98);
-  border: 1px solid #333;
+  border: 1px solid var(--border-light);
   border-radius: 6px;
   width: 340px;
   max-height: 450px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 20px var(--shadow);
 }
 
 .dev-header {
@@ -290,12 +316,12 @@ const addAllWorldviews = () => {
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background: #1a1a1a;
-  border-bottom: 1px solid #333;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .dev-title {
-  color: #0f0;
+  color: var(--success);
   font-size: 11px;
   letter-spacing: 1px;
 }
@@ -303,7 +329,7 @@ const addAllWorldviews = () => {
 .dev-close {
   background: none;
   border: none;
-  color: #666;
+  color: var(--text-dim);
   cursor: pointer;
   font-size: 16px;
   padding: 0;
@@ -311,20 +337,20 @@ const addAllWorldviews = () => {
 }
 
 .dev-close:hover {
-  color: #f00;
+  color: var(--danger);
 }
 
 .dev-tabs {
   display: flex;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .dev-tabs button {
   flex: 1;
-  background: #111;
+  background: var(--bg-secondary);
   border: none;
   border-bottom: 2px solid transparent;
-  color: #666;
+  color: var(--text-dim);
   padding: 6px 0;
   font-size: 11px;
   cursor: pointer;
@@ -332,13 +358,13 @@ const addAllWorldviews = () => {
 }
 
 .dev-tabs button:hover {
-  color: #888;
+  color: var(--text-secondary);
 }
 
 .dev-tabs button.active {
-  color: #0f0;
-  border-bottom-color: #0f0;
-  background: #1a1a1a;
+  color: var(--success);
+  border-bottom-color: var(--success);
+  background: var(--bg-elevated);
 }
 
 .dev-section {
@@ -352,7 +378,7 @@ const addAllWorldviews = () => {
 }
 
 .dev-section::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--border-light);
   border-radius: 2px;
 }
 
@@ -360,33 +386,33 @@ const addAllWorldviews = () => {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #888;
+  color: var(--text-secondary);
   margin-bottom: 10px;
   font-size: 11px;
 }
 
 .dev-checkbox input {
-  accent-color: #0f0;
+  accent-color: var(--success);
 }
 
 .event-info {
-  color: #666;
+  color: var(--text-dim);
   font-size: 10px;
   margin-bottom: 10px;
   line-height: 1.6;
 }
 
 .debug-info {
-  color: #666;
+  color: var(--text-dim);
   font-size: 10px;
   margin-bottom: 8px;
 }
 
 .debug-header {
-  color: #0f0;
+  color: var(--success);
   font-weight: bold;
   margin-bottom: 4px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border-light);
   padding-bottom: 2px;
 }
 
@@ -394,18 +420,18 @@ const addAllWorldviews = () => {
   display: flex;
   justify-content: space-between;
   padding: 2px 0;
-  color: #888;
+  color: var(--text-secondary);
 }
 
 .debug-item {
-  color: #888;
+  color: var(--text-secondary);
   word-break: break-all;
   padding-left: 8px;
   line-height: 1.5;
 }
 
 .empty-msg {
-  color: #444;
+  color: var(--text-muted);
   text-align: center;
   padding: 10px;
   font-style: italic;
@@ -434,9 +460,9 @@ const addAllWorldviews = () => {
 
 .var-input {
   width: 55px;
-  background: #1a1a1a;
-  border: 1px solid #333;
-  color: #fff;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
   padding: 2px 4px;
   font-size: 11px;
   border-radius: 2px;
@@ -447,7 +473,7 @@ const addAllWorldviews = () => {
 }
 
 .btn-del {
-  background: #1a1a1a;
+  background: var(--bg-elevated);
   border: 1px solid #522;
   color: #f44;
   cursor: pointer;
@@ -462,9 +488,9 @@ const addAllWorldviews = () => {
 }
 
 .add-var button {
-  background: #1a1a1a;
-  border: 1px solid #0f0;
-  color: #0f0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--success);
+  color: var(--success);
   cursor: pointer;
   padding: 2px 8px;
   font-size: 12px;
@@ -485,16 +511,16 @@ const addAllWorldviews = () => {
 }
 
 .stat-label {
-  color: #666;
+  color: var(--text-dim);
   width: 36px;
   font-size: 10px;
 }
 
 .stat-input {
   flex: 1;
-  background: #1a1a1a;
-  border: 1px solid #333;
-  color: #fff;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
   padding: 2px 4px;
   font-size: 11px;
   border-radius: 2px;
@@ -508,9 +534,9 @@ const addAllWorldviews = () => {
 }
 
 .quick-actions button {
-  background: #1a1a1a;
-  border: 1px solid #333;
-  color: #888;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
   padding: 6px 10px;
   cursor: pointer;
   font-size: 10px;
@@ -520,18 +546,48 @@ const addAllWorldviews = () => {
 }
 
 .quick-actions button:hover {
-  background: #252525;
-  border-color: #0f0;
-  color: #0f0;
+  background: var(--bg-tertiary);
+  border-color: var(--success);
+  color: var(--success);
 }
 
 .btn-danger {
-  color: #f66 !important;
+  color: var(--danger) !important;
   border-color: #622 !important;
 }
 
 .btn-danger:hover {
   background: #311 !important;
-  border-color: #f00 !important;
+  border-color: var(--danger) !important;
+}
+
+.theme-selector {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.theme-btn {
+  flex: 1;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 10px;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.theme-btn:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.theme-btn.active {
+  background: rgba(0, 245, 255, 0.1);
+  border-color: var(--success);
+  color: var(--success);
 }
 </style>

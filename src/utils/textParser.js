@@ -60,9 +60,7 @@ export function parseConditionalText(text, context = {}) {
   if (!text || typeof text !== 'string') return text;
   const regex = /\{\$([^:}]+):([^}|]+)\|([^}]+)\}/g;
   return text.replace(regex, (match, condition, trueText, falseText) => {
-    console.log('条件文本匹配:', { match, condition, trueText, falseText });
     const isMet = checkSimpleCondition(condition.trim(), context);
-    console.log('条件结果:', isMet);
     return isMet ? trueText.trim() : falseText.trim();
   });
 }

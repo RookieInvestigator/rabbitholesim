@@ -9,7 +9,7 @@ const finalEnding = ref({ title: '探索结束', description: '意识数据已�
 
 watch(() => player.deathReason, (newReason) => {
   if (newReason) {
-    const matchedEnding = allEndings.find(ending => 
+    const matchedEnding = allEndings.find(ending =>
       ending.conditions.some(cond => {
         if (cond.type === 'death_reason' && cond.reason === newReason) return true;
         if (cond.type === 'ending_id' && cond.endingId === newReason) return true;
@@ -34,7 +34,7 @@ const format = (num) => Number(num).toFixed(0);
       <section class="description-section">
         <p class="description">{{ finalEnding.description }}</p>
       </section>
-      
+
       <div class="stats-module">
         <div class="module-label">FINAL_DATA_EXTRACTED</div>
         <div class="stats-grid">
@@ -75,12 +75,11 @@ const format = (num) => Number(num).toFixed(0);
 </template>
 
 <style scoped>
-/* 全面採用思源黑體與硬核直角 */
 .game-over-root {
-  font-family: "Source Han Sans SC", "Source Han Sans TC", sans-serif;
+  font-family: var(--font-sans);
   height: 100vh;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,59 +91,56 @@ const format = (num) => Number(num).toFixed(0);
 .report-container {
   width: 100%;
   max-width: 600px;
-  border: 1px solid #111;
-  background: #000;
+  border: 1px solid var(--border);
+  background: var(--bg-color);
   display: flex;
   flex-direction: column;
 }
 
-/* 標頭樣式 */
 .report-header {
   padding: 2rem;
-  border-bottom: 1px solid #111;
+  border-bottom: 1px solid var(--border);
   text-align: center;
 }
 
 .report-code {
   font-size: 0.65rem;
-  color: #333;
+  color: var(--text-muted);
   letter-spacing: 2px;
   display: block;
   margin-bottom: 0.5rem;
 }
 
 .ending-title {
-  color: #ffc878; /* 史詩感金黃色 */
+  color: #ffc878;
   font-size: 1.8rem;
   font-weight: 700;
   margin: 0;
   letter-spacing: 2px;
 }
 
-/* 描述區 */
 .description-section {
   padding: 2rem;
   text-align: left;
 }
 
 .description {
-  color: #888;
+  color: var(--text-dim);
   line-height: 1.8;
   font-size: 1rem;
   margin: 0;
 }
 
-/* 數據網格模組 */
 .stats-module {
-  border-top: 1px solid #111;
-  border-bottom: 1px solid #111;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .module-label {
   font-size: 0.6rem;
-  color: #222;
+  color: var(--bg-tertiary);
   padding: 0.4rem 2rem;
-  background: #050505;
+  background: var(--bg-secondary);
   letter-spacing: 1px;
 }
 
@@ -152,11 +148,11 @@ const format = (num) => Number(num).toFixed(0);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1px;
-  background-color: #111; /* 網格線 */
+  background-color: var(--border);
 }
 
 .stat-item {
-  background-color: #000;
+  background-color: var(--bg-color);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -165,7 +161,7 @@ const format = (num) => Number(num).toFixed(0);
 
 .s-label {
   font-size: 0.8rem;
-  color: #444;
+  color: var(--text-muted);
 }
 
 .s-label i {
@@ -181,10 +177,9 @@ const format = (num) => Number(num).toFixed(0);
 .s-value {
   font-size: 1rem;
   font-weight: 700;
-  color: #ccc;
+  color: var(--text-secondary);
 }
 
-/* 操作底部 */
 .footer-actions {
   padding: 2rem;
   display: flex;
@@ -194,8 +189,8 @@ const format = (num) => Number(num).toFixed(0);
 .btn-restart {
   width: 100%;
   max-width: 300px;
-  background: #fff;
-  color: #000;
+  background: var(--text-primary);
+  color: var(--bg-color);
   border: none;
   padding: 1rem;
   font-size: 0.9rem;
@@ -205,13 +200,12 @@ const format = (num) => Number(num).toFixed(0);
 }
 
 .btn-restart:hover {
-  background: #a29bfe; /* 系統紫色反饋 */
+  background: var(--accent);
 }
 
-/* ✨ 手機版適配 ✨ */
 @media (max-width: 768px) {
   .game-over-root {
-    align-items: flex-start; /* 手機版從頂部開始，防止長描述切斷 */
+    align-items: flex-start;
     padding: 0;
   }
 
@@ -220,18 +214,27 @@ const format = (num) => Number(num).toFixed(0);
     height: 100%;
   }
 
-  .report-header { padding: 3rem 1.5rem 1.5rem; }
-  .ending-title { font-size: 1.5rem; }
+  .report-header {
+    padding: 3rem 1.5rem 1.5rem;
+  }
 
-  .description-section { padding: 1.5rem; }
-  
-  .stat-item { padding: 0.8rem 1.5rem; }
-  
-  .footer-actions {
-    margin-top: auto; /* 置底 */
+  .ending-title {
+    font-size: 1.5rem;
+  }
+
+  .description-section {
     padding: 1.5rem;
-    background: #050505;
-    border-top: 1px solid #111;
+  }
+
+  .stat-item {
+    padding: 0.8rem 1.5rem;
+  }
+
+  .footer-actions {
+    margin-top: auto;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
   }
 }
 </style>

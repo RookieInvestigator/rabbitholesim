@@ -8,12 +8,11 @@ function selectChoice(choice) {
   emit('choice-selected', choice);
 }
 
-// Map worldview to Font Awesome classes
-const worldviewIcons = { 
-  logic: 'fas fa-atom icon-logic', 
-  gnosis: 'fas fa-eye icon-gnosis', 
-  weirdness: 'fas fa-spider icon-weirdness', 
-  irony: 'fas fa-masks-theater icon-irony' 
+const worldviewIcons = {
+  logic: 'fas fa-atom icon-logic',
+  gnosis: 'fas fa-eye icon-gnosis',
+  weirdness: 'fas fa-spider icon-weirdness',
+  irony: 'fas fa-masks-theater icon-irony'
 };
 
 function hasTagRequirement(choice) {
@@ -30,15 +29,15 @@ function hasTagRequirement(choice) {
       class="choice-node"
       @click="selectChoice(choice)"
     >
-      <div class="cursor">       
+      <div class="cursor">
         <div v-if="choice.worldview" class="worldview-tag">
           <span class="icon"><i :class="worldviewIcons[choice.worldview] || 'fas fa-question-circle'"></i></span>
         </div>
       </div>
-      
+
       <div class="choice-body">
         <p class="main-text">
-          {{ choice.text }}          
+          {{ choice.text }}
           <span v-if="hasTagRequirement(choice)" class="tag-req-marker" title="特殊">◆</span>
         </p>
       </div>
@@ -47,9 +46,8 @@ function hasTagRequirement(choice) {
 </template>
 
 <style scoped>
-/* 全面套用思源黑體 */
 .command-list {
-  font-family: "Source Han Sans SC", "Source Han Sans TC", sans-serif;
+  font-family: var(--font-sans);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -58,23 +56,23 @@ function hasTagRequirement(choice) {
 
 .choice-node {
   display: flex;
-  align-items: flex-start; /* 核心：上端對齊 */
+  align-items: flex-start;
   gap: 0.8rem;
   padding: 0.8rem;
-  background-color: #050505;
-  border: 1px solid #111; /* 極細邊框 */
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
   cursor: pointer;
   transition: all 0.1s ease;
-  min-width: 0; /* 防止 Flex 溢出 */
+  min-width: 0;
 }
 
 .choice-node:hover {
-  background-color: #0c0c0c;
-  border-color: #444;
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-highlight);
 }
 
 .cursor {
-  font-family: monospace;
+  font-family: var(--font-mono);
   font-weight: bold;
   font-size: 1rem;
   padding-top: 0.1rem;
@@ -90,19 +88,18 @@ function hasTagRequirement(choice) {
 
 .main-text {
   font-size: 0.95rem;
-  color: #ccc;
+  color: var(--text-secondary);
   line-height: 1.5;
   margin: 0;
-  word-break: break-word; /* 核心：防止長字撐破 */
+  word-break: break-word;
 }
 
-/* 極簡世界觀標籤 */
 .worldview-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   font-size: 0.7rem;
-  color: #444;
+  color: var(--text-muted);
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -117,21 +114,21 @@ function hasTagRequirement(choice) {
 .icon-irony { color: #e67e22; }
 
 .choice-node:hover .worldview-tag {
-  color: #888;
+  color: var(--text-dim);
 }
 
 .worldview-tag .value {
-  color: #444;
+  color: var(--text-muted);
   font-weight: bold;
 }
 
 .choice-node:hover .value {
-  color: #a29bfe;
+  color: var(--accent);
 }
 
 .tag-req-marker {
   font-size: 0.6em;
-  color: #666;
+  color: var(--text-dim);
   font-weight: bold;
   display: inline-block;
   margin-right: 0.4rem;
@@ -140,7 +137,7 @@ function hasTagRequirement(choice) {
 }
 
 .choice-node:hover .tag-req-marker {
-  color: #a29bfe;
-  text-shadow: 0 0 8px rgba(162, 155, 254, 0.7);
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent-glow);
 }
 </style>

@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import tagData from '@/data/tags.json';
 import { getConflictingTags, choiceAddsConflictingTag } from '@/utils/tagUtils';
 import { parseText } from '@/utils/textParser';
+import { createConditionChecker } from '@/utils/conditionChecker';
 
 const { gated_event_tags } = tagData;
 
@@ -20,6 +21,8 @@ export function useEventCenter() {
 
   const allEvents = gameData.events;
 
+  const { isConditionMet, areConditionsMet } = createConditionChecker(() => player);
+
   /**
    * @description 按ID查找特定事件
    * @param {string} eventId - 要查找的事件ID
@@ -29,74 +32,6 @@ export function useEventCenter() {
     return allEvents.find(event => event.id === eventId) || null;
   }
 
-  /**
-   * @description 检查单个条件是否满足
-   * @param {object} condition - 要检查的条件对象
-   * @returns {boolean}
-   */
-  function isConditionMet(condition) {
-    const { type, params } = condition;
-    switch(type) {
-      case 'stat_check':
-        const value = player[params.stat];
-        if (value === undefined) return false;
-        switch (params.operator) {
-          case '>=': return value >= params.value;
-          case '<=': return value <= params.value;
-          case '==': return value == params.value;
-          case '>': return value > params.value;
-          case '<': return value < params.value;
-          default: return false;
-        }
-      case 'worldview_check':
-        return player.dominantWorldview === params.dominant;
-      case 'status_check':
-        if (params.has) return player.statusEffects.some(e => e.id === params.has);
-        if (params.has_not) return !player.statusEffects.some(e => e.id === params.has_not);
-        return false;
-      case 'event_check':
-        if (params.has_triggered) return player.triggeredEventIds.has(params.has_triggered);
-        if (params.has_not_triggered) return !player.triggeredEventIds.has(params.has_not_triggered);
-        return false;
-      case 'inventory_check':
-        if (params.has) return player.inventory.includes(params.has);
-        if (params.has_not) return !player.inventory.includes(params.has_not);
-        return false;
-      case 'made_choice_check': 
-        return player.madeChoices.has(params.choiceId);
-      case 'talent_check':
-        if (params.has) return player.talents.some(t => t.id === params.has);
-        if (params.has_not) return !player.talents.some(t => t.id === params.has_not);
-        return false;
-      case 'tag_check':
-        if (params.has) return player.tags && player.tags.includes(params.has);
-        if (params.has_not) return !player.tags || !player.tags.includes(params.has_not);
-        return false;
-      case 'variable_check':
-        if (params.key) {
-          const value = player.variables?.[params.key];
-          if (value === undefined) {
-            if (params.exists !== undefined) {
-              return !params.exists;
-            }
-            return false;
-          }
-          const numValue = Number(value);
-          switch (params.operator) {
-            case '>=': return numValue >= params.value;
-            case '<=': return numValue <= params.value;
-            case '==': return numValue == params.value;
-            case '>': return numValue > params.value;
-            case '<': return numValue < params.value;
-            case '!=': return numValue != params.value;
-            default: return !!value;
-          }
-        }
-        return false;
-      default: return true;
-    }
-  }
-  
   /**
    * @description 查找一个当前可以触发的事件
    * @returns {object|null}

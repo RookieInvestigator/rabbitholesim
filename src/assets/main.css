@@ -2,17 +2,37 @@
 html, body, #app {
   height: 100%;
   margin: 0;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
-/* src/assets/main.css */
 :root {
   --bg-color: #000000;
+  --bg-secondary: #050505;
+  --bg-tertiary: #0c0c0c;
+  --bg-elevated: #1a1a1a;
+
   --text-primary: #ffffff;
+  --text-secondary: #cccccc;
   --text-dim: #666666;
-  --accent: #a29bfe; /* 只有一點點紫色作為重點 */
+  --text-muted: #444444;
+
+  --accent: #a29bfe;
+  --accent-hover: #c7a5ff;
+  --accent-glow: rgba(162, 155, 254, 0.3);
+
   --border: #222222;
-  --font-mono: sans-serif, 'Microsoft YaHei','JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --border-light: #333333;
+  --border-highlight: #444444;
+  --border-accent: #6c5ce7;
+
+  --shadow: rgba(0, 0, 0, 0.8);
+  --shadow-accent: rgba(162, 155, 254, 0.3);
+
+  --font-mono: sans-serif, 'Microsoft YaHei', 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --font-sans: "Source Han Sans SC", "Source Han Sans TC", sans-serif;
+
+  --success: #2ecc71;
+  --font-sans: "Source Han Sans SC", "Source Han Sans TC", sans-serif;
 }
 
 body {
@@ -28,5 +48,8 @@ button {
   transition: all 0.1s ease;
 }
 
-/* 移除所有發光和動畫 */
-* { box-sizing: border-box; text-shadow: none !important; animation: none !important; }
+* {
+  box-sizing: border-box;
+  text-shadow: none !important;
+  animation: none !important;
+}

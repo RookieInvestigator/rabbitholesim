@@ -22,18 +22,17 @@ export function useConditionChecker() {
         switch (params.operator) {
           case '>=': return value >= params.value;
           case '<=': return value <= params.value;
-          case '==': return value == params.value;
+          case '===': return value === params.value;
           case '>': return value > params.value;
           case '<': return value < params.value;
           default: return false;
         }
-      case 'worldview_check':
-        // This requires the dominantWorldview getter, which is on the store, not the state.
-        // For simplicity here, we assume if this is needed, it should be pre-calculated.
-        // Or we pass the full store, but that's less clean.
-        // For now, this check might not work correctly for achievements.
-        // Let's assume we pass the full store instance for now.
-        return playerState.dominantWorldview === params.dominant;
+       case 'worldview_check':
+         if (!playerState.dominantWorldview) {
+           console.warn('worldview_check 需要传递完整的 store 实例以访问 dominantWorldview getter');
+           return false;
+         }
+         return playerState.dominantWorldview === params.dominant;
       case 'status_check':
         if (params.has) return playerState.statusEffects.some(e => e.id === params.has);
         if (params.has_not) return !playerState.statusEffects.some(e => e.id === params.has_not);

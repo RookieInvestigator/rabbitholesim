@@ -34,7 +34,6 @@ defineEmits(['startGame', 'manageDlc', 'openEditor', 'showAchievements']);
 
 const isMounted = ref(false);
 onMounted(() => {
-  // 简单的入场延迟，让动画生效
   setTimeout(() => isMounted.value = true, 100);
 });
 </script>
@@ -47,21 +46,23 @@ onMounted(() => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #050505;
-  color: #fff;
-  font-family: 'Segoe UI', sans-serif; /* 换个更干净的字体 */
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', sans-serif;
   position: relative;
   overflow: hidden;
 
-  /* 背景动效 */
   background-image:
     radial-gradient(circle at 50% 30%, rgba(20, 20, 30, 0.4) 0%, rgba(0, 0, 0, 1) 70%),
     repeating-linear-gradient(transparent 0, transparent 2px, rgba(255, 255, 255, 0.02) 3px);
+  background-size: 100% 100%, 100% 4px;
   opacity: 0;
   transition: opacity 1s ease-out;
 }
 
-.start-container.loaded { opacity: 1; }
+.start-container.loaded {
+  opacity: 1;
+}
 
 .brand {
   text-align: center;
@@ -70,11 +71,14 @@ onMounted(() => {
   transform: translateY(20px);
   transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.loaded .brand { transform: translateY(0); }
+
+.loaded .brand {
+  transform: translateY(0);
+}
 
 .title {
   font-size: 3rem;
-  font-weight: 200; /* 极细字体，更有未来感 */
+  font-weight: 200;
   letter-spacing: 0.8rem;
   margin: 0;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
@@ -84,15 +88,22 @@ onMounted(() => {
 }
 
 .version {
-  color: #555;
+  color: var(--text-muted);
   font-size: 0.7rem;
   margin-top: 1rem;
   letter-spacing: 0.3rem;
-  font-family: monospace;
+  font-family: var(--font-mono);
 }
 
-.blink { animation: blink 1s infinite; }
-@keyframes blink { 50% { opacity: 0; } }
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
 
 .menu {
   display: flex;
@@ -102,15 +113,18 @@ onMounted(() => {
   z-index: 2;
   transform: translateY(30px);
   opacity: 0;
-  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s; /* 延迟出现 */
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s;
 }
-.loaded .menu { transform: translateY(0); opacity: 1; }
 
-/* 主按钮：丝滑光效 */
+.loaded .menu {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 .btn-main {
   position: relative;
   background: transparent;
-  color: #fff;
+  color: var(--text-primary);
   border: 1px solid rgba(255,255,255,0.2);
   padding: 1.2rem;
   cursor: pointer;
@@ -128,8 +142,10 @@ onMounted(() => {
 
 .glow-effect {
   position: absolute;
-  top: 0; left: -100%;
-  width: 200%; height: 100%;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
   transform: skewX(-20deg);
   transition: left 0.5s ease;
@@ -137,14 +153,16 @@ onMounted(() => {
 }
 
 .btn-main:hover {
-  border-color: #fff;
+  border-color: var(--text-primary);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
-.btn-main:hover .glow-effect { left: 100%; transition: left 0.7s ease; }
+.btn-main:hover .glow-effect {
+  left: 100%;
+  transition: left 0.7s ease;
+}
 
-/* 次级菜单 */
 .sub-menu {
   display: flex;
   flex-direction: column;
@@ -155,7 +173,7 @@ onMounted(() => {
 
 .btn-link {
   background: transparent;
-  color: #666;
+  color: var(--text-dim);
   border: none;
   padding: 0.5rem 0;
   cursor: pointer;
@@ -167,15 +185,18 @@ onMounted(() => {
 }
 
 .btn-link:hover {
-  color: #fff;
-  padding-left: 10px; /* 丝滑位移 */
+  color: var(--text-primary);
+  padding-left: 10px;
   text-shadow: 0 0 5px rgba(255,255,255,0.3);
 }
+
 .btn-link:hover::before {
   content: '';
   position: absolute;
-  left: 0; top: 50%;
-  width: 4px; height: 1px;
-  background: #fff;
+  left: 0;
+  top: 50%;
+  width: 4px;
+  height: 1px;
+  background: var(--text-primary);
 }
 </style>

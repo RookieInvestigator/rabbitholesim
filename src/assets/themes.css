@@ -1,0 +1,131 @@
+/* 赛博朋克主题 - Cyberpunk Theme */
+:root.theme-cyberpunk {
+  --bg-color: #0a0a12;
+  --bg-secondary: #12121f;
+  --bg-tertiary: #1a1a2e;
+  --bg-elevated: #0f0f1a;
+
+  --text-primary: #00f5ff;
+  --text-secondary: #88f0ff;
+  --text-dim: #008b8b;
+  --text-muted: #005555;
+
+  --accent: #ff00ff;
+  --accent-hover: #ff66ff;
+  --accent-glow: rgba(255, 0, 255, 0.4);
+
+  --border: #00f5ff;
+  --border-light: rgba(0, 245, 255, 0.3);
+  --border-highlight: #00f5ff;
+  --border-accent: #ff00ff;
+
+  --shadow: rgba(0, 0, 0, 0.8);
+  --shadow-accent: rgba(255, 0, 255, 0.4);
+}
+
+:root.theme-cyberpunk body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  text-shadow: 0 0 5px rgba(0, 245, 255, 0.3);
+}
+
+:root.theme-cyberpunk button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  text-shadow: 0 0 3px var(--text-primary);
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+}
+
+:root.theme-cyberpunk button:hover {
+  background: rgba(0, 245, 255, 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+  text-shadow: 0 0 5px var(--accent);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+}
+
+:root.theme-cyberpunk .card,
+:root.theme-cyberpunk .event-card {
+  background: rgba(0, 245, 255, 0.05);
+  border: 1px solid var(--border);
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.2);
+}
+
+:root.theme-cyberpunk .choice-button {
+  background: rgba(0, 245, 255, 0.08);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  color: var(--text-primary);
+}
+
+:root.theme-cyberpunk .choice-button:hover {
+  background: rgba(0, 245, 255, 0.15);
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+}
+
+:root.theme-cyberpunk input,
+:root.theme-cyberpunk select {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+:root.theme-cyberpunk .stat-bar {
+  background: rgba(0, 245, 255, 0.1);
+  border: 1px solid var(--border);
+}
+
+:root.theme-cyberpunk .stat-fill {
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary, var(--text-secondary)));
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+}
+
+:root.theme-cyberpunk .worldview-tag {
+  background: rgba(255, 0, 255, 0.1);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+:root.theme-cyberpunk .dev-console .dev-toggle {
+  background: rgba(0, 245, 255, 0.2);
+  border-color: var(--border);
+  color: var(--accent);
+  text-shadow: 0 0 5px var(--accent);
+}
+
+:root.theme-cyberpunk .dev-console .dev-content {
+  background: rgba(10, 10, 18, 0.98);
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+}
+
+:root.theme-cyberpunk .dev-console .dev-title {
+  color: var(--accent);
+  text-shadow: 0 0 5px var(--accent);
+}
+
+:root.theme-cyberpunk .dev-console .dev-tabs button.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  text-shadow: 0 0 3px var(--accent);
+}
+
+:root.theme-cyberpunk .dev-console .var-name {
+  color: var(--text-secondary);
+}
+
+:root.theme-cyberpunk .dev-console .btn-del {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+:root.theme-cyberpunk .dev-console .add-var button {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+:root.theme-cyberpunk .dev-console .quick-actions button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}

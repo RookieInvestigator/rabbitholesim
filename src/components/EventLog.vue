@@ -23,9 +23,9 @@ function parseText(text) {
 <template>
   <div class="terminal-log">
     <div class="log-content">
-      <div 
-        v-for="log in player.log" 
-        :key="log.id" 
+      <div
+        v-for="log in player.log"
+        :key="log.id"
         :class="['log-entry', `type-${log.type}`]"
         class="log-entry-enter"
       >
@@ -33,7 +33,7 @@ function parseText(text) {
           <div class="event-title">{{ log.message.title || 'NULL_ID' }}</div>
           <div class="event-text" v-html="parseText(log.message.text)"></div>
         </template>
-        
+
         <template v-else>
           <div class="generic-text" v-html="parseText(typeof log.message === 'object' ? log.message.text : log.message)"></div>
         </template>
@@ -47,7 +47,7 @@ function parseText(text) {
   overflow-x: hidden;
   padding: 1.5rem;
   box-sizing: border-box;
-  font-family: "Source Han Sans SC", "Source Han Sans TC", sans-serif;
+  font-family: var(--font-sans);
 }
 
 .log-content {
@@ -60,7 +60,7 @@ function parseText(text) {
   position: relative;
   align-self: flex-start;
   width: 100%;
-  border-left: 1px solid #222;
+  border-left: 1px solid var(--border);
   padding-left: 1.2rem;
   transition: border-color 0.3s ease;
   animation: slideIn 0.3s ease-out;
@@ -78,39 +78,41 @@ function parseText(text) {
 }
 
 .log-entry:last-child {
-  border-left-color: #555;
+  border-left-color: var(--border-light);
 }
 
 .event-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #ddd;
+  color: var(--text-secondary);
   margin: 0 0 0.5rem 0;
 }
 
-.type-rare .event-title { 
+.type-rare .event-title {
   color: #5cadff;
   text-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
 }
-.type-legend .event-title { 
+
+.type-legend .event-title {
   color: #ffda8e;
   text-shadow: 0 0 10px rgba(255, 200, 120, 0.4);
 }
-.type-ending .event-title { 
-  color: #ff6b7a;
+
+.type-ending .event-title {
+  color: var(--danger);
   text-shadow: 0 0 10px rgba(255, 71, 87, 0.4);
 }
 
 .event-text, .generic-text {
   font-size: 0.95rem;
-  color: #aaa;
+  color: var(--text-dim);
   line-height: 1.7;
   white-space: pre-wrap;
   margin: 0;
 }
 
-.type-choice .generic-text { 
-  color: #888;
+.type-choice .generic-text {
+  color: var(--text-dim);
   font-style: italic;
   position: relative;
   padding-left: 1.5rem;
@@ -120,7 +122,7 @@ function parseText(text) {
   position: absolute;
   left: 0;
   top: 2px;
-  color: #666;
+  color: var(--text-muted);
   font-size: 0.8rem;
 }
 </style>

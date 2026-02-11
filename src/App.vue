@@ -7,6 +7,7 @@ import DlcManagementView from './views/DlcManagementView.vue';
 import AchievementView from './views/AchievementView.vue';
 import DeveloperConsole from './components/DeveloperConsole.vue';
 import { useDataCenter } from '@/composables/dataCenter';
+import '@/assets/themes.css';
 
 const currentView = ref('start');
 const isLoading = ref(true);
@@ -70,17 +71,16 @@ function handleNavigation(view) {
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
-  transition: max-width 0.3s ease, margin 0.3s ease; /* 平滑過渡 */
+  transition: max-width 0.3s ease, margin 0.3s ease;
 }
 
 .main-content {
   height: 100%;
   padding: 0.5rem;
   box-sizing: border-box;
-  transition: padding 0.3s ease; /* 平滑過渡 */
+  transition: padding 0.3s ease;
 }
 
-/* 當遊戲啟動時，讓容器全螢幕化 */
 .app-container.game-active {
   max-width: 100%;
   margin: 0;
@@ -90,23 +90,23 @@ function handleNavigation(view) {
   padding: 0;
 }
 
-
-/* 占位符的简单样式 */
 h1, p {
-  color: #e0e0e0;
+  color: var(--text-secondary);
   text-align: center;
 }
+
 button {
   display: block;
   margin: 2rem auto;
   padding: 10px 20px;
   background-color: transparent;
-  color: #d0d0d0;
-  border: 1px solid #555;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
   cursor: pointer;
 }
+
 button:hover {
-  background-color: #c7a5ff;
-  color: #1a1a1a;
+  background-color: var(--accent);
+  color: var(--bg-color);
 }
 </style>
